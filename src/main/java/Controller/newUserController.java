@@ -1,10 +1,9 @@
 package Controller;
 
-import com.example.exstos_grupp18.Main;
+import com.example.exsto.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class newUserController {
@@ -13,7 +12,7 @@ public class newUserController {
     private TextField passwordField;
 
     @FXML
-    private PasswordField reEnterPasswordField;
+    private TextField reEnterPasswordField;
 
     @FXML
     private Button signUp;

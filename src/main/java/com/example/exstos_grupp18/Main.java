@@ -1,4 +1,4 @@
-package com.example.exstos_grupp18;
+package com.example.exsto;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,8 @@ public class Main extends Application {
         try {
             pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));
 
-            pane.autosize();
+                pane.prefWidth(500);
+                pane.prefHeight(600);
 
         } catch (IOException e) {
             e.printStackTrace();

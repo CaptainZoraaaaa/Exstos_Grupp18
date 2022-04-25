@@ -41,7 +41,6 @@ public class Task {
     public Swimlane getCurrentStatus() {
         return currentStatus;
     }
-
     public void setCurrentStatus(Swimlane currentStatus) {
         this.currentStatus = currentStatus;
     }
@@ -122,7 +121,7 @@ public class Task {
         /**
          * This method is used to set a task description to the incoming String value.
          * @param description a String with a description.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder description(String description){
             task.setDescription(description);
@@ -153,7 +152,7 @@ public class Task {
         /**
          * This method adds who are assigned to a task.
          * @param assignee user object.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder assignee(User assignee){
             task.setAssignees(assignee);
@@ -163,7 +162,7 @@ public class Task {
         /**
          * This method adds what tasks the task created are dependent on.
          * @param dependency Is an ArrayList of tasks.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder dependency(ArrayList<Task> dependency){
             task.setDependencies(dependency);
@@ -173,7 +172,7 @@ public class Task {
         /**
          * This method is used to flag is help is needed or not using a boolean.
          * @param flag Is a boolean.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder flaggedForHelp(boolean flag){
             task.setFlaggedForHelp(flag);
@@ -183,7 +182,7 @@ public class Task {
         /**
          * This method is used to set who the creator for a task is.
          * @param creator A User object.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder creator(User creator){
             task.setCreator(creator);
@@ -194,7 +193,7 @@ public class Task {
          * This method is used to set a list of comments to a task.
          * @param username String of username.
          * @param comment String of comment.
-         * @return The method returns itself.
+         * @return The method returns itself. 
          */
         public TaskBuilder comments(String username, String comment){
             task.setComments(username, comment);

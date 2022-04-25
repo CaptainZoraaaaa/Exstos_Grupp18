@@ -1,6 +1,6 @@
 package Controller;
 
-import com.example.exstos_grupp18.Main;
+import com.example.exsto.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,7 +20,7 @@ public class HelloController {
 
     public void newUserScene () {
         Main main = new Main();
-        main.changeScene("UserScene.fxml");
+         main.changeScene("UserScene.fxml");
     }
 
     public void logIn() {

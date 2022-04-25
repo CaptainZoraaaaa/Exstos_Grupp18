@@ -35,7 +35,7 @@ public class ProjectManager {
      */
     public Project createProject(String name, String description, LocalDate deadline, User userAdmin) {
         if (name != null && description != null && deadline != null
-                && name != "" && description != "") { //check that the variables aren't null or empty
+        && name != "" && description != "") { //check that the variables aren't null or empty
             Project project = new Project.ProjectBuilder() //initiate object and call on ProjectBuilder
                     .projectName(name) //the name to be set
                     .description(description)//the description to be set
