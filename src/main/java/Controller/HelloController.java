@@ -1,6 +1,6 @@
 package Controller;
 
-import com.example.exsto.Main;
+import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
