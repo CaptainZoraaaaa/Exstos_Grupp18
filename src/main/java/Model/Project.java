@@ -75,6 +75,10 @@ public class Project {
 
     }
 
+    public static int getProjectID() {
+        return projectID;
+    }
+
     /**
      * builder-class for Project
      */
