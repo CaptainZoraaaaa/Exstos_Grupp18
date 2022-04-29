@@ -20,7 +20,7 @@ public class Server {
  //   private ServerController serverController;
     private HashMap<String, ClientHandler> clientMap;
     private HashMap<String, User> userMap;
-    private HashMap<int, Project> projectMap;
+    private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
 
     /**
@@ -82,15 +82,18 @@ public class Server {
      * there.
      */
     public synchronized int getIDFromFile(String type) {
+        String logtext;
         int ID = -1; //if it doesnt work it will return the "fail"-value
         String filename = String.format("files/%s.dat", type); //format the string to get the right filename
 
         try(DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))) { //create stream
             ID = dis.readInt(); //read ID
+            logtext = String.format("A %s was fetched from the .dat-file", type);
         } catch (IOException e) {
-            System.err.println("Failure in Server.readIDFile due to" + e);
+            logtext = String.format("Failure in Server.readIDFile due to %s", e);
+            System.err.println(logtext);
         }
-
+        writeLog(logtext);
         return ID;
     }
 
@@ -105,14 +108,18 @@ public class Server {
      * to the "type"-string.
      */
     public synchronized void writeNewID(int currentID, String type) {
+        String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right file
         int newID = currentID + 1; //increment ID
         try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){ //create stream
             dos.write(newID); //write the new ID
             dos.flush();
+            logtext = String.format("A new %s was created.", type);
         } catch (Exception e) {
-            System.err.println("Error in Server.writeNewID due to" + e);
+            logtext = String.format("Error in Server.writeNewID due to %s", e);
+            System.err.println(logtext);
         }
+        writeLog(logtext);
     }
 
     /**
@@ -125,9 +132,15 @@ public class Server {
      * its related users name.
      */
     public synchronized void addClient(String username, ClientHandler client) { //todo lagt till string username samt ändrat client till clienthandler
+        String logtext;
         if (!clientMap.containsKey(username)) { //if the client map does not already contain the username
             clientMap.put(username, client); //put the username (key) and client (value) in the clientMap
+            logtext = String.format("The client associated to user %s was added to the clientMap", username);
         }
+        else {
+            logtext = String.format("The clientMap already contains a user with the username %s", username);
+        }
+        writeLog(logtext);
     }
 
     /**
@@ -138,9 +151,15 @@ public class Server {
      * it doesn't already contain a project with same ID.
      */
     public synchronized void addProject(Project project) {
+        String logtext;
         if (!projectMap.containsKey(project.getProjectID())) { //if the projectmap does not already contain the projectID
             projectMap.put(project.getProjectID(), project); //put the projectID (key) and the project (value) in the projectMap
+            logtext = String.format("Project #%s %s was added to the projectMap", project.getProjectID(), project.getProjectName());
         }
+        else {
+            logtext = String.format("Failed to add project %s to projectMap due to a project with ID %s already exists.", project.getProjectName(), project.getProjectID());
+        }
+        writeLog(logtext);
     }
 
     /**
@@ -150,9 +169,15 @@ public class Server {
      * if it doesn't already contain a user with same username.
      */
     public synchronized void addUser(User user) {
+        String logtext;
         if (!userMap.containsKey(user.getUsername())) { //if the userMap does not already contain the username
             userMap.put(user.getUsername(), user); //put the username (key) and the user (object) in the userMap
+            logtext = String.format("%s was added to the userMap.", user.getUsername());
         }
+        else {
+            logtext = String.format("User %s couldn't be added to the userMap due to a user with same username already exists", user.getUsername());
+        }
+        writeLog(logtext);
     }
 
     /**
@@ -181,12 +206,18 @@ public class Server {
      * Method for checking if the log in credentials are valid.
      */
     public synchronized boolean verifyCredentials(String username, String password) {
+        String logtext;
+        boolean loginOK;
         if(userMap.containsKey(username) && userMap.get(username).getPassword().equals(password)) { //if the usermap contains this username and the password related to that username is the same as the parameter
-            return true;
+            logtext = String.format("Login credentials for user %s was accepted", username);
+            loginOK = true;
         }
         else {
-            return false;
+            logtext = String.format("Login credentials for user %s was not accepted,", username);
+            loginOK = false;
         }
+        writeLog(logtext);
+        return loginOK;
     }
 
     /**
@@ -198,10 +229,18 @@ public class Server {
      * username or not.
      */
     public synchronized boolean verifyRegistration(User user) { //todo denna metoden bara verifierar, addUser behöver anvcändas också
+        String logtext;
+        boolean regOK;
         if(!userMap.containsKey(user.getUsername())) { //if the usermap does not contain the username
-            return true;
+            regOK = true;
+            logtext = String.format("User %s's registration was verified: username is unique", user.getUsername());
         }
-        return false;
+        else {
+            regOK = false;
+            logtext = String.format("User %s's registration couldn't be verified: username is not unique", user.getUsername());
+        }
+        writeLog(logtext);
+        return regOK;
     }
 
     /**
@@ -211,8 +250,16 @@ public class Server {
      * Method for removing a user from the userMap (e.g. the system)
      */
     public synchronized void deleteUser(User user) {
+        String logtext;
         if (user != null) { //if the user isnt null
-            userMap.remove(user.getUsername());  //remove the user from the usermap
+            if (userMap.containsKey(user.getUsername())) { //if the userMap contains this username
+                userMap.remove(user.getUsername());  //remove the user from the usermap
+                logtext = String.format("User %s was deleted from the userMap", user.getUsername());
+            }
+            else {
+                logtext = String.format("Failure to delete user %s from the userMap: username is not in userMap");
+            }
+            writeLog(logtext);
         }
 
     }
@@ -234,6 +281,7 @@ public class Server {
      * the boolean flag in the connections run-method to false.
      */
     public void disconnect() {
+        writeLog("Disconnect method was called upon");
         connection.setAlive(false);
     }
 
@@ -268,13 +316,17 @@ public class Server {
      * giving the wanted type of map.
      */
     public synchronized HashMap readMapFromFile(String type) {
+        String logtext;
         String filename = String.format("files/%s.dat", type); //format the string to get the right filename
         HashMap map = null; //initialize map
         try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))){ //create stream
             map = (HashMap) ois.readObject(); //read map
+            logtext = String.format("The %sMap was read from the .dat-file");
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Failure in Server.readMapFromFile due to" + e);
+            logtext = String.format("Failure in Server.readMapFromFile while reading %sMap due to %s", type, e);
+            System.err.println(logtext);
         }
+        writeLog(logtext);
         return map;
     }
 
@@ -282,7 +334,7 @@ public class Server {
         this.clientMap = clientMap;
     }
 
-    public synchronized void setProjectMap(HashMap<int, Project> projectMap) {
+    public synchronized void setProjectMap(HashMap<Integer, Project> projectMap) {
         this.projectMap = projectMap;
     }
 
@@ -294,7 +346,7 @@ public class Server {
         return connection;
     }
 
-    public synchronized HashMap<int, Project> getProjectMap() {
+    public synchronized HashMap<Integer, Project> getProjectMap() {
         return projectMap;
     }
 
