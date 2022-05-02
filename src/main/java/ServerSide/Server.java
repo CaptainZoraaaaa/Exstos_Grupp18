@@ -20,7 +20,7 @@ public class Server {
  //   private ServerController serverController;
     private HashMap<String, ClientHandler> clientMap;
     private HashMap<String, User> userMap;
-    private HashMap<int, Project> projectMap;
+    private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
 
     /**
@@ -282,7 +282,7 @@ public class Server {
         this.clientMap = clientMap;
     }
 
-    public synchronized void setProjectMap(HashMap<int, Project> projectMap) {
+    public synchronized void setProjectMap(HashMap<Integer, Project> projectMap) {
         this.projectMap = projectMap;
     }
 
@@ -294,7 +294,7 @@ public class Server {
         return connection;
     }
 
-    public synchronized HashMap<int, Project> getProjectMap() {
+    public synchronized HashMap<Integer, Project> getProjectMap() {
         return projectMap;
     }
 
