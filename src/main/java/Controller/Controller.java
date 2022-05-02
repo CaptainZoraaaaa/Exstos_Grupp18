@@ -30,7 +30,7 @@ public class Controller {
     }
 
     /**
-     * @param username the choosen username
+     * @param username the chosen username
      * @param password the chosen password
      * @param profilePicture
      */

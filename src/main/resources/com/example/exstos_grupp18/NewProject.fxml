@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -12,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewProjectController">
    <children>
@@ -75,14 +75,17 @@
                </padding>
             </Label>
             <TextField fx:id="projectHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Project header" GridPane.columnIndex="1" />
-            <TextField fx:id="projectDescriptionInputField" prefHeight="69.0" prefWidth="152.0" promptText="Project decsription" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+            <TextField fx:id="projectDescriptionInputField" prefHeight="69.0" prefWidth="152.0" promptText="Project description" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets left="7.0" top="-50.0" />
+               </padding>
             </TextField>
-            <TextField fx:id="projectDealineInputField" promptText="Project deadline" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="projectAssigneesInputField" promptText="Project assignees" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="creatorLabel" disable="true" prefHeight="17.0" prefWidth="115.0" text="   Creator" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="projectDeadlineDate" onAction="#chosenDate" promptText="Select deadline" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #7d9db9;">
@@ -104,7 +107,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="createNewProjectButtoncreateNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE" />
-      <Button fx:id="backToPreviousScreenButtonbackToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE" />
+      <Button fx:id="createNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE" />
+      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>
