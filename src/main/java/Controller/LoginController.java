@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.User;
+import client.Client;
 import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,7 +22,7 @@ public class LoginController {
 
     public void newUserScene () {
         Main main = new Main();
-         main.changeScene("UserScene.fxml");
+        main.changeScene("UserScene.fxml");
     }
 
     public void logIn() {
@@ -28,6 +30,7 @@ public class LoginController {
         String password = passwordTextField.getText();
         if(controller.logIn(username, password)) {
             System.out.println(">> Login successful <<");
+            User user = new User.UserBuilder().username("hej").password("pass").build();
         }
         else {
             System.out.println(">> Login failed <<");
