@@ -1,4 +1,4 @@
-package Controller;
+package Sandbox;
 
 import Model.*;
 import javafx.concurrent.Task;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Controller {
+public class TestController {
     private Task task;
     private User user;
     private ArrayList<Project> projects = new ArrayList<>();
@@ -18,8 +18,7 @@ public class Controller {
     private ServerStub serverStub = new ServerStub();
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
-        Project project = projectManager.createProject(name, description, deadline, userAdmin);
-        projects.add(project);
+
     }
 
     public void editProject () {
@@ -29,25 +28,12 @@ public class Controller {
 
     }
 
-    /**
-     * @param username the chosen username
-     * @param password the chosen password
-     * @param profilePicture
-     */
     public boolean registerNewUser (String username, String password, Image profilePicture) {
-        if(username != null && password != null && checkUsername(username)) {
-            user = userManager.createNewUser(username, password, profilePicture);
-            return true;
-        }
-        else {
-            return false;
-        }
-        //todo felmeddelande annars? ÄNDRADE TILL BOOLEAN
+        return false;
     }
 
-    public boolean checkUsername (String username) { //todo ändrat parametrar
-        boolean uniqueUsername = serverStub.checkUsername(username);
-        return uniqueUsername;
+    public boolean checkUsername () {
+        return false;
     }
 
     public void displayMyPages () {
@@ -56,9 +42,8 @@ public class Controller {
     public void displayCalender () {
     }
 
-    public boolean logIn (String username, String password) {
-        boolean login = serverStub.loginCheck(username, password);
-        return login;
+    public boolean logIn () {
+        return false;
     }
 
     public void logOut () {
@@ -103,7 +88,7 @@ public class Controller {
     public void sendProjectDetails () {
     }
 
-    public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
+    public void changeSwimlaneTaskLimit () {
     }
 
     public void sendStatistics () {
@@ -112,10 +97,10 @@ public class Controller {
     public void sendCalender () {
     }
 
-    public void changeProject (int projectID) {
+    public void changeProject () {
 
     }
-
     public void operation () {
     }
 }
+
