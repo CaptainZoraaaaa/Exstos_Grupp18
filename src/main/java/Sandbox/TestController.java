@@ -17,8 +17,11 @@ public class TestController {
     private ProjectManager projectManager;
     private ServerStub serverStub = new ServerStub();
 
-    public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
-
+    public void createNewProject(String name, String description, LocalDate deadline, String creator) {
+        System.out.println(name);
+        System.out.println(description);
+        System.out.println(deadline.toString());
+        System.out.println(creator);
     }
 
     public void editProject () {
