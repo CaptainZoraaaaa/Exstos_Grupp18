@@ -1,5 +1,6 @@
 package client;
 
+import Model.Package;
 import Model.Project;
 import Model.User;
 
@@ -8,6 +9,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * This class makes sure that every person that logges in can communicate with the server and that guis are shown the right way.
+ * @Author Max Tiderman
+ */
 public class Client {
 
     private int port;
@@ -19,11 +24,24 @@ public class Client {
     private InputClient inputClient;
     private OutputClient outputClient;
 
+    /**
+     * This is the construktor and prepares the connecion to the server
+     * @param user - What user just logged in
+     * @param ip - ip for the server
+     * @param port - port to communicate through
+     * @Author Max Tiderman
+     */
     public Client(User user, String ip, int port ) {
         this.port = port;
         this.ip = ip;
         this.user = user;
+        connect();
     }
+
+    /**
+     * This method is going to connect the client to the server aswell as macking the streams to communicate with the server
+     * @Author Max Tiderman
+     */
     public void connect () {
         try {
             /*this.socket = new Socket(ip, port);
@@ -34,6 +52,10 @@ public class Client {
             e.printStackTrace();
         }
     }
+    /**
+     * This method is going to close the connection to the server
+     * @Author Max Tiderman
+     */
     public void disconnect () {
         try {
             socket.close();
@@ -41,7 +63,11 @@ public class Client {
             e.printStackTrace();
         }
     }
-    public void sendUpdate (Project project) {
-        outputClient.send();
+    /**
+     * This method is going send different messages to the server
+     * @Author Max Tiderman
+     */
+    public void sendUpdate (Package message) {
+        outputClient.send(message);
     }
 }
