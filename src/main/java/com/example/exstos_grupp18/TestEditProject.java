@@ -23,7 +23,6 @@ public class TestEditProject extends Application {
         stage1 = primaryStage;
         stage1.setResizable(true);
         Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(TestEditProject.class.getResource("EditProject.fxml")));
-        stage1.setUserData(project);
         stage1.setTitle("Project edit");
         stage1.setScene(new Scene(fxmlLoader));
         stage1.show();
