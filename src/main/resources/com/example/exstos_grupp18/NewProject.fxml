@@ -82,7 +82,7 @@
             <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #7d9db9;">
+      <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #bfcfdd;">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
