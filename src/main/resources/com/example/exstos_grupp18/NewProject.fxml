@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -34,7 +35,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Header" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Header" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -42,7 +43,7 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets left="5.0" />
                </padding>
@@ -50,7 +51,7 @@
                   <Insets top="-55.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Deadline" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Deadline" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -58,7 +59,7 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label text="Assignees" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Assignees" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -66,7 +67,7 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -75,20 +76,13 @@
                </padding>
             </Label>
             <TextField fx:id="projectHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Project header" GridPane.columnIndex="1" />
-            <TextField fx:id="projectDescriptionInputField" prefHeight="69.0" prefWidth="152.0" promptText="Project description" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets left="7.0" top="-50.0" />
-               </padding>
-            </TextField>
+            <TextArea fx:id="projectDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Project description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="projectDeadlineDate" onAction="#chosenDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="projectAssigneesInputField" promptText="Project assignees" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="creatorLabel" disable="true" prefHeight="17.0" prefWidth="115.0" text="   Creator" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker fx:id="projectDeadlineDate" onAction="#chosenDate" promptText="Select deadline" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #7d9db9;">
+      <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #bfcfdd;">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -107,7 +101,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="createNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE" />
-      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE" />
+      <Button fx:id="createNewProjectButtoncreateNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE" />
+      <Button fx:id="backToPreviousScreenButtonbackToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>

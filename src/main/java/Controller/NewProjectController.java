@@ -1,11 +1,9 @@
 package Controller;
 
+import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
@@ -18,7 +16,7 @@ public class NewProjectController {
     private Button createNewProjectButton;
 
     @FXML
-    private Label creatorLabel;
+    private TextField creatorField;
 
     @FXML
     private TextField projectAssigneesInputField;
@@ -27,12 +25,14 @@ public class NewProjectController {
     private DatePicker projectDeadlineDate;
 
     @FXML
-    private TextField projectDescriptionInputField;
+    private TextArea projectDescriptionInputField;
 
     @FXML
     private TextField projectHeaderInputField;
 
     private LocalDate deadline;
+
+    private TestController testController = new TestController();
 
     @FXML
     void backToPreviousScreen(ActionEvent event) {
@@ -44,7 +44,8 @@ public class NewProjectController {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String assignees = projectAssigneesInputField.getText();
-        String creator = creatorLabel.getText();
+        String creator = creatorField.getText();
+        testController.createNewProject(header, description, deadline, creator);
     }
 
     @FXML
@@ -52,3 +53,4 @@ public class NewProjectController {
         deadline = projectDeadlineDate.getValue();
     }
 }
+
