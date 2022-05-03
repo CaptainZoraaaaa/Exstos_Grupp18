@@ -3,17 +3,17 @@ package Controller;
 import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class HelloController {
+public class LoginController {
 
     @FXML
     private Button loginBtn;
     @FXML
     private Button newUserBtn;
     @FXML
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
     @FXML
     private TextField usernameTextField;
     private Controller controller = new Controller();

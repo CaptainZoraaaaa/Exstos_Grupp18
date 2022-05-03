@@ -2,12 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.newUserController">
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #22252c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.newUserController">
    <children>
+      <ImageView fitHeight="985.0" fitWidth="1742.0" layoutX="-13.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/welcome.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="usernameField" layoutX="86.0" layoutY="112.0" prefHeight="25.0" prefWidth="227.0" />
       <Label layoutX="139.0" layoutY="78.0" text="Username" textFill="#ff9d00">
          <font>
@@ -20,7 +28,6 @@
          </font>
       </Label>
       <TextField fx:id="passwordField" layoutX="83.0" layoutY="259.0" prefHeight="25.0" prefWidth="227.0" />
-      <TextField fx:id="reEnterPasswordField" layoutX="83.0" layoutY="406.0" prefHeight="25.0" prefWidth="227.0" />
       <Label layoutX="84.0" layoutY="362.0" text="Re enter Password" textFill="#ff9d00">
          <font>
             <Font name="Candara Bold" size="28.0" />
@@ -31,5 +38,6 @@
             <Font name="Candara Bold" size="20.0" />
          </font>
       </Button>
+      <PasswordField fx:id="reEnterPasswordField" layoutX="84.0" layoutY="396.0" prefHeight="25.0" prefWidth="225.0" />
    </children>
 </AnchorPane>
