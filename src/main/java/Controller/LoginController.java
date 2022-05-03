@@ -30,7 +30,7 @@ public class LoginController {
         String password = passwordTextField.getText();
         if(controller.logIn(username, password)) {
             System.out.println(">> Login successful <<");
-            User user = new User.UserBuilder().username("hej").password("pass").build();
+            new Main().changeScene("Menu.fxml");
         }
         else {
             System.out.println(">> Login failed <<");
