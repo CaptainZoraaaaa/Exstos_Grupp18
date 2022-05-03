@@ -13,4 +13,6 @@ module com.example.exstos_grupp18 {
     exports com.example.exstos_grupp18;
     exports Controller;
     opens Controller to javafx.fxml;
+    exports Sandbox;
+    opens Sandbox to javafx.fxml;
 }
