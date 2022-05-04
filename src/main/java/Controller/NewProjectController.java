@@ -34,11 +34,19 @@ public class NewProjectController {
 
     private TestController testController = new TestController();
 
+    /**
+     * Method to return to previous screen.
+     * @param event ActionEvent that reacts when the "back" button is pressed.
+     */
     @FXML
     void backToPreviousScreen(ActionEvent event) {
 
     }
 
+    /**
+     * This method is used to create a new project.
+     * @param event ActionEvent that reacts when the "create" button is pressed.
+     */
     @FXML
     void createNewProject(ActionEvent event) {
         String header = projectHeaderInputField.getText();
@@ -48,6 +56,10 @@ public class NewProjectController {
         testController.createNewProject(header, description, deadline, creator);
     }
 
+    /**
+     * Method for setting the date to the date selected in the DatePicker.
+     * @param event ActionEvent that reacts when a date chosen pressed.
+     */
     @FXML
     void chosenDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
