@@ -1,6 +1,7 @@
 package controller;
 
 import Sandbox.TestController;
+import com.example.exstos_grupp18.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -40,7 +41,8 @@ public class NewProjectController {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) {
-
+        Main main = new Main();
+        main.changeScene("Menu.fxml");
     }
 
     /**
