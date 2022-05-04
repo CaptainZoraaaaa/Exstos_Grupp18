@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.Controller;
+import controller.Controller;
 import javafx.scene.image.Image;
 
 /**

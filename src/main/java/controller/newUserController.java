@@ -1,7 +1,6 @@
-package Controller;
+package controller;
 
 import com.example.exstos_grupp18.Main;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;

@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
