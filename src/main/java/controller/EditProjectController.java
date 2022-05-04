@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import Model.Project;
 import Sandbox.TestController;
@@ -8,9 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.time.LocalDate;
 
 public class EditProjectController {
 

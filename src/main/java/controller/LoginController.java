@@ -1,7 +1,5 @@
-package Controller;
+package controller;
 
-import Model.User;
-import client.Client;
 import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
