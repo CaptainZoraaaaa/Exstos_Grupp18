@@ -1,9 +1,7 @@
 package client;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.Socket;
 
 /**
  * This class is the reciever and recievs and unpackages messages from the server.
@@ -14,24 +12,18 @@ public class InputClient extends Thread{
     private Client client;
     private volatile boolean running = true;
 
-    public InputClient(Client client, Socket socket) {
-        try {
-            this.client = client;
-            //start();
-            this.ois = new ObjectInputStream( new ObjectInputStream(socket.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public InputClient(Client client, ObjectInputStream ois) {
+        this.client = client;
+        this.ois = ois;
+        start();
     }
-
     @Override
     public void run() {
         while (running) {
             try {
-                client.testning();
+                Package message = (Package) ois.readObject();
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
