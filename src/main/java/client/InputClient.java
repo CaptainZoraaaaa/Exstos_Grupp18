@@ -1,7 +1,9 @@
 package client;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.Socket;
 
 /**
  * This class is the reciever and recievs and unpackages messages from the server.
@@ -17,6 +19,7 @@ public class InputClient extends Thread{
         this.ois = ois;
         start();
     }
+
     @Override
     public void run() {
         while (running) {

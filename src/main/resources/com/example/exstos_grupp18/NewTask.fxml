@@ -17,12 +17,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditProjectController">
    <children>
-      <ImageView fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deadlineInputField" fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/Screenshot_2022-05-03_at_09.59.35.png" />
          </image>
       </ImageView>
-      <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="New task">
+      <Label layoutX="194.0" layoutY="104.0" prefHeight="60.0" prefWidth="199.0" text="New task">
          <font>
             <Font name="Roboto" size="48.0" />
          </font>

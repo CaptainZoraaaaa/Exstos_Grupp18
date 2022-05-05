@@ -4,39 +4,34 @@ import Model.Project;
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class EditProjectController {
+public class EditProjectController implements Initializable {
 
     @FXML
     private Button backToPreviousScreenButton;
-
     @FXML
     private TextField creatorField;
-
     @FXML
     private Button editProjectButton;
-
     @FXML
-    private TextField projectAssigneesInputField;
-
+    private ChoiceBox<String> chosenAssignees;
     @FXML
     private DatePicker projectDeadlineDate;
-
     @FXML
     private TextArea projectDescriptionInputField;
-
     @FXML
     private TextField projectHeaderInputField;
-
     private Project project;
     private TestController testController = new TestController();
     private LocalDate deadline;
+    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
+    private String user;
 
     /*public void initialize(){
         projectHeaderInputField.setText(project.getProjectName());
@@ -67,9 +62,15 @@ public class EditProjectController {
     void editProject(ActionEvent event) {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
-        String assignees = projectAssigneesInputField.getText();
         String creator = creatorField.getText();
-        testController.createNewProject(header, description, deadline, creator);
+        testController.createNewProject(header, description, deadline, user, creator);
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        chosenAssignees.getItems().addAll(users);
+        chosenAssignees.setOnAction(this::setUsers);
+    }
+    private void setUsers(ActionEvent event) {
+        user = chosenAssignees.getValue();
+    }
 }
