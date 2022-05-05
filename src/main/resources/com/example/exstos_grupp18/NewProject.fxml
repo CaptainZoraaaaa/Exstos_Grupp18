@@ -6,17 +6,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewProjectController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewProjectController">
    <children>
-      <Label layoutX="172.0" layoutY="68.0" prefHeight="60.0" prefWidth="256.0" text="New project">
+      <ImageView fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Screenshot_2022-05-03_at_09.59.35.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="New project">
          <font>
-            <Font name="Roboto" size="48.0" />
+            <Font name="Montserrat Thin" size="48.0" />
          </font>
       </Label>
       <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
@@ -39,9 +46,6 @@
                <padding>
                   <Insets left="5.0" />
                </padding>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
             </Label>
             <Label focusTraversable="false" prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
@@ -50,9 +54,6 @@
                <GridPane.margin>
                   <Insets top="-55.0" />
                </GridPane.margin>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
             </Label>
             <Label focusTraversable="false" text="Deadline" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -61,9 +62,6 @@
                <padding>
                   <Insets left="5.0" />
                </padding>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
             </Label>
             <Label focusTraversable="false" text="Assignees" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -72,9 +70,6 @@
                <padding>
                   <Insets left="5.0" />
                </padding>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
             </Label>
             <Label focusTraversable="false" text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -83,27 +78,12 @@
                <padding>
                   <Insets left="5.0" />
                </padding>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
             </Label>
-            <TextField fx:id="projectHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Project header" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font></TextField>
-            <TextArea fx:id="projectDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Project description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font></TextArea>
+            <TextField fx:id="projectHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Project header" GridPane.columnIndex="1" />
+            <TextArea fx:id="projectDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Project description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="projectDeadlineDate" onAction="#chosenDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="projectAssigneesInputField" promptText="Project assignees" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font></TextField>
-            <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font></TextField>
+            <TextField fx:id="projectAssigneesInputField" promptText="Project assignees" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button fx:id="createNewProjectButtoncreateNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE" />
