@@ -1,5 +1,7 @@
 package com.example.exstos_grupp18;
 
+import ServerSide.Server;
+import client.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,6 +41,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        Server server = new Server();
+        new Client(null,"localhost",8080);
     }
 }

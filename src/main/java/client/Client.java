@@ -44,10 +44,10 @@ public class Client {
      */
     public void connect () {
         try {
-            /*this.socket = new Socket(ip, port);
+            this.socket = new Socket(ip, port);
             this.oos = new ObjectOutputStream(socket.getOutputStream());
-            this.ois = new ObjectInputStream(socket.getInputStream());*/
-            new InputClient().start();
+            this.ois = new ObjectInputStream(socket.getInputStream());
+            //new InputClient().start();
         } catch (Exception e) {
             e.printStackTrace();
         }

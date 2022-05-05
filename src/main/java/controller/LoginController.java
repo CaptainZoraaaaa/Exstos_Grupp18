@@ -1,5 +1,6 @@
 package controller;
 
+import client.Client;
 import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ public class LoginController {
         if(controller.logIn(username, password)) {
             System.out.println(">> Login successful <<");
             new Main().changeScene("Menu.fxml");
+            new Client(null,"localhost",8080);
         }
         else {
             System.out.println(">> Login failed <<");
