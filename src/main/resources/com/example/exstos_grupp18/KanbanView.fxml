@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.KanbanViewController">
+   <children>
+      <Pane fx:id="myProjectsMenu" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: f8f7f4;">
+         <children>
+            <HBox layoutX="61.0" layoutY="281.0" prefHeight="542.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: f8f7f4;">
+               <children>
+                  <ScrollPane fx:id="backlogSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <content>
+                        <ListView fx:id="backlogList" prefHeight="539.0" prefWidth="268.0" />
+                     </content></ScrollPane>
+                  <ScrollPane fx:id="inProgressSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <content>
+                        <ListView fx:id="inProgressList" prefHeight="540.0" prefWidth="268.0" />
+                     </content></ScrollPane>
+                  <ScrollPane fx:id="waitingSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <content>
+                        <ListView fx:id="waitingList" prefHeight="539.0" prefWidth="267.0" />
+                     </content></ScrollPane>
+                  <ScrollPane fx:id="doneSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                     <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                     </effect>
+                     <content>
+                        <ListView fx:id="doneList" prefHeight="539.0" prefWidth="270.0" />
+                     </content></ScrollPane>
+               </children>
+            </HBox>
+            <HBox fx:id="myProjectsHbox" layoutX="141.0" layoutY="49.0" prefHeight="50.0" prefWidth="1167.0" spacing="40.0" style="-fx-background-color: #9eb6cb;">
+               <children>
+                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Current project" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Info" textFill="WHITE" />
+                  <Button fx:id="kanbanButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Kanban" textFill="WHITE" />
+                  <Button fx:id="calendarButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Calendar" textFill="WHITE" />
+                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Help" textFill="WHITE" />
+                  <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" text="Settings" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="126.0" style="-fx-background-color: #7d9db9;" text="New Task" textFill="WHITE">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect></Button>
+            <Pane prefHeight="50.0" prefWidth="1500.0" style="-fx-background-color: #bfcfdd;">
+               <children>
+                  <Button fx:id="myProjectsButton" layoutX="142.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="My Projects" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="personalViewButton" layoutX="337.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Personal View" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mainMenuButton" layoutX="530.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Main Menu" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="19.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="25.0" layoutY="5.0" text="Logged in as" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel" layoutX="20.0" layoutY="24.0" text="Username" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="404.0" prefWidth="241.0" spacing="80.0">
+               <children>
+                  <ProgressBar fx:id="backlogBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" style="-fx-background-color: #bfcfdd;" />
+                  <ProgressBar fx:id="inProgressBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
+                  <ProgressBar fx:id="waitingBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
+                  <ProgressBar fx:id="doneBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
+               </children>
+            </VBox>
+            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="452.0" prefWidth="270.0" spacing="80.0">
+               <children>
+                  <Label fx:id="backlogBarLabel" text="Backlog" textFill="#7d9db9">
+                     <font>
+                        <Font name="Roboto Black" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="inProgressBarLabel" text="In Progress" textFill="#7d9db9">
+                     <font>
+                        <Font name="Roboto Black" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="waitingBarLabel" text="Waiting" textFill="#7d9db9">
+                     <font>
+                        <Font name="Roboto Black" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="doneBarLabel" text="Done" textFill="#7d9db9">
+                     <font>
+                        <Font name="Roboto Black" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label layoutX="61.0" layoutY="248.0" text="Backlog" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="351.0" layoutY="248.0" text="In Progress" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="641.0" layoutY="248.0" text="Waiting" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="931.0" layoutY="248.0" text="Done" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Pane layoutX="141.0" layoutY="99.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;">
+               <children>
+                  <ProgressBar fx:id="dropMenuBar" layoutX="37.0" layoutY="4.0" prefHeight="20.0" prefWidth="1110.0" progress="0.0" />
+                  <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Desktop/clock-8-256.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
