@@ -1,5 +1,7 @@
 package com.example.exstos_grupp18;
 
+import ServerSide.Server;
+import client.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +12,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-
+    private static Main main = new Main();
     private static Stage stg;
+
+    public static Main getInstance(){
+        return main;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,6 +45,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        //Server server = new Server();
+        launch();
     }
 }

@@ -30,9 +30,9 @@ public class Server {
      * from .dat-files and then the server connects (e.g. starting the serversocket)
      */
     public Server() {
-        clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
-        userMap = readMapFromFile("user");
-        projectMap = readMapFromFile("project");
+        //clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
+        //userMap = readMapFromFile("user");
+        //projectMap = readMapFromFile("project");
         connect();
     }
 

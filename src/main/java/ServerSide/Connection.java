@@ -15,6 +15,7 @@ public class Connection extends Thread {
     private int port; //port to be used
     private Server server; //server the connection serves
     private volatile boolean alive = true; //flag for stopping thread and closing connection
+    private ServerSocket serverSocket;
 
     /**
      * @author Anna Håkansson
@@ -27,6 +28,12 @@ public class Connection extends Thread {
      * variables and starting it's run method.
      */
     public Connection(int port, Server server) {
+        try {
+            serverSocket = new ServerSocket(port);
+            System.out.println("Server Ready!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.port = port;
         this.server = server;
         start();
@@ -41,7 +48,7 @@ public class Connection extends Thread {
      */
     @Override
     public void run() {
-        try(ServerSocket serverSocket = new ServerSocket(port)) { //create new serversocket
+         { //create new serversocket
             while (alive) { //while the flag is true
             try {
                     Socket socket = serverSocket.accept(); //assing the client to a socket
@@ -51,8 +58,6 @@ public class Connection extends Thread {
                     System.err.println("Failure in Connection.run when accepting client due to" + e);
                 }
             }
-        } catch (IOException e) {
-            System.err.println("Failure in Connection.run when creating Serversocket due to" + e);
         }
     }
 
