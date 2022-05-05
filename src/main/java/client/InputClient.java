@@ -18,7 +18,7 @@ public class InputClient extends Thread{
         try {
             this.client = client;
             //start();
-            this.ois = new ObjectInputStream( new ObjectInputStream(socket.getInputStream()));
+            this.ois = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
