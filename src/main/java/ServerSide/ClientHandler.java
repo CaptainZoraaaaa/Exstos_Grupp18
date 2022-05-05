@@ -15,6 +15,7 @@ public class ClientHandler extends Thread {
     private Socket socket; //the socket created upon connection
     private Server server; //the server
     private User user; //user associated to the client
+    private ServerBuffer serverBuffer = new ServerBuffer();
   //  private ServerStream serverStream;
 
     /**
@@ -31,29 +32,27 @@ public class ClientHandler extends Thread {
         this.server = server;
         //serverStream = new ServerStream(socket, this)
 
-        createServerStream(this.socket);
+        createServerStream();
 
     }
 
     /**
      * @author Emma Mörk
-     *
-     * @param socket socket for server
      *               creates new ServerStream-object
      */
-    private void createServerStream(Socket socket) {
-        new ServerStream(socket, this);
+    private void createServerStream() {
+        new ServerStream(socket, this, serverBuffer);
     }
 
 
     /**
      * @author Anna Håkansson
-     * @param obj to be sent
+     * @param packgeItem to be sent
      *
      * Method for sending a message from the server to the client.
      */
-    public synchronized void sendMessage(Object obj) { //todo ändra till message sen när klassen finns
-        //serverSender.send(obj);
+    public synchronized void sendMessage(Package packgeItem) { //todo ändra till message sen när klassen finns
+        serverBuffer.put(packgeItem);
     }
 
     /**

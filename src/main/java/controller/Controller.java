@@ -2,6 +2,7 @@ package controller;
 
 import Model.*;
 import client.Client;
+import client.ClientBuffer;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
@@ -18,6 +19,7 @@ public class Controller {
     private ProjectManager projectManager;
     private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
+    private static ClientBuffer clientBuffer = new ClientBuffer();
 
     public static Controller getInstance(){
         return controller;

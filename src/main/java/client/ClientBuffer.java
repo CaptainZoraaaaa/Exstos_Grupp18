@@ -1,8 +1,12 @@
-package Model;
+package client;
 
 import java.util.LinkedList;
 
-public class Buffer<T> {
+/**
+ * @param <T> typecast, object
+ *           notify thread that new object can be sent to avoid busy-wait
+ */
+public class ClientBuffer<T> {
     private LinkedList<T> buffer = new LinkedList<T>();
 
     public synchronized void put(T obj) {
