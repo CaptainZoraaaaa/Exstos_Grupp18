@@ -4,10 +4,7 @@ import Model.Project;
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
@@ -23,7 +20,7 @@ public class EditProjectController {
     private Button editProjectButton;
 
     @FXML
-    private TextField projectAssigneesInputField;
+    private ChoiceBox chosenAssignees;
 
     @FXML
     private DatePicker projectDeadlineDate;
@@ -67,7 +64,7 @@ public class EditProjectController {
     void editProject(ActionEvent event) {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
-        String assignees = projectAssigneesInputField.getText();
+        String assignees = chosenAssignees.getValue().toString();
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, creator);
     }

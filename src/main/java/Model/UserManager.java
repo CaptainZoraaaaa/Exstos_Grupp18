@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class UserManager {
     private User user; //current user
-    private Controller controller; //controller
+    private Controller controller = Controller.getInstance(); //controller
 
     /**
      * @author Anna Håkansson

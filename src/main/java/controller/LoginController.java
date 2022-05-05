@@ -1,5 +1,6 @@
 package controller;
 
+import client.Client;
 import com.example.exstos_grupp18.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +17,7 @@ public class LoginController {
     private PasswordField passwordTextField;
     @FXML
     private TextField usernameTextField;
-    private Controller controller = new Controller();
+    private Controller controller = Controller.getInstance();
 
     public void newUserScene () {
         Main main = new Main();
@@ -28,7 +29,10 @@ public class LoginController {
         String password = passwordTextField.getText();
         if(controller.logIn(username, password)) {
             System.out.println(">> Login successful <<");
-            new Main().changeScene("Menu.fxml");
+             Controller controller = Controller.getInstance();
+             Main main = Main.getInstance();
+             main.changeScene("Menu.fxml");
+             new Client(null,"localhost",8080);
         }
         else {
             System.out.println(">> Login failed <<");
