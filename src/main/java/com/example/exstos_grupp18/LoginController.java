@@ -49,8 +49,10 @@ public class LoginController {
             System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             root = fxmlLoader.load();
+            //Används för att överföra data
             MenuContrroller menuContrroller = fxmlLoader.getController();
             menuContrroller.setUserLabel(username);
+
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

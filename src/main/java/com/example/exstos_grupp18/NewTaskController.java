@@ -27,8 +27,6 @@ public class NewTaskController implements Initializable {
     @FXML
     private CheckBox help;
     @FXML
-    private TextField taskAssigneesInputField1;
-    @FXML
     private TextArea taskCommentInputField;
     @FXML
     private TextField deadlineInputField;

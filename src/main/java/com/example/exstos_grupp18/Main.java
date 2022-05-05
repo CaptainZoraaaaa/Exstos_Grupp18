@@ -21,8 +21,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        stg=stage;
-        stage.setResizable(true);
         Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
         stage.setTitle("Hello!");
         stage.setScene(new Scene(fxmlLoader));
