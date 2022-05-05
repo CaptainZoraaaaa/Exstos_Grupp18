@@ -5,9 +5,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditProjectController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditProjectController">
    <children>
       <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="Edit project">
          <font>
@@ -100,7 +97,7 @@
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
             <DatePicker fx:id="projectDeadlineDate" editable="false" onAction="#chosenDate" promptText="Choose a date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="chosenAssignees" onMouseClicked="#selectedUserselectedUser" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Roboto" size="13.0" />
@@ -108,25 +105,6 @@
             </TextField>
          </children>
       </GridPane>
-      <MenuBar prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: #7d9db9;">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <Button fx:id="editProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Accept changes" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
