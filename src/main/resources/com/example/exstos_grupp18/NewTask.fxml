@@ -97,11 +97,11 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="projectHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Task header" GridPane.columnIndex="1">
+            <TextField fx:id="taskHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Task header" GridPane.columnIndex="1">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextField>
-            <TextArea fx:id="projectDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Task description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextArea fx:id="taskDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Task description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
@@ -120,17 +120,17 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="projectDescriptionInputField1" prefHeight="200.0" prefWidth="200.0" promptText="Comment" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextArea fx:id="taskCommentInputField" prefHeight="200.0" prefWidth="200.0" promptText="Comment" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextArea>
-            <TextField fx:id="projectAssigneesInputField1" promptText="Task deadline" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="taskAssigneesInputField1" promptText="Enter in numbers" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox mnemonicParsing="false" text="Flag for help" GridPane.rowIndex="6">
+            <CheckBox fx:id="flaggedForHelp" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="6">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -138,14 +138,14 @@
                   <Insets left="5.0" />
                </padding>
             </CheckBox>
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="chosenAssignees" onMouseClicked="#selectedUser" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button fx:id="createNewProjectButtoncreateNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE">
+      <Button fx:id="createNewTaskButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButtonbackToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButtonback" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>

@@ -20,7 +20,7 @@ public class NewProjectController {
     private TextField creatorField;
 
     @FXML
-    private TextField projectAssigneesInputField;
+    private ChoiceBox chosenAssignees;
 
     @FXML
     private DatePicker projectDeadlineDate;
@@ -53,7 +53,7 @@ public class NewProjectController {
     void createNewProject(ActionEvent event) {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
-        String assignees = projectAssigneesInputField.getText();
+        String assignees = chosenAssignees.getValue().toString();
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, creator);
     }
