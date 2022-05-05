@@ -68,5 +68,4 @@ public class EditProjectController {
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, creator);
     }
-
 }
