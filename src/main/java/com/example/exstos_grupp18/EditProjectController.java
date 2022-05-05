@@ -1,4 +1,4 @@
-package controller;
+package com.example.exstos_grupp18;
 
 import Model.Project;
 import Sandbox.TestController;

@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuContrroller">
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.MenuContrroller">
    <children>
       <HBox prefHeight="54.0" prefWidth="1500.0" style="-fx-background-color: #BFCFDD;">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="21.0" layoutY="-7.0" text="EXSTOS" textFill="WHITE">
+                  <Label fx:id="userLabel" layoutX="21.0" layoutY="-7.0" text="EXSTOS" textFill="WHITE">
                      <font>
                         <Font name="Cambria Italic" size="48.0" />
                      </font>
