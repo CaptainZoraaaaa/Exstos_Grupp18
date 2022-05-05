@@ -33,7 +33,20 @@ public class ClientHandler extends Thread {
        /* serverSender = new ServerSender(socket);
         serverReciever = new ServerReciever(socket); */
 
+        createServerStream(this.socket);
+
     }
+
+    /**
+     * @author Emma Mörk
+     *
+     * @param socket socket for server
+     *               creates new ServerStream-object
+     */
+    private void createServerStream(Socket socket) {
+        new ServerStream(socket, this);
+    }
+
 
     /**
      * @author Anna Håkansson
@@ -47,12 +60,9 @@ public class ClientHandler extends Thread {
 
     /**
      * @author Anna Håkansson
-     * @param obj recieved
-     *
-     * Method that will be called upon when a message is recieved
-     * in the ServerReciever.
+     * @param newPackage package received
      */
-    public synchronized void messageRecieved(Object obj) { //todo ändra till message när klassen finns
+    public synchronized void packageRecieved(Package newPackage) { //todo ändra till message när klassen finns
         //TODO när upppackningsklassen är implementerad
     }
 

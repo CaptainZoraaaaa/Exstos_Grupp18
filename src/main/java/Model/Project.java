@@ -70,6 +70,7 @@ public class Project {
     public HashMap<User, Boolean> getAssignedUsers() {
         return assignedUser;
     }
+
     //TODO lägg till i assigned users
     public void setAssignedUsers(HashMap<User, Boolean> assignees) {
 
