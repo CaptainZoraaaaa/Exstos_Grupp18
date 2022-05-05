@@ -12,8 +12,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
-
+    private static Main main = new Main();
     private static Stage stg;
+
+    public static Main getInstance(){
+        return main;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -41,7 +45,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Server server = new Server();
-        new Client(null,"localhost",8080);
+        //Server server = new Server();
+        launch();
     }
 }

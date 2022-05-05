@@ -30,6 +30,7 @@ public class Connection extends Thread {
     public Connection(int port, Server server) {
         try {
             serverSocket = new ServerSocket(port);
+            System.out.println("Server Ready!");
         } catch (IOException e) {
             e.printStackTrace();
         }

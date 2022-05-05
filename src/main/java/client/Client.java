@@ -32,9 +32,6 @@ public class Client {
      * @Author Max Tiderman
      */
     public Client(User user, String ip, int port ) {
-        this.port = port;
-        this.ip = ip;
-        this.user = user;
         connect();
     }
 
@@ -44,9 +41,10 @@ public class Client {
      */
     public void connect () {
         try {
-            this.socket = new Socket(ip, port);
-            this.oos = new ObjectOutputStream(socket.getOutputStream());
-            this.ois = new ObjectInputStream(socket.getInputStream());
+            this.socket = new Socket("localhost", 8080);
+            //this.oos = new ObjectOutputStream(socket.getOutputStream());
+            //this.ois = new ObjectInputStream(socket.getInputStream());
+            new ThreadHandler(this).start();
             //new InputClient().start();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,5 +67,21 @@ public class Client {
      */
     public void sendUpdate (Package message) {
         outputClient.send(message);
+    }
+
+    private class ThreadHandler extends Thread{
+        private Client client;
+        public ThreadHandler(Client client){
+            this.client = client;
+        }
+
+        @Override
+        public void run() {
+            outputClient = new OutputClient(socket);
+            inputClient = new InputClient(client,socket);
+        }
+    }
+    public void testning(){
+        System.out.println("körs");
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import Model.*;
+import client.Client;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class Controller {
     private Task task;
     private User user;
+    private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
@@ -121,5 +123,15 @@ public class Controller {
     }
 
     public void operation () {
+    }
+
+    public void newClient() {
+        try {
+            Thread.sleep(1000);
+            this.client = new Client(null,null,8080);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
