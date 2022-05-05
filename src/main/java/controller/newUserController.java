@@ -20,7 +20,7 @@ public class newUserController {
     @FXML
     private TextField usernameField;
 
-    private Controller controller = new Controller();
+    private Controller controller = Controller.getInstance();
 
     @FXML
     public void newRegistration() {

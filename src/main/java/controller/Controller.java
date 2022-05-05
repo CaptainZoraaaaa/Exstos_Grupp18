@@ -15,6 +15,11 @@ public class Controller {
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
     private ServerStub serverStub = new ServerStub();
+    private static Controller controller = new Controller();
+
+    public static Controller getInstance(){
+        return controller;
+    }
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
         Project project = projectManager.createProject(name, description, deadline, userAdmin);

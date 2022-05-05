@@ -16,7 +16,7 @@ public class LoginController {
     private PasswordField passwordTextField;
     @FXML
     private TextField usernameTextField;
-    private Controller controller = new Controller();
+    private Controller controller = Controller.getInstance();
 
     public void newUserScene () {
         Main main = new Main();
