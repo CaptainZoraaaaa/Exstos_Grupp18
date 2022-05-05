@@ -1,4 +1,4 @@
-package controller;
+package com.example.exstos_grupp18;
 
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
@@ -67,8 +67,8 @@ public class NewTaskController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        chosenAssignees.getItems().addAll(users);
-        chosenAssignees.setOnAction(this::setUsers);
+       chosenAssignees.getItems().addAll(users);
+       chosenAssignees.setOnAction(this::setUsers);
     }
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();

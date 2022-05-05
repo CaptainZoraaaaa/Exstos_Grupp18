@@ -33,9 +33,9 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    public void newUserScene (ActionEvent event) {
+    public void newUserScene (ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserScene.fxml"));
-
+        root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
