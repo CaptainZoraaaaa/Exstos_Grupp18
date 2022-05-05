@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -14,12 +13,20 @@ public class TestCreateProject extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage = primaryStage;
+        stage =  primaryStage;
         stage.setResizable(true);
         Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(TestCreateProject.class.getResource("NewProject.fxml")));
         stage.setTitle("Project creation");
         stage.setScene(new Scene(fxmlLoader));
         stage.show();
+
+        /*
+        stage = primaryStage;
+        stage.setResizable(true);
+        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(TestCreateProject.class.getResource("NewProject.fxml")));
+        stage.setTitle("Project creation");
+        stage.setScene(new Scene(fxmlLoader));
+        stage.show();*/
     }
     public void changeScene(String fxml){
         Parent pane = null;
