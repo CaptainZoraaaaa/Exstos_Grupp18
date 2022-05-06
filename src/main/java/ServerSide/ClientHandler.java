@@ -1,12 +1,13 @@
 package ServerSide;
 
+import Model.Package;
 import Model.User;
 
 import java.net.Socket;
 
 /**
  * @author Anna Håkansson
- * Last update: 2022-05-05
+ * Last update: 2022-05-06
  *
  * A thread class for handling connected clients. Sends and recieves
  * messages through the ServerSender och ServerReciever classes.
@@ -45,13 +46,13 @@ public class ClientHandler extends Thread {
 
     /**
      * @author Anna Håkansson
-     * @param obj recieved
+     * @param newPackage recieved
      *
      * Method that will be called upon when a message is recieved
      * in the ServerReciever.
      */
-    public synchronized void packageRecieved(Package newPackage) { //todo ändra till message när klassen finns
-        //TODO när upppackningsklassen är implementerad
+    public synchronized void packageRecieved(Package newPackage) {
+        server.unpackNewPackage(newPackage);
     }
 
     /**

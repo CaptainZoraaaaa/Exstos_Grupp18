@@ -1,5 +1,6 @@
 package ServerSide;
 
+import Model.Package;
 import Model.Project;
 import Model.Task;
 import Model.User;
@@ -7,11 +8,13 @@ import Model.User;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Anna Håkansson
- * Last update: 2022-04-28
+ * Last update: 2022-05-06
  *
  * This is the server-class for storing data and managing requests and connections.
  */
@@ -22,6 +25,7 @@ public class Server {
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
+    private ArrayList<User> onlineUsers = new ArrayList<>();
 
     /**
      * @author Anna Håkansson
@@ -186,6 +190,7 @@ public class Server {
      * it together with the logtext to the logtext file.
      */
     public synchronized void writeLog(String logText) {
+        System.out.println(logText);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("files/log.txt")); //create writer
             bw.append(String.format("%s: %s", LocalDateTime.now(), logText)); //append the time and the logtext (e.g. add an extra line instead of overwriting)
@@ -295,15 +300,17 @@ public class Server {
      * object output stream.
      */
     public synchronized void writeMapToFile(HashMap map, String type) {
+        String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right filename
         try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) { //create stream
             oos.writeObject(map); //write
             oos.flush();
-        } catch (FileNotFoundException e) {
-            System.err.println("Failure in Server.writeMapToFile due to" + e);
+            logtext = String.format("The %sMap was written to the .dat-file", type);
         } catch (IOException e) {
-            System.err.println("Failure in Server.writeMapToFile due to" + e);
+            logtext = String.format("Failure in Server.writeMapToFile while reading %sMap due to %s", type, e);
+            System.err.println(logtext);
         }
+        writeLog(logtext);
     }
 
     /**
@@ -321,7 +328,7 @@ public class Server {
         HashMap map = null; //initialize map
         try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))){ //create stream
             map = (HashMap) ois.readObject(); //read map
-            logtext = String.format("The %sMap was read from the .dat-file");
+            logtext = String.format("The %sMap was read from the .dat-file", type);
         } catch (IOException | ClassNotFoundException e) {
             logtext = String.format("Failure in Server.readMapFromFile while reading %sMap due to %s", type, e);
             System.err.println(logtext);
@@ -330,6 +337,109 @@ public class Server {
         return map;
     }
 
+    /**
+     * @author Anna Håkansson
+     *
+     * @param toSend the package to be sent
+     *
+     * Method for sending a project update to assigned users
+     * by extracting the project from the package and iterating
+     * over the assignees-map.
+     * */
+    public synchronized void sendProjectUpdateToUsers(Package toSend){
+        String logtext;
+        Project project = toSend.getProject(); //get project from package
+        for(Map.Entry<User, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
+            String username = entry.getKey().getUsername(); //get the username
+            if(clientMap.containsKey(username)) { //if the clientmap contains this username
+                ClientHandler clientHandler = clientMap.get(username); //get the client
+                clientHandler.sendMessage(toSend); //send the message
+                logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
+            }
+            else {
+                logtext = String.format(" Unable to send project update for project %s to assignee %s: Not in the clientMap", project.getProjectName(), username);
+            }
+            writeLog(logtext);
+        }
+    }
+
+    /**
+     * @author Anna Håkansson
+     *
+     * @param project to be updated
+     *
+     * Method for updating the value of a project object
+     * in the projectMap
+     */
+    public synchronized void updateProject(Project project) {
+        String logtext;
+        if(projectMap.containsKey(project.getProjectID())) { //if the project map contains a project with this ID
+            projectMap.replace(project.getProjectID(), project); //replace the value with the new project
+            logtext = String.format("Project %d: %s was updated.", project.getProjectID(), project.getProjectName());
+        }
+        else {
+            logtext = String.format("Was unable to update project %s: %s: Not in the projectMap", project.getProjectID(), project.getProjectName());
+        }
+        writeLog(logtext);
+    }
+    public void unpackNewPackage(Package newPackage) { //TODO implementera efter diskussion
+        switch (newPackage.getType()) {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+        }
+    }
+
+    /**
+     * @author Anna Håkansson
+     * @param user online user to be added
+     *
+     * Method for adding an user to the onlineUsers-list, if its not already
+     * in it.
+     */
+    public synchronized void addOnlineUser(User user) {
+        String logtext;
+        if (!onlineUsers.contains(user)) { //if list does not contain this user
+            onlineUsers.add(user); //add it to the list
+            logtext = String.format("User %s was added to the onlineUsers-list", user.getUsername());
+        }
+        else {
+            logtext = String.format("User %s couldn't be added to the onlineUsers-list: Its already in the list.", user.getUsername());
+        }
+        writeLog(logtext);
+
+    }
+
+    /**
+     * @author Anna Håkansson
+     *
+     * @param user to be removed
+     *
+     * Method for removing a user from the onlineList, if it is in it.
+     */
+    public synchronized void removeOnlineUser(User user) {
+        String logtext;
+        if(onlineUsers.contains(user)) { //if list contain user
+            onlineUsers.remove(user); //remove it
+            logtext = String.format("User %s was removed from the onlineUsers-list");
+        }
+        else {
+            logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list");
+        }
+        writeLog(logtext);
+    }
     public synchronized void setClientMap(HashMap<String, ClientHandler> clientMap) {
         this.clientMap = clientMap;
     }
@@ -361,4 +471,6 @@ public class Server {
     public int getPort() {
         return port;
     }
+
+
 }
