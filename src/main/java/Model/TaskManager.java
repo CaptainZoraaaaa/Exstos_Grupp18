@@ -18,7 +18,7 @@ public class TaskManager {
      * @param assignee User object containing the assignee for the task.
      * @param taskId int setting the task ID.
      */
-    public void createNewTask(String header, String description, String estimatedTime, User creator, User assignee, int taskId){
+    public Task createNewTask(String header, String description, String estimatedTime, User creator, User assignee, int taskId){
         task = new Task.TaskBuilder()
                 .id(taskId)
                 .header(header)
@@ -29,6 +29,7 @@ public class TaskManager {
                 .currentStatus(new Backlog())
                 .flaggedForHelp(false)
                 .build();
+        return task;
     }
 
     /**

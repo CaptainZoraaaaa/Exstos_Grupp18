@@ -1,6 +1,6 @@
 package Model;
 
-public class Waiting {
+public class Waiting extends Swimlane {
     private int maxNumOfTask;
 
     public int getMaxNumOfTask() {

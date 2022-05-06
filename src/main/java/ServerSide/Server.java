@@ -350,17 +350,27 @@ public class Server {
         String logtext;
         Project project = toSend.getProject(); //get project from package
         for(Map.Entry<User, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
-            String username = entry.getKey().getUsername(); //get the username
+            User user = entry.getKey();
+            String username = user.getUsername(); //get the username
+
             if(clientMap.containsKey(username)) { //if the clientmap contains this username
-                ClientHandler clientHandler = clientMap.get(username); //get the client
-                clientHandler.sendMessage(toSend); //send the message
-                logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
+                if (onlineUsers.contains(user)) {
+                    ClientHandler clientHandler = clientMap.get(username); //get the client
+                    clientHandler.sendMessage(toSend); //send the message
+                    logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
+                }
+                else {
+                    saveOfflineMessages(user, toSend);
+                }
             }
             else {
                 logtext = String.format(" Unable to send project update for project %s to assignee %s: Not in the clientMap", project.getProjectName(), username);
             }
             writeLog(logtext);
         }
+    }
+
+    private void saveOfflineMessages(User user, Package toSend) {
     }
 
     /**
@@ -385,21 +395,136 @@ public class Server {
     public void unpackNewPackage(Package newPackage) { //TODO implementera efter diskussion
         switch (newPackage.getType()) {
             case 0:
-
+                addOnlineUser(newPackage.getSender());
                 break;
             case 1:
-
+                newUserRegistration(newPackage.getSender());
                 break;
             case 2:
-
+                addUserToProject(newPackage.getUsername(), newPackage.getProject());
                 break;
             case 3:
-
+                removeUserFromProject(newPackage.getSender(), newPackage.getProject());
                 break;
             case 4:
-
+                deleteUser(newPackage.getSender());
+                break;
+            case 5:
+                removeOnlineUser(newPackage.getSender());
+                break;
+            case 6:
+                addTaskToProject(newPackage.getTasks(), newPackage.getProject());
+                break;
+            case 7:
+                updateTask(newPackage.getTasks(), newPackage.getProject());
+                break;
+            case 8:
+                removeTask(newPackage.getTasks(), newPackage.getProject());
+                break;
+            case 9:
+                addProject(newPackage.getProject());
+                break;
+            case 10:
+                updateProject(newPackage.getProject());
+                break;
+            case 11:
+                deleteProject(newPackage.getProject());
                 break;
         }
+    }
+
+    public synchronized void deleteProject(Project project) {
+        String logtext;
+        if(projectMap.containsKey(project.getProjectID())) {
+            projectMap.remove(project.getProjectID());
+            logtext = String.format("Project %s: %s was deleted from the projectMap.", project.getProjectID(), project.getProjectName());
+        }
+        else {
+            logtext = String.format("Project %s: %s couldn't not be deleted from the projectMap: Map doesn't contain project ID");
+        }
+        writeLog(logtext);
+    }
+
+    public synchronized void removeTask(ArrayList<Task> tasks, Project project) {
+        if(projectMap.containsKey(project.getProjectID())) {
+            for (Task task : tasks) {
+                if (task != null) {
+                  //  projectMap.get(project.getProjectID()).getTasks().add(task);  //TODO denna utgår ifrån att det finns en arraylist med tasks i project
+                }
+
+            }
+        }
+    }
+
+    public synchronized void updateTask(ArrayList<Task> tasks, Project project) {
+        if(projectMap.containsKey(project.getProjectID())) {
+            for (Task task : tasks) {
+                if (task != null) {
+                    projectMap.get(project.getProjectID()); //TODO tänk på den och återkom
+                }
+            }
+        }
+    }
+
+    public synchronized void addTaskToProject(ArrayList<Task> tasks, Project project) {
+        if(projectMap.containsKey(project.getProjectID())) {
+            for (Task task : tasks) {
+                if (task != null) {
+                   //projectMap.get(project.getProjectID()).getTasks().add(task);
+                }
+            }
+        }
+    }
+
+    public synchronized void removeUserFromProject(User sender, Project project) {
+        String logtext;
+        if (sender != null && project != null) {
+            if (projectMap.containsKey(project.getProjectID())) {
+                HashMap<User, Boolean> assignees = projectMap.get(project.getProjectID()).getAssignedUser();
+                assignees.remove(sender);
+                projectMap.get(project.getProjectID()).setAssignedUser(assignees);
+                logtext = String.format("User %s was removed from project %s: %s.", sender.getUsername(), project.getProjectID(), project.getProjectName());
+            }
+            else {
+                    logtext = String.format("Unable to remove user %s from project %s: %s.", sender.getUsername(), project.getProjectID(), project.getProjectName());
+            }
+        }
+        else {
+            logtext = "Unable to remove user. User och project was null";
+        }
+        writeLog(logtext);
+    }
+
+    public synchronized boolean addUserToProject(String username, Project project) {
+        String logtext;
+        boolean ok;
+        if (username != null && project != null && userMap.containsKey(username)) {
+            if (projectMap.containsKey(project.getProjectID())) {
+                User user = userMap.get(username);
+                Project project1 = projectMap.get(project.getProjectID());
+                project1.getAssignedUser().put(user, false);
+                logtext = String.format("User %s was added to project %s: %s", user.getUsername(), project.getProjectID(), project.getProjectName());
+                ok = true;
+            }
+            else {
+                logtext = String.format("Unable to add user %s to project %s: %s: Project is not in projectMap");
+                ok = false;
+            }
+        }
+        else {
+            logtext = String.format("Failure when adding user to project. User or project is null, or the usermap doesn't contain username %s", username);
+            ok = false;
+        }
+        writeLog(logtext);
+        return ok;
+    }
+
+    public synchronized boolean newUserRegistration(User sender) {
+        boolean ok = verifyRegistration(sender);
+        if(ok) {
+            addUser(sender);
+        }
+        return ok;
     }
 
     /**

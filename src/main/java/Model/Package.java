@@ -17,13 +17,34 @@ public class Package {
     public static final int PROJECT = 3;
     public static final int MIXED = 4;
 
+    public static final int USER_LOGGED_IN = 0; //user object (sender is enough)
+    public static final int NEW_USER_REGISTRATION = 1; //user object
+    public static final int USER_ASSIGNED_TO_PROJECT = 2; //String username & project object
+    public static final int USER_REMOVED_FROM_PROJECT = 3; //user & project object
+    public static final int USER_DELETED = 4; //user object
+    public static final int USER_LOGGED_OUT = 5; //user object
+    public static final int NEW_TASK = 6; //task & project object
+    public static final int TASK_EDITED = 7; //task & project object
+    public static final int TASK_REMOVED = 8; //task & project object
+    public static final int NEW_PROJECT = 9; //project object
+    public static final int PROJECT_EDITED = 10; //project object
+    public static final int PROJECT_REMOVED = 11; //project object
+
+    public static final int LOGIN_VERIFICATION = 12; //boolean (from server)
+    public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
+
     private User sender;
     private ArrayList<Task> tasks;
     private Board board;
     private Project project;
     private LocalDateTime timeStamp;
+    private String username;
+    private boolean OK;
     private int type;
-    
+
+    public Package() {
+    }
+
     public User getSender() {
         return sender;
     }
@@ -65,6 +86,22 @@ public class Package {
     }
     public int getType(){
         return type;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isOK() {
+        return OK;
+    }
+
+    public void setOK(boolean OK) {
+        this.OK = OK;
     }
 
     /**
@@ -119,6 +156,32 @@ public class Package {
          */
         public PackageBuilder project(Project project){
             aPackage.setProject(project);
+            return this;
+        }
+
+        /**
+         * @author Anna Håkansson
+         * This method is used to send the username of
+         * a user you want to add to a project
+         *
+         * @param username for the person to be added
+         * @return itself
+         */
+        public PackageBuilder username(String username) {
+            aPackage.setUsername(username);
+            return this;
+        }
+
+        /**
+         * @author Anna Håkansson
+         * This method is used when the server need to tell
+         * a client if a request went ok.
+         *
+         * @param ok if the request was a success
+         * @return itself
+         */
+        public PackageBuilder ok(boolean ok) {
+            aPackage.setOK(ok);
             return this;
         }
 
