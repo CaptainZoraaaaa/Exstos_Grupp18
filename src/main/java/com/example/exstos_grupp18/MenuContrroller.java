@@ -1,8 +1,9 @@
-package controller;
+package com.example.exstos_grupp18;
 import com.example.exstos_grupp18.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class MenuContrroller {
     @FXML
@@ -13,6 +14,14 @@ public class MenuContrroller {
     private Button homeBtn;
     @FXML
     private Button projectBtn;
+    @FXML
+    private Label userLabel;
+
+    private static MenuContrroller menuContrroller = new MenuContrroller();
+
+    public static MenuContrroller getInstance(){
+        return menuContrroller;
+    }
 
     @FXML
     void changeToCanban(ActionEvent event) {
@@ -25,5 +34,8 @@ public class MenuContrroller {
     @FXML
     void Logout(ActionEvent event) {
         new Main().changeScene("hello-view.fxml");
+    }
+    public void setUserLabel(String name){
+        userLabel.setText(name);
     }
 }

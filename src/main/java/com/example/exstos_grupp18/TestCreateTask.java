@@ -5,21 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.util.Objects;
 
-public class TestCreateProject extends Application {
-    private static Stage stage;
+public class TestCreateTask extends Application {
+    private Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        stage =  primaryStage;
+        stage = primaryStage;
         stage.setResizable(true);
-        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(TestCreateProject.class.getResource("NewProject.fxml")));
-        stage.setTitle("Project creation");
+        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(TestCreateTask.class.getResource("NewTask.fxml")));
+        stage.setTitle("Create task");
         stage.setScene(new Scene(fxmlLoader));
         stage.show();
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 }

@@ -4,7 +4,6 @@ import Model.Package;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.Socket;
 
 /**
  * This class is the sender and sends messages to the server.
@@ -13,15 +12,16 @@ import java.net.Socket;
 public class OutputClient {
     private ObjectOutputStream oos;
 
-    public OutputClient(Socket socket) {
-        try {
-            this.oos = new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("Här 2");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public OutputClient(ObjectOutputStream ois) {
+        this.oos = oos;
     }
 
     public void send(Package message) {
+        try {
+            this.oos.writeObject(message);
+            this.oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

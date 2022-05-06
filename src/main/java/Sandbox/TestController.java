@@ -17,10 +17,11 @@ public class TestController {
     private ProjectManager projectManager;
     private ServerStub serverStub = new ServerStub();
 
-    public void createNewProject(String name, String description, LocalDate deadline, String creator) {
+    public void createNewProject(String name, String description, LocalDate deadline, String user, String creator) {
         System.out.println(name);
         System.out.println(description);
         System.out.println(deadline.toString());
+        System.out.println(user);
         System.out.println(creator);
     }
 
@@ -55,7 +56,14 @@ public class TestController {
     public void logOut () {
     }
 
-    public void createTask () {
+    public void createTask (String header, String description, String deadline, String user, String creator, String comment, boolean flagged ) {
+        System.out.println(header);
+        System.out.println(description);
+        System.out.println(deadline);
+        System.out.println(user);
+        System.out.println(creator);
+        System.out.println(comment);
+        System.out.println(flagged);
     }
 
     public void editTask () {
