@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import Model.ArchivedTasks;
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +28,6 @@ public class NewTaskController implements Initializable {
     @FXML
     private CheckBox help;
     @FXML
-    private TextField taskAssigneesInputField1;
-    @FXML
     private TextArea taskCommentInputField;
     @FXML
     private TextField deadlineInputField;
@@ -36,10 +35,14 @@ public class NewTaskController implements Initializable {
     private TextArea taskDescriptionInputField;
     @FXML
     private TextField taskHeaderInputField;
+    @FXML
+    private ChoiceBox<String> activeStatus;
 
     private LocalDate deadline;
     private TestController testController = new TestController();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
+    private String[] status = {"Archived", "Backlog", "In progress", "Waiting", "Done"};
+    private String selectedStatus;
     private String user;
     private boolean flagged;
 
@@ -69,9 +72,14 @@ public class NewTaskController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
        chosenAssignees.getItems().addAll(users);
        chosenAssignees.setOnAction(this::setUsers);
+       activeStatus.getItems().addAll(status);
+       activeStatus.setOnAction(this::setStatus);
     }
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();
+    }
+    public void setStatus(ActionEvent event){
+        selectedStatus = activeStatus.getValue();
     }
 }
 
