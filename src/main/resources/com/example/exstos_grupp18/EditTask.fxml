@@ -131,7 +131,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="help" mnemonicParsing="false" text="Flag for help" GridPane.rowIndex="7">
+            <CheckBox fx:id="help" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>

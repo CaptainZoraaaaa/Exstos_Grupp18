@@ -49,16 +49,30 @@ public class EditTaskController implements Initializable {
     private String user;
     private boolean flagged;
 
+    /**
+     * Method for returning to previous screen.
+     * TODO: 2022-05-06 add change scene to this method body.
+     * @param event triggered by clicking the button backToPreviousScreenButton.
+     */
     @FXML
     void backToPreviousScreen(ActionEvent event) {
 
     }
 
+    /**
+     * Method for saving changes in a task, at the moment this is connected to the TestController.
+     * @param event
+     */
     @FXML
     void saveChanges(ActionEvent event) {
         //testController.editTask(Header, description, deadline, user, selectedStatus, creator, comment, flagged);
-
     }
+
+    /**
+     * Method for setting the boolean value flagged to true och done, determined if the box is checked or not. If it's
+     * checked boolean will be set to true, otherwise false.
+     * @param event triggered by clicking on the checkbox for flag for help.
+     */
     @FXML
     void flagForHelp(ActionEvent event) {
         if(help.isSelected()){
@@ -67,6 +81,12 @@ public class EditTaskController implements Initializable {
             flagged = false;
         }
     }
+
+    /**
+     * Method for intializing the task ChoiceBoxes with users to select as assignees and status as statuses.
+     * @param url url
+     * @param resourceBundle resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Task task = new Task.TaskBuilder()
@@ -82,9 +102,19 @@ public class EditTaskController implements Initializable {
         activeStatus.getItems().addAll(status);
         activeStatus.setOnAction(this::setStatus);
     }
+
+    /**
+     * Method for setting the values in the list.
+     * @param event Event is triggered by the above this::setUsers.
+     */
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();
     }
+
+    /**
+     * Method for setting the values in the list.
+     * @param event Event is triggered by the above this::setStatus.
+     */
     public void setStatus(ActionEvent event){
         selectedStatus = activeStatus.getValue();
     }
