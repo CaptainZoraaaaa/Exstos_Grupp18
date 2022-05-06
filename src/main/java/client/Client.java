@@ -42,8 +42,8 @@ public class Client {
     public void connect () {
         try {
             this.socket = new Socket("localhost", 8080);
-            //this.oos = new ObjectOutputStream(socket.getOutputStream());
-            //this.ois = new ObjectInputStream(socket.getInputStream());
+            this.oos = new ObjectOutputStream(socket.getOutputStream());
+            this.ois = new ObjectInputStream(socket.getInputStream());
             new ThreadHandler(this).start();
             //new InputClient().start();
         } catch (Exception e) {
@@ -77,8 +77,8 @@ public class Client {
 
         @Override
         public void run() {
-            outputClient = new OutputClient(socket);
-            inputClient = new InputClient(client,socket);
+            outputClient = new OutputClient(oos);
+            inputClient = new InputClient(client,ois);
         }
     }
     public void testning(){
