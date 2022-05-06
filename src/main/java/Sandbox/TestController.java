@@ -56,17 +56,18 @@ public class TestController {
     public void logOut () {
     }
 
-    public void createTask (String header, String description, String deadline, String user, String creator, String comment, boolean flagged ) {
+    public void createTask (String header, String description, String deadline, String user, String status, String creator, String comment, boolean flagged ) {
         System.out.println(header);
         System.out.println(description);
         System.out.println(deadline);
         System.out.println(user);
+        System.out.println(status);
         System.out.println(creator);
         System.out.println(comment);
         System.out.println(flagged);
     }
 
-    public void editTask () {
+    public void editTask (String header, String description, String deadline, String user, String status, String creator, String comment, boolean flagged) {
     }
 
     public void assignToTask () {

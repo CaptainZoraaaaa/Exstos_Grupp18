@@ -7,19 +7,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditProjectController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditProjectController">
    <children>
-      <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="Edit project">
-         <font>
-            <Font name="Roboto" size="48.0" />
-         </font>
-      </Label>
+      <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="-15.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/background.png" />
+         </image>
+      </ImageView>
       <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="110.0" />
@@ -33,7 +35,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Header" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Header" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -44,7 +46,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <Label prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets left="5.0" />
                </padding>
@@ -55,7 +57,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <Label text="Deadline" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Deadline" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -66,7 +68,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <Label text="Assignees" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Assignees" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -77,7 +79,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <Label text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -105,13 +107,18 @@
             </TextField>
          </children>
       </GridPane>
-      <Button fx:id="editProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#editProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Accept changes" textFill="WHITE">
+      <Button fx:id="editProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#editProject" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Accept changes" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
+      <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="Edit project">
+         <font>
+            <Font name="Roboto" size="48.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

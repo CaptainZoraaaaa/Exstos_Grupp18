@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewTaskController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditTaskController">
    <children>
-      <ImageView fx:id="IMAGE" fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="IMAGE" fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/Screenshot_2022-05-03_at_09.59.35.png" />
+            <Image url="@../../../images/background.png" />
          </image>
       </ImageView>
-      <Label layoutX="194.0" layoutY="84.0" prefHeight="60.0" prefWidth="199.0" text="New task">
+      <Label layoutX="194.0" layoutY="84.0" prefHeight="60.0" prefWidth="199.0" text="Edit task">
          <font>
             <Font name="Roboto" size="48.0" />
          </font>
@@ -106,7 +106,7 @@
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
-            <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="creatorField" editable="false" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextField>
@@ -140,15 +140,18 @@
                </padding>
             </CheckBox>
             <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Status" GridPane.rowIndex="4">
+            <Label text="Status" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </Label>
             <ChoiceBox fx:id="activeStatus" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="createNewTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
+      <Button fx:id="editTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Save changes" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>

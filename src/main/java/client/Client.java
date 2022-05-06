@@ -41,7 +41,7 @@ public class Client {
      */
     public void connect () {
         try {
-            this.socket = new Socket("localhost", 8080);
+            this.socket = new Socket("10.2.22.12", 8080);
             this.oos = new ObjectOutputStream(socket.getOutputStream());
             this.ois = new ObjectInputStream(socket.getInputStream());
             new ThreadHandler(this).start();

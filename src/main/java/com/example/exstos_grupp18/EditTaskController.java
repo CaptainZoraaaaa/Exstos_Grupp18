@@ -1,6 +1,6 @@
 package com.example.exstos_grupp18;
 
-import Model.ArchivedTasks;
+import Model.Task;
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,33 +10,36 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class NewTaskController implements Initializable {
+public class EditTaskController implements Initializable {
 
+    @FXML
+    private ImageView IMAGE;
+    @FXML
+    private ChoiceBox<String> activeStatus;
     @FXML
     private Button backToPreviousScreenButton;
     @FXML
     private ChoiceBox<String> chosenAssignees;
     @FXML
-    private Button createNewTaskButton;
-    @FXML
     private TextField creatorField;
+    @FXML
+    private TextField deadlineInputField;
+    @FXML
+    private Button editTaskButton;
     @FXML
     private CheckBox help;
     @FXML
     private TextArea taskCommentInputField;
     @FXML
-    private TextField deadlineInputField;
-    @FXML
     private TextArea taskDescriptionInputField;
     @FXML
     private TextField taskHeaderInputField;
-    @FXML
-    private ChoiceBox<String> activeStatus;
 
     private LocalDate deadline;
     private TestController testController = new TestController();
@@ -46,19 +49,15 @@ public class NewTaskController implements Initializable {
     private String user;
     private boolean flagged;
 
-
     @FXML
     void backToPreviousScreen(ActionEvent event) {
 
     }
+
     @FXML
-    void createNewTask(ActionEvent event) {
-        String header = taskHeaderInputField.getText();
-        String description = taskDescriptionInputField.getText();
-        String deadline = deadlineInputField.getText();
-        String creator = creatorField.getText();
-        String comment = taskCommentInputField.getText();
-        testController.createTask(header, description, deadline, user, selectedStatus, creator, comment, flagged);
+    void saveChanges(ActionEvent event) {
+        //testController.editTask(Header, description, deadline, user, selectedStatus, creator, comment, flagged);
+
     }
     @FXML
     void flagForHelp(ActionEvent event) {
@@ -70,10 +69,18 @@ public class NewTaskController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       chosenAssignees.getItems().addAll(users);
-       chosenAssignees.setOnAction(this::setUsers);
-       activeStatus.getItems().addAll(status);
-       activeStatus.setOnAction(this::setStatus);
+        Task task = new Task.TaskBuilder()
+                .header("Exsto")
+                .description("Alla är vi här")
+                .estimatedTime("123")
+                .comments("Bosse", "hej där.")
+                .flaggedForHelp(true)
+                .build();
+
+        chosenAssignees.getItems().addAll(users);
+        chosenAssignees.setOnAction(this::setUsers);
+        activeStatus.getItems().addAll(status);
+        activeStatus.setOnAction(this::setStatus);
     }
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();
@@ -82,4 +89,3 @@ public class NewTaskController implements Initializable {
         selectedStatus = activeStatus.getValue();
     }
 }
-
