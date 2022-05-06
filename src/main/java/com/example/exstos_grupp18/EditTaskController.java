@@ -51,7 +51,7 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for returning to previous screen.
-     * TODO: 2022-05-06 add change scene to this method body.
+     * TODO: 2022-05-06 add change scene to this method body, dependent on the main menu.
      * @param event triggered by clicking the button backToPreviousScreenButton.
      */
     @FXML
