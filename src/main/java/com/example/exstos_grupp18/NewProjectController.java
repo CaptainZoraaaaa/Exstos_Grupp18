@@ -54,7 +54,6 @@ public class NewProjectController implements Initializable {
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, user, creator);
     }
-
     /**
      * Method for setting the date to the date selected in the DatePicker.
      * @param event ActionEvent that reacts when a date chosen pressed.
