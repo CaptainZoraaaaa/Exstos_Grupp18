@@ -33,18 +33,12 @@ public class EditProjectController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
 
-    /*public void initialize(){
-        projectHeaderInputField.setText(project.getProjectName());
-        projectDescriptionInputField.setText(project.getDescription());
-        projectDeadlineDate.setValue(project.getDeadline());
-    }*/
     /**
      * Method to return to previous screen.
      * @param event ActionEvent that reacts when the "back" button is pressed.
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) {
-
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
@@ -65,11 +59,20 @@ public class EditProjectController implements Initializable {
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, user, creator);
     }
+    /**
+     * Method for initializing the list of available users to select.
+     * @param url url
+     * @param resourceBundle resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chosenAssignees.getItems().addAll(users);
         chosenAssignees.setOnAction(this::setUsers);
     }
+    /**
+     * Method for setting the values in the list.
+     * @param event event.
+     */
     private void setUsers(ActionEvent event) {
         user = chosenAssignees.getValue();
     }

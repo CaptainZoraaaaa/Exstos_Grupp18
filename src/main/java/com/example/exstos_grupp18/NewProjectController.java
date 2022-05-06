@@ -32,7 +32,6 @@ public class NewProjectController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
 
-
     /**
      * Method to return to previous screen.
      * @param event ActionEvent that reacts when the "back" button is pressed.
@@ -42,7 +41,6 @@ public class NewProjectController implements Initializable {
         Main main = new Main();
         main.changeScene("Menu.fxml");
     }
-
     /**
      * This method is used to create a new project.
      * @param event ActionEvent that reacts when the "create" button is pressed.
@@ -62,12 +60,20 @@ public class NewProjectController implements Initializable {
     void chosenDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
     }
-
+    /**
+     * Method for initializing the list of available users to assignt to the project.
+     * @param url url.
+     * @param resourceBundle resourceBundle.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chosenAssignees.getItems().addAll(users);
         chosenAssignees.setOnAction(this::setUsers);
     }
+    /**
+     * Method for setting the values in the list.
+     * @param event event
+     */
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();
     }
