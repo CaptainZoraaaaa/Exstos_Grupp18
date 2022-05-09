@@ -13,11 +13,13 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
+    private Project project = new Project();
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
     private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
+
 
     public static Controller getInstance(){
         return controller;
@@ -70,7 +72,8 @@ public class Controller {
     public void logOut () {
     }
 
-    public void createTask () {
+    public void createTask(Model.Task task) {
+        project.addNewTask(task);
     }
 
     public void editTask () {
@@ -133,5 +136,18 @@ public class Controller {
             e.printStackTrace();
         }
 
+    }
+
+    public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
+        if (this.project == null){
+            this.project = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
+        }
+        System.out.println(project.getProjectName());
+    }
+    public ArrayList<Model.Task> getTask(){
+         return project.getTasks();
+    }
+    public int getTaskSize(){
+        return project.getTaskSize();
     }
 }

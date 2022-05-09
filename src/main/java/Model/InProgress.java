@@ -1,6 +1,6 @@
 package Model;
 
-public class InProgress extends Swimlane {
+public class InProgress {
     private int maxNumOfTask;
 
     public int getMaxNumOfTask() {
