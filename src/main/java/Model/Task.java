@@ -18,7 +18,7 @@ public class Task {
     private boolean flaggedForHelp;
     private User creator;
     private HashMap<String, String> comments = new HashMap<>(); // String 1 = username, String 2 = comment.
-    private static int TASK_ID;
+    private int TASK_ID;
 
     public String getHeader() {
         return header;
