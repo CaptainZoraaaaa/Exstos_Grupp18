@@ -361,6 +361,7 @@ public class Server {
                 }
                 else {
                     saveOfflineMessages(user, toSend);
+                    logtext = String.format("Put the project update in user %s's buffer", user.getUsername());
                 }
             }
             else {
