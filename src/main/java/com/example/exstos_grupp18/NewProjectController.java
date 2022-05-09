@@ -1,7 +1,6 @@
 package com.example.exstos_grupp18;
 
-import Sandbox.TestController;
-import com.example.exstos_grupp18.Main;
+
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,26 +17,26 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * @author Christian Edvall
+ */
 public class NewProjectController implements Initializable {
 
     @FXML
-    private Button backToPreviousScreenButton;
-    @FXML
-    private Button createNewProjectButton;
-    @FXML
     private TextField creatorField;
     @FXML
-    private ChoiceBox<String> chosenAssignees;
+    private ChoiceBox<String> assigneeList;
     @FXML
     private DatePicker projectDeadlineDate;
     @FXML
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
+
     private LocalDate deadline;
-    private Controller testController = Controller.getInstance();
-    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
-    private String user;
+    private Controller controller = Controller.getInstance();
+    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"}; //todo temporärt
+    private String currentUser;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -65,7 +64,7 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        testController.createNewProject(header, description, deadline, user, creator);
+        controller.createNewProject(header, description, deadline, currentUser, creator);
     }
 
     /**
@@ -73,17 +72,19 @@ public class NewProjectController implements Initializable {
      * @param event ActionEvent that reacts when a date chosen pressed.
      */
     @FXML
-    void chosenDate(ActionEvent event) {
+    void chooseDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        chosenAssignees.getItems().addAll(users);
-        chosenAssignees.setOnAction(this::setUsers);
+        assigneeList.getItems().addAll(users);
+        assigneeList.setOnAction(this::setUsers);
     }
+
+    //todo javadoca
     public void setUsers(ActionEvent event){
-        user = chosenAssignees.getValue();
+        currentUser = assigneeList.getValue();
     }
 }
 
