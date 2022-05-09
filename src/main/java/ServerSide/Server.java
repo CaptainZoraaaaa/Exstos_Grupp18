@@ -508,7 +508,7 @@ public class Server {
                 ok = true;
             }
             else {
-                logtext = String.format("Unable to add user %s to project %s: %s: Project is not in projectMap");
+                logtext = String.format("Unable to add user %s to project %s: %s: Project is not in projectMap", username, project.getProjectID(), project.getProjectName());
                 ok = false;
             }
         }
