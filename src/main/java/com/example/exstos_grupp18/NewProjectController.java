@@ -2,11 +2,18 @@ package com.example.exstos_grupp18;
 
 import Sandbox.TestController;
 import com.example.exstos_grupp18.Main;
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -28,19 +35,25 @@ public class NewProjectController implements Initializable {
     @FXML
     private TextField projectHeaderInputField;
     private LocalDate deadline;
-    private TestController testController = new TestController();
+    private Controller testController = Controller.getInstance();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
-
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /**
      * Method to return to previous screen.
      * @param event ActionEvent that reacts when the "back" button is pressed.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
-        Main main = new Main();
-        main.changeScene("Menu.fxml");
+    void backToPreviousScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
     /**

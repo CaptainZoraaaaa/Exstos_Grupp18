@@ -1,5 +1,10 @@
 package com.example.exstos_grupp18;
 
+import Model.InProgress;
+import Model.Swimlane;
+import Model.Task;
+import controller.Controller;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -111,10 +116,11 @@ public class KanbanViewController implements Initializable {
 
     private boolean dropMenuVisible = false;
 
+    private Controller controller = Controller.getInstance();
     private static KanbanViewController yes = new KanbanViewController();
 
-    public KanbanViewController getInstance() {
-        return this;
+    public static KanbanViewController getInstance() {
+        return yes;
     }
 
     /**
@@ -140,18 +146,32 @@ public class KanbanViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Node[] nodes = new Node[10];
-        for (int i = 0; i < 10; i++) {
+
+        ArrayList<Task> current = controller.getTask();
+        Node[] nodes = new Node[controller.getTaskSize()];
+        for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                backlogList.getChildren().add(nodes[i]);
+                if (current.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
+                    nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
+                    Node scene = nodes[i];
+                    nodes[i].setId(String.valueOf(i));
+                    //System.out.println(nodes[i].getId());
+                    backlogList.getChildren().add(nodes[i]);
+                }else if (current.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
+                    nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
+                    Node scene = nodes[i];
+                    nodes[i].setId(String.valueOf(i));
+                    //System.out.println(nodes[i].getId());
+                    inProgressList.getChildren().add(nodes[i]);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
-    public void skriv(Parent scene) {
+    public void skriv(String scene) {
         for (int i = 0; i < backlogList.getChildren().size(); i++) {
             if (backlogList.getChildren().get(i).equals(scene)){
                 System.out.println("här");
@@ -159,5 +179,14 @@ public class KanbanViewController implements Initializable {
                 backlogList.getChildren().remove(i);
             }
         }
+    }
+
+    public void newTask(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newTask.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 }

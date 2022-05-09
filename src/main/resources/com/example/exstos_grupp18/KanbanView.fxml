@@ -69,7 +69,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="126.0" style="-fx-background-color: #7d9db9;" text="New Task" textFill="WHITE">
+            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" onAction="#newTask" prefHeight="57.0" prefWidth="126.0" stylesheets="@../../../CSS/Menu.css" text="New Task" textFill="WHITE">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect></Button>
@@ -106,7 +106,7 @@
                   </Label>
                </children>
             </Pane>
-            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="404.0" prefWidth="241.0" spacing="80.0">
+            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="354.0" prefWidth="241.0" spacing="80.0">
                <children>
                   <ProgressBar fx:id="backlogBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" style="-fx-background-color: #bfcfdd;" />
                   <ProgressBar fx:id="inProgressBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
@@ -114,7 +114,7 @@
                   <ProgressBar fx:id="doneBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
                </children>
             </VBox>
-            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="452.0" prefWidth="270.0" spacing="80.0">
+            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="388.0" prefWidth="270.0" spacing="80.0">
                <children>
                   <Label fx:id="backlogBarLabel" text="Backlog" textFill="#7d9db9">
                      <font>

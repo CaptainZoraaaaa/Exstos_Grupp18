@@ -26,7 +26,7 @@ public class TaskManager {
                 .estimatedTime(estimatedTime)
                 .creator(creator)
                 .assignee(assignee)
-                .currentStatus(new Backlog())
+                .currentStatus(Swimlane.Backlog)
                 .flaggedForHelp(false)
                 .build();
     }

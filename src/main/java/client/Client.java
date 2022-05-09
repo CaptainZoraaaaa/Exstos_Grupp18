@@ -32,7 +32,7 @@ public class Client {
      * @Author Max Tiderman
      */
     public Client(User user, String ip, int port ) {
-        connect();
+        //connect();
     }
 
     /**

@@ -39,7 +39,7 @@ public class LoginController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setScene(scene);
+
     }
 
     public void logIn(ActionEvent event) throws IOException {
@@ -52,10 +52,10 @@ public class LoginController {
             //Används för att överföra data
             MenuContrroller menuContrroller = fxmlLoader.getController();
             menuContrroller.setUserLabel(username);
+            new Client(null,null,8080);
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-            stage.setScene(scene);
             stage.setScene(scene);
         }
         else {
