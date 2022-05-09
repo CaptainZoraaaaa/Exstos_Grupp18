@@ -23,7 +23,7 @@ public class EditProjectController implements Initializable {
     @FXML
     private Button editProjectButton;
     @FXML
-    private ChoiceBox<String> chosenAssignees;
+    private ChoiceBox<String> assigneeList;
     @FXML
     private DatePicker projectDeadlineDate;
     @FXML
@@ -69,14 +69,14 @@ public class EditProjectController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        chosenAssignees.getItems().addAll(users);
-        chosenAssignees.setOnAction(this::setUsers);
+        assigneeList.getItems().addAll(users);
+        assigneeList.setOnAction(this::setUsers);
     }
     /**
      * Method for setting the values in the list.
      * @param event event.
      */
     private void setUsers(ActionEvent event) {
-        user = chosenAssignees.getValue();
+        user = assigneeList.getValue();
     } //TODO kolla om det går att ändra till multiple choise
 }

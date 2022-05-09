@@ -16,24 +16,23 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * @author Christian Edvall
+ */
 public class EditTaskController implements Initializable {
 
     @FXML
-    private ImageView IMAGE;
+    private ImageView background; //todo se över om vi ska ta bort
     @FXML
-    private ChoiceBox<String> activeStatus;
+    private ChoiceBox<String> statusList;
     @FXML
-    private Button backToPreviousScreenButton;
-    @FXML
-    private ChoiceBox<String> chosenAssignees;
+    private ChoiceBox<String> assigneeList;
     @FXML
     private TextField creatorField;
     @FXML
-    private TextField deadlineInputField;
+    private TextField deadlineInputField; //todo ändra till datepicker
     @FXML
-    private Button editTaskButton;
-    @FXML
-    private CheckBox help;
+    private CheckBox helpBox;
     @FXML
     private TextArea taskCommentInputField;
     @FXML
@@ -46,7 +45,7 @@ public class EditTaskController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String[] status = {"Archived", "Backlog", "In progress", "Waiting", "Done"};
     private String selectedStatus;
-    private String user;
+    private String selectedUser;
     private boolean flagged;
 
     /**
@@ -75,9 +74,10 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void flagForHelp(ActionEvent event) {
-        if(help.isSelected()){
+        if(helpBox.isSelected()){
             flagged = true;
-        } else {
+        }
+        else {
             flagged = false;
         }
     }
@@ -86,10 +86,10 @@ public class EditTaskController implements Initializable {
         taskHeaderInputField.setEditable(true);
         taskDescriptionInputField.setEditable(true);
         deadlineInputField.setEditable(true);
-        chosenAssignees.setDisable(false);
-        activeStatus.setDisable(false);
+        assigneeList.setDisable(false);
+        statusList.setDisable(false);
         taskCommentInputField.setEditable(true);
-        help.setDisable(false);
+        helpBox.setDisable(false);
     }
 
     /**
@@ -98,7 +98,7 @@ public class EditTaskController implements Initializable {
      * @param resourceBundle resourceBundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) { //todo lägg till kommentarer i metodkropp
         Task task = new Task.TaskBuilder()
                 .header("Exsto")
                 .description("Alla är vi här")
@@ -107,10 +107,10 @@ public class EditTaskController implements Initializable {
                 .flaggedForHelp(true)
                 .build();
 
-        chosenAssignees.getItems().addAll(users);
-        chosenAssignees.setOnAction(this::setUsers);
-        activeStatus.getItems().addAll(status);
-        activeStatus.setOnAction(this::setStatus);
+        assigneeList.getItems().addAll(users);
+        assigneeList.setOnAction(this::setUsers);
+        statusList.getItems().addAll(status);
+        statusList.setOnAction(this::setStatus);
     }
 
     /**
@@ -118,7 +118,7 @@ public class EditTaskController implements Initializable {
      * @param event Event is triggered by the above this::setUsers.
      */
     public void setUsers(ActionEvent event){
-        user = chosenAssignees.getValue();
+        selectedUser = assigneeList.getValue();
     }
 
     /**
@@ -126,6 +126,6 @@ public class EditTaskController implements Initializable {
      * @param event Event is triggered by the above this::setStatus.
      */
     public void setStatus(ActionEvent event){
-        selectedStatus = activeStatus.getValue();
+        selectedStatus = statusList.getValue();
     }
 }

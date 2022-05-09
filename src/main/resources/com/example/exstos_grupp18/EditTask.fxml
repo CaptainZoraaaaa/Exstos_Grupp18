@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditTaskController">
    <children>
-      <ImageView fx:id="IMAGE" fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background" fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/background.png" />
          </image>
@@ -131,7 +131,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="help" disable="true" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
+            <CheckBox fx:id="helpBox" disable="true" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -139,7 +139,7 @@
                   <Insets left="5.0" />
                </padding>
             </CheckBox>
-            <ChoiceBox fx:id="chosenAssignees" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="assigneeList" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Status" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font name="Roboto" size="13.0" />
@@ -148,7 +148,7 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="activeStatus" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="statusList" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button mnemonicParsing="false" onAction="#setTaskToEditable" prefHeight="26.0" prefWidth="48.0" stylesheets="@../../../CSS/Menu.css" text="Edit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="5.0" />
