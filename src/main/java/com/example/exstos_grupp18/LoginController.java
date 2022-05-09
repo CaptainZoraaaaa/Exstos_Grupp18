@@ -31,7 +31,7 @@ public class LoginController {
 
     //todo javadoca
     public void newUserScene (ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUserScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUserView.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
