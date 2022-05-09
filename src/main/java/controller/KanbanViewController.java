@@ -156,7 +156,8 @@ public class KanbanViewController {
             for(Task task : taskList) { //for each task
                 if (task != null) { //if task isnt null
                     Swimlane status = task.getCurrentStatus(); //get the status from the task
-                    if(status instanceof Backlog) {
+                    //Kommenterade ut nedan för att fortskrida med kodreview, dessa ska kontrollera mot Enum istället.
+                    /*if(status instanceof Backlog) {
                         backlogTasks.add(task);
                     }
                     else if(status instanceof InProgress) {
@@ -167,7 +168,7 @@ public class KanbanViewController {
                     }
                     else if(status instanceof Done) {
                         doneTasks.add(task);
-                    }
+                    }*/
                 }
             }
         }
@@ -208,10 +209,16 @@ public class KanbanViewController {
     public void testMethod() {
         TaskManager taskManager = new TaskManager();
         Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", "1", new User(), null, 1);
-        task1.setCurrentStatus(new Backlog());
+        /**
+         * // TODO: 2022-05-09 ändra så att det passar mot enum 
+         */
+        //task1.setCurrentStatus(new Backlog()); 
         task1.setFlaggedForHelp(false);
         Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", "1", new User(), null, 2);
-        task2.setCurrentStatus(new Backlog());
+        /**
+         * // TODO: 2022-05-09 ändra så att det passar mot enum.
+         */
+        //task2.setCurrentStatus(new Backlog());
         task2.setFlaggedForHelp(true);
         Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", "1", new User(), null, 3);
 
