@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
    <children>
       <Pane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: f8f7f4;">
          <children>
@@ -69,7 +69,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="126.0" style="-fx-background-color: #7d9db9;" text="New Task" textFill="WHITE">
+            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" onAction="#newTask" prefHeight="57.0" prefWidth="126.0" stylesheets="@../../../CSS/Menu.css" text="New Task" textFill="WHITE">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" />
                </effect></Button>
@@ -114,7 +114,7 @@
                   <ProgressBar fx:id="doneBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
                </children>
             </VBox>
-            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="452.0" prefWidth="270.0" spacing="80.0">
+            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="397.0" prefWidth="270.0" spacing="80.0">
                <children>
                   <Label fx:id="backlogBarLabel" text="Backlog" textFill="#7d9db9">
                      <font>
