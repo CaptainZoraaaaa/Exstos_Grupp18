@@ -81,6 +81,16 @@ public class EditTaskController implements Initializable {
             flagged = false;
         }
     }
+    @FXML
+    void setTaskToEditable(ActionEvent event){
+        taskHeaderInputField.setEditable(true);
+        taskDescriptionInputField.setEditable(true);
+        deadlineInputField.setEditable(true);
+        chosenAssignees.setDisable(false);
+        activeStatus.setDisable(false);
+        taskCommentInputField.setEditable(true);
+        help.setDisable(false);
+    }
 
     /**
      * Method for intializing the task ChoiceBoxes with users to select as assignees and status as statuses.

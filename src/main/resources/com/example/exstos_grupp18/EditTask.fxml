@@ -98,11 +98,11 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="taskHeaderInputField" prefHeight="19.0" prefWidth="152.0" promptText="Task header" GridPane.columnIndex="1">
+            <TextField fx:id="taskHeaderInputField" editable="false" prefHeight="19.0" prefWidth="152.0" promptText="Task header" GridPane.columnIndex="1">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextField>
-            <TextArea fx:id="taskDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Task description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextArea fx:id="taskDescriptionInputField" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Task description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
@@ -121,17 +121,17 @@
                   <Insets top="-40.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="taskCommentInputField" prefHeight="200.0" prefWidth="200.0" promptText="Comment" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextArea fx:id="taskCommentInputField" editable="false" prefHeight="200.0" prefWidth="200.0" promptText="Comment" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextArea>
-            <TextField fx:id="deadlineInputField" promptText="Task deadline" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="deadlineInputField" editable="false" promptText="Task deadline" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="help" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
+            <CheckBox fx:id="help" disable="true" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -139,7 +139,7 @@
                   <Insets left="5.0" />
                </padding>
             </CheckBox>
-            <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="chosenAssignees" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Status" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font name="Roboto" size="13.0" />
@@ -148,7 +148,12 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="activeStatus" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="activeStatus" disable="true" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#setTaskToEditable" prefHeight="26.0" prefWidth="48.0" stylesheets="@../../../CSS/Menu.css" text="Edit" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
       <Button fx:id="editTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Save changes" textFill="WHITE">
