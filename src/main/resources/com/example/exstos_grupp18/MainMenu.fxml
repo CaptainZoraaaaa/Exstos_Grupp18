@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.MenuContrroller">
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.MainMenuController">
    <children>
       <HBox prefHeight="54.0" prefWidth="1500.0" style="-fx-background-color: #BFCFDD;">
          <children>
@@ -41,7 +41,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="canBanBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToCanban" prefHeight="58.0" prefWidth="304.0" stylesheets="@../../../CSS/Menu.css" text="See Canban" textFill="WHITE">
+            <Button fx:id="canBanBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToKanban" prefHeight="58.0" prefWidth="304.0" stylesheets="@../../../CSS/Menu.css" text="See Canban" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Logout" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
+            <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
