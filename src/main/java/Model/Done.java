@@ -1,4 +1,4 @@
 package Model;
 
-public class Done extends Swimlane {
+public class Done {
 }

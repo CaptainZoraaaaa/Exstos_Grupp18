@@ -1,7 +1,5 @@
 package Model;
 
-import client.ClientBuffer;
-
 /**
  * This class is used to handle operations for a task.
  * @author Christian Edvall
@@ -9,11 +7,7 @@ import client.ClientBuffer;
  */
 public class TaskManager {
     private Task task;
-    private ClientBuffer clientBuffer;
-
-    public TaskManager(ClientBuffer clientBuffer){
-        this.clientBuffer = clientBuffer;
-    }
+    public TaskManager(){}
     /**
      * This method is used in order to create a task with it's incoming parameters. It does so by using the Task-class
      * builder.
@@ -24,7 +18,7 @@ public class TaskManager {
      * @param assignee User object containing the assignee for the task.
      * @param taskId int setting the task ID.
      */
-    public void createNewTask(String header, String description, String estimatedTime, User creator, User assignee, int taskId){
+    public Task createNewTask(String header, String description, String estimatedTime, User creator, User assignee, int taskId){
         task = new Task.TaskBuilder()
                 .id(taskId)
                 .header(header)
@@ -32,11 +26,10 @@ public class TaskManager {
                 .estimatedTime(estimatedTime)
                 .creator(creator)
                 .assignee(assignee)
-                .currentStatus(new Backlog())
+                .currentStatus(Swimlane.Backlog)
                 .flaggedForHelp(false)
                 .build();
-
-        clientBuffer.put(task); //put objects in Buffer which notify threads
+        return task;
     }
 
     /**

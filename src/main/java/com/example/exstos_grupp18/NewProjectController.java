@@ -2,11 +2,18 @@ package com.example.exstos_grupp18;
 
 import Sandbox.TestController;
 import com.example.exstos_grupp18.Main;
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -28,19 +35,27 @@ public class NewProjectController implements Initializable {
     @FXML
     private TextField projectHeaderInputField;
     private LocalDate deadline;
-    private TestController testController = new TestController();
+    private Controller testController = Controller.getInstance();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /**
      * Method to return to previous screen.
      * @param event ActionEvent that reacts when the "back" button is pressed.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
-        Main main = new Main();
-        main.changeScene("Menu.fxml");
+    void backToPreviousScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
+
     /**
      * This method is used to create a new project.
      * @param event ActionEvent that reacts when the "create" button is pressed.
@@ -52,6 +67,7 @@ public class NewProjectController implements Initializable {
         String creator = creatorField.getText();
         testController.createNewProject(header, description, deadline, user, creator);
     }
+
     /**
      * Method for setting the date to the date selected in the DatePicker.
      * @param event ActionEvent that reacts when a date chosen pressed.
@@ -60,20 +76,12 @@ public class NewProjectController implements Initializable {
     void chosenDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
     }
-    /**
-     * Method for initializing the list of available users to assignt to the project.
-     * @param url url.
-     * @param resourceBundle resourceBundle.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chosenAssignees.getItems().addAll(users);
         chosenAssignees.setOnAction(this::setUsers);
     }
-    /**
-     * Method for setting the values in the list.
-     * @param event event
-     */
     public void setUsers(ActionEvent event){
         user = chosenAssignees.getValue();
     }

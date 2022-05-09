@@ -1,9 +1,19 @@
-package Controller;
+package controller;
 
+import Model.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+
+import java.util.ArrayList;
 
 /**
  * @author Anna Håkansson
@@ -95,7 +105,15 @@ public class KanbanViewController {
     @FXML
     private Label usernameLabel; //the label for the username
 
+    @FXML
+    private Pane mainBarPane;
+
     private boolean dropMenuVisible = false;
+
+    private ArrayList<Task> backlogTasks = new ArrayList<>();
+    private ArrayList<Task> inProgressTasks = new ArrayList<>();
+    private ArrayList<Task> waitingTasks = new ArrayList<>();
+    private ArrayList<Task> doneTasks = new ArrayList<>();
 
     /**
      * @author Anna Håkansson
@@ -107,16 +125,104 @@ public class KanbanViewController {
      usernameLabel.setText(username);
     }
 
+    /**
+     * @author Anna Håkansson
+     *
+     * Method that is called upon when the "My projects" button is pressed.
+     * boolean dropMenuVisible keeps track if the menu should be shown or
+     * diseapeared when the button is pressed.
+     */
     public void myProjectsPressed() {
         if(!dropMenuVisible) {
             dropMenuVisible = true;
         } else {
             dropMenuVisible = false;
         }
-        myProjectsMenu.setVisible(dropMenuVisible);
-        myProjectsMenu.setDisable(!dropMenuVisible);
+        myProjectsHbox.setVisible(dropMenuVisible);
+        myProjectsHbox.setDisable(!dropMenuVisible); //set HBox with buttons
+        mainBarPane.setVisible(dropMenuVisible);
+        mainBarPane.setDisable(!dropMenuVisible); //set the pane for the progress bar
     }
 
+    /**
+     * @author Anna Håkansson
+     * @param taskList list of tasks in a project
+     *
+     * Method for sorting tasks in to different lists
+     * depending on their set status
+     */
+    public void sortTasks(ArrayList<Task> taskList) {
+        if (taskList != null) { //if taskList isnt null
+            for(Task task : taskList) { //for each task
+                if (task != null) { //if task isnt null
+                    Swimlane status = task.getCurrentStatus(); //get the status from the task
+                    if(status instanceof Backlog) {
+                        backlogTasks.add(task);
+                    }
+                    else if(status instanceof InProgress) {
+                        inProgressTasks.add(task);
+                    }
+                    else if(status instanceof Waiting) {
+                        waitingTasks.add(task);
+                    }
+                    else if(status instanceof Done) {
+                        doneTasks.add(task);
+                    }
+                }
+            }
+        }
+    }
+
+    public void displayTasks() {
+        for(Task task : backlogTasks) {
+            FlowPane flowPane = formatTask(task);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    backlogList.getItems().add(flowPane);
+                }
+            });
+        }
+    }
+
+    public FlowPane formatTask(Task task) {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setStyle("-fx-background-color:  #f8f7f4;");
+
+        Text header = new Text(task.getHeader());
+        header.setFont(Font.font("Roboto"));
+        flowPane.getChildren().add(header);
+
+        Circle circle = new Circle();
+        circle.setStyle("-fx-background-color: #FDDA0D");
+        circle.setVisible(task.isFlaggedForHelp());
+        flowPane.getChildren().add(circle);
+
+        Text description = new Text(task.getDescription());
+        description.setFont(Font.font("Roboto"));
+        flowPane.getChildren().add(description);
+
+        return flowPane;
+    }
+
+    public void testMethod() {
+        TaskManager taskManager = new TaskManager();
+        Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", "1", new User(), null, 1);
+        task1.setCurrentStatus(new Backlog());
+        task1.setFlaggedForHelp(false);
+        Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", "1", new User(), null, 2);
+        task2.setCurrentStatus(new Backlog());
+        task2.setFlaggedForHelp(true);
+        Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", "1", new User(), null, 3);
+
+        ArrayList<Task> tasklist = new ArrayList<>();
+        tasklist.add(task1);
+        tasklist.add(task2);
+        tasklist.add(task3);
+
+        sortTasks(tasklist);
+        displayTasks();
+    }
 
 
 }

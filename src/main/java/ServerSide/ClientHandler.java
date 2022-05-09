@@ -1,12 +1,13 @@
 package ServerSide;
 
+import Model.Package;
 import Model.User;
 
 import java.net.Socket;
 
 /**
  * @author Anna Håkansson
- * Last update: 2022-05-05
+ * Last update: 2022-05-06
  *
  * A thread class for handling connected clients. Sends and recieves
  * messages through the ServerSender och ServerReciever classes.
@@ -15,7 +16,6 @@ public class ClientHandler extends Thread {
     private Socket socket; //the socket created upon connection
     private Server server; //the server
     private User user; //user associated to the client
-    private ServerBuffer serverBuffer = new ServerBuffer();
   //  private ServerStream serverStream;
 
     /**
@@ -32,35 +32,27 @@ public class ClientHandler extends Thread {
         this.server = server;
         //serverStream = new ServerStream(socket, this)
 
-        createServerStream();
-
     }
-
-    /**
-     * @author Emma Mörk
-     *               creates new ServerStream-object
-     */
-    private void createServerStream() {
-        new ServerStream(socket, this, serverBuffer);
-    }
-
 
     /**
      * @author Anna Håkansson
-     * @param packgeItem to be sent
+     * @param obj to be sent
      *
      * Method for sending a message from the server to the client.
      */
-    public synchronized void sendMessage(Package packgeItem) { //todo ändra till message sen när klassen finns
-        serverBuffer.put(packgeItem);
+    public synchronized void sendMessage(Object obj) { //todo ändra till message sen när klassen finns
+        //serverSender.send(obj);
     }
 
     /**
      * @author Anna Håkansson
-     * @param newPackage package received
+     * @param newPackage recieved
+     *
+     * Method that will be called upon when a message is recieved
+     * in the ServerReciever.
      */
-    public synchronized void packageRecieved(Package newPackage) { //todo ändra till message när klassen finns
-        //TODO när upppackningsklassen är implementerad
+    public synchronized void packageRecieved(Package newPackage) {
+        server.unpackNewPackage(newPackage);
     }
 
     /**

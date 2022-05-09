@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -11,6 +12,7 @@ public class Project {
     private LocalDate deadline;
     private String description;
     private HashMap<User, Boolean> assignedUser;
+    private ArrayList<Task> taskList = new ArrayList<>();
     private Board board;
     private ProjectManager manager;
     private final static int projectID = 0;
@@ -78,6 +80,18 @@ public class Project {
 
     public static int getProjectID() {
         return projectID;
+    }
+
+    public void addNewTask(Task task) {
+        taskList.add(task);
+    }
+
+    public ArrayList<Task> getTasks() {
+        return this.taskList;
+    }
+
+    public int getTaskSize() {
+        return this.taskList.size();
     }
 
     /**
