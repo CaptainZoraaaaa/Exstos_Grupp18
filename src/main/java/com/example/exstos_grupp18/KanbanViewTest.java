@@ -50,9 +50,9 @@ public class KanbanViewTest extends Application {
         launch();
         TaskManager taskManager = new TaskManager();
         Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", "1", new User(), null, 1);
-        task1.setCurrentStatus(new Backlog());
+        //task1.setCurrentStatus(new Backlog());
         Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", "1", new User(), null, 2);
-        task2.setCurrentStatus(new Backlog());
+        //task2.setCurrentStatus(new Backlog());
         Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", "1", new User(), null, 3);
 
         ArrayList<Task> tasklist = new ArrayList<>();

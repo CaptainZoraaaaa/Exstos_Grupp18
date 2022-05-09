@@ -1,5 +1,7 @@
 package ServerSide;
 
+import Model.Package;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
