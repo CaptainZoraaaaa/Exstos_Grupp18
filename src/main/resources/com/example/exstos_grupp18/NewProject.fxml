@@ -17,9 +17,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewProjectController">
    <children>
-      <ImageView fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/Screenshot_2022-05-03_at_09.59.35.png" />
+            <Image url="@../../../images/background.png" />
          </image>
       </ImageView>
       <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="New project">
@@ -103,7 +103,7 @@
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
-            <DatePicker fx:id="projectDeadlineDate" onAction="#chosenDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="projectDeadlineDate" editable="false" onAction="#chosenDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
@@ -111,11 +111,11 @@
                </font></TextField>
          </children>
       </GridPane>
-      <Button fx:id="createNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #7d9db9;" text="Create" textFill="WHITE">
+      <Button fx:id="createNewProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" style="-fx-background-color: #7d9db9;" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>

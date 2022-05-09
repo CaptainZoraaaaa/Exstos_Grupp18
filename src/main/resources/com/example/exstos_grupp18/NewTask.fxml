@@ -17,17 +17,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewTaskController">
    <children>
-      <ImageView fx:id="IMAGE" fitHeight="895.0" fitWidth="1286.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/Screenshot_2022-05-03_at_09.59.35.png" />
+            <Image url="@../../../images/background.png" />
          </image>
       </ImageView>
-      <Label layoutX="194.0" layoutY="84.0" prefHeight="60.0" prefWidth="199.0" text="New task">
+      <ImageView fx:id="IMAGE" fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="194.0" layoutY="104.0" prefHeight="60.0" prefWidth="199.0" text="New task">
          <font>
             <Font name="Roboto" size="48.0" />
          </font>
       </Label>
-      <GridPane layoutX="144.0" layoutY="160.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
+      <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="110.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="117.0" />
@@ -131,7 +136,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="help" mnemonicParsing="false" text="Flag for help" GridPane.rowIndex="7">
+            <CheckBox fx:id="help" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -140,7 +145,10 @@
                </padding>
             </CheckBox>
             <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Status" GridPane.rowIndex="4">
+            <Label focusTraversable="false" text="Status" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -148,11 +156,11 @@
             <ChoiceBox fx:id="activeStatus" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="createNewTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
+      <Button fx:id="createNewTaskButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="144.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>

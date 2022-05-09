@@ -51,6 +51,7 @@ public class LoginController {
             root = fxmlLoader.load();
             MenuContrroller menuContrroller = fxmlLoader.getController();
             menuContrroller.setUserLabel(username);
+            new Client(null,null,8080);
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
