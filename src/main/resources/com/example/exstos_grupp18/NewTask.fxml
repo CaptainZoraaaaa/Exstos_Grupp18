@@ -136,7 +136,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="help" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
+            <CheckBox fx:id="helpBox" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -144,7 +144,7 @@
                   <Insets left="5.0" />
                </padding>
             </CheckBox>
-            <ChoiceBox fx:id="chosenAssignees" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="assigneeList" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label focusTraversable="false" text="Status" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <padding>
                   <Insets left="5.0" />
