@@ -1,5 +1,7 @@
 package Model;
 
+import client.ClientBuffer;
+
 /**
  * This class is used to handle operations for a task.
  * @author Christian Edvall
@@ -7,7 +9,11 @@ package Model;
  */
 public class TaskManager {
     private Task task;
-    public TaskManager(){}
+    private ClientBuffer clientBuffer;
+
+    public TaskManager(ClientBuffer clientBuffer){
+        this.clientBuffer = clientBuffer;
+    }
     /**
      * This method is used in order to create a task with it's incoming parameters. It does so by using the Task-class
      * builder.
@@ -29,6 +35,8 @@ public class TaskManager {
                 .currentStatus(new Backlog())
                 .flaggedForHelp(false)
                 .build();
+
+        clientBuffer.put(task); //put objects in Buffer which notify threads
     }
 
     /**
