@@ -33,7 +33,7 @@ public class newUserController {
             if (controller.registerNewUser(username, password1, null)) {
                 System.out.println(">> Registration successful <<");
                 Main main = new Main();
-                main.changeScene("hello-view.fxml");
+                main.changeScene("LoginView.fxml");
             }
             else {
                 System.out.println(">> Registration failed <<");
