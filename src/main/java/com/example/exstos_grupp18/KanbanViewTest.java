@@ -3,7 +3,7 @@ package com.example.exstos_grupp18;
 import Model.Task;
 import Model.TaskManager;
 import Model.User;
-import controller.KanbanViewController;
+import controller.KanbanViewControllerArchived;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,7 +60,7 @@ public class KanbanViewTest extends Application {
         tasklist.add(task2);
         tasklist.add(task3);
 
-        KanbanViewController controller = new KanbanViewController();
+        KanbanViewControllerArchived controller = new KanbanViewControllerArchived();
         controller.sortTasks(tasklist);
         controller.displayTasks();
 
