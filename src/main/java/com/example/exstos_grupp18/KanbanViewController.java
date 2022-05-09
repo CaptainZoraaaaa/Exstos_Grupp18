@@ -112,6 +112,8 @@ public class KanbanViewController implements Initializable {
     @FXML
     private Label usernameLabel; //the label for the username
     private ArrayList<Node> nodesInProgress = new ArrayList<>();
+    @FXML
+    private Pane mainBarPane;
 
     private boolean dropMenuVisible = false;
 
@@ -138,8 +140,10 @@ public class KanbanViewController implements Initializable {
         } else {
             dropMenuVisible = false;
         }
-        myProjectsMenu.setVisible(dropMenuVisible);
-        myProjectsMenu.setDisable(!dropMenuVisible);
+        myProjectsHbox.setVisible(dropMenuVisible);
+        myProjectsHbox.setDisable(!dropMenuVisible); //set HBox with buttons
+        mainBarPane.setVisible(dropMenuVisible);
+        mainBarPane.setDisable(!dropMenuVisible); //set the pane for the progress bar
     }
 
 

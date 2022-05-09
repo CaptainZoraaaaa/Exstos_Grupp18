@@ -4,11 +4,9 @@ import Model.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -22,7 +20,7 @@ import java.util.ArrayList;
  *
  * Controller for the Kanban view.
  */
-public class KanbanViewController {
+public class KanbanViewControllerArchived {
 
     @FXML
     private ProgressBar backlogBar; //progress bar for backlog
