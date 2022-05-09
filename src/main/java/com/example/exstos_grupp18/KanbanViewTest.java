@@ -1,11 +1,8 @@
 package com.example.exstos_grupp18;
 
-import Model.Backlog;
 import Model.Task;
 import Model.TaskManager;
 import Model.User;
-import ServerSide.Server;
-import client.Client;
 import controller.KanbanViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,5 @@
 package com.example.exstos_grupp18;
 
-import Model.InProgress;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
