@@ -11,6 +11,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * @author Christian Edvall
+ */
 public class EditProjectController implements Initializable {
 
     @FXML
@@ -38,14 +41,14 @@ public class EditProjectController implements Initializable {
      * @param event ActionEvent that reacts when the "back" button is pressed.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
+    void backToPreviousScreen(ActionEvent event) { //todo behöver kunna byta till föregående scen (antagligen kanban eller huvudvy)
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
      * @param event ActionEvent that reacts when a date chosen pressed.
      */
     @FXML
-    void chosenDate(ActionEvent event) {
+    void chooseDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
     }
     /**
@@ -75,5 +78,5 @@ public class EditProjectController implements Initializable {
      */
     private void setUsers(ActionEvent event) {
         user = chosenAssignees.getValue();
-    }
+    } //TODO kolla om det går att ändra till multiple choise
 }
