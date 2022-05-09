@@ -559,10 +559,10 @@ public class Server {
         String logtext;
         if(onlineUsers.contains(user)) { //if list contain user
             onlineUsers.remove(user); //remove it
-            logtext = String.format("User %s was removed from the onlineUsers-list");
+            logtext = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
         }
         else {
-            logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list");
+            logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list", user.getUsername());
         }
         writeLog(logtext);
     }
