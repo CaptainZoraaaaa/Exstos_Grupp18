@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class OutputClient {
     private ObjectOutputStream oos;
 
-    public OutputClient(ObjectOutputStream ois) {
+    public OutputClient(ObjectOutputStream oos) {
         this.oos = oos;
     }
 
