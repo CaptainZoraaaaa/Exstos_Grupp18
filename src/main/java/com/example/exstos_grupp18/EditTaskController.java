@@ -1,13 +1,20 @@
 package com.example.exstos_grupp18;
 
+import Model.Swimlane;
 import Model.Task;
 import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -20,7 +27,7 @@ public class EditTaskController implements Initializable {
     @FXML
     private ImageView background; //todo se över om vi ska ta bort
     @FXML
-    private ChoiceBox<String> statusList;
+    private ChoiceBox<Swimlane> statusList;
     @FXML
     private ChoiceBox<String> assigneeList;
     @FXML
@@ -39,10 +46,13 @@ public class EditTaskController implements Initializable {
     private LocalDate deadline;
     private TestController testController = new TestController();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
-    private String[] status = {"Archived", "Backlog", "In progress", "Waiting", "Done"};
-    private String selectedStatus;
+    private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Review};
+    private Swimlane selectedStatus;
     private String selectedUser;
     private boolean flagged;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /**
      * Method for returning to previous screen.
@@ -59,8 +69,12 @@ public class EditTaskController implements Initializable {
      * @param event
      */
     @FXML
-    void saveChanges(ActionEvent event) {
-        //testController.editTask(Header, description, deadline, user, selectedStatus, creator, comment, flagged);
+    void saveChanges(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     /**
@@ -128,5 +142,13 @@ public class EditTaskController implements Initializable {
      */
     public void setStatus(ActionEvent event){
         selectedStatus = statusList.getValue();
+    }
+
+    public void loadedTask(Task task) {
+        taskHeaderInputField.setText(task.getHeader());
+        taskDescriptionInputField.setText(task.getDescription());
+        // detta ska fixas då tasks deadline inte är av typpen localDate taskDeadlineDate.setValue();
+        // måste kontrolleras selectedUser = task.getAssignees();
+        statusList.setValue(task.getCurrentStatus());
     }
 }
