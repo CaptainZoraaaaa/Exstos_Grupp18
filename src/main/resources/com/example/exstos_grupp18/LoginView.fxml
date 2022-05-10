@@ -10,48 +10,44 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.LoginController">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="708.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="810.0" fitWidth="566.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/loginSymbols.PNG" />
-               </image>
-            </ImageView>
+            <ImageView fitHeight="800.0" fitWidth="750.0" layoutX="-4.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="800.0" prefWidth="982.0" style="-fx-background-color: #171717;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="800.0" prefWidth="752.0" style="-fx-background-color: #f8f7f4;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="410.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="410.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/locker.png" />
                </image>
             </ImageView>
-            <Label layoutX="125.0" layoutY="302.0" text="USERNAME" textFill="#ffae00">
+            <Label layoutX="62.0" layoutY="349.0" text="Username">
                <font>
-                  <Font name="Javanese Text" size="45.0" />
+                  <Font name="Roboto" size="45.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" layoutX="453.0" layoutY="335.0" prefHeight="57.0" prefWidth="401.0" />
-            <Label layoutX="125.0" layoutY="426.0" text="PASSWORD" textFill="#ffae00">
+            <TextField fx:id="usernameTextField" layoutX="307.0" layoutY="344.0" prefHeight="57.0" prefWidth="401.0" />
+            <Label layoutX="62.0" layoutY="473.0" text="Password">
                <font>
-                  <Font name="Javanese Text" size="45.0" />
+                  <Font name="Roboto" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="loginBtn" layoutX="421.0" layoutY="593.0" mnemonicParsing="false" onAction="#logIn" prefHeight="61.0" prefWidth="160.0" text="LOGIN">
+            <Button fx:id="loginBtn" layoutX="532.0" layoutY="585.0" mnemonicParsing="false" onAction="#logIn" prefHeight="61.0" prefWidth="160.0" text="LOGIN">
                <font>
                   <Font name="Candara Bold" size="26.0" />
                </font>
             </Button>
-            <Button fx:id="newUserBtn" layoutX="421.0" layoutY="678.0" mnemonicParsing="false" onAction="#newUserScene" prefHeight="61.0" prefWidth="162.0" text="New User">
+            <Button fx:id="newUserBtn" layoutX="302.0" layoutY="585.0" mnemonicParsing="false" onAction="#newUserScene" prefHeight="61.0" prefWidth="162.0" text="New User">
                <font>
                   <Font name="Candara Bold" size="26.0" />
                </font>
             </Button>
-            <PasswordField fx:id="passwordTextField" layoutX="453.0" layoutY="460.0" prefHeight="56.0" prefWidth="401.0" />
+            <PasswordField fx:id="passwordTextField" layoutX="307.0" layoutY="473.0" prefHeight="57.0" prefWidth="401.0" />
          </children>
       </AnchorPane>
    </right>
