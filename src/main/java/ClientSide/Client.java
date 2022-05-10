@@ -20,31 +20,39 @@ public class Client {
     private Socket socket;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
-    private InputClient inputClient;
-    private OutputClient outputClient;
+    private ClientReceiver clientReceiver;
+    private ClientSender clientSender;
+    private ClientBuffer clientBuffer;
 
     /**
-     * This is the construktor and prepares the connecion to the server
+     * This is the constructor and prepares the connecion to the server
      * @param user - What user just logged in
      * @param ip - ip for the server
      * @param port - port to communicate through
      * @Author Max Tiderman
      */
-    public Client(User user, String ip, int port ) {
+
+
+    public Client(User user, String ip, int port, ClientBuffer clientBuffer ) {
+        this.clientBuffer = clientBuffer;
+        //connect();
+    }
+
+    public Client(User user, String ip, int port) {
         //connect();
     }
 
     /**
-     * This method is going to connect the client to the server aswell as macking the streams to communicate with the server
+     * This method is going to connect the client to the server aswell as making the streams to communicate with the server
      * @Author Max Tiderman
      */
-    public void connect () {
+    public void connectToServer () {
         try {
             this.socket = new Socket("10.2.22.12", 8080);
             this.oos = new ObjectOutputStream(socket.getOutputStream());
             this.ois = new ObjectInputStream(socket.getInputStream());
             new ThreadHandler(this).start();
-            //new InputClient().start();
+            //new ClientReceiver().start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,10 +70,10 @@ public class Client {
     }
     /**
      * This method is going send different messages to the server
-     * @Author Max Tiderman
+     * @Author Max Tiderman, Emma Mörk
      */
     public void sendUpdate (Package message) {
-        outputClient.send(message);
+        clientBuffer.put(message);
     }
 
     private class ThreadHandler extends Thread{
@@ -76,8 +84,8 @@ public class Client {
 
         @Override
         public void run() {
-            outputClient = new OutputClient(oos);
-            inputClient = new InputClient(client,ois);
+            clientSender = new ClientSender(oos, clientBuffer);
+            clientReceiver = new ClientReceiver(client,ois);
         }
     }
     public void testning(){

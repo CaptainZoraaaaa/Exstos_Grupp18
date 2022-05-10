@@ -133,7 +133,7 @@ public class Controller {
     public void newClient() {
         try {
             Thread.sleep(1000);
-            this.client = new Client(null,null,8080);
+            this.client = new Client(null,null,8080, clientBuffer);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

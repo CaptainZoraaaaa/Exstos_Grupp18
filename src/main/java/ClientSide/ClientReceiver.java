@@ -7,12 +7,12 @@ import java.io.ObjectInputStream;
  * This class is the reciever and recievs and unpackages messages from the server.
  * @Author Max Tiderman
  */
-public class InputClient extends Thread{
+public class ClientReceiver extends Thread{
     private ObjectInputStream ois;
     private Client client;
     private volatile boolean running = true;
 
-    public InputClient(Client client, ObjectInputStream ois) {
+    public ClientReceiver(Client client, ObjectInputStream ois) {
         this.client = client;
         this.ois = ois;
         start();
