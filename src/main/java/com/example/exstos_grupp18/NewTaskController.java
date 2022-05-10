@@ -38,7 +38,7 @@ public class NewTaskController implements Initializable {
     @FXML
     private TextField taskHeaderInputField;
     @FXML
-    private ChoiceBox<String> statusList;
+    private ChoiceBox<Swimlane> statusList;
 
     private Stage stage;
     private Scene scene;
@@ -48,8 +48,8 @@ public class NewTaskController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String currentUser;
     private boolean flagged;
-    private String[] status = {"Archived", "Backlog", "In progress", "Waiting", "Done"};
-    private String selectedStatus;
+    private Swimlane[] status = {Swimlane.InProgress, Swimlane.Backlog};
+    private Swimlane selectedStatus;
 
 
     @FXML
@@ -63,7 +63,7 @@ public class NewTaskController implements Initializable {
         String deadlineDate = deadline.toString();
         String creator = creatorField.getText();
         String comment = taskCommentInputField.getText();
-        Task task = new Task.TaskBuilder().header(header).description(description).estimatedTime(deadlineDate).currentStatus(Swimlane.InProgress).id(controller.getTaskSize()).build();
+        Task task = new Task.TaskBuilder().header(header).description(description).estimatedTime(deadlineDate).currentStatus(selectedStatus).id(controller.getTaskSize()).build();
         controller.createTask(task);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml")); //todo flytta till egen metod
         root = fxmlLoader.load();
