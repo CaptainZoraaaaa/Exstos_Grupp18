@@ -15,7 +15,7 @@
       <Pane layoutX="-4.0" layoutY="-3.0" prefHeight="892.0" prefWidth="453.0" style="-fx-background-color: 000000;" />
       <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="-13.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/background.png" />
+            <Image url="@../../../images/new_user_background.png" />
          </image>
       </ImageView>
       <TextField fx:id="usernameField" layoutX="79.0" layoutY="303.0" prefHeight="46.0" prefWidth="314.0" promptText="Enter username">
