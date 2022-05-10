@@ -4,13 +4,20 @@ import Model.Task;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,7 +29,9 @@ public class TaskController extends Thread implements Initializable {
     @FXML
     private Button printButton = new Button();
     @FXML
-    private TextArea textField;
+    private Label textField;
+    @FXML
+    private ImageView helpImage;
     @FXML
     private ChoiceBox<String> status;
 
@@ -33,26 +42,40 @@ public class TaskController extends Thread implements Initializable {
     private Parent root;
     private int taskId;
     private Controller controller = Controller.getInstance();
+  //  private Image unflagged = new Image(String.valueOf(getClass().getResource("@../../../images/white_flag.png")));
+  //  private Image flaggedForHelp = new Image(String.valueOf(getClass().getResource("orange_flag.png")));
+
 
     @FXML
-    void print(ActionEvent event) { //todo javadoca
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //kanbanViewController.skriv(test);
+    void print(ActionEvent event) throws IOException { //todo javadoca
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditTask.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
         ArrayList<Task> current = controller.getTask();
-
-
-
         for (int i = 0; i < current.size(); i++) {
-            //System.out.println(printBtn.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))+" ID:: "+printBtn.getParent().getId());
-            //System.out.println();
-            //System.out.println(printBtn.getParent().getId() + " : " + current.get(i).getTASK_ID());
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
-                    textField.setText(current.get(i).getDescription());
+                EditTaskController editTaskController = fxmlLoader.getController();
+                editTaskController.loadedTask(current.get(i));
+            }
+        }
+
+
+
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    @Override
+    public void run() {
+        ArrayList<Task> current = controller.getTask();
+        for (int i = 0; i < current.size(); i++) {
+            if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
+                textField.setText(current.get(i).getHeader());
+                printButton.setText(current.get(i).getCurrentStatus().toString());
+                //changeFlag(current.get(i));
+                //javafx.scene.image.Image image = new Image("@../../../images/clock.png");
+               // helpImage.setImage(image);
             }
         }
     }
@@ -64,4 +87,14 @@ public class TaskController extends Thread implements Initializable {
     public void setUsers(ActionEvent event){
         test = status.getValue();
     } //todo javadoca
+    /*
+    public void changeFlag(Task currentTask){
+        if (currentTask.isFlaggedForHelp()){
+            helpImage.setImage(flaggedForHelp);
+        }
+        else {
+            helpImage.setImage(unflagged);
+        }
+
+    }*/
 }

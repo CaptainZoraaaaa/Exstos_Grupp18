@@ -26,14 +26,14 @@
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="backlogList" prefHeight="539.0" prefWidth="268.0" />
+                        <VBox fx:id="backlogList" prefHeight="539.0" prefWidth="255.0" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="inProgressSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="inProgressList" prefHeight="540.0" prefWidth="268.0" />
+                        <VBox fx:id="inProgressList" prefHeight="540.0" prefWidth="255.0" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="waitingSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
