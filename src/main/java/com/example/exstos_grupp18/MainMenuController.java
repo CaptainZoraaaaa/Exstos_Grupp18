@@ -30,7 +30,6 @@ public class MainMenuController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setScene(scene);
     }
 
     //todo javadoca
@@ -40,7 +39,6 @@ public class MainMenuController {
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setScene(scene);
         stage.setScene(scene);
     }
     @FXML
