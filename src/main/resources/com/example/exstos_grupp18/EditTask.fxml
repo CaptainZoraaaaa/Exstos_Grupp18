@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -126,11 +127,6 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextArea>
-            <TextField fx:id="deadlineInputField" editable="false" promptText="Task deadline" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
-            </TextField>
             <CheckBox fx:id="helpBox" disable="true" mnemonicParsing="false" onAction="#flagForHelp" text="Flag for help" GridPane.rowIndex="7">
                <font>
                   <Font name="Roboto" size="13.0" />
@@ -154,6 +150,7 @@
                   <Insets right="5.0" />
                </GridPane.margin>
             </Button>
+            <DatePicker fx:id="taskDeadlineDate" disable="true" editable="false" onAction="#chooseDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="editTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Save changes" textFill="WHITE">

@@ -5,11 +5,7 @@ import Sandbox.TestController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -30,7 +26,7 @@ public class EditTaskController implements Initializable {
     @FXML
     private TextField creatorField;
     @FXML
-    private TextField deadlineInputField; //todo ändra till datepicker
+    private DatePicker taskDeadlineDate;
     @FXML
     private CheckBox helpBox;
     @FXML
@@ -85,11 +81,16 @@ public class EditTaskController implements Initializable {
     void setTaskToEditable(ActionEvent event){
         taskHeaderInputField.setEditable(true);
         taskDescriptionInputField.setEditable(true);
-        deadlineInputField.setEditable(true);
+        taskDeadlineDate.setDisable(false);
         assigneeList.setDisable(false);
         statusList.setDisable(false);
         taskCommentInputField.setEditable(true);
         helpBox.setDisable(false);
+    }
+    @FXML
+    void chooseDate(ActionEvent event){
+        deadline = taskDeadlineDate.getValue();
+
     }
 
     /**
