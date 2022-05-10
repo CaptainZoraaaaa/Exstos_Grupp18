@@ -36,23 +36,15 @@ public class TaskController extends Thread implements Initializable {
 
     @FXML
     void print(ActionEvent event) { //todo javadoca
-        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //kanbanViewController.skriv(test);
+
+    }
+
+    @Override
+    public void run() {
         ArrayList<Task> current = controller.getTask();
-
-
-
         for (int i = 0; i < current.size(); i++) {
-            //System.out.println(printBtn.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))+" ID:: "+printBtn.getParent().getId());
-            //System.out.println();
-            //System.out.println(printBtn.getParent().getId() + " : " + current.get(i).getTASK_ID());
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
-                    textField.setText(current.get(i).getDescription());
+                textField.setText(current.get(i).getDescription());
             }
         }
     }

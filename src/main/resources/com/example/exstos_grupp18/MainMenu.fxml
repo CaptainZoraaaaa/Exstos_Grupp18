@@ -23,7 +23,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="54.0" prefWidth="257.0" stylesheets="@../../../CSS/Menu.css" text="My Profile" textFill="WHITE">
+            <Button fx:id="homeBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToMyProfile" prefHeight="54.0" prefWidth="257.0" stylesheets="@../../../CSS/Menu.css" text="My Profile" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
