@@ -10,7 +10,7 @@ public class ServerPackageHandler {
         this.server = server;
         this.serverBuffer = serverBuffer;
     }
-    public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca
+    public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca och implementera samliga ordentligt
         switch (newPackage.getType()) {
             case Package.USER_LOGGED_IN:
                 server.addOnlineUser(newPackage.getSender());
