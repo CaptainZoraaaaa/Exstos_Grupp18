@@ -1,7 +1,6 @@
-package client;
+package ClientSide;
 
 import Model.Package;
-import Model.Project;
 import Model.User;
 
 import java.io.IOException;

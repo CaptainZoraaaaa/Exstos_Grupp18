@@ -1,8 +1,8 @@
 package controller;
 
 import Model.*;
-import client.Client;
-import client.ClientBuffer;
+import ClientSide.Client;
+import ClientSide.ClientBuffer;
 import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 

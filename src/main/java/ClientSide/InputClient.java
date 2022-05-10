@@ -1,9 +1,7 @@
-package client;
+package ClientSide;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.Socket;
 
 /**
  * This class is the reciever and recievs and unpackages messages from the server.
