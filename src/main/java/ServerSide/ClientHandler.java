@@ -53,6 +53,7 @@ public class ClientHandler extends Thread {
      */
     public synchronized void packageRecieved(Package newPackage) {
         server.unpackNewPackage(newPackage);
+        System.out.println("Package recieved in client handler");
     }
 
     /**

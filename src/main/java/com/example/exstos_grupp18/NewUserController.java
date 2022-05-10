@@ -1,23 +1,19 @@
 package com.example.exstos_grupp18;
 
-import com.example.exstos_grupp18.Main;
 import controller.Controller;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class newUserController {
+/**
+ * @author Max Tiderman
+ */
+public class NewUserController {
 
     @FXML
-    private TextField passwordField;
-
+    private TextField passwordField; //TODO ändra till passwordfield
     @FXML
     private PasswordField reEnterPasswordField;
-
-    @FXML
-    private Button signUp;
-
     @FXML
     private TextField usernameField;
 
@@ -26,23 +22,21 @@ public class newUserController {
     @FXML
     public void newRegistration() {
         String username = usernameField.getText();
-        String password1 = passwordField.getText();
-        String password2 = reEnterPasswordField.getText();
+        String password = passwordField.getText();
+        String reEnteredPassword = reEnterPasswordField.getText();
 
-        if (password1.equals(password2)) {
-            if (controller.registerNewUser(username, password1, null)) {
+        if (password.equals(reEnteredPassword)) {
+            if (controller.registerNewUser(username, password, null)) {
                 System.out.println(">> Registration successful <<");
                 Main main = new Main();
                 main.changeScene("LoginView.fxml");
             }
             else {
-                System.out.println(">> Registration failed <<");
+                System.out.println(">> Registration failed <<"); //TODO implementera felmeddelanden
             }
         }
         else {
-            System.out.println(">> Passwords do not match <<");
+            System.out.println(">> Passwords do not match <<"); //TODO implementera felmeddelanden
         }
-
     }
-
 }

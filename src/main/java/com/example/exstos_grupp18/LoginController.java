@@ -1,6 +1,6 @@
 package com.example.exstos_grupp18;
 
-import ClientSide.Client;
+import client.Client;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +31,7 @@ public class LoginController {
 
     //todo javadoca
     public void newUserScene (ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUserScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUserView.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -47,8 +47,8 @@ public class LoginController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             root = fxmlLoader.load();
             //Används för att överföra data
-            MenuContrroller menuContrroller = fxmlLoader.getController();
-            menuContrroller.setUserLabel(username);
+            MainMenuController mainMenuController = fxmlLoader.getController();
+            mainMenuController.setUserLabel(username);
             new Client(null,null,8080);
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
