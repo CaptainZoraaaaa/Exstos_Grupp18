@@ -62,7 +62,12 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-       backToKanban(event);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
     /**
@@ -71,11 +76,6 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
-        String header = taskHeaderInputField.getText();
-        String description = taskDescriptionInputField.getText();
-        String deadlineDate = deadline.toString();
-        String creator = creatorField.getText();
-        String comment = taskCommentInputField.getText();
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
         currentTask.setEstimatedTime(deadline.toString());
@@ -84,7 +84,13 @@ public class EditTaskController implements Initializable {
         //currentTask.setCreator(creator); behöver ändras så att creator är sträng i task eller att fieldet är en user.
         currentTask.setComments(selectedUser, taskCommentInputField.getText());
         currentTask.setFlaggedForHelp(flagged);
-        backToKanban(event);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
     /**
@@ -153,13 +159,5 @@ public class EditTaskController implements Initializable {
         // detta ska fixas då tasks deadline inte är av typpen localDate taskDeadlineDate.setValue();
         // måste kontrolleras selectedUser = task.getAssignees();
         statusList.setValue(task.getCurrentStatus());
-    }
-    public void backToKanban(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
     }
 }
