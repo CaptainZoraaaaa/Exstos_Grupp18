@@ -61,8 +61,13 @@ public class EditTaskController implements Initializable {
      * @param event triggered by clicking the button backToPreviousScreenButton.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
-
+    void backToPreviousScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
     /**
@@ -71,7 +76,6 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
-
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
         currentTask.setEstimatedTime(deadline.toString());
@@ -85,6 +89,7 @@ public class EditTaskController implements Initializable {
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setScene(scene);
         stage.setScene(scene);
     }
 
