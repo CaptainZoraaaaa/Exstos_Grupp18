@@ -1,1 +1,1 @@
-2022-05-10T10:26:40.473367808: User Pelle's registration couldn't be verified: username is not unique
+2022-05-10T13:03:59.318873049: Bengt was added to the userMap.

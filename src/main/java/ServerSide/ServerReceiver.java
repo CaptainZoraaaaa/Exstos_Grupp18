@@ -3,6 +3,7 @@ package ServerSide;
 import Model.Package;
 
 import java.io.BufferedInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -31,12 +32,14 @@ public class ServerReceiver extends Thread{
     public void run() {
 
             try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()))) {
-                while (!Thread.interrupted()) {
+                while (!socket.isClosed()) {
                     packageObject = (Package) ois.readObject();
                     clientHandler.packageRecieved(packageObject);
                 }
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("end of ");
             }
     }
 }
