@@ -42,6 +42,9 @@ public class TaskController extends Thread implements Initializable {
     private Parent root;
     private int taskId;
     private Controller controller = Controller.getInstance();
+  //  private Image unflagged = new Image(String.valueOf(getClass().getResource("@../../../images/white_flag.png")));
+  //  private Image flaggedForHelp = new Image(String.valueOf(getClass().getResource("orange_flag.png")));
+
 
     @FXML
     void print(ActionEvent event) throws IOException { //todo javadoca
@@ -70,8 +73,9 @@ public class TaskController extends Thread implements Initializable {
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText(current.get(i).getCurrentStatus().toString());
-                javafx.scene.image.Image image = new Image("@../../../images/clock.png");
-                helpImage.setImage(image);
+                //changeFlag(current.get(i));
+                //javafx.scene.image.Image image = new Image("@../../../images/clock.png");
+               // helpImage.setImage(image);
             }
         }
     }
@@ -83,4 +87,14 @@ public class TaskController extends Thread implements Initializable {
     public void setUsers(ActionEvent event){
         test = status.getValue();
     } //todo javadoca
+    /*
+    public void changeFlag(Task currentTask){
+        if (currentTask.isFlaggedForHelp()){
+            helpImage.setImage(flaggedForHelp);
+        }
+        else {
+            helpImage.setImage(unflagged);
+        }
+
+    }*/
 }
