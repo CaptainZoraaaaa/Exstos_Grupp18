@@ -1,5 +1,6 @@
 package ServerSide;
 
+import Model.Package;
 import Model.Project;
 import Model.User;
 
@@ -15,7 +16,7 @@ public class ServerController {
      * Constructor for ServerController that creates object of class Server
      */
     public ServerController() {
-        server = new Server();
+        server = new Server(this);
     }
 
     /**
@@ -101,27 +102,38 @@ public class ServerController {
     }
 
     /**
-     * @author Linnéa Flystam
+     * @author Linnéa Flystam & Anna Håkansson
      *
      * @param username the users username
      * @param password the users password
      *
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
-    public boolean verifyCredentials(String username, String password) {
-        return server.verifyCredentials(username, password);
+    public void verifyCredentials(ClientHandler clientHandler, String username, String password) {
+        User user;
+        boolean loginOK = server.verifyCredentials(username, password);
+        if (loginOK) {
+            user = server.getUserMap().get(username);
+        }
+        else {
+            user = null;
+        }
+        Package loginReply = new Package.PackageBuilder().ok(loginOK).userFromServer(user).type(Package.LOGIN_VERIFICATION).build();
+        clientHandler.sendMessage(loginReply);
     }
 
     /**
-     * @author Linnéa Flystam
+     * @author Linnéa Flystam & Anna Håkansson
      *
      * @param user user to be verified
      * @return call to the method in class Server
      *
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
-    public boolean verifyRegistration(User user) {
-        return server.verifyRegistration(user);
+    public void verifyRegistration(ClientHandler clientHandler, User user) {
+        boolean registrationOK = server.newUserRegistration(user);
+        Package reply = new Package.PackageBuilder().ok(registrationOK).type(Package.REGISTRATION_VERIFICATION).build();
+        clientHandler.sendMessage(reply);
     }
 
     /**
@@ -133,7 +145,7 @@ public class ServerController {
      */
     public void deleteUser(User user) {
         server.deleteUser(user);
-    }
+    } //lägg till att ta bort från projekt
 
     /**
      * @author Linnéa Flystam

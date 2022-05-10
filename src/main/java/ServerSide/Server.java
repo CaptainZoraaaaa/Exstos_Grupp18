@@ -25,8 +25,8 @@ public class Server {
     private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
     private ArrayList<User> onlineUsers = new ArrayList<>();
-    private ServerBuffer<Package> serverBuffer = new ServerBuffer<>();
-    private ServerPackageHandler serverPackageHandler = new ServerPackageHandler(this, serverBuffer);
+    private ServerPackageHandler serverPackageHandler;
+    private ServerController serverController;
 
     /**
      * @author Anna Håkansson
@@ -34,7 +34,9 @@ public class Server {
      * Constructor for server. The maps gets assigned saved values
      * from .dat-files and then the server connects (e.g. starting the serversocket)
      */
-    public Server() {
+    public Server(ServerController serverController) {
+        this.serverController = serverController;
+        serverPackageHandler  = new ServerPackageHandler(serverController);
         clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
         userMap = readMapFromFile("user");
         projectMap = readMapFromFile("project");

@@ -25,7 +25,7 @@ public class Package implements Serializable {
     public static final int PROJECT_EDITED = 10; //project object
     public static final int PROJECT_REMOVED = 11; //project object
 
-    public static final int LOGIN_VERIFICATION = 12; //boolean (from server)
+    public static final int LOGIN_VERIFICATION = 12; //boolean & user (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
     public static final int PROJECT_UPDATE = 14;
 
@@ -38,6 +38,7 @@ public class Package implements Serializable {
     private boolean OK;
     private int type;
     private String password;
+    private User userFromServer;
 
     public Package() {
     }
@@ -109,6 +110,14 @@ public class Package implements Serializable {
         this.password = password;
     }
 
+    public User getUserFromServer() {
+        return userFromServer;
+    }
+
+    public void setUserFromServer(User userFromServer) {
+        this.userFromServer = userFromServer;
+    }
+
     /**
      * Inner builder class for packages.
      */
@@ -134,11 +143,7 @@ public class Package implements Serializable {
             return this;
         }
 
-        /**
-         * This method is used to send or set a list of tasks containing one or more tasks.
-         * @param tasks An ArrayList of tasks.
-         * @return returns itself.
-         */
+
         public PackageBuilder password(String password){
             aPackage.setPassword(password);
             return this;
@@ -189,9 +194,18 @@ public class Package implements Serializable {
             aPackage.setOK(ok);
             return this;
         }
-
+        /**
+         * This method is used to send or set a list of tasks containing one or more tasks.
+         * @param tasks An ArrayList of tasks.
+         * @return returns itself.
+         */
         public PackageBuilder tasks(ArrayList<Task> tasks){
             aPackage.setTasks(tasks);
+            return this;
+        }
+
+        public PackageBuilder userFromServer(User userFromServer){
+            aPackage.setUserFromServer(userFromServer);
             return this;
         }
 

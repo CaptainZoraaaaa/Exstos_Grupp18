@@ -1,14 +1,17 @@
-package ServerSide;
+/*package ServerSide;
 
 import Model.Package;
 
+/**
+ * @author Anna Håkansson
+ *
+ */
+/*
 public class ServerPackageHandler {
-    private Server server;
-    private ServerBuffer<Package> serverBuffer;
+    private ServerController serverController;
 
-    public ServerPackageHandler(Server server, ServerBuffer<Package> serverBuffer) {
-        this.server = server;
-        this.serverBuffer = serverBuffer;
+    public ServerPackageHandler(ServerController serverController) {
+        this.serverController = serverController;
     }
     public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca och implementera samliga ordentligt
         switch (newPackage.getType()) {
@@ -17,9 +20,7 @@ public class ServerPackageHandler {
                 server.addClient(newPackage.getSender().getUsername(), clientHandler);
                 break;
             case Package.NEW_USER_REGISTRATION:
-                boolean registrationOK = server.newUserRegistration(newPackage.getSender());
-                Package reply = new Package.PackageBuilder().ok(registrationOK).type(Package.REGISTRATION_VERIFICATION).build();
-                clientHandler.sendMessage(reply);
+                serverController.verifyRegistration(clientHandler, newPackage.getSender());
                 break;
             case Package.USER_ASSIGNED_TO_PROJECT:
                 server.addUserToProject(newPackage.getUsername(), newPackage.getProject());
@@ -28,7 +29,7 @@ public class ServerPackageHandler {
                 server.removeUserFromProject(newPackage.getSender(), newPackage.getProject());
                 break;
             case Package.USER_DELETED:
-                server.deleteUser(newPackage.getSender());
+                serverController.deleteUser(newPackage.getSender());
                 break;
             case Package.USER_LOGGED_OUT:
                 server.removeOnlineUser(newPackage.getSender());
@@ -52,10 +53,8 @@ public class ServerPackageHandler {
                 server.deleteProject(newPackage.getProject());
                 break;
             case Package.LOGIN_VERIFICATION:
-                server.verifyCredentials(newPackage.getUsername(), newPackage.getPassword());
-                boolean loginOK = server.newUserRegistration(newPackage.getSender());
-                Package loginReply = new Package.PackageBuilder().ok(loginOK).type(Package.LOGIN_VERIFICATION).build();
-                clientHandler.sendMessage(loginReply);
+                serverController.verifyCredentials(clientHandler, newPackage.getUsername(), newPackage.getPassword());
+
         }
     }
-}
+} */
