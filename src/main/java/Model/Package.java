@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * This class is used to package different objects in order to send multiple objects at once and redistribute them.
  * @author Christian Edvall
  */
-public class Package {
+public class Package implements Serializable {
     /**
      * The below static final ints are used as identifiers for what kind of objects the package contains.
      */

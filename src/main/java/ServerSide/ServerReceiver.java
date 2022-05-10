@@ -19,6 +19,7 @@ public class ServerReceiver extends Thread{
     public ServerReceiver(ClientHandler clientHandler, ServerBuffer serverBuffer, Socket socket) {
         this.clientHandler = clientHandler;
         this.serverBuffer = serverBuffer;
+        this.socket = socket;
     }
 
     /**
@@ -28,13 +29,14 @@ public class ServerReceiver extends Thread{
      */
     @Override
     public void run() {
-        while (!Thread.interrupted()){
+
             try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()))) {
-                packageObject = (Package) ois.readObject();
-                clientHandler.packageRecieved(packageObject);
+                while (!Thread.interrupted()) {
+                    packageObject = (Package) ois.readObject();
+                    clientHandler.packageRecieved(packageObject);
+                }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        }
     }
 }

@@ -16,7 +16,7 @@ public class ClientHandler extends Thread {
     private Socket socket; //the socket created upon connection
     private Server server; //the server
     private User user; //user associated to the client
-  //  private ServerStream serverStream;
+    private ServerStream serverStream;
 
     /**
      * @author Anna Håkansson
@@ -30,8 +30,8 @@ public class ClientHandler extends Thread {
     public ClientHandler(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
-        //serverStream = new ServerStream(socket, this)
-
+        serverStream = new ServerStream(this.socket, this, new ServerBuffer()); //TODO fixa med buffern
+        System.out.println("Clienthandler created");
     }
 
     /**

@@ -5,16 +5,23 @@ import Model.User;
 import client.Client;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class TestClient {
     public static void main(String[] args) {
-        TestClientModel client = new TestClientModel(new User(), "localhost", 8080);
-        client.connect();
+        try {
+            Socket socket = new Socket("localhost", 8080);
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-        Package package1 = new Package.PackageBuilder().type(1).build();
-        client.sendUpdate(package1);
+            User user = new User.UserBuilder().username("Pelle").password("kuken").build();
 
+            Package package1 = new Package.PackageBuilder().type(1).sender(user).build();
 
+            oos.writeObject(package1);
+            oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -20,6 +20,9 @@ public class ServerTestMain {
         server.writeMapToFile(userMap, "user");
         server.writeMapToFile(projectMap, "project");
 
+        User user = new User.UserBuilder().username("Pelle").password("kuken").build();
+        server.addUser(user);
+
         System.out.println("All maps written");
 
 

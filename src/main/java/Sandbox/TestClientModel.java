@@ -55,7 +55,6 @@ public class TestClientModel extends Client {
             this.socket = new Socket("localhost", 8080);
             this.oos = new ObjectOutputStream(socket.getOutputStream());
             this.ois = new ObjectInputStream(socket.getInputStream());
-            System.out.println("io created");
             //new InputClient().start();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,5 +99,13 @@ public class TestClientModel extends Client {
     }
     public void testning(){
         System.out.println("körs");
+    }
+
+    public ObjectInputStream getOis() {
+        return ois;
+    }
+
+    public ObjectOutputStream getOos() {
+        return oos;
     }
 }
