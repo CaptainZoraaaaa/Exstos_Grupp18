@@ -12,12 +12,6 @@ public class Package implements Serializable {
     /**
      * The below static final ints are used as identifiers for what kind of objects the package contains.
      */
-    public static final int USER = 0;
-    public static final int TASK = 1;
-    public static final int BOARD = 2;
-    public static final int PROJECT = 3;
-    public static final int MIXED = 4;
-
     public static final int USER_LOGGED_IN = 0; //user object (sender is enough)
     public static final int NEW_USER_REGISTRATION = 1; //user object
     public static final int USER_ASSIGNED_TO_PROJECT = 2; //String username & project object
@@ -33,6 +27,7 @@ public class Package implements Serializable {
 
     public static final int LOGIN_VERIFICATION = 12; //boolean (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
+    public static final int PROJECT_UPDATE = 14;
 
     private User sender;
     private ArrayList<Task> tasks;
@@ -42,6 +37,7 @@ public class Package implements Serializable {
     private String username;
     private boolean OK;
     private int type;
+    private String password;
 
     public Package() {
     }
@@ -105,6 +101,14 @@ public class Package implements Serializable {
         this.OK = OK;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      * Inner builder class for packages.
      */
@@ -135,8 +139,8 @@ public class Package implements Serializable {
          * @param tasks An ArrayList of tasks.
          * @return returns itself.
          */
-        public PackageBuilder tasks(ArrayList<Task> tasks){
-            aPackage.setTasks(tasks);
+        public PackageBuilder password(String password){
+            aPackage.setPassword(password);
             return this;
         }
 
@@ -183,6 +187,11 @@ public class Package implements Serializable {
          */
         public PackageBuilder ok(boolean ok) {
             aPackage.setOK(ok);
+            return this;
+        }
+
+        public PackageBuilder tasks(ArrayList<Task> tasks){
+            aPackage.setTasks(tasks);
             return this;
         }
 

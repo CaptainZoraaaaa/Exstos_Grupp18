@@ -17,6 +17,7 @@ public class ClientHandler extends Thread {
     private Server server; //the server
     private User user; //user associated to the client
     private ServerStream serverStream;
+    private ServerBuffer<Package> serverBuffer;
 
     /**
      * @author Anna Håkansson
@@ -30,18 +31,19 @@ public class ClientHandler extends Thread {
     public ClientHandler(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
-        serverStream = new ServerStream(this.socket, this, new ServerBuffer()); //TODO fixa med buffern
+        serverBuffer = new ServerBuffer<>();
+        serverStream = new ServerStream(this.socket, this, serverBuffer); //TODO fixa med buffern
         System.out.println("Clienthandler created");
     }
 
     /**
      * @author Anna Håkansson
-     * @param obj to be sent
+     * @param packageOut to be sent
      *
      * Method for sending a message from the server to the client.
      */
-    public synchronized void sendMessage(Object obj) { //todo ändra till message sen när klassen finns
-        //serverSender.send(obj);
+    public synchronized void sendMessage(Package packageOut) { //todo ändra till message sen när klassen finns
+        serverBuffer.put(packageOut);
     }
 
     /**
@@ -52,7 +54,7 @@ public class ClientHandler extends Thread {
      * in the ServerReciever.
      */
     public synchronized void packageRecieved(Package newPackage) {
-        server.unpackNewPackage(newPackage);
+        server.newPackage(this, newPackage);
         System.out.println("Package recieved in client handler");
     }
 

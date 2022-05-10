@@ -6,7 +6,6 @@ import Model.Task;
 import Model.User;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +25,8 @@ public class Server {
     private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
     private ArrayList<User> onlineUsers = new ArrayList<>();
+    private ServerBuffer<Package> serverBuffer = new ServerBuffer<>();
+    private ServerPackageHandler serverPackageHandler = new ServerPackageHandler(this, serverBuffer);
 
     /**
      * @author Anna Håkansson
@@ -393,46 +394,7 @@ public class Server {
         }
         writeLog(logtext);
     }
-    public void unpackNewPackage(Package newPackage) { //TODO implementera efter diskussion
-        switch (newPackage.getType()) {
-            case 0:
-                addOnlineUser(newPackage.getSender());
-                break;
-            case 1:
-                newUserRegistration(newPackage.getSender());
-                break;
-            case 2:
-                addUserToProject(newPackage.getUsername(), newPackage.getProject());
-                break;
-            case 3:
-                removeUserFromProject(newPackage.getSender(), newPackage.getProject());
-                break;
-            case 4:
-                deleteUser(newPackage.getSender());
-                break;
-            case 5:
-                removeOnlineUser(newPackage.getSender());
-                break;
-            case 6:
-                addTaskToProject(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 7:
-                updateTask(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 8:
-                removeTask(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 9:
-                addProject(newPackage.getProject());
-                break;
-            case 10:
-                updateProject(newPackage.getProject());
-                break;
-            case 11:
-                deleteProject(newPackage.getProject());
-                break;
-        }
-    }
+
 
     public synchronized void deleteProject(Project project) {
         String logtext;
@@ -441,7 +403,7 @@ public class Server {
             logtext = String.format("Project %s: %s was deleted from the projectMap.", project.getProjectID(), project.getProjectName());
         }
         else {
-            logtext = String.format("Project %s: %s couldn't not be deleted from the projectMap: Map doesn't contain project ID");
+            logtext = String.format("Project %s: %s couldn't not be deleted from the projectMap: Map doesn't contain project ID", project.getProjectID(), project.getProjectName());
         }
         writeLog(logtext);
     }
@@ -599,4 +561,7 @@ public class Server {
     }
 
 
+    public void newPackage(ClientHandler client, Package newPackage) {
+        serverPackageHandler.unpackNewPackage(client, newPackage);
+    }
 }
