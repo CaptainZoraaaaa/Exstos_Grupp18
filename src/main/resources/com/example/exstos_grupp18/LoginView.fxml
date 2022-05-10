@@ -29,17 +29,18 @@
                   <Image url="@../../../images/locker.png" />
                </image>
             </ImageView>
-            <Label layoutX="33.0" layoutY="349.0" text="Username">
+            <Label focusTraversable="false" layoutX="33.0" layoutY="349.0" text="Username">
                <font>
                   <Font name="Roboto" size="45.0" />
                </font>
             </Label>
             <TextField fx:id="usernameTextField" layoutX="277.0" layoutY="344.0" prefHeight="57.0" prefWidth="401.0" />
-            <Label layoutX="33.0" layoutY="473.0" text="Password">
+            <Label focusTraversable="false" layoutX="33.0" layoutY="473.0" text="Password">
                <font>
                   <Font name="Roboto" size="45.0" />
                </font>
             </Label>
+            <PasswordField fx:id="passwordTextField" layoutX="277.0" layoutY="473.0" prefHeight="57.0" prefWidth="401.0" />
             <Button fx:id="loginBtn" layoutX="515.0" layoutY="585.0" mnemonicParsing="false" onAction="#logIn" prefHeight="61.0" prefWidth="160.0" text="LOGIN">
                <font>
                   <Font name="Candara Bold" size="26.0" />
@@ -50,7 +51,6 @@
                   <Font name="Candara Bold" size="26.0" />
                </font>
             </Button>
-            <PasswordField fx:id="passwordTextField" layoutX="277.0" layoutY="473.0" prefHeight="57.0" prefWidth="401.0" />
          </children>
       </AnchorPane>
    </right>

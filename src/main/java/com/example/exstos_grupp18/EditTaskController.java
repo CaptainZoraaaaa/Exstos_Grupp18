@@ -53,6 +53,7 @@ public class EditTaskController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Task currentTask;
 
     /**
      * Method for returning to previous screen.
@@ -60,8 +61,8 @@ public class EditTaskController implements Initializable {
      * @param event triggered by clicking the button backToPreviousScreenButton.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
-
+    void backToPreviousScreen(ActionEvent event) throws IOException {
+       backToKanban(event);
     }
 
     /**
@@ -70,11 +71,20 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
+        String header = taskHeaderInputField.getText();
+        String description = taskDescriptionInputField.getText();
+        String deadlineDate = deadline.toString();
+        String creator = creatorField.getText();
+        String comment = taskCommentInputField.getText();
+        currentTask.setHeader(taskHeaderInputField.getText());
+        currentTask.setDescription(taskDescriptionInputField.getText());
+        currentTask.setEstimatedTime(deadline.toString());
+        //currentTask.setAssignees(selectedUser); behöver ändras till antingen userobject eller user ska vara username istället.
+        currentTask.setCurrentStatus(selectedStatus);
+        //currentTask.setCreator(creator); behöver ändras så att creator är sträng i task eller att fieldet är en user.
+        currentTask.setComments(selectedUser, taskCommentInputField.getText());
+        currentTask.setFlaggedForHelp(flagged);
+        backToKanban(event);
     }
 
     /**
@@ -114,14 +124,6 @@ public class EditTaskController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { //todo lägg till kommentarer i metodkropp
-        Task task = new Task.TaskBuilder()
-                .header("Exsto")
-                .description("Alla är vi här")
-                .estimatedTime("123")
-                .comments("Bosse", "hej där.")
-                .flaggedForHelp(true)
-                .build();
-
         assigneeList.getItems().addAll(users);
         assigneeList.setOnAction(this::setUsers);
         statusList.getItems().addAll(status);
@@ -145,10 +147,19 @@ public class EditTaskController implements Initializable {
     }
 
     public void loadedTask(Task task) {
+        this.currentTask = task;
         taskHeaderInputField.setText(task.getHeader());
         taskDescriptionInputField.setText(task.getDescription());
         // detta ska fixas då tasks deadline inte är av typpen localDate taskDeadlineDate.setValue();
         // måste kontrolleras selectedUser = task.getAssignees();
         statusList.setValue(task.getCurrentStatus());
+    }
+    public void backToKanban(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 }

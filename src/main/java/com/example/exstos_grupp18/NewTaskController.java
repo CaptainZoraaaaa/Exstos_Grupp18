@@ -53,8 +53,8 @@ public class NewTaskController implements Initializable {
 
 
     @FXML
-    void backToPreviousScreen(ActionEvent event) {
-
+    void backToPreviousScreen(ActionEvent event) throws IOException {
+        backToKanban(event);
     }
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
@@ -65,12 +65,7 @@ public class NewTaskController implements Initializable {
         String comment = taskCommentInputField.getText();
         Task task = new Task.TaskBuilder().header(header).description(description).estimatedTime(deadlineDate).currentStatus(selectedStatus).id(controller.getTaskSize()).build();
         controller.createTask(task);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml")); //todo flytta till egen metod
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        backToKanban(event);
     }
     @FXML
     void flagForHelp(ActionEvent event) {
@@ -92,6 +87,14 @@ public class NewTaskController implements Initializable {
     }
     public void setUsers(ActionEvent event){
         currentUser = assigneeList.getValue();
+    }
+    public void backToKanban(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
 }
