@@ -55,6 +55,13 @@ public class NewUserController {
             System.out.println(">> Passwords do not match <<"); //TODO implementera felmeddelanden
         }
     }
+
+    /**
+     * This method is used to return to the previous screen in this case LogInView.fxml.
+     * @author Christian Edvall
+     * @param event event
+     * @throws IOException throws this exception.
+     */
     @FXML
     void backToPreviousScreenButton(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));

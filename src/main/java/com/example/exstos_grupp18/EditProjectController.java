@@ -54,6 +54,10 @@ public class EditProjectController implements Initializable {
      * This method is used to edit an existing project.
      * @param event ActionEvent that reacts when the "create" button is pressed.
      */
+    /**
+     * This method is used to edit a projects values.
+     * @param event event
+     */
     @FXML
     void editProject(ActionEvent event) {
         String header = projectHeaderInputField.getText();
@@ -68,11 +72,11 @@ public class EditProjectController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        assigneeList.getItems().addAll(users);
-        assigneeList.setOnAction(this::setUsers);
+        assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
+        assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
     }
     /**
-     * Method for setting the values in the list.
+     * Method for setting the values in the assigneeList.
      * @param event event.
      */
     private void setUsers(ActionEvent event) {

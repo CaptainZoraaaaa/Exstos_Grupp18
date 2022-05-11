@@ -130,7 +130,7 @@ public class KanbanViewController implements Initializable {
     }
 
     /**
-     * This method is ues for going back to the main menu.
+     * This method is used for going back to the main menu.
      * @author Christian Edvall
      * @param event
      */

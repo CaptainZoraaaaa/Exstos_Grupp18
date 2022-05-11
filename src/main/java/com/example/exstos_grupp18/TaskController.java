@@ -60,6 +60,10 @@ public class TaskController extends Thread implements Initializable {
         stage.setScene(scene);
     }
 
+    /**
+     *
+     * @author Max Tiderman & Christian Edvall.
+     */
     @Override
     public void run() {
         ArrayList<Task> current = controller.getTask();
