@@ -19,7 +19,7 @@ import java.io.IOException;
 public class NewUserController {
 
     @FXML
-    private TextField passwordField; //TODO ändra till passwordfield
+    private PasswordField passwordField;
     @FXML
     private PasswordField reEnterPasswordField;
     @FXML
@@ -52,5 +52,13 @@ public class NewUserController {
         else {
             System.out.println(">> Passwords do not match <<"); //TODO implementera felmeddelanden
         }
+    }
+    @FXML
+    void backToPreviousScreenButton(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 }
