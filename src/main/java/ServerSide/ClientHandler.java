@@ -3,6 +3,7 @@ package ServerSide;
 import Model.Package;
 import Model.User;
 
+import java.io.IOException;
 import java.net.Socket;
 
 /**
@@ -70,6 +71,14 @@ public class ClientHandler extends Thread {
         if (user != null) { //if user isnt null
             this.user = user; //assign the user to instance variable
             server.addClient(user.getUsername(), this); //add the username (key) and this client (value) to the servers clientMap
+        }
+    }
+
+    public void disconnect() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

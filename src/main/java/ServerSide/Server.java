@@ -24,7 +24,7 @@ public class Server {
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
-    private ArrayList<User> onlineUsers = new ArrayList<>();
+    private ArrayList<String> onlineUsers = new ArrayList<>();
     private ServerPackageHandler serverPackageHandler;
     private ServerController serverController;
 
@@ -358,8 +358,7 @@ public class Server {
 
             if(clientMap.containsKey(username)) { //if the clientmap contains this username
                 if (onlineUsers.contains(user)) {
-                    ClientHandler clientHandler = clientMap.get(username); //get the client
-                    clientHandler.sendMessage(toSend); //send the message
+                    clientMap.get(username).sendMessage(toSend); //get the client and send the message
                     logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
                 }
                 else {
@@ -411,33 +410,32 @@ public class Server {
         writeLog(logtext);
     }
 
-    public synchronized void removeTask(ArrayList<Task> tasks, Project project) {
+    public synchronized void removeTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                  //  projectMap.get(project.getProjectID()).getTasks().add(task);  //TODO denna utgår ifrån att det finns en arraylist med tasks i project
-                }
-
+            if (task != null) {
+                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTASK_ID() == task.getTASK_ID());
+                //todo logtext
             }
         }
     }
 
-    public synchronized void updateTask(ArrayList<Task> tasks, Project project) {
+    public synchronized void updateTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                    projectMap.get(project.getProjectID()); //TODO tänk på den och återkom
+            if (task != null) {
+                for(Task taskInList : projectMap.get(project.getProjectID()).getTasks()) {
+                    if(taskInList.getTASK_ID() == task.getTASK_ID()) {
+                        taskInList = task;
+                    }
+                    //todo logtext
                 }
             }
         }
     }
 
-    public synchronized void addTaskToProject(ArrayList<Task> tasks, Project project) {
+    public synchronized void addTaskToProject(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                   //projectMap.get(project.getProjectID()).getTasks().add(task);
-                }
+            if (task != null) {
+                projectMap.get(project.getProjectID()).getTasks().add(task);
             }
         }
     }
@@ -503,7 +501,7 @@ public class Server {
     public synchronized void addOnlineUser(User user) {
         String logtext;
         if (!onlineUsers.contains(user)) { //if list does not contain this user
-            onlineUsers.add(user); //add it to the list
+            onlineUsers.add(user.getUsername()); //add it to the list
             logtext = String.format("User %s was added to the onlineUsers-list", user.getUsername());
         }
         else {
@@ -566,5 +564,9 @@ public class Server {
 
     public void newPackage(ClientHandler client, Package newPackage) {
         serverPackageHandler.unpackNewPackage(client, newPackage);
+    }
+
+    public ArrayList<String> getOnlineUsers() {
+        return onlineUsers;
     }
 }

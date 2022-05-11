@@ -2,6 +2,7 @@ package ServerSide;
 
 import Model.Package;
 import Model.Project;
+import Model.Task;
 import Model.User;
 
 import java.util.HashMap;
@@ -74,14 +75,19 @@ public class ServerController {
     }
 
     /**
-     * @author Linnéa Flystam
+     * @author Linnéa Flystam & Anna håkansson
      *
      * @param project a project that a user wants to add
      *
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
-    public void addProject(Project project) {
+    public void newProject(Project project) {
+        int projectID = getIDFromFile(TYPE_PROJECT);
+        writeNewID(projectID, TYPE_PROJECT);
+        project.setProjectID(projectID);
         server.addProject(project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
     }
 
     /**
@@ -109,35 +115,45 @@ public class ServerController {
     /**
      * @author Linnéa Flystam & Anna Håkansson
      *
+     * @param clientHandler the client that tried to log in
      * @param username the users username
      * @param password the users password
      *
-     * Method that calls to method with the same name in class Server with incoming parameters.
+     * Method that checks if the credentials are valid, and if they are
+     * it fetches the user object from userMap, adds onlineUser, adds the client
+     * to clientMap and sends the user object back to the client together with boolean
+     * loginOK.
+     *
+     * If credentials aren't valid, it sends back a user with null value and loginOK with
+     * value false.
      */
     public void verifyCredentials(ClientHandler clientHandler, String username, String password) {
         User user;
-        boolean loginOK = server.verifyCredentials(username, password);
-        if (loginOK) {
-            user = server.getUserMap().get(username);
+        boolean loginOK = server.verifyCredentials(username, password); //check if credentials are right
+        if (loginOK) { //if they were
+            user = server.getUserMap().get(username); //get user from userMap
+            server.addOnlineUser(user); //add it to online users
+            server.addClient(user.getUsername(), clientHandler); //add the client to clientMap
         }
         else {
-            user = null;
+            user = null; //else user is null
         }
         Package loginReply = new Package.PackageBuilder()
                 .ok(loginOK)
                 .userFromServer(user).
                 type(Package.LOGIN_VERIFICATION).
                 build();
-        clientHandler.sendMessage(loginReply);
+        clientHandler.sendMessage(loginReply); //send reply with if its ok and correct user if it was ok
     }
 
     /**
      * @author Linnéa Flystam & Anna Håkansson
      *
+     * @param clientHandler client that is registering
      * @param user user to be verified
-     * @return call to the method in class Server
      *
-     * Method that calls to method with the same name in class Server with incoming parameters.
+     * Method that checks if the username is unique and builds a new user
+     * object, adds it to usermap and sends it back to the client.
      */
     public void newRegistration(ClientHandler clientHandler, User user) {
         boolean registrationOK = server.verifyRegistration(user);
@@ -148,6 +164,7 @@ public class ServerController {
         else {
             newUser = null;
         }
+        addUser(user);
         Package reply = new Package.PackageBuilder()
                 .ok(registrationOK)
                 .userFromServer(newUser)
@@ -156,6 +173,10 @@ public class ServerController {
         clientHandler.sendMessage(reply);
     }
 
+    /**
+     * @param user
+     * @return
+     */
     public User buildNewUser(User user) {
         return new User.UserBuilder()
                 .username(user.getUsername())
@@ -176,6 +197,8 @@ public class ServerController {
         for(Map.Entry<Integer, Project> entry : server.getProjectMap().entrySet()) {
             if(entry.getValue().getAssignedUsers().containsKey(user.getUsername())) {
                 server.removeUserFromProject(user, entry.getValue());
+                Project toSend = getProjectMap().get(entry.getValue().getProjectID());
+                sendOutProjectUpdate(toSend);
             }
         }
     } //lägg till att ta bort från projekt
@@ -250,17 +273,7 @@ public class ServerController {
         return server.getPort();
     }
 
-    /**
-     * @author Anna Håkansson
-     *
-     * @param clientHandler .
-     * @param user
-     */
-    public void userLoggedIn(ClientHandler clientHandler, User user) {
-        server.addOnlineUser(user);
-        server.addClient(user.getUsername(), clientHandler);
-        //TODO skicka user tillbaka
-    }
+
 
     /**
      * @author Anna Håkansson
@@ -269,7 +282,8 @@ public class ServerController {
      */
     public void userAssignedToProject(String username, Project project) {
         server.addUserToProject(username, project);
-        sendOutProjectUpdate(project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
 
     }
 
@@ -284,8 +298,57 @@ public class ServerController {
         server.sendProjectUpdateToUsers(toSend);
     }
 
-    public void userRemovedFromProject(User sender, Project project) {
-        server.removeUserFromProject(sender, project);
+    public void userRemovedFromProject(User user, Project project) {
+        server.removeUserFromProject(user, project);
         sendOutProjectUpdate(project);
+    }
+
+    public void userLoggedOut(User user) {
+        server.removeOnlineUser(user);
+        server.getClientMap().get(user.getUsername()).disconnect();
+        server.getClientMap().remove(user.getUsername());
+    }
+
+    public synchronized void newTask(Task task, Project project) {
+        int taskID = getIDFromFile(TYPE_TASK);
+        writeNewID(taskID, TYPE_TASK);
+        task.setTASK_ID(taskID);
+        server.addTaskToProject(task, project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
+    }
+
+    public void taskEdited(Task task, Project project) {
+        server.updateTask(task, project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
+    }
+
+    public void taskRemoved(Task task, Project project) {
+        server.removeTask(task, project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
+    }
+
+    public void projectEdited(Project project) {
+        server.updateProject(project);
+        Project toSend = getProjectMap().get(project.getProjectID());
+        sendOutProjectUpdate(toSend);
+    }
+
+    public void projectRemoved(Project project) {
+        Package toSend = new Package.PackageBuilder()
+                .type(Package.PROJECT_REMOVED)
+                .project(project)
+                .build();
+        for(Map.Entry<String, User> user : getUserMap().entrySet()) {
+            if(server.getOnlineUsers().contains(user.getValue())) {
+                getClientMap().get(user.getKey()).sendMessage(toSend);
+            }
+            else {
+                user.getValue().getProjects().remove(project.getProjectID());
+            }
+        }
+        server.deleteProject(project);
     }
 }

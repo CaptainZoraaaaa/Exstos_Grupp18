@@ -27,10 +27,10 @@ public class Package implements Serializable {
 
     public static final int LOGIN_VERIFICATION = 12; //boolean & user (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
-    public static final int PROJECT_UPDATE = 14;
+    public static final int PROJECT_UPDATE = 14; //project update from server
 
     private User sender;
-    private ArrayList<Task> tasks;
+    private Task task;
     private Board board;
     private Project project;
     private LocalDateTime timeStamp;
@@ -51,12 +51,12 @@ public class Package implements Serializable {
         this.sender = sender;
     }
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
+    public Task getTask() {
+        return task;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
-        this.tasks = tasks;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public Board getBoard() {
@@ -196,11 +196,11 @@ public class Package implements Serializable {
         }
         /**
          * This method is used to send or set a list of tasks containing one or more tasks.
-         * @param tasks An ArrayList of tasks.
+         * @param task a task.
          * @return returns itself.
          */
-        public PackageBuilder tasks(ArrayList<Task> tasks){
-            aPackage.setTasks(tasks);
+        public PackageBuilder task(Task task){
+            aPackage.setTask(task);
             return this;
         }
 

@@ -4,6 +4,10 @@ import Model.Package;
 
 /**
  * @author Anna Håkansson
+ * last update: 2022-05-11
+ *
+ * A class for handling packages on the serverside, sending them to the servercontroller
+ * where the corresponding actions are taken.
  *
  */
 public class ServerPackageHandler {
@@ -15,7 +19,7 @@ public class ServerPackageHandler {
     public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca och implementera samliga ordentligt
         switch (newPackage.getType()) {
             case Package.USER_LOGGED_IN:
-                serverController.userLoggedIn(clientHandler, newPackage.getSender());
+                serverController.verifyCredentials(clientHandler, newPackage.getUsername(), newPackage.getPassword());
                 break;
             case Package.NEW_USER_REGISTRATION:
                 serverController.newRegistration(clientHandler, newPackage.getSender());
@@ -30,30 +34,26 @@ public class ServerPackageHandler {
                 serverController.deleteUser(newPackage.getSender());
                 break;
             case Package.USER_LOGGED_OUT:
-                server.removeOnlineUser(newPackage.getSender());
+                serverController.userLoggedOut(newPackage.getSender());
                 break;
             case Package.NEW_TASK:
-                server.addTaskToProject(newPackage.getTasks(), newPackage.getProject());
+                serverController.newTask(newPackage.getTask(), newPackage.getProject());
                 break;
             case Package.TASK_EDITED:
-                server.updateTask(newPackage.getTasks(), newPackage.getProject());
+                serverController.taskEdited(newPackage.getTask(), newPackage.getProject());
                 break;
             case Package.TASK_REMOVED:
-                server.removeTask(newPackage.getTasks(), newPackage.getProject());
+                serverController.taskRemoved(newPackage.getTask(), newPackage.getProject());
                 break;
             case Package.NEW_PROJECT:
-                server.addProject(newPackage.getProject());
+                serverController.newProject(newPackage.getProject());
                 break;
             case Package.PROJECT_EDITED:
-                server.updateProject(newPackage.getProject());
+                serverController.projectEdited(newPackage.getProject());
                 break;
             case Package.PROJECT_REMOVED:
-                server.deleteProject(newPackage.getProject());
+                serverController.projectRemoved(newPackage.getProject());
                 break;
-            case Package.LOGIN_VERIFICATION:
-                serverController.verifyCredentials(clientHandler, newPackage.getUsername(), newPackage.getPassword());
-                break;
-
         }
     }
 }
