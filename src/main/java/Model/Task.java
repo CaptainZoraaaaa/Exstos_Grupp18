@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 public class Task {
     private String header;
     private String description;
-    private String estimatedTime;
+    private LocalDate estimatedTime;
     private Swimlane currentStatus;
     private ArrayList<User> assignees = new ArrayList<>();
     private ArrayList<Task> dependencies  = new ArrayList<>();
@@ -32,10 +33,10 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEstimatedTime() {
+    public LocalDate getEstimatedTime() {
         return estimatedTime;
     }
-    public void setEstimatedTime(String estimatedTime) {
+    public void setEstimatedTime(LocalDate estimatedTime) {
         this.estimatedTime = estimatedTime;
     }
     public Swimlane getCurrentStatus() {
@@ -133,7 +134,7 @@ public class Task {
          * @param time String with a time.
          * @return The method returns itself.
          */
-        public TaskBuilder estimatedTime(String time){
+        public TaskBuilder estimatedTime(LocalDate time){
             task.setEstimatedTime(time);
             return this;
         }

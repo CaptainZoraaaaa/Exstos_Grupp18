@@ -78,7 +78,7 @@ public class EditTaskController implements Initializable {
     void saveChanges(ActionEvent event) throws IOException {
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
-        currentTask.setEstimatedTime(deadline.toString());
+        currentTask.setEstimatedTime(deadline);
         //currentTask.setAssignees(selectedUser); behöver ändras till antingen userobject eller user ska vara username istället.
         currentTask.setCurrentStatus(selectedStatus);
         //currentTask.setCreator(creator); behöver ändras så att creator är sträng i task eller att fieldet är en user.

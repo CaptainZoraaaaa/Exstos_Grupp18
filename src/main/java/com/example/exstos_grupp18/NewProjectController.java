@@ -1,6 +1,7 @@
 package com.example.exstos_grupp18;
 
 
+import Sandbox.TestController;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,7 @@ public class NewProjectController implements Initializable {
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
+    private TestController testController = new TestController();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"}; //todo temporärt
     private String currentUser;
     private Stage stage;
@@ -64,7 +66,8 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, currentUser, creator);
+        //controller.createNewProject(header, description, deadline, currentUser, creator);
+        testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
 
     /**
