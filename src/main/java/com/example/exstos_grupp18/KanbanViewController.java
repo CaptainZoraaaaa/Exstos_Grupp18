@@ -129,6 +129,21 @@ public class KanbanViewController implements Initializable {
         mainBarPane.setDisable(!dropMenuVisible); //set the pane for the progress bar
     }
 
+    /**
+     * This method is ues for going back to the main menu.
+     * @author Christian Edvall
+     * @param event
+     */
+    @FXML
+    public void goToMainMenu(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
+    }
+
     //TODO javadoca
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

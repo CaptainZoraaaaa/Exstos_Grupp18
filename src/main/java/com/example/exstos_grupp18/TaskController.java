@@ -70,7 +70,19 @@ public class TaskController extends Thread implements Initializable {
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText("View task");
-                javafx.scene.image.Image image = new Image("@../../../images/clock.png");
+                Image image = null;
+                URL url = getClass().getClassLoader().getResource("images/white_flag.png");
+                if(url == null){
+                    try {
+                        throw new IllegalAccessException("File not found");
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    image = new Image(String.valueOf(url));
+
+                }
                 helpImage.setImage(image);
             }
         }
