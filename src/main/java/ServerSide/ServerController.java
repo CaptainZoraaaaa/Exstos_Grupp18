@@ -5,8 +5,13 @@ import Model.Project;
 import Model.User;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ServerController {
+
+    private final static String TYPE_TASK = "task";
+    private final static String TYPE_PROJECT = "project";
+    private final static String TYPE_USER = "user";
 
     private Server server;
 
@@ -118,7 +123,11 @@ public class ServerController {
         else {
             user = null;
         }
-        Package loginReply = new Package.PackageBuilder().ok(loginOK).userFromServer(user).type(Package.LOGIN_VERIFICATION).build();
+        Package loginReply = new Package.PackageBuilder()
+                .ok(loginOK)
+                .userFromServer(user).
+                type(Package.LOGIN_VERIFICATION).
+                build();
         clientHandler.sendMessage(loginReply);
     }
 
@@ -130,10 +139,29 @@ public class ServerController {
      *
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
-    public void verifyRegistration(ClientHandler clientHandler, User user) {
-        boolean registrationOK = server.newUserRegistration(user);
-        Package reply = new Package.PackageBuilder().ok(registrationOK).type(Package.REGISTRATION_VERIFICATION).build();
+    public void newRegistration(ClientHandler clientHandler, User user) {
+        boolean registrationOK = server.verifyRegistration(user);
+        User newUser;
+        if (registrationOK) {
+            newUser = buildNewUser(user);
+        }
+        else {
+            newUser = null;
+        }
+        Package reply = new Package.PackageBuilder()
+                .ok(registrationOK)
+                .userFromServer(newUser)
+                .type(Package.REGISTRATION_VERIFICATION)
+                .build();
         clientHandler.sendMessage(reply);
+    }
+
+    public User buildNewUser(User user) {
+        return new User.UserBuilder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .build();
+
     }
 
     /**
@@ -143,8 +171,13 @@ public class ServerController {
      *
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
-    public void deleteUser(User user) {
-        server.deleteUser(user);
+    public void deleteUser(User user) { //todo kanske kommer vi behöva hämta nycklar för att skicka objekt
+
+        for(Map.Entry<Integer, Project> entry : server.getProjectMap().entrySet()) {
+            if(entry.getValue().getAssignedUsers().containsKey(user.getUsername())) {
+                server.removeUserFromProject(user, entry.getValue());
+            }
+        }
     } //lägg till att ta bort från projekt
 
     /**
@@ -217,4 +250,42 @@ public class ServerController {
         return server.getPort();
     }
 
+    /**
+     * @author Anna Håkansson
+     *
+     * @param clientHandler .
+     * @param user
+     */
+    public void userLoggedIn(ClientHandler clientHandler, User user) {
+        server.addOnlineUser(user);
+        server.addClient(user.getUsername(), clientHandler);
+        //TODO skicka user tillbaka
+    }
+
+    /**
+     * @author Anna Håkansson
+     *@param username
+     * @param project
+     */
+    public void userAssignedToProject(String username, Project project) {
+        server.addUserToProject(username, project);
+        sendOutProjectUpdate(project);
+
+    }
+
+    /**
+     *
+     */
+    public void sendOutProjectUpdate(Project project) {
+        Package toSend = new Package.PackageBuilder()
+                .project(project)
+                .type(Package.PROJECT_UPDATE)
+                .build();
+        server.sendProjectUpdateToUsers(toSend);
+    }
+
+    public void userRemovedFromProject(User sender, Project project) {
+        server.removeUserFromProject(sender, project);
+        sendOutProjectUpdate(project);
+    }
 }

@@ -1,4 +1,4 @@
-/*package ServerSide;
+package ServerSide;
 
 import Model.Package;
 
@@ -6,7 +6,6 @@ import Model.Package;
  * @author Anna Håkansson
  *
  */
-/*
 public class ServerPackageHandler {
     private ServerController serverController;
 
@@ -16,17 +15,16 @@ public class ServerPackageHandler {
     public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca och implementera samliga ordentligt
         switch (newPackage.getType()) {
             case Package.USER_LOGGED_IN:
-                server.addOnlineUser(newPackage.getSender());
-                server.addClient(newPackage.getSender().getUsername(), clientHandler);
+                serverController.userLoggedIn(clientHandler, newPackage.getSender());
                 break;
             case Package.NEW_USER_REGISTRATION:
-                serverController.verifyRegistration(clientHandler, newPackage.getSender());
+                serverController.newRegistration(clientHandler, newPackage.getSender());
                 break;
             case Package.USER_ASSIGNED_TO_PROJECT:
-                server.addUserToProject(newPackage.getUsername(), newPackage.getProject());
+                serverController.userAssignedToProject(newPackage.getUsername(), newPackage.getProject());
                 break;
             case Package.USER_REMOVED_FROM_PROJECT:
-                server.removeUserFromProject(newPackage.getSender(), newPackage.getProject());
+                serverController.userRemovedFromProject(newPackage.getSender(), newPackage.getProject());
                 break;
             case Package.USER_DELETED:
                 serverController.deleteUser(newPackage.getSender());
@@ -54,7 +52,8 @@ public class ServerPackageHandler {
                 break;
             case Package.LOGIN_VERIFICATION:
                 serverController.verifyCredentials(clientHandler, newPackage.getUsername(), newPackage.getPassword());
+                break;
 
         }
     }
-} */
+}

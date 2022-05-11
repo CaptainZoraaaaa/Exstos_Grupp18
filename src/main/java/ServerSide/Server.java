@@ -375,6 +375,7 @@ public class Server {
     }
 
     private void saveOfflineMessages(User user, Package toSend) {
+        //todo implementera
     }
 
     /**
@@ -455,7 +456,7 @@ public class Server {
             }
         }
         else {
-            logtext = "Unable to remove user. User och project was null";
+            logtext = "Unable to remove user. User and project was null";
         }
         writeLog(logtext);
     }
