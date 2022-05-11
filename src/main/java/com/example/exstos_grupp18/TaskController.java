@@ -69,7 +69,7 @@ public class TaskController extends Thread implements Initializable {
         for (int i = 0; i < current.size(); i++) {
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
                 textField.setText(current.get(i).getHeader());
-                printButton.setText(current.get(i).getCurrentStatus().toString());
+                printButton.setText("View task");
                 javafx.scene.image.Image image = new Image("@../../../images/clock.png");
                 helpImage.setImage(image);
             }

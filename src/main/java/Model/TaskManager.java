@@ -1,5 +1,7 @@
 package Model;
 
+import java.time.LocalDate;
+
 /**
  * This class is used to handle operations for a task.
  * @author Christian Edvall
@@ -18,7 +20,7 @@ public class TaskManager {
      * @param assignee User object containing the assignee for the task.
      * @param taskId int setting the task ID.
      */
-    public Task createNewTask(String header, String description, String estimatedTime, User creator, User assignee, int taskId){
+    public Task createNewTask(String header, String description, LocalDate estimatedTime, User creator, User assignee, int taskId){
         task = new Task.TaskBuilder()
                 .id(taskId)
                 .header(header)
@@ -88,7 +90,7 @@ public class TaskManager {
      * @param estimatedTime String to set new/edit estimated time.
      * @param task task object to refer to the correct task.
      */
-    public void editEstimatedTime(String estimatedTime, Task task){
+    public void editEstimatedTime(LocalDate estimatedTime, Task task){
         task.setEstimatedTime(estimatedTime);
     }
 

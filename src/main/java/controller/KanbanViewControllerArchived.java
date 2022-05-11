@@ -11,6 +11,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -206,19 +207,19 @@ public class KanbanViewControllerArchived {
 
     public void testMethod() {
         TaskManager taskManager = new TaskManager();
-        Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", "1", new User(), null, 1);
+        Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", LocalDate.now(), new User(), null, 1);
         /**
          * // TODO: 2022-05-09 ändra så att det passar mot enum 
          */
         //task1.setCurrentStatus(new Backlog()); 
         task1.setFlaggedForHelp(false);
-        Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", "1", new User(), null, 2);
+        Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", LocalDate.now(), new User(), null, 2);
         /**
          * // TODO: 2022-05-09 ändra så att det passar mot enum.
          */
         //task2.setCurrentStatus(new Backlog());
         task2.setFlaggedForHelp(true);
-        Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", "1", new User(), null, 3);
+        Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", LocalDate.now(), new User(), null, 3);
 
         ArrayList<Task> tasklist = new ArrayList<>();
         tasklist.add(task1);
