@@ -26,9 +26,6 @@ public class TestController {
     }
 
     public void editProject () {
-
-
-
     }
 
     public void listProjects () {

@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import Model.ServerStub;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +30,7 @@ public class NewUserController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private ServerStub serverStub;
 
     @FXML
     public void newRegistration(ActionEvent event) throws IOException {

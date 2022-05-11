@@ -55,6 +55,7 @@ public class LoginController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.setScene(scene);
+
         }
         else {
             System.out.println(">> Login failed <<"); //todo skriv felmeddelande

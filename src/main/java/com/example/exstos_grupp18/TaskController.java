@@ -56,9 +56,6 @@ public class TaskController extends Thread implements Initializable {
                 editTaskController.loadedTask(current.get(i));
             }
         }
-
-
-
         scene = new Scene(root);
         stage.setScene(scene);
     }
