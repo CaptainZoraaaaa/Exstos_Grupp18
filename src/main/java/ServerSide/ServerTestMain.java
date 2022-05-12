@@ -3,6 +3,11 @@ package ServerSide;
 import Model.Project;
 import Model.User;
 
+/*
+* TODO: ¨¨¨¨¨¨¨¨¨¨¨¨¨ servern ska svara och skicka tillbaka
+*  todo skriva till fil på lämpliga ställen 
+*/
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,12 +20,7 @@ public class ServerTestMain {
         HashMap<String, User> userMap = new HashMap<>();
         HashMap<Integer, Project> projectMap = new HashMap<Integer, Project>();
 
-        Server server = new Server();
-        server.writeMapToFile(clientMap, "client");
-        server.writeMapToFile(userMap, "user");
-        server.writeMapToFile(projectMap, "project");
-
-        System.out.println("All maps written");
+        ServerController serverController = new ServerController();
 
 
     }

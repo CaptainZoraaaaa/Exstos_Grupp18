@@ -15,7 +15,7 @@ public class Project {
     private ArrayList<Task> taskList = new ArrayList<>();
     private Board board;
     private ProjectManager manager;
-    private final static int projectID = 0;
+    private int projectID;
 
 
     public String getProjectName() {
@@ -78,7 +78,7 @@ public class Project {
 
     }
 
-    public static int getProjectID() {
+    public int getProjectID() {
         return projectID;
     }
 
@@ -92,6 +92,10 @@ public class Project {
 
     public int getTaskSize() {
         return this.taskList.size();
+    }
+
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
     }
 
     /**

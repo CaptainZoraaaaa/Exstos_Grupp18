@@ -6,7 +6,6 @@ import Model.Task;
 import Model.User;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +24,9 @@ public class Server {
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
     private final int port = 8080;
-    private ArrayList<User> onlineUsers = new ArrayList<>();
+    private ArrayList<String> onlineUsers = new ArrayList<>();
+    private ServerPackageHandler serverPackageHandler;
+    private ServerController serverController;
 
     /**
      * @author Anna Håkansson
@@ -33,10 +34,12 @@ public class Server {
      * Constructor for server. The maps gets assigned saved values
      * from .dat-files and then the server connects (e.g. starting the serversocket)
      */
-    public Server() {
-        //clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
-        //userMap = readMapFromFile("user");
-        //projectMap = readMapFromFile("project");
+    public Server(ServerController serverController) {
+        this.serverController = serverController;
+        serverPackageHandler  = new ServerPackageHandler(serverController);
+        clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
+        userMap = readMapFromFile("user");
+        projectMap = readMapFromFile("project");
         connect();
     }
 
@@ -355,8 +358,7 @@ public class Server {
 
             if(clientMap.containsKey(username)) { //if the clientmap contains this username
                 if (onlineUsers.contains(user)) {
-                    ClientHandler clientHandler = clientMap.get(username); //get the client
-                    clientHandler.sendMessage(toSend); //send the message
+                    clientMap.get(username).sendMessage(toSend); //get the client and send the message
                     logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
                 }
                 else {
@@ -372,6 +374,7 @@ public class Server {
     }
 
     private void saveOfflineMessages(User user, Package toSend) {
+        //todo implementera
     }
 
     /**
@@ -393,46 +396,7 @@ public class Server {
         }
         writeLog(logtext);
     }
-    public void unpackNewPackage(Package newPackage) { //TODO implementera efter diskussion
-        switch (newPackage.getType()) {
-            case 0:
-                addOnlineUser(newPackage.getSender());
-                break;
-            case 1:
-                newUserRegistration(newPackage.getSender());
-                break;
-            case 2:
-                addUserToProject(newPackage.getUsername(), newPackage.getProject());
-                break;
-            case 3:
-                removeUserFromProject(newPackage.getSender(), newPackage.getProject());
-                break;
-            case 4:
-                deleteUser(newPackage.getSender());
-                break;
-            case 5:
-                removeOnlineUser(newPackage.getSender());
-                break;
-            case 6:
-                addTaskToProject(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 7:
-                updateTask(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 8:
-                removeTask(newPackage.getTasks(), newPackage.getProject());
-                break;
-            case 9:
-                addProject(newPackage.getProject());
-                break;
-            case 10:
-                updateProject(newPackage.getProject());
-                break;
-            case 11:
-                deleteProject(newPackage.getProject());
-                break;
-        }
-    }
+
 
     public synchronized void deleteProject(Project project) {
         String logtext;
@@ -441,38 +405,37 @@ public class Server {
             logtext = String.format("Project %s: %s was deleted from the projectMap.", project.getProjectID(), project.getProjectName());
         }
         else {
-            logtext = String.format("Project %s: %s couldn't not be deleted from the projectMap: Map doesn't contain project ID");
+            logtext = String.format("Project %s: %s couldn't not be deleted from the projectMap: Map doesn't contain project ID", project.getProjectID(), project.getProjectName());
         }
         writeLog(logtext);
     }
 
-    public synchronized void removeTask(ArrayList<Task> tasks, Project project) {
+    public synchronized void removeTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                  //  projectMap.get(project.getProjectID()).getTasks().add(task);  //TODO denna utgår ifrån att det finns en arraylist med tasks i project
-                }
-
+            if (task != null) {
+                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTASK_ID() == task.getTASK_ID());
+                //todo logtext
             }
         }
     }
 
-    public synchronized void updateTask(ArrayList<Task> tasks, Project project) {
+    public synchronized void updateTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                    projectMap.get(project.getProjectID()); //TODO tänk på den och återkom
+            if (task != null) {
+                for(Task taskInList : projectMap.get(project.getProjectID()).getTasks()) {
+                    if(taskInList.getTASK_ID() == task.getTASK_ID()) {
+                        taskInList = task;
+                    }
+                    //todo logtext
                 }
             }
         }
     }
 
-    public synchronized void addTaskToProject(ArrayList<Task> tasks, Project project) {
+    public synchronized void addTaskToProject(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
-            for (Task task : tasks) {
-                if (task != null) {
-                   //projectMap.get(project.getProjectID()).getTasks().add(task);
-                }
+            if (task != null) {
+                projectMap.get(project.getProjectID()).getTasks().add(task);
             }
         }
     }
@@ -491,7 +454,7 @@ public class Server {
             }
         }
         else {
-            logtext = "Unable to remove user. User och project was null";
+            logtext = "Unable to remove user. User and project was null";
         }
         writeLog(logtext);
     }
@@ -538,7 +501,7 @@ public class Server {
     public synchronized void addOnlineUser(User user) {
         String logtext;
         if (!onlineUsers.contains(user)) { //if list does not contain this user
-            onlineUsers.add(user); //add it to the list
+            onlineUsers.add(user.getUsername()); //add it to the list
             logtext = String.format("User %s was added to the onlineUsers-list", user.getUsername());
         }
         else {
@@ -599,4 +562,11 @@ public class Server {
     }
 
 
+    public void newPackage(ClientHandler client, Package newPackage) {
+        serverPackageHandler.unpackNewPackage(client, newPackage);
+    }
+
+    public ArrayList<String> getOnlineUsers() {
+        return onlineUsers;
+    }
 }
