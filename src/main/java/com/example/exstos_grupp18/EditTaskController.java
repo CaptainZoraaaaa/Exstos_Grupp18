@@ -82,7 +82,7 @@ public class EditTaskController implements Initializable {
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
         currentTask.setEstimatedTime(deadline);
-        currentTask.setAssignees(selectedUser);
+        currentTask.setAssignees(selectedUser); //// TODO: 2022-05-12 Denna funkar inte som den ska.  
         currentTask.setCurrentStatus(selectedStatus);
         currentTask.setCreator(creatorField.getText());
         currentTask.setComments(comment);
