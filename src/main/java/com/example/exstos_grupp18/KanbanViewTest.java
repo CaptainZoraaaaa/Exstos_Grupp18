@@ -50,16 +50,16 @@ public class KanbanViewTest extends Application {
     public static void main(String[] args) {
         launch();
         TaskManager taskManager = new TaskManager();
-        Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", LocalDate.now(), new User(), null, 1);
+        //Task task1 = taskManager.createNewTask("Test1", "Coolers pistolers", LocalDate.now(), new User(), null, 1);
         //task1.setCurrentStatus(new Backlog());
-        Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", LocalDate.now(), new User(), null, 2);
+        //Task task2 = taskManager.createNewTask("Test2", "Coolers pistolers", LocalDate.now(), new User(), null, 2);
         //task2.setCurrentStatus(new Backlog());
-        Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", LocalDate.now(), new User(), null, 3);
+       // Task task3 = taskManager.createNewTask("Test3", "Coolers pistolers", LocalDate.now(), new User(), null, 3);
 
         ArrayList<Task> tasklist = new ArrayList<>();
-        tasklist.add(task1);
-        tasklist.add(task2);
-        tasklist.add(task3);
+      //  tasklist.add(task1);
+        // tasklist.add(task2);
+       // tasklist.add(task3);
 
         KanbanViewControllerArchived controller = new KanbanViewControllerArchived();
         controller.sortTasks(tasklist);

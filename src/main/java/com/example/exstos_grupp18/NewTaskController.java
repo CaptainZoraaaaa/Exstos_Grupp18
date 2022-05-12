@@ -75,11 +75,19 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
-        String header = taskHeaderInputField.getText();
-        String description = taskDescriptionInputField.getText();
-        String creator = creatorField.getText();
-        String comment = taskCommentInputField.getText();
-        Task task = new Task.TaskBuilder().header(header).description(description).estimatedTime(deadline).currentStatus(selectedStatus).id(controller.getTaskSize()).build();
+        String comment = creatorField + ":\n" + taskCommentInputField.getText();
+        Task task = new Task.TaskBuilder()
+                .header(taskHeaderInputField.getText())
+                .description(taskDescriptionInputField.getText())
+                .estimatedTime(deadline)
+                .currentStatus(selectedStatus)
+                .assignee(currentUser)
+                .currentStatus(selectedStatus)
+                .creator(creatorField.getText())
+                .comments(comment)
+                .flaggedForHelp(flagged)
+                .id(controller.getTaskSize())
+                .build();
         controller.createTask(task);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();
