@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import client.Client;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -27,6 +28,8 @@ public class MainMenuController {
     void changeToKanban(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();
+        KanbanViewController mainMenuController = fxmlLoader.getController();
+        mainMenuController.setUserLabel(userLabel.getText());
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
