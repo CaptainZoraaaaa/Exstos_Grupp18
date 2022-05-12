@@ -20,15 +20,7 @@ public class ServerTestMain {
         HashMap<String, User> userMap = new HashMap<>();
         HashMap<Integer, Project> projectMap = new HashMap<Integer, Project>();
 
-        Server server = new Server();
-        server.writeMapToFile(clientMap, "client");
-        server.writeMapToFile(userMap, "user");
-        server.writeMapToFile(projectMap, "project");
-
-        User user = new User.UserBuilder().username("Pelle").password("kuken").build();
-        server.addUser(user);
-
-        System.out.println("All maps written");
+        ServerController serverController = new ServerController();
 
 
     }

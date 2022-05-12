@@ -4,15 +4,20 @@ import Model.Package;
 import Model.User;
 import client.Client;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class TestClient extends Thread {
+    private static Socket socket;
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 8080);
+            socket = new Socket("localhost", 8080);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            Listener listener = new Listener(socket);
+            listener.start();
 
             User user = new User.UserBuilder().username("Pelle").password("kuken").build();
 
@@ -22,7 +27,7 @@ public class TestClient extends Thread {
             oos.flush();
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -33,6 +38,25 @@ public class TestClient extends Thread {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    private static class Listener extends Thread {
+        private static Socket socket;
+
+        public Listener(Socket socket) {
+            this.socket = socket;
+        }
+
+        @Override
+        public void run() {
+            try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()))) {
+                while (true) {
+                    Package aPackage = (Package) ois.readObject();
+                    System.out.println(aPackage.getType());
+                }
+            }catch (IOException | ClassNotFoundException e) {
+                System.err.println("Failure due to "+ e);
+            }
         }
     }
 }
