@@ -1,6 +1,8 @@
 package com.example.exstos_grupp18;
 
+import Model.Package;
 import Model.ServerStub;
+import Model.User;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.time.LocalDateTime;
 
 /**
  * @author Max Tiderman
@@ -31,6 +37,9 @@ public class NewUserController {
     private Scene scene;
     private Parent root;
     private ServerStub serverStub;
+    private Socket socket;
+    private ObjectOutputStream oos;
+    private ObjectInputStream ois;
 
     @FXML
     public void newRegistration(ActionEvent event) throws IOException {
@@ -40,12 +49,23 @@ public class NewUserController {
 
         if (password.equals(reEnteredPassword)) {
             if (controller.registerNewUser(username, password, null)) {
-                System.out.println(">> Registration successful <<");
+                connect("localhost", 8080);
+                System.out.println("fick Strömmar");
+                User user = new User.UserBuilder().username(username).password(password).build();
+                Package newUser = new Package.PackageBuilder().sender(user).type(Package.NEW_USER_REGISTRATION).build();
+                try {
+                    oos.writeObject(newUser);
+                    oos.flush();
+                    Package p = (Package) ois.readObject();
+                }catch (IOException | ClassNotFoundException e){
+                    e.printStackTrace();
+                }
+                /*System.out.println(">> Registration successful <<");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
                 root = fxmlLoader.load();
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
-                stage.setScene(scene);
+                stage.setScene(scene);*/
             }
             else {
                 System.out.println(">> Registration failed <<"); //TODO implementera felmeddelanden
@@ -69,5 +89,10 @@ public class NewUserController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    private void connect(String ip, int port) throws IOException {
+        this.socket = new Socket(ip,port);
+        this.oos = new ObjectOutputStream(socket.getOutputStream());
+        this.ois = new ObjectInputStream(socket.getInputStream());
     }
 }
