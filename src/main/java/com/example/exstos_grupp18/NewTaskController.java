@@ -49,7 +49,7 @@ public class NewTaskController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String currentUser;
     private boolean flagged;
-    private Swimlane[] status = {Swimlane.InProgress, Swimlane.Backlog};
+    private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Waiting, Swimlane.Done};
     private Swimlane selectedStatus;
 
     /**
