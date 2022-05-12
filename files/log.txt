@@ -1,1 +1,1 @@
-2022-05-10T09:52:14.760892856: A client just connected.
+2022-05-11T18:45:36.445672900: Pelle was added to the userMap.

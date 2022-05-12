@@ -20,7 +20,7 @@ public class TaskManager {
      * @param assignee User object containing the assignee for the task.
      * @param taskId int setting the task ID.
      */
-    public Task createNewTask(String header, String description, LocalDate estimatedTime, User creator, User assignee, int taskId){
+    public Task createNewTask(String header, String description, LocalDate estimatedTime, String creator, String assignee, int taskId){
         task = new Task.TaskBuilder()
                 .id(taskId)
                 .header(header)
@@ -39,7 +39,7 @@ public class TaskManager {
      * @param assignee the assignee object meant to be added.
      * @param task Task object in order to manipulate the correct task.
      */
-    public void addAssignee(User assignee, Task task){
+    public void addAssignee(String assignee, Task task){
         task.setAssignees(assignee);
     }
     /**
@@ -106,12 +106,11 @@ public class TaskManager {
 
     /**
      * Method for adding comment to a task.
-     * @param username String to set who commented a task.
      * @param comment Sting to set a comment to a task.
      * @param task task object to refer to the correct task.
      */
-    public void addComment(String username, String comment, Task task){
-        task.setComments(username, comment);
+    public void addComment(String comment, Task task){
+        task.setComments(comment);
     }
     // public void editComment(){}
 

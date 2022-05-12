@@ -12,12 +12,6 @@ public class Package implements Serializable {
     /**
      * The below static final ints are used as identifiers for what kind of objects the package contains.
      */
-    public static final int USER = 0;
-    public static final int TASK = 1;
-    public static final int BOARD = 2;
-    public static final int PROJECT = 3;
-    public static final int MIXED = 4;
-
     public static final int USER_LOGGED_IN = 0; //user object (sender is enough)
     public static final int NEW_USER_REGISTRATION = 1; //user object
     public static final int USER_ASSIGNED_TO_PROJECT = 2; //String username & project object
@@ -31,17 +25,20 @@ public class Package implements Serializable {
     public static final int PROJECT_EDITED = 10; //project object
     public static final int PROJECT_REMOVED = 11; //project object
 
-    public static final int LOGIN_VERIFICATION = 12; //boolean (from server)
+    public static final int LOGIN_VERIFICATION = 12; //boolean & user (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
+    public static final int PROJECT_UPDATE = 14; //project update from server
 
     private User sender;
-    private ArrayList<Task> tasks;
+    private Task task;
     private Board board;
     private Project project;
     private LocalDateTime timeStamp;
     private String username;
     private boolean OK;
     private int type;
+    private String password;
+    private User userFromServer;
 
     public Package() {
     }
@@ -54,12 +51,12 @@ public class Package implements Serializable {
         this.sender = sender;
     }
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
+    public Task getTask() {
+        return task;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
-        this.tasks = tasks;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public Board getBoard() {
@@ -105,6 +102,22 @@ public class Package implements Serializable {
         this.OK = OK;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User getUserFromServer() {
+        return userFromServer;
+    }
+
+    public void setUserFromServer(User userFromServer) {
+        this.userFromServer = userFromServer;
+    }
+
     /**
      * Inner builder class for packages.
      */
@@ -130,13 +143,9 @@ public class Package implements Serializable {
             return this;
         }
 
-        /**
-         * This method is used to send or set a list of tasks containing one or more tasks.
-         * @param tasks An ArrayList of tasks.
-         * @return returns itself.
-         */
-        public PackageBuilder tasks(ArrayList<Task> tasks){
-            aPackage.setTasks(tasks);
+
+        public PackageBuilder password(String password){
+            aPackage.setPassword(password);
             return this;
         }
 
@@ -183,6 +192,20 @@ public class Package implements Serializable {
          */
         public PackageBuilder ok(boolean ok) {
             aPackage.setOK(ok);
+            return this;
+        }
+        /**
+         * This method is used to send or set a list of tasks containing one or more tasks.
+         * @param task a task.
+         * @return returns itself.
+         */
+        public PackageBuilder task(Task task){
+            aPackage.setTask(task);
+            return this;
+        }
+
+        public PackageBuilder userFromServer(User userFromServer){
+            aPackage.setUserFromServer(userFromServer);
             return this;
         }
 
