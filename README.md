@@ -10,9 +10,12 @@ P: 123
 Ej implememterat:
 Vid navigering till My profile finns det ingen backknapp just nu, för att gå ut måste programmet startas om.
 
+Server och klient är ej klara att användas ännu.
+
 Ej dokumenterad kod:
 Fortfarande i experimentell fas, kan råkat ha pushats till main av misstag.
 
 Tomma klasser:
 Fortfarande i experimentell fas, kan råkat ha pushats till main av misstag.
+
 
