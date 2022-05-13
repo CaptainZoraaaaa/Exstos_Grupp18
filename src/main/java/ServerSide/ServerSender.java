@@ -26,7 +26,7 @@ public class ServerSender extends Thread{
      */
     @Override
     public void run() {
-        while (!Thread.interrupted()){
+        while (!socket.isClosed()){
             try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()))) {
                 oos.writeObject(serverBuffer.get());//write latest object added in ServerBuffer
                 oos.flush();

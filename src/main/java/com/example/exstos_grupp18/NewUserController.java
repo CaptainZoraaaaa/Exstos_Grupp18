@@ -1,5 +1,8 @@
 package com.example.exstos_grupp18;
 
+import Model.Package;
+import Model.User;
+import Model.UserManager;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +14,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 
 /**
  * @author Max Tiderman
@@ -37,7 +41,7 @@ public class NewUserController {
         String reEnteredPassword = reEnterPasswordField.getText();
 
         if (password.equals(reEnteredPassword)) {
-            if (controller.registerNewUser(username, password, null)) {
+            if (controller.registerOnServer(username, password)) {
                 System.out.println(">> Registration successful <<");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
                 root = fxmlLoader.load();
@@ -53,4 +57,6 @@ public class NewUserController {
             System.out.println(">> Passwords do not match <<"); //TODO implementera felmeddelanden
         }
     }
+
+
 }

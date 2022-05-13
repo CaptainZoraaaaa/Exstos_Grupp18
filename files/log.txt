@@ -1,1 +1,1 @@
-2022-05-10T13:03:59.318873049: Bengt was added to the userMap.
+2022-05-13T10:58:09.325278804: The clientMap already contains a user with the username Pelle
