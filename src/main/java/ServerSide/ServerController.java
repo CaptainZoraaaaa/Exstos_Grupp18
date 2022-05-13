@@ -8,6 +8,9 @@ import Model.User;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Linnéa Flystam & Anna Håkansson
+ */
 public class ServerController {
 
     private final static String TYPE_TASK = "task";
@@ -288,7 +291,7 @@ public class ServerController {
     }
 
     /**
-     *
+     *@author Anna Håkansson
      */
     public void sendOutProjectUpdate(Project project) {
         Package toSend = new Package.PackageBuilder()
@@ -297,18 +300,24 @@ public class ServerController {
                 .build();
         server.sendProjectUpdateToUsers(toSend);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void userRemovedFromProject(User user, Project project) {
         server.removeUserFromProject(user, project);
         sendOutProjectUpdate(project);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void userLoggedOut(User user) {
         server.removeOnlineUser(user);
         server.getClientMap().get(user.getUsername()).disconnect();
         server.getClientMap().remove(user.getUsername());
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public synchronized void newTask(Task task, Project project) {
         int taskID = getIDFromFile(TYPE_TASK);
         writeNewID(taskID, TYPE_TASK);
@@ -317,25 +326,33 @@ public class ServerController {
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void taskEdited(Task task, Project project) {
         server.updateTask(task, project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void taskRemoved(Task task, Project project) {
         server.removeTask(task, project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void projectEdited(Project project) {
         server.updateProject(project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
     }
-
+    /**
+     *@author Anna Håkansson
+     */
     public void projectRemoved(Project project) {
         Package toSend = new Package.PackageBuilder()
                 .type(Package.PROJECT_REMOVED)
