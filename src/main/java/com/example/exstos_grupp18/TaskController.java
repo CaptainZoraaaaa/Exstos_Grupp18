@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -42,6 +43,8 @@ public class TaskController extends Thread implements Initializable {
     private Parent root;
     private int taskId;
     private Controller controller = Controller.getInstance();
+    private Image imageWhiteFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("white_flag.png")));
+    private Image imageOrangeFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("orange_flag.png")));
 
     @FXML
     void print(ActionEvent event) throws IOException { //todo javadoca
@@ -71,20 +74,8 @@ public class TaskController extends Thread implements Initializable {
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText("View task");
-                Image image = null;
-                URL url = getClass().getClassLoader().getResource("images/white_flag.png");
-                if(url == null){
-                    try {
-                        throw new IllegalAccessException("File not found");
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else {
-                    image = new Image(String.valueOf(url));
-
-                }
-                helpImage.setImage(image);
+                URL url = getClass().getClassLoader().getResource("white_flag.png");
+                helpImage.setImage(imageWhiteFlag);
             }
         }
     }

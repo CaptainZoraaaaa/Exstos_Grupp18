@@ -142,7 +142,6 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for setting the values in the list.
-     *
      * @param event Event is triggered by the above this::setUsers.
      */
     public void setUsers(ActionEvent event) {
@@ -151,7 +150,6 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for setting the values in the list.
-     *
      * @param event Event is triggered by the above this::setStatus.
      */
     public void setStatus(ActionEvent event) {

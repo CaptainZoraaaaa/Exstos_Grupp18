@@ -188,8 +188,13 @@ public class KanbanViewController implements Initializable {
     public void newTask(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newTask.fxml"));
         root = fxmlLoader.load();
+        NewTaskController newTaskController = fxmlLoader.getController();
+        newTaskController.setCreator(usernameLabel.getText());
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    public void setUserLabel(String text) {
+        usernameLabel.setText(text);
     }
 }

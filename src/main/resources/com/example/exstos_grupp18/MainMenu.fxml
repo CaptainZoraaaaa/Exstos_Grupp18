@@ -97,25 +97,5 @@
             </Button>
          </children>
       </HBox>
-      <Button layoutX="835.0" layoutY="196.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="350.0" stylesheets="@../../../CSS/Menu.css" text="My profile" textFill="WHITE">
-         <font>
-            <Font name="Roboto" size="36.0" />
-         </font>
-      </Button>
-      <Button layoutX="262.0" layoutY="550.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: 7d9db9;" stylesheets="@../../../CSS/Menu.css" text="Kanban" textFill="WHITE">
-         <font>
-            <Font name="Roboto" size="36.0" />
-         </font>
-      </Button>
-      <Button layoutX="254.0" layoutY="205.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="350.0" stylesheets="@../../../CSS/Menu.css" text="Create project" textFill="WHITE">
-         <font>
-            <Font name="Roboto" size="36.0" />
-         </font>
-      </Button>
-      <Button layoutX="831.0" layoutY="544.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="350.0" stylesheets="@../../../CSS/Menu.css" text="Log out" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
