@@ -193,7 +193,7 @@ public class KanbanViewController implements Initializable {
 
     //TODO javadoca
     public void newTask(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newTask.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
