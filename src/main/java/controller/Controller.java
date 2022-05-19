@@ -21,6 +21,7 @@ public class Controller {
     private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
     private static ClientBuffer clientBuffer = new ClientBuffer();
+    private String loggedInUser;
 
 
     public static Controller getInstance(){
@@ -151,5 +152,14 @@ public class Controller {
     }
     public int getTaskSize(){
         return project.getTaskSize();
+    }
+
+    public String getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(String loggedInUser) {
+        System.out.println(loggedInUser);
+        this.loggedInUser = loggedInUser;
     }
 }

@@ -85,31 +85,29 @@ public class HomePageController implements Initializable {
     public void changeScene(Event event, String newScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
         root = fxmlLoader.load();
-        KanbanViewController mainMenuController = fxmlLoader.getController();
-        mainMenuController.setUserLabel(userLabel.getText());
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
     }
 
-    public void setUserLabel(String name){
-        userLabel.setText(name);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userLabel.setText(controller.getLoggedInUser());
+        System.out.println(userLabel.getText());
         myProjectVbox.setVisible(false);
-
+    }
+    public void setUpMySwimLane(){
+        System.out.println(userLabel.getText());
         ArrayList<Task> current = controller.getTask();
         Node[] nodes = new Node[controller.getTaskSize()];
 
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                if (current.get(i).getAssignees().equals(userLabel)) {
+                System.out.println(current.get(i).getAssignees().contains(userLabel));
+                if (current.get(i).getAssignees().contains(userLabel.getText())) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
-                    //System.out.println(nodes[i].getId());
+                    System.out.println(nodes[i].getId());
                     myLane.getChildren().add(nodes[i]);
                 }
             } catch (IOException e) {

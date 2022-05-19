@@ -69,7 +69,7 @@
          <children>
             <ScrollPane layoutX="21.0" layoutY="14.0" prefHeight="652.0" prefWidth="458.0">
                <content>
-                  <VBox prefHeight="652.0" prefWidth="458.0" />
+                  <VBox fx:id="myLane" prefHeight="652.0" prefWidth="458.0" />
                </content>
             </ScrollPane>
          </children>
