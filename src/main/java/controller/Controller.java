@@ -17,7 +17,7 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
-    private Project project = new Project();
+    private Project activeProject = new Project();
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
@@ -143,7 +143,7 @@ public class Controller {
     }
 
     public void createTask(Model.Task task) {
-        project.addNewTask(task);
+        activeProject.addNewTask(task);
     }
 
     public void editTask () {
@@ -209,23 +209,31 @@ public class Controller {
     }
 
     public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
-        if (this.project == null){
-            this.project = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
+        if (this.activeProject == null){
+            this.activeProject = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
         }
+        projects.add(activeProject);
         Package toSend = new Package.PackageBuilder()
-                .project(project)
+                .project(activeProject)
                 .type(Package.NEW_PROJECT)
                 .build();
         client.sendUpdate(toSend);
-        System.out.println(project.getProjectName());
+        System.out.println(activeProject.getProjectName());
     }
-    public ArrayList<Model.Task> getTask(){
-         return project.getTasks();
-    }
-    public int getTaskSize(){
-        return project.getTaskSize();
+    public void setCurrentTask(String projectName){
+        for (Project customer : projects) {
+            if (customer.getProjectName().equals(projectName)) {
+                this.activeProject = customer;
+            }
+        }
     }
 
+    public ArrayList<Model.Task> getTask(){
+         return activeProject.getTasks();
+    }
+    public int getTaskSize(){
+        return activeProject.getTaskSize();
+    }
     public void setUpConnection() {
 
     }
