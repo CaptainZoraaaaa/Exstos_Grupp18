@@ -62,12 +62,18 @@ public class NewProjectController implements Initializable {
      * @param event ActionEvent that reacts when the "create" button is pressed.
      */
     @FXML
-    void createNewProject(ActionEvent event) {
+    void createNewProject(ActionEvent event) throws IOException {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
         if (header.length() > 5 && header.length() < 50 && deadline != null ) {
             controller.createNewProject(header, description, deadline, currentUser, creator);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            root = fxmlLoader.load();
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setScene(scene);
         }
         else {
             //TODO IMPLEMENTERA FELLMEDALANDE

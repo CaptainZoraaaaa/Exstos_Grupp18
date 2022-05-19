@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import Model.Project;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
@@ -94,8 +95,14 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLabel.setText(controller.getLoggedInUser());
-        System.out.println(userLabel.getText());
         myProjectVbox.setVisible(false);
+        ArrayList<Project> currentList = controller.getAllProject();
+        if (currentList.size()>0) {
+            for (int i = 0; i < currentList.size(); i++) {
+                projectNameButton = new Button(currentList.get(i).getProjectName());
+                myProjectVbox.getChildren().add(projectNameButton);
+            }
+        }
     }
     public void setUpMySwimLane(){
         System.out.println(userLabel.getText());

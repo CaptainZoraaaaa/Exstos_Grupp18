@@ -211,16 +211,13 @@ public class Controller {
     }
 
     public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
-        if (this.activeProject == null){
-            this.activeProject = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
-        }
+        this.activeProject = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
         projects.add(activeProject);
-        Package toSend = new Package.PackageBuilder()
+        /*Package toSend = new Package.PackageBuilder()
                 .project(activeProject)
                 .type(Package.NEW_PROJECT)
                 .build();
-        client.sendUpdate(toSend);
-        System.out.println(activeProject.getProjectName());
+        client.sendUpdate(toSend);*/
     }
     public void setCurrentTask(String projectName){
         for (Project customer : projects) {
@@ -246,5 +243,9 @@ public class Controller {
 
     public void setLoggedInUser(String loggedInUser) {
         this.loggedInUser = loggedInUser;
+    }
+
+    public ArrayList<Project> getAllProject() {
+        return projects;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Objects;
 public class TestGUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("KanbanView.fxml")));
+        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomePage.fxml")));
         stage.setTitle("Hello!");
         stage.setScene(new Scene(fxmlLoader));
         stage.show();
