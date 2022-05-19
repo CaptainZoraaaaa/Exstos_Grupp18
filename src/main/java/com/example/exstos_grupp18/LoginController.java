@@ -49,7 +49,6 @@ public class LoginController {
             //Används för att överföra data
             MainMenuController mainMenuController = fxmlLoader.getController();
             mainMenuController.setUserLabel(username);
-            new Client(null,null,8080);
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
             scene = new Scene(root);

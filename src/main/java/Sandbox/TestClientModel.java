@@ -79,10 +79,10 @@ public class TestClientModel extends Client {
         outputClient.send(message);
     }
 
-    public void createIO(ObjectOutputStream oos, ObjectInputStream ois) {
+    /*public void createIO(ObjectOutputStream oos, ObjectInputStream ois) {
         outputClient = new OutputClient(oos);
         inputClient = new InputClient(this, ois);
-    }
+    } */
 
     private class ThreadHandler extends Thread{
         private TestClientModel client;
@@ -90,12 +90,12 @@ public class TestClientModel extends Client {
             this.client = client;
         }
 
-        @Override
-        public void run() {
+       // @Override
+     /*   public void run() {
             outputClient = new OutputClient(oos);
             inputClient = new InputClient(client,ois);
             System.out.println("I/O running");
-        }
+        } */
     }
     public void testning(){
         System.out.println("körs");

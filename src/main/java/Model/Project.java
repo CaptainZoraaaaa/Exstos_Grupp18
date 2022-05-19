@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,15 +8,17 @@ import java.util.HashMap;
 /**
  * objects of this class holds the outline for a project.
  */
-public class Project {
+public class Project implements Serializable {
     private String projectName;
     private LocalDate deadline;
     private String description;
-    private HashMap<User, Boolean> assignedUser;
+    private HashMap<String, Boolean> assignedUser;
     private ArrayList<Task> taskList = new ArrayList<>();
     private Board board;
     private ProjectManager manager;
     private int projectID;
+    private int maxTasksInProgress;
+    private int maxTasksWaiting;
 
 
     public String getProjectName() {
@@ -42,11 +45,11 @@ public class Project {
         this.description = description;
     }
 
-    public HashMap<User, Boolean> getAssignedUser() {
+    public HashMap<String, Boolean> getAssignedUser() {
         return assignedUser;
     }
 
-    public void setAssignedUser(HashMap<User, Boolean> assignedUser) {
+    public void setAssignedUser(HashMap<String, Boolean> assignedUser) {
         this.assignedUser = assignedUser;
     }
 
@@ -69,7 +72,7 @@ public class Project {
     public void setName(String newName) {
     }
 
-    public HashMap<User, Boolean> getAssignedUsers() {
+    public HashMap<String, Boolean> getAssignedUsers() {
         return assignedUser;
     }
 
@@ -119,7 +122,7 @@ public class Project {
             return this;
         }
         public ProjectBuilder userAdmin(User admin) {
-            project.getAssignedUser().put(admin, true);
+            project.getAssignedUser().put(admin.getUsername(), true);
             return this;
         }
 

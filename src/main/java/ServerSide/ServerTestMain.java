@@ -22,6 +22,9 @@ public class ServerTestMain {
 
         ServerController serverController = new ServerController();
 
+        User user = new User.UserBuilder().username("Pelle").password("kuken").build();
+        serverController.addUser(user);
+
 
     }
 }

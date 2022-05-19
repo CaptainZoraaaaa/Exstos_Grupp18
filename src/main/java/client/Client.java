@@ -32,7 +32,23 @@ public class Client {
      * @Author Max Tiderman
      */
     public Client(User user, String ip, int port ) {
-        //connect();
+        this.ip = ip;
+        this.port = port;
+        connect();
+    }
+
+    public Client(User user, Socket socket) {
+        this.user = user;
+        this.socket = socket;
+        connect();
+    }
+
+    public Client(User user, Socket socket, ObjectOutputStream oos, ObjectInputStream ois) {
+        this.user = user;
+        this.socket = socket;
+        this.oos = oos;
+        this.ois = ois;
+        connect();
     }
 
     /**
@@ -41,11 +57,11 @@ public class Client {
      */
     public void connect () {
         try {
-            this.socket = new Socket("10.2.22.12", 8080);
-            this.oos = new ObjectOutputStream(socket.getOutputStream());
-            this.ois = new ObjectInputStream(socket.getInputStream());
+         //   this.socket = new Socket(ip, port);
+          //  this.oos = new ObjectOutputStream(socket.getOutputStream());
+           // this.ois = new ObjectInputStream(socket.getInputStream());
             new ThreadHandler(this).start();
-            //new InputClient().start();
+         //   new InputClient().start();
         } catch (Exception e) {
             e.printStackTrace();
         }

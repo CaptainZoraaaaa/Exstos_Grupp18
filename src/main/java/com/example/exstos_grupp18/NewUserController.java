@@ -1,6 +1,8 @@
 package com.example.exstos_grupp18;
 
-import Model.ServerStub;
+import Model.Package;
+import Model.User;
+import Model.UserManager;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +14,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 
 /**
  * @author Max Tiderman
@@ -20,7 +23,7 @@ import java.io.IOException;
 public class NewUserController {
 
     @FXML
-    private PasswordField passwordField;
+    private TextField passwordField; //TODO ändra till passwordfield
     @FXML
     private PasswordField reEnterPasswordField;
     @FXML
@@ -30,7 +33,6 @@ public class NewUserController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private ServerStub serverStub;
 
     @FXML
     public void newRegistration(ActionEvent event) throws IOException {
@@ -39,7 +41,7 @@ public class NewUserController {
         String reEnteredPassword = reEnterPasswordField.getText();
 
         if (password.equals(reEnteredPassword)) {
-            if (controller.registerNewUser(username, password, null)) {
+            if (controller.registerOnServer(username, password)) {
                 System.out.println(">> Registration successful <<");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
                 root = fxmlLoader.load();
@@ -56,18 +58,5 @@ public class NewUserController {
         }
     }
 
-    /**
-     * This method is used to return to the previous screen in this case LogInView.fxml.
-     * @author Christian Edvall
-     * @param event event
-     * @throws IOException throws this exception.
-     */
-    @FXML
-    void backToPreviousScreenButton(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
+
 }
