@@ -66,7 +66,12 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, currentUser, creator);
+        if (header.length() > 5 && header.length() < 50 && deadline != null ) {
+            controller.createNewProject(header, description, deadline, currentUser, creator);
+        }
+        else {
+            //TODO IMPLEMENTERA FELLMEDALANDE
+        }
         //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
     /**
