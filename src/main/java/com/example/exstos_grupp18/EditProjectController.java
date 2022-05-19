@@ -2,6 +2,7 @@ package com.example.exstos_grupp18;
 
 import Model.Project;
 import Sandbox.TestController;
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,7 +31,7 @@ public class EditProjectController implements Initializable {
     @FXML
     private TextField projectHeaderInputField;
     private Project project;
-    private TestController testController = new TestController();
+    private Controller controller = Controller.getInstance();
     private LocalDate deadline;
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
@@ -63,7 +64,7 @@ public class EditProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        testController.createNewProject(header, description, deadline, user, creator);
+        controller.createNewProject(header, description, deadline, user, creator);
     }
     /**
      * Method for initializing the list of available users to select.
@@ -74,6 +75,7 @@ public class EditProjectController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
+        creatorField.setText(controller.getLoggedInUser());
     }
     /**
      * Method for setting the values in the assigneeList.
