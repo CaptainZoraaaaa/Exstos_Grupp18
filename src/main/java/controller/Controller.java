@@ -11,7 +11,11 @@ import java.io.*;
 import java.net.Socket;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+/**
+ * @author Max Tiderman & Anna Håkansson
+ */
 public class Controller {
     private Task task;
     private User user;
@@ -139,7 +143,19 @@ public class Controller {
         return OK;
     }
 
+    /**
+     * @author Anna Håkansson
+     *
+     * Method for logging out: sending the userobject in a logoutpackage to server
+     * and then disconnect client.
+     */
     public void logOut () {
+        Package logOutPackage = new Package.PackageBuilder()
+                .sender(user)
+                .type(Package.USER_LOGGED_OUT)
+                .build();
+        client.sendUpdate(logOutPackage);
+        client.disconnect();
     }
 
     public void createTask(Model.Task task) {
@@ -197,6 +213,20 @@ public class Controller {
 
     public void operation () {
     }
+    public synchronized void projectUpdateRecieved(Project project) {
+     HashMap <Integer, Project> tempMap = user.getProjects();
+     if(tempMap.containsKey(project.getProjectID())) {
+         tempMap.replace(project.getProjectID(), project);
+         user.setProjects(tempMap);
+     }
+    }
+
+    public void sendProjectUpdate(Project project) {
+        Package toSend = new Package.PackageBuilder()
+                .project(project)
+                .type(Package.PROJECT_EDITED)
+                .build();
+    }
 
     public void newClient() {
         try {
@@ -212,6 +242,9 @@ public class Controller {
         if (this.project == null){
             this.project = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
         }
+        HashMap<String, Boolean> assignees = new HashMap<>();
+        assignees.put(user, false);
+        assignees.put(creator, true);
         Package toSend = new Package.PackageBuilder()
                 .project(project)
                 .type(Package.NEW_PROJECT)

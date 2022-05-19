@@ -12,7 +12,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private Image profilePicture;
-    private HashMap<Project, Boolean> projects = new HashMap<>();
+    private HashMap<Integer, Project> projects = new HashMap<>();
     private ArrayList<Task> myTasks = new ArrayList<>();
 
     private static int USERID = 0;
@@ -41,11 +41,11 @@ public class User implements Serializable {
         this.profilePicture = profilePicture;
     }
 
-    public HashMap<Project, Boolean> getProjects() {
+    public HashMap<Integer, Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(HashMap<Project, Boolean> projects) {
+    public void setProjects(HashMap<Integer, Project> projects) {
         this.projects = projects;
     }
 
@@ -108,7 +108,7 @@ public class User implements Serializable {
          * @param projects a hashmap with the users projects.
          * @return The method returns itself.
          */
-        public UserBuilder projects(HashMap<Project, Boolean> projects) {
+        public UserBuilder projects(HashMap<Integer, Project> projects) {
             user.setProjects(projects);
             return this;
         }

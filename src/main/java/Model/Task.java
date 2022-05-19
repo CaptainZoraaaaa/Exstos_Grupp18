@@ -1,7 +1,9 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * This class represents a task in Exsto and all of it's instance variables have their own getters and setters.
@@ -11,13 +13,13 @@ import java.util.HashMap;
 public class Task {
     private String header;
     private String description;
-    private String estimatedTime;
+    private LocalDate estimatedTime;
     private Swimlane currentStatus;
-    private ArrayList<User> assignees = new ArrayList<>();
+    private ArrayList<String> assignees = new ArrayList<>();
     private ArrayList<Task> dependencies  = new ArrayList<>();
     private boolean flaggedForHelp;
-    private User creator;
-    private HashMap<String, String> comments = new HashMap<>(); // String 1 = username, String 2 = comment.
+    private String creator;
+    private LinkedList<String> comments = new LinkedList<>(); // String 1 = username, String 2 = comment.
     private int TASK_ID;
 
     public String getHeader() {
@@ -32,10 +34,10 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getEstimatedTime() {
+    public LocalDate getEstimatedTime() {
         return estimatedTime;
     }
-    public void setEstimatedTime(String estimatedTime) {
+    public void setEstimatedTime(LocalDate estimatedTime) {
         this.estimatedTime = estimatedTime;
     }
     public Swimlane getCurrentStatus() {
@@ -44,10 +46,10 @@ public class Task {
     public void setCurrentStatus(Swimlane currentStatus) {
         this.currentStatus = currentStatus;
     }
-    public ArrayList<User> getAssignees() {
+    public ArrayList<String> getAssignees() {
         return assignees;
     }
-    public void setAssignees(User assignee) {
+    public void setAssignees(String assignee) {
         assignees.add(assignee);
     }
     public ArrayList<Task> getDependencies() {
@@ -62,17 +64,17 @@ public class Task {
     public void setFlaggedForHelp(boolean flaggedForHelp) {
         this.flaggedForHelp = flaggedForHelp;
     }
-    public User getCreator() {
+    public String getCreator() {
         return creator;
     }
-    public void setCreator(User creator) {
+    public void setCreator(String creator) {
         this.creator = creator;
     }
-    public HashMap<String, String> getComments() {
+    public LinkedList<String> getComments() {
         return comments;
     }
-    public void setComments(String username, String comment) {
-        comments.put(username, comment);
+    public void setComments(String comment) {
+        comments.add(comment);
     }
     //Osäker kring hur implementation av task ID ska fungera så lämnar detta tillsvidare.
     public int getTASK_ID(){
@@ -133,7 +135,7 @@ public class Task {
          * @param time String with a time.
          * @return The method returns itself.
          */
-        public TaskBuilder estimatedTime(String time){
+        public TaskBuilder estimatedTime(LocalDate time){
             task.setEstimatedTime(time);
             return this;
         }
@@ -154,7 +156,7 @@ public class Task {
          * @param assignee user object.
          * @return The method returns itself. 
          */
-        public TaskBuilder assignee(User assignee){
+        public TaskBuilder assignee(String assignee){
             task.setAssignees(assignee);
             return this;
         }
@@ -184,19 +186,18 @@ public class Task {
          * @param creator A User object.
          * @return The method returns itself. 
          */
-        public TaskBuilder creator(User creator){
+        public TaskBuilder creator(String creator){
             task.setCreator(creator);
             return this;
         }
 
         /**
          * This method is used to set a list of comments to a task.
-         * @param username String of username.
          * @param comment String of comment.
          * @return The method returns itself. 
          */
-        public TaskBuilder comments(String username, String comment){
-            task.setComments(username, comment);
+        public TaskBuilder comments(String comment){
+            task.setComments(comment);
             return this;
         }
     }

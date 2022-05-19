@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.MainMenuController">
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.MainMenuController">
    <children>
       <HBox prefHeight="54.0" prefWidth="1500.0" style="-fx-background-color: #BFCFDD;">
          <children>
@@ -18,7 +18,7 @@
                <children>
                   <Label fx:id="userLabel" layoutX="21.0" layoutY="-7.0" text="EXSTOS" textFill="WHITE">
                      <font>
-                        <Font name="Cambria Italic" size="48.0" />
+                        <Font name="Roboto" size="48.0" />
                      </font>
                   </Label>
                </children>
@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font size="30.0" />
+                  <Font name="Roboto" size="30.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -41,9 +41,9 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="canBanBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToKanban" prefHeight="58.0" prefWidth="304.0" stylesheets="@../../../CSS/Menu.css" text="See Canban" textFill="WHITE">
+            <Button fx:id="canBanBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToKanban" prefHeight="58.0" prefWidth="304.0" stylesheets="@../../../CSS/Menu.css" text="Kanban" textFill="WHITE">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Roboto" size="30.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -61,7 +61,7 @@
             </Button>
             <Button fx:id="projectBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToCreateProject" prefHeight="59.0" prefWidth="305.0" stylesheets="@../../../CSS/Menu.css" text="Create Project" textFill="WHITE">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Roboto" size="30.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
@@ -79,7 +79,7 @@
             </Button>
             <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Roboto" size="30.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">

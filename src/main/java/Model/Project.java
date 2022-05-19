@@ -77,7 +77,7 @@ public class Project implements Serializable {
     }
 
     //TODO lägg till i assigned users
-    public void setAssignedUsers(HashMap<User, Boolean> assignees) {
+    public void setAssignedUsers(HashMap<String, Boolean> assignees) {
 
     }
 
@@ -111,6 +111,11 @@ public class Project implements Serializable {
         }
         public ProjectBuilder projectName(String projectName) {
             project.setProjectName(projectName);
+            return this;
+        }
+
+        public ProjectBuilder assignedUser(HashMap<String, Boolean> assignees) {
+            project.setAssignedUser(assignees);
             return this;
         }
         public ProjectBuilder deadline(LocalDate deadline) {

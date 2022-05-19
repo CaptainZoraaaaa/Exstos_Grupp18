@@ -21,6 +21,9 @@ public class ServerTestMain {
         HashMap<Integer, Project> projectMap = new HashMap<Integer, Project>();
 
         ServerController serverController = new ServerController();
+        serverController.writeMapToFile(clientMap, "client");
+        serverController.writeMapToFile(userMap, "user");
+        serverController.writeMapToFile(projectMap, "project");
 
         User user = new User.UserBuilder().username("Pelle").password("kuken").build();
         serverController.addUser(user);

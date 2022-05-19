@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * This class is used to package different objects in order to send multiple objects at once and redistribute them.
- * @author Christian Edvall
+ * @author Christian Edvall & Anna Håkansson
  */
 public class Package implements Serializable {
     /**

@@ -23,7 +23,7 @@ import java.net.Socket;
 public class NewUserController {
 
     @FXML
-    private TextField passwordField; //TODO ändra till passwordfield
+    private PasswordField passwordField;
     @FXML
     private PasswordField reEnterPasswordField;
     @FXML
@@ -58,5 +58,18 @@ public class NewUserController {
         }
     }
 
-
+    /**
+     * This method is used to return to the previous screen in this case LogInView.fxml.
+     * @author Christian Edvall
+     * @param event event
+     * @throws IOException throws this exception.
+     */
+    @FXML
+    void backToPreviousScreenButton(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }

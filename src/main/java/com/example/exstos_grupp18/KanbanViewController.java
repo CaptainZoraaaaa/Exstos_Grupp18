@@ -52,7 +52,8 @@ public class KanbanViewController implements Initializable {
     private ProgressBar doneBar; //progress bar for done
     @FXML
     private ScrollPane doneSwimlane; //swimlane for done
-    @FXML ListView<Object> doneList; //list for task objects in the done swimlane
+    @FXML
+    private VBox doneList; //list for task objects in the done swimlane
     @FXML
     private ProgressBar dropMenuBar; //the progressbar in the drop down menu
     @FXML
@@ -88,11 +89,12 @@ public class KanbanViewController implements Initializable {
     @FXML
     private ScrollPane waitingSwimlane; //the swimlane for waiting
     @FXML
-    private ListView<Object> waitingList; //list for task objects in the waiting swimlane
+    private VBox waitingList; //list for task objects in the waiting swimlane
     @FXML
     private Label usernameLabel; //the label for the username
     @FXML
     private Pane mainBarPane;
+    private double totalTasks = 1;
 
     public static KanbanViewController getInstance() {
         return yes;
@@ -116,40 +118,60 @@ public class KanbanViewController implements Initializable {
      * diseapeared when the button is pressed.
      */
     public void myProjectsPressed() {
-        if(!dropMenuVisible) {
-            dropMenuVisible = true;
-        }
-        else {
-            dropMenuVisible = false;
-        }
+        mainBarPane.setVisible(!mainBarPane.isVisible());
+        myProjectsHbox.setVisible(!myProjectsHbox.isVisible());
+         //set the pane for the progress bar
+    }
 
-        myProjectsHbox.setVisible(dropMenuVisible);
-        myProjectsHbox.setDisable(!dropMenuVisible); //set HBox with buttons
-        mainBarPane.setVisible(dropMenuVisible);
-        mainBarPane.setDisable(!dropMenuVisible); //set the pane for the progress bar
+    /**
+     * This method is used for going back to the main menu.
+     * @author Christian Edvall
+     * @param event
+     */
+    @FXML
+    public void goToMainMenu(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        MainMenuController mainMenuController = fxmlLoader.getController();
+        mainMenuController.setUserLabel(usernameLabel.getText());
+        stage.setScene(scene);
+        stage.setScene(scene);
     }
 
     //TODO javadoca
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        ArrayList<Task> current = controller.getTask();
+        ArrayList<Task> currentTaskList = controller.getTask();
+        totalTasks = currentTaskList.size();
         Node[] nodes = new Node[controller.getTaskSize()];
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                if (current.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
+                if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
                 }
-                else if (current.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     inProgressList.getChildren().add(nodes[i]);
+                }
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
+                    nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
+                    nodes[i].setId(String.valueOf(i));
+                    //System.out.println(nodes[i].getId());
+                    waitingList.getChildren().add(nodes[i]);
+                }
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Done)){
+                    nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
+                    nodes[i].setId(String.valueOf(i));
+                    //System.out.println(nodes[i].getId());
+                    doneList.getChildren().add(nodes[i]);
                 }
             }
             catch (IOException e) {
@@ -157,6 +179,10 @@ public class KanbanViewController implements Initializable {
             }
         }
 
+        backlogBar.setProgress(backlogList.getChildren().size() / totalTasks);
+        inProgressBar.setProgress(inProgressList.getChildren().size() / totalTasks);
+        waitingBar.setProgress(waitingList.getChildren().size() / totalTasks);
+        doneBar.setProgress(doneList.getChildren().size() / totalTasks);
     }
 
     public void skriv(String scene) { //TODO testmetod tas bort när den är färdiganvänd
@@ -169,12 +195,17 @@ public class KanbanViewController implements Initializable {
         }
     }
 
+
     //TODO javadoca
     public void newTask(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newTask.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    public void setUserLabel(String username) {
+        usernameLabel.setText(username);
     }
 }

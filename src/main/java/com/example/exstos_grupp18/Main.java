@@ -25,22 +25,6 @@ public class Main extends Application {
         stage.show();
     }
 
-    public void changeScene(String fxml) { //todo ändra till andra sättet
-        Parent pane = null;
-        try {
-            pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxml)));
-
-                pane.prefWidth(500);
-                pane.prefHeight(600);
-
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        stg.setResizable(false);
-        stg.getScene().setRoot(pane);
-    }
-
     public static void main(String[] args) {
         launch();
     }

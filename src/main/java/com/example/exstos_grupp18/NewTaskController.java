@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
+ * This class is used to display the GUI for creating a new task.
  * @author Christian Edvall
  * todo: implementera back to previous screen och kommentera
  */
@@ -48,10 +49,14 @@ public class NewTaskController implements Initializable {
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String currentUser;
     private boolean flagged;
-    private Swimlane[] status = {Swimlane.InProgress, Swimlane.Backlog};
+    private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Waiting, Swimlane.Done};
     private Swimlane selectedStatus;
 
-
+    /**
+     * This method is used for returning to the previous screen, in this case that is the KanbanView.fxml.
+     * @param event event
+     * @throws IOException throws this exception.
+     */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
@@ -61,14 +66,28 @@ public class NewTaskController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
+
+    /**
+     * This method is used to create a new task, when the button create task is pressed this method will send the
+     * entered values to the controller and change the scene to KanbanView.fxml.
+     * @param event event
+     * @throws IOException thrown exception.
+     */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
-        String header = taskHeaderInputField.getText();
-        String description = taskDescriptionInputField.getText();
-        String deadlineDate = deadline.toString();
-        String creator = creatorField.getText();
-        String comment = taskCommentInputField.getText();
-        Task task = new Task.TaskBuilder().header(header).description(description).estimatedTime(deadlineDate).currentStatus(selectedStatus).id(controller.getTaskSize()).build();
+        String comment = creatorField + ":\n" + taskCommentInputField.getText();
+        Task task = new Task.TaskBuilder()
+                .header(taskHeaderInputField.getText())
+                .description(taskDescriptionInputField.getText())
+                .estimatedTime(deadline)
+                .currentStatus(selectedStatus)
+                .assignee(currentUser)
+                .currentStatus(selectedStatus)
+                .creator(creatorField.getText())
+                .comments(comment)
+                .flaggedForHelp(flagged)
+                .id(controller.getTaskSize())
+                .build();
         controller.createTask(task);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();
@@ -77,24 +96,52 @@ public class NewTaskController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
+
+    /**
+     * this method is used to set the boolean flag to false or true depending if the box is checked or not.
+     * Checked box = true, unchecked box = false.
+     * @param event event
+     */
     @FXML
     void flagForHelp(ActionEvent event) {
         flagged = helpBox.isSelected();
     }
+
+    /**
+     * This method is used to set LocalDate deadline to the chosen date by DatePicker taskDeadlineDate using DatePicker
+     * getValue.
+     * @param event event
+     */
     @FXML
     void chooseDate(ActionEvent event){
         deadline = taskDeadlineDate.getValue();
     }
+
+    /**
+     * This method is used to initialize the ChoiceBoxes assigneeList and statusList.
+     * @param url url.
+     * @param resourceBundle resourceBundle.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       assigneeList.getItems().addAll(users);
-       assigneeList.setOnAction(this::setUsers);
-       statusList.getItems().addAll(status);
-       statusList.setOnAction(this::setStatus);
+       assigneeList.getItems().addAll(users); ///This is used to att all indexes from an array to the ChoiceBox
+       assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
+       statusList.getItems().addAll(status); //This is used to att all indexes from an array to the ChoiceBox
+       statusList.setOnAction(this::setStatus); // this is used to select a user from the Choice
     }
+
+    /**
+     * This metod is used to set a status from the statusList to the variable selectedStatus.
+     * @param event event
+     */
     public void setStatus(ActionEvent event){
         selectedStatus = statusList.getValue();
     }
+
+    /**
+     * This method is used to set a status from the assigneeList to the variable currentUser.
+     * @param event event
+     */
     public void setUsers(ActionEvent event){
         currentUser = assigneeList.getValue();
     }

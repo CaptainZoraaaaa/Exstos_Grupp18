@@ -22,6 +22,7 @@ public class OutputClient {
         try {
             this.oos.writeObject(message);
             this.oos.flush();
+            System.out.println("flushed");
         } catch (IOException e) {
             e.printStackTrace();
         }

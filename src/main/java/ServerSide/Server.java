@@ -352,18 +352,16 @@ public class Server {
     public synchronized void sendProjectUpdateToUsers(Package toSend){
         String logtext;
         Project project = toSend.getProject(); //get project from package
-        for(Map.Entry<User, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
-            User user = entry.getKey();
-            String username = user.getUsername(); //get the username
+        for(Map.Entry<String, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
+            String username = entry.getKey(); //get the username
 
             if(clientMap.containsKey(username)) { //if the clientmap contains this username
-                if (onlineUsers.contains(user)) {
+                if (onlineUsers.contains(username)) {
                     clientMap.get(username).sendMessage(toSend); //get the client and send the message
                     logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
                 }
                 else {
-                    saveOfflineMessages(user, toSend);
-                    logtext = String.format("Put the project update in user %s's buffer", user.getUsername());
+                    logtext = String.format("Put the project update in user %s's buffer", username);
                 }
             }
             else {
@@ -444,7 +442,7 @@ public class Server {
         String logtext;
         if (sender != null && project != null) {
             if (projectMap.containsKey(project.getProjectID())) {
-                HashMap<User, Boolean> assignees = projectMap.get(project.getProjectID()).getAssignedUser();
+                HashMap<String, Boolean> assignees = projectMap.get(project.getProjectID()).getAssignedUser();
                 assignees.remove(sender);
                 projectMap.get(project.getProjectID()).setAssignedUser(assignees);
                 logtext = String.format("User %s was removed from project %s: %s.", sender.getUsername(), project.getProjectID(), project.getProjectName());
@@ -466,7 +464,7 @@ public class Server {
             if (projectMap.containsKey(project.getProjectID())) {
                 User user = userMap.get(username);
                 Project project1 = projectMap.get(project.getProjectID());
-                project1.getAssignedUser().put(user, false);
+                project1.getAssignedUser().put(user.getUsername(), false);
                 logtext = String.format("User %s was added to project %s: %s", user.getUsername(), project.getProjectID(), project.getProjectName());
                 ok = true;
             }

@@ -36,10 +36,13 @@ public class ProjectManager {
     public Project createProject(String name, String description, LocalDate deadline, User userAdmin) {
         if (name != null && description != null && deadline != null
         && name != "" && description != "") { //check that the variables aren't null or empty
+            HashMap<String, Boolean> assignees = new HashMap<>();
+            assignees.put(userAdmin.getUsername(), true);
             Project project = new Project.ProjectBuilder() //initiate object and call on ProjectBuilder
                     .projectName(name) //the name to be set
                     .description(description)//the description to be set
                     .deadline(deadline)//the deadline to be set
+                    .assignedUser(assignees)
                     .userAdmin(userAdmin) //the user that creates the project thus becoming project admin
                     .build(); //builds the thing
             return project; //returns the project that was created
