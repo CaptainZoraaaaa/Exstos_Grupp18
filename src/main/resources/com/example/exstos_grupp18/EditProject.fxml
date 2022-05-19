@@ -100,7 +100,7 @@
                </font></TextArea>
             <DatePicker fx:id="projectDeadlineDate" editable="false" onAction="#chooseDate" promptText="Choose a date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="assigneeList" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="creatorField" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="creatorField" disable="true" editable="false" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
