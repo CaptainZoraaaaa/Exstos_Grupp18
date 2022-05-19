@@ -45,11 +45,11 @@ public class Project implements Serializable {
         this.description = description;
     }
 
-    public HashMap<User, Boolean> getAssignedUser() {
+    public HashMap<String, Boolean> getAssignedUser() {
         return assignedUser;
     }
 
-    public void setAssignedUser(HashMap<User, Boolean> assignedUser) {
+    public void setAssignedUser(HashMap<String, Boolean> assignedUser) {
         this.assignedUser = assignedUser;
     }
 
@@ -72,7 +72,7 @@ public class Project implements Serializable {
     public void setName(String newName) {
     }
 
-    public HashMap<User, Boolean> getAssignedUsers() {
+    public HashMap<String, Boolean> getAssignedUsers() {
         return assignedUser;
     }
 
@@ -122,7 +122,7 @@ public class Project implements Serializable {
             return this;
         }
         public ProjectBuilder userAdmin(User admin) {
-            project.getAssignedUser().put(admin, true);
+            project.getAssignedUser().put(admin.getUsername(), true);
             return this;
         }
 
