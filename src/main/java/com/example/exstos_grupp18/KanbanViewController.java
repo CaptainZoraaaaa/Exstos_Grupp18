@@ -2,7 +2,6 @@ package com.example.exstos_grupp18;
 
 import Model.Swimlane;
 import Model.Task;
-import client.Client;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -95,6 +94,7 @@ public class KanbanViewController implements Initializable {
     private Label usernameLabel; //the label for the username
     @FXML
     private Pane mainBarPane;
+    private double totalTasks = 1;
 
     public static KanbanViewController getInstance() {
         return yes;
@@ -143,30 +143,31 @@ public class KanbanViewController implements Initializable {
     //TODO javadoca
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<Task> current = controller.getTask();
+        ArrayList<Task> currentTaskList = controller.getTask();
+        totalTasks = currentTaskList.size();
         Node[] nodes = new Node[controller.getTaskSize()];
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                if (current.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
+                if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
                 }
-                else if (current.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     inProgressList.getChildren().add(nodes[i]);
                 }
-                else if (current.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     waitingList.getChildren().add(nodes[i]);
                 }
-                else if (current.get(i).getCurrentStatus().equals(Swimlane.Done)){
+                else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Done)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
@@ -178,6 +179,10 @@ public class KanbanViewController implements Initializable {
             }
         }
 
+        backlogBar.setProgress(backlogList.getChildren().size() / totalTasks);
+        inProgressBar.setProgress(inProgressList.getChildren().size() / totalTasks);
+        waitingBar.setProgress(waitingList.getChildren().size() / totalTasks);
+        doneBar.setProgress(doneList.getChildren().size() / totalTasks);
     }
 
     public void skriv(String scene) { //TODO testmetod tas bort när den är färdiganvänd
