@@ -87,6 +87,7 @@ public class NewProjectController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
+        creatorField.setText(controller.getLoggedInUser());
     }
 
     /**
@@ -96,5 +97,13 @@ public class NewProjectController implements Initializable {
     public void setUsers(ActionEvent event){
         currentUser = assigneeList.getValue();
     } //TODO Se om det går att ändra till multiple choice.
+
+    /**
+     *
+     * @param usernameLabel
+     */
+    public void setCreator(String usernameLabel) {
+        creatorField.setText(usernameLabel);
+    }
 }
 
