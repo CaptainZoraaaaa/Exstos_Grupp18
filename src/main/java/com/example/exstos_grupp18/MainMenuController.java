@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import client.Client;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

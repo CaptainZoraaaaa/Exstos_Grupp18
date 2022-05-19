@@ -43,17 +43,12 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         if(controller.logIn(username, password)) {
-            Controller controller = Controller.getInstance();
-            controller.setLoggedInUser("Emma");
             System.out.println(">> Login successful <<");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             root = fxmlLoader.load();
-            //Används tidigare för att överför data, denna kan komma att återimplementeras.
-            /*MainMenuController mainMenuController = fxmlLoader.getController();
-            mainMenuController.setUserLabel(username);*/
-            //HomePageController homePageController = fxmlLoader.getController();
-            //homePageController.setUserLabel("Emma");
-            new Client(null,null,8080);
+            //Används för att överföra data
+            MainMenuController mainMenuController = fxmlLoader.getController();
+            mainMenuController.setUserLabel(username);
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
             scene = new Scene(root);

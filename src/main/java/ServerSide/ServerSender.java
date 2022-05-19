@@ -13,10 +13,16 @@ import java.net.Socket;
 public class ServerSender extends Thread{
     private ServerBuffer serverBuffer;
     private Socket socket;
+    private ObjectOutputStream oos;
 
     public ServerSender(ServerBuffer serverBuffer, Socket socket) {
         this.serverBuffer = serverBuffer;
         this.socket = socket;
+        try {
+            oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -26,8 +32,8 @@ public class ServerSender extends Thread{
      */
     @Override
     public void run() {
-        while (!Thread.interrupted()){
-            try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()))) {
+        while (!socket.isClosed()){
+            try {
                 oos.writeObject(serverBuffer.get());//write latest object added in ServerBuffer
                 oos.flush();
             } catch (IOException | InterruptedException e) {

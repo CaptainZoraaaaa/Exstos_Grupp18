@@ -127,10 +127,10 @@ public class ProjectManager {
      * Method for changing the owner of a project. Can only be done by project owner.
      */
     public void changeOwner(boolean isAdmin, User newOwner, User oldOwner) { //TODO added oldOwner
-        HashMap<User, Boolean> assignees = currentProject.getAssignedUser();
+        HashMap<String, Boolean> assignees = currentProject.getAssignedUser();
         if (assignees.get(oldOwner)) {
-            assignees.replace(oldOwner, true, false);
-            assignees.replace(newOwner, false, true);
+            assignees.replace(oldOwner.getUsername(), true, false);
+            assignees.replace(newOwner.getUsername(), false, true);
         }
     }
 
@@ -142,8 +142,8 @@ public class ProjectManager {
      */
     public void addUser(User user) {
         if (user != null) { //if user isnt null
-            HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
-            assignees.put(user, false); //put the user in the hashmap with false admin-value
+            HashMap<String, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
+            assignees.put(user.getUsername(), false); //put the user in the hashmap with false admin-value
             currentProject.setAssignedUser(assignees); //set the hashmap in project
         }
         else {
@@ -157,9 +157,9 @@ public class ProjectManager {
      * Method for removing a user from current project.
      */
     public void removeUser(User user) {
-        HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
-        if (!assignees.get(user)) { //if the boolean admin-value for the user isn't true
-            assignees.remove(user, false); //remove from hashmap
+        HashMap<String, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
+        if (!assignees.get(user.getUsername())) { //if the boolean admin-value for the user isn't true
+            assignees.remove(user.getUsername(), false); //remove from hashmap
             currentProject.setAssignedUser(assignees); //set the hashmap in projekt
         }
         else {

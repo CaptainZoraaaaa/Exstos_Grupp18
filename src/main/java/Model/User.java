@@ -3,10 +3,11 @@ package Model;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class User {
+public class User implements Serializable {
 
     private String username;
     private String password;

@@ -46,7 +46,7 @@ public class EditTaskController implements Initializable {
     private LocalDate deadline;
     private TestController testController = new TestController();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
-    private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Review};
+    private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Waiting};
     private Swimlane selectedStatus;
     private String selectedUser;
     private boolean flagged;

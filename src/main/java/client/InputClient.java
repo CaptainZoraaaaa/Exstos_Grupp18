@@ -1,6 +1,7 @@
 package client;
 
 import java.io.BufferedInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -14,6 +15,16 @@ public class InputClient extends Thread{
     private Client client;
     private volatile boolean running = true;
 
+    public InputClient(Client client, Socket socket) {
+        this.client = client;
+        try {
+            this.ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        start();
+    }
+
     public InputClient(Client client, ObjectInputStream ois) {
         this.client = client;
         this.ois = ois;
@@ -24,9 +35,14 @@ public class InputClient extends Thread{
     public void run() {
         while (running) {
             try {
-                Package message = (Package) ois.readObject();
-                Thread.sleep(1000);
-            } catch (InterruptedException | IOException | ClassNotFoundException e) {
+                        Package message = (Package) ois.readObject();
+                        Thread.sleep(1000);
+
+            } catch (EOFException e) {
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
         }

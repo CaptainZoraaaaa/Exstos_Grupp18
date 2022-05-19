@@ -2,8 +2,10 @@ package client;
 
 import Model.Package;
 
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 /**
  * This class is the sender and sends messages to the server.
@@ -20,6 +22,7 @@ public class OutputClient {
         try {
             this.oos.writeObject(message);
             this.oos.flush();
+            System.out.println("flushed");
         } catch (IOException e) {
             e.printStackTrace();
         }
