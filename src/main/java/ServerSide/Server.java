@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static ServerSide.ServerFileManager.writeLog;
+
 /**
  * @author Anna Håkansson
  * Last update: 2022-05-06
@@ -19,7 +21,6 @@ import java.util.Map;
  */
 public class Server {
     private Connection connection;
- //   private ServerController serverController;
     private HashMap<String, ClientHandler> clientMap;
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
@@ -27,6 +28,7 @@ public class Server {
     private ArrayList<String> onlineUsers = new ArrayList<>();
     private ServerPackageHandler serverPackageHandler;
     private ServerController serverController;
+    private ServerFileManager fileManager = new ServerFileManager(this);
 
     /**
      * @author Anna Håkansson
@@ -37,9 +39,9 @@ public class Server {
     public Server(ServerController serverController) {
         this.serverController = serverController;
         serverPackageHandler  = new ServerPackageHandler(serverController);
-        clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
-        userMap = readMapFromFile("user");
-        projectMap = readMapFromFile("project");
+        userMap = ServerFileManager.readMapFromFile("user");
+        projectMap = ServerFileManager.readMapFromFile("project");
+        clientMap = new HashMap<>();
         connect();
     }
 
@@ -72,8 +74,8 @@ public class Server {
         }
 
         if(type != null) { //if type not null
-            id = getIDFromFile(type); //get ID from .dat-file and assign to ID variable
-            writeNewID(id, type); //write a new ID for the next time someone wants an ID
+            id = ServerFileManager.getIDFromFile(type); //get ID from .dat-file and assign to ID variable
+            ServerFileManager.writeNewID(id, type); //write a new ID for the next time someone wants an ID
         }
         return id;
     }
@@ -87,7 +89,7 @@ public class Server {
      * This method uses the type-string to get access
      * to the right dat-file and returns the ID written
      * there.
-     */
+
     public synchronized int getIDFromFile(String type) {
         String logtext;
         int ID = -1; //if it doesnt work it will return the "fail"-value
@@ -95,14 +97,14 @@ public class Server {
 
         try(DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))) { //create stream
             ID = dis.readInt(); //read ID
-            logtext = String.format("A %s was fetched from the .dat-file", type);
+            logtext = String.format("A %sID was fetched from the .dat-file", type);
         } catch (IOException e) {
             logtext = String.format("Failure in Server.readIDFile due to %s", e);
             System.err.println(logtext);
         }
         writeLog(logtext);
         return ID;
-    }
+    }*/
 
     /**
      * @author Anna Håkansson
@@ -113,7 +115,7 @@ public class Server {
      * This method takes the previously used ID, increments
      * it and writes the new file to the right dat file according
      * to the "type"-string.
-     */
+
     public synchronized void writeNewID(int currentID, String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right file
@@ -121,13 +123,13 @@ public class Server {
         try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){ //create stream
             dos.write(newID); //write the new ID
             dos.flush();
-            logtext = String.format("A new %s was created.", type);
+            logtext = String.format("A new %sID was created.", type);
         } catch (Exception e) {
             logtext = String.format("Error in Server.writeNewID due to %s", e);
             System.err.println(logtext);
         }
         writeLog(logtext);
-    }
+    } */
 
     /**
      * @author Anna Håkansson
@@ -147,7 +149,7 @@ public class Server {
         else {
             logtext = String.format("The clientMap already contains a user with the username %s", username);
         }
-        writeLog(logtext);
+       writeLog(logtext);
     }
 
     /**
@@ -191,7 +193,7 @@ public class Server {
      * @param logText to be added to the log
      * Saves the LocalDateTime at the executing moment and appends
      * it together with the logtext to the logtext file.
-     */
+
     public synchronized void writeLog(String logText) {
         System.out.println(logText);
         try {
@@ -202,7 +204,7 @@ public class Server {
         } catch (IOException e) {
             System.err.println("Failure in Server.writeLog due to" + e);
         }
-    }
+    } */
 
     /**
      * @author Anna Håkansson
@@ -301,7 +303,7 @@ public class Server {
      *
      * Method for writing a hashmap to a .dat-file with an
      * object output stream.
-     */
+
     public synchronized void writeMapToFile(HashMap map, String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right filename
@@ -314,7 +316,7 @@ public class Server {
             System.err.println(logtext);
         }
         writeLog(logtext);
-    }
+    }*/
 
     /**
      * @author Anna Håkansson
@@ -324,7 +326,7 @@ public class Server {
      *
      * Method for reading a hashmap from a .dat-file by
      * giving the wanted type of map.
-     */
+
     public synchronized HashMap readMapFromFile(String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format the string to get the right filename
@@ -338,7 +340,7 @@ public class Server {
         }
         writeLog(logtext);
         return map;
-    }
+    } */
 
     /**
      * @author Anna Håkansson

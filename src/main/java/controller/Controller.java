@@ -239,18 +239,24 @@ public class Controller {
     }
 
     public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
-        if (this.project == null){
-            this.project = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
-        }
         HashMap<String, Boolean> assignees = new HashMap<>();
         assignees.put(user, false);
         assignees.put(creator, true);
+        Project project = new Project.ProjectBuilder()
+                    .projectName(header)
+                    .description(description)
+                    .deadline(deadline)
+                    .assignedUser(assignees)
+                    .build();
         Package toSend = new Package.PackageBuilder()
                 .project(project)
                 .type(Package.NEW_PROJECT)
                 .build();
         client.sendUpdate(toSend);
         System.out.println(project.getProjectName());
+        if(this.project == null) {
+            this.project = project;
+        }
     }
     public ArrayList<Model.Task> getTask(){
          return project.getTasks();
@@ -277,6 +283,9 @@ public class Controller {
     private void projectUpdate(Project project) {
         if(user.getProjects().containsKey(project.getProjectID())) {
             user.getProjects().replace(project.getProjectID(), project);
+        } else {
+            user.getProjects().put(project.getProjectID(), project);
         }
+        System.out.println("Got update");
     }
 }

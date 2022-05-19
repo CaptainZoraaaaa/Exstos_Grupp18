@@ -46,25 +46,25 @@ public class Connection extends Thread {
             logtext = "Server is running";
             ClientHandler clientHandler;
             System.out.println(logtext);
-            server.writeLog(logtext);
+            ServerFileManager.writeLog(logtext);
             while (alive) { //while the flag is true
             try {
                     Socket socket = serverSocket.accept(); //assing the client to a socket
                     clientHandler = new ClientHandler(socket, server);
                     logtext = "A client just connected.";
-                    server.writeLog(logtext); //create a new ClientHandler
+                    ServerFileManager.writeLog(logtext); //create a new ClientHandler
                 } catch (IOException e) {
                     logtext = String.format("Failure in Connection.run when accepting client due to %s", e);
                     System.err.println(logtext);
-                    server.writeLog(logtext);
+                    ServerFileManager.writeLog(logtext);
                 }
             }
         } catch (IOException e) {
             logtext = String.format("Failure in Connection.run when creating Serversocket due to %s", e);
             System.err.println(logtext);
-            server.writeLog(logtext);
+            ServerFileManager.writeLog(logtext);
         }
-        server.writeLog("Server is closing down. Bye bye!");
+        ServerFileManager.writeLog("Server is closing down. Bye bye!");
     }
 
     public void setAlive(boolean alive) {

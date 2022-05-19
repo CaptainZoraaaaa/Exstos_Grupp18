@@ -49,7 +49,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public int getIDFromFile(String type) {
-        return server.getIDFromFile(type);
+        return ServerFileManager.getIDFromFile(type);
     }
 
     /**
@@ -62,7 +62,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public void writeNewID(int currentID, String type) {
-        server.writeNewID(currentID, type);
+        ServerFileManager.writeNewID(currentID, type);
     }
 
     /**
@@ -85,12 +85,13 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
     public void newProject(Project project) {
-        int projectID = getIDFromFile(TYPE_PROJECT);
+        int projectID = ServerFileManager.getIDFromFile(TYPE_PROJECT);
         writeNewID(projectID, TYPE_PROJECT);
         project.setProjectID(projectID);
         server.addProject(project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
 
     /**
@@ -104,16 +105,6 @@ public class ServerController {
         server.addUser(user);
     }
 
-    /**
-     * @author Linnéa Flystam
-     *
-     * @param logText text that adds to log
-     *
-     * Method that calls to method with the same name in class Server with incoming parameter.
-     */
-    public void writeLog(String logText) {
-        server.writeLog(logText);
-    }
 
     /**
      * @author Linnéa Flystam & Anna Håkansson
@@ -174,6 +165,7 @@ public class ServerController {
                 .type(Package.REGISTRATION_VERIFICATION)
                 .build();
         clientHandler.sendMessage(reply);
+        ServerFileManager.writeMapToFile(server.getUserMap(), TYPE_USER);
     }
 
     /**
@@ -204,6 +196,7 @@ public class ServerController {
                 sendOutProjectUpdate(toSend);
             }
         }
+        ServerFileManager.writeMapToFile(server.getUserMap(), TYPE_USER);
     } //lägg till att ta bort från projekt
 
     /**
@@ -233,7 +226,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public void writeMapToFile(HashMap map, String type) {
-        server.writeMapToFile(map, type);
+        ServerFileManager.writeMapToFile(map, type);
     }
 
     /**
@@ -245,7 +238,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
     public HashMap readMapFromFile(String type) {
-        return server.readMapFromFile(type);
+        return ServerFileManager.readMapFromFile(type);
     }
 
     public void setClientMap(HashMap<String, ClientHandler> clientMap) {
@@ -349,6 +342,8 @@ public class ServerController {
         server.updateProject(project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
     /**
      *@author Anna Håkansson
