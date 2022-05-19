@@ -50,7 +50,7 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

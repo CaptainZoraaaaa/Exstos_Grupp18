@@ -24,6 +24,7 @@ public class Controller {
     private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
     private static ClientBuffer clientBuffer = new ClientBuffer();
+
     private String loggedInUser;
 
     public Controller() {
@@ -229,5 +230,13 @@ public class Controller {
 
     public void setUpConnection() {
 
+    }
+
+    public String getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(String loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 }
