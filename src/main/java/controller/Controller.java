@@ -212,6 +212,11 @@ public class Controller {
         if (this.project == null){
             this.project = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
         }
+        Package toSend = new Package.PackageBuilder()
+                .project(project)
+                .type(Package.NEW_PROJECT)
+                .build();
+        client.sendUpdate(toSend);
         System.out.println(project.getProjectName());
     }
     public ArrayList<Model.Task> getTask(){

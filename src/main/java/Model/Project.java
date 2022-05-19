@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,15 +8,17 @@ import java.util.HashMap;
 /**
  * objects of this class holds the outline for a project.
  */
-public class Project {
+public class Project implements Serializable {
     private String projectName;
     private LocalDate deadline;
     private String description;
-    private HashMap<User, Boolean> assignedUser;
+    private HashMap<String, Boolean> assignedUser;
     private ArrayList<Task> taskList = new ArrayList<>();
     private Board board;
     private ProjectManager manager;
     private int projectID;
+    private int maxTasksInProgress;
+    private int maxTasksWaiting;
 
 
     public String getProjectName() {

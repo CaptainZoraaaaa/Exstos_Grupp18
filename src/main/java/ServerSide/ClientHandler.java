@@ -45,6 +45,7 @@ public class ClientHandler extends Thread {
      */
     public synchronized void sendMessage(Package packageOut) { //todo ändra till message sen när klassen finns
         serverBuffer.put(packageOut);
+        notifyAll();
     }
 
     /**

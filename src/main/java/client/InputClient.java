@@ -33,17 +33,18 @@ public class InputClient extends Thread{
 
     @Override
     public void run() {
-        try {
-            while (running) {
-                    Package message = (Package) ois.readObject();
-                    Thread.sleep(1000);
+        while (running) {
+            try {
+                        Package message = (Package) ois.readObject();
+                        Thread.sleep(1000);
+
+            } catch (EOFException e) {
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InterruptedException | IOException e) {
+                e.printStackTrace();
             }
-        } catch (EOFException e) {
-            System.out.println("message ended");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
         }
     }
 }

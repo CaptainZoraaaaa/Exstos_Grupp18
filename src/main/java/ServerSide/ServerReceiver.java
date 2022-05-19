@@ -16,11 +16,17 @@ public class ServerReceiver extends Thread{
     private ClientHandler clientHandler;
     private ServerBuffer serverBuffer;
     private Socket socket;
+    private ObjectInputStream ois;
 
     public ServerReceiver(ClientHandler clientHandler, ServerBuffer serverBuffer, Socket socket) {
         this.clientHandler = clientHandler;
         this.serverBuffer = serverBuffer;
         this.socket = socket;
+        try {
+            ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -31,15 +37,15 @@ public class ServerReceiver extends Thread{
     @Override
     public void run() {
 
-            try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()))) {
-                while (!socket.isClosed()) {
-                    packageObject = (Package) ois.readObject();
-                    clientHandler.packageRecieved(packageObject);
-                }
+        while (!socket.isClosed()) {
+            try {
+                packageObject = (Package) ois.readObject();
+                clientHandler.packageRecieved(packageObject);
+            } catch (IOException e) {
+                e.printStackTrace();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                System.out.println("end of ");
             }
+        }
     }
 }
