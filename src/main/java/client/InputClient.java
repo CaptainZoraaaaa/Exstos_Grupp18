@@ -1,5 +1,8 @@
 package client;
 
+import Model.Package;
+import controller.Controller;
+
 import java.io.BufferedInputStream;
 import java.io.EOFException;
 import java.io.IOException;
@@ -14,6 +17,7 @@ public class InputClient extends Thread{
     private ObjectInputStream ois;
     private Client client;
     private volatile boolean running = true;
+    private Controller controller = Controller.getInstance();
 
     public InputClient(Client client, Socket socket) {
         this.client = client;
@@ -36,7 +40,9 @@ public class InputClient extends Thread{
         while (running) {
             try {
                         Package message = (Package) ois.readObject();
+                        controller.unpack(message);
                         Thread.sleep(1000);
+
 
             } catch (EOFException e) {
 

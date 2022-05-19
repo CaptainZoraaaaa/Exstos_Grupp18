@@ -229,4 +229,21 @@ public class Controller {
     public void setUpConnection() {
 
     }
+
+    public void unpack(Package message) {
+        switch (message.getType()) {
+            case Package.PROJECT_UPDATE:
+                projectUpdate(message.getProject());
+                break;
+            case Package.PROJECT_REMOVED:
+
+                break;
+        }
+    }
+
+    private void projectUpdate(Project project) {
+        if(user.getProjects().containsKey(project.getProjectID())) {
+            user.getProjects().replace(project.getProjectID(), project);
+        }
+    }
 }
