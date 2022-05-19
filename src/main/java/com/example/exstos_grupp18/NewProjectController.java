@@ -66,8 +66,8 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        //controller.createNewProject(header, description, deadline, currentUser, creator);
-        testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
+        controller.createNewProject(header, description, deadline, currentUser, creator);
+        //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
