@@ -5,5 +5,7 @@ import java.util.LinkedList;
 public enum Swimlane {
     Backlog,
     InProgress,
-    Review;
+    Review,
+    Done,
+    My_lane;
 }

@@ -44,11 +44,14 @@ public class LoginController {
 
         if(controller.logIn(username, password)) {
             System.out.println(">> Login successful <<");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+           // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
             //Används för att överföra data
-            MainMenuController mainMenuController = fxmlLoader.getController();
-            mainMenuController.setUserLabel(username);
+            /*MainMenuController mainMenuController = fxmlLoader.getController();
+            mainMenuController.setUserLabel(username);*/
+            HomePageController homePageController = fxmlLoader.getController();
+            homePageController.setUserLabel("Emma");
             new Client(null,null,8080);
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
