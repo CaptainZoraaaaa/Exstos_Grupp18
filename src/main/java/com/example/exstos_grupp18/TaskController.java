@@ -12,15 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -46,8 +43,13 @@ public class TaskController extends Thread implements Initializable {
    // private Image imageWhiteFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("white_flag.png")));
    // private Image imageOrangeFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("orange_flag.png")));
 
+    /**
+     * This method is for edit/previewing a task. This method will load the new scen aswell as send over the task that got pressed.
+     * @param event -  event from Button on what task wanted to be edited used to get the right task to edit.
+     * @throws IOException
+     */
     @FXML
-    void print(ActionEvent event) throws IOException { //todo javadoca
+    void editTask(ActionEvent event) throws IOException { //todo javadoca
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditTask.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -64,7 +66,8 @@ public class TaskController extends Thread implements Initializable {
     }
 
     /**
-     *
+     *This is a thread that starts when a new task is created. When the task loads in this thread will start and
+     *compare this scenes id with the task object id if the task id match with the scene id the scene will then load the data from that object.
      * @author Max Tiderman & Christian Edvall.
      */
     @Override
@@ -82,10 +85,18 @@ public class TaskController extends Thread implements Initializable {
         }
     }
 
+    /**
+     * This method Starts the Thread.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         start();
     } //todo javadoca
+
+    /**
+     * Test Method
+     * @param event
+     */
     public void setUsers(ActionEvent event){
         test = status.getValue();
     } //todo javadoca
