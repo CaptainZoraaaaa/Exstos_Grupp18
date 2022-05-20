@@ -44,7 +44,7 @@ public class HomePageController implements Initializable {
     @FXML
     private Label userLabel;
     @FXML
-    private VBox myProjectVbox;
+    private ScrollPane myProjectVbox;
     @FXML
     private VBox myLane;
     @FXML
@@ -70,8 +70,8 @@ public class HomePageController implements Initializable {
     void changeProject(ActionEvent event) {
         Button button = (Button) event.getSource();
         System.out.println(button.getText());
+        projectName.setText(button.getText());
         controller.changeProject(button.getText());
-        projectName.setText(projectButton.getText());
     }
 
     /**
@@ -152,11 +152,13 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLabel.setText(controller.getLoggedInUser());
+        myProjectVbox.setVisible(false);
         ArrayList<Project> currentList = controller.getAllProject();
         Button button = null;
             for (int i = 0; i < currentList.size(); i++) {
                 button = new Button(currentList.get(i).getProjectName());
                 button.setId(String.valueOf(currentList.get(i).getProjectID()));
+                button.getStyleClass().add("Men");
                 button.setOnAction(this::changeProject);
                 projectList.getChildren().addAll(button);
             }

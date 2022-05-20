@@ -74,9 +74,9 @@
             </ScrollPane>
          </children>
       </Pane>
-      <ScrollPane layoutX="476.0" layoutY="141.0" prefHeight="770.0" prefWidth="200.0">
+      <ScrollPane fx:id="myProjectVbox" layoutX="232.0" layoutY="141.0" prefHeight="770.0" prefWidth="195.0" style="-fx-background-color: #BFCFDD;">
          <content>
-            <VBox fx:id="projectList" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="projectList" prefHeight="755.0" prefWidth="192.0" style="-fx-background-color: #BFCFDD;" />
          </content>
       </ScrollPane>
    </children>
