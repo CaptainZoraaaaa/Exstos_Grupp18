@@ -10,10 +10,13 @@ public class ServerFileManager {
     private static BufferedWriter bw;
     private static ObjectInputStream ois;
     private static ObjectOutputStream oos;
-    private static Server server;
 
-    public ServerFileManager(Server server) {
-        this.server = server;
+    public ServerFileManager() {
+        try {
+            bw = new BufferedWriter(new FileWriter("files/log.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * @author Anna Håkansson
@@ -73,9 +76,8 @@ public class ServerFileManager {
      * it together with the logtext to the logtext file.
      */
     public static synchronized void writeLog(String logText) {
-        System.out.println(logText);
+        System.out.println(LocalDateTime.now() + logText);
         try {
-            bw = new BufferedWriter(new FileWriter("files/log.txt")); //create writer
             bw.write(String.format("%s: %s%n", LocalDateTime.now(), logText)); //append the time and the logtext (e.g. add an extra line instead of overwriting)
             bw.flush();
         } catch (IOException e) {

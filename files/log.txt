@@ -1,1 +1,33 @@
-2022-05-19T16:52:15.380559800: The projectMap was written to the .dat-file
+2022-05-20T10:33:00.276873605: The userMap was read from the .dat-file
+2022-05-20T10:33:00.284889709: The projectMap was read from the .dat-file
+2022-05-20T10:33:00.285822204: Server is running
+2022-05-20T10:33:14.066252161: A client just connected.
+2022-05-20T10:33:14.067453102: Login credentials for user Anna was accepted
+2022-05-20T10:33:14.067637058: User Anna was added to the onlineUsers-list
+2022-05-20T10:33:14.067780492: The client associated to user Anna was added to the clientMap
+2022-05-20T10:33:25.021350766: A projectID was fetched from the .dat-file
+2022-05-20T10:33:25.022593479: A new projectID was created.
+2022-05-20T10:33:25.023194259: Project #2 hej was added to the projectMap
+2022-05-20T10:33:25.024018858:  Unable to send project update for project hej to assignee Creator: Not in the clientMap
+2022-05-20T10:33:25.024568508:  Unable to send project update for project hej to assignee Emma: Not in the clientMap
+2022-05-20T10:33:25.034154639: The projectMap was written to the .dat-file
+2022-05-20T10:33:54.215455496: A taskID was fetched from the .dat-file
+2022-05-20T10:33:54.215808449: A new taskID was created.
+2022-05-20T10:38:17.350832278: A client just connected.
+2022-05-20T10:38:17.351308515: Login credentials for user Anna was accepted
+2022-05-20T10:38:17.351965934: User Anna was added to the onlineUsers-list
+2022-05-20T10:38:17.352472281: The clientMap already contains a user with the username Anna
+2022-05-20T10:38:28.743355081: A projectID was fetched from the .dat-file
+2022-05-20T10:38:28.744489303: A new projectID was created.
+2022-05-20T10:38:28.745265921: Project #3 123 was added to the projectMap
+2022-05-20T10:38:28.746040497:  Unable to send project update for project 123 to assignee Creator: Not in the clientMap
+2022-05-20T10:38:28.746158376:  Unable to send project update for project 123 to assignee Linnéa: Not in the clientMap
+2022-05-20T10:38:28.746843456: The projectMap was written to the .dat-file
+2022-05-20T10:38:50.999966484: A taskID was fetched from the .dat-file
+2022-05-20T10:38:51.000788293: A new taskID was created.
+2022-05-20T10:38:51.001293241:  Unable to send project update for project 123 to assignee Creator: Not in the clientMap
+2022-05-20T10:38:51.002059419:  Unable to send project update for project 123 to assignee Linnéa: Not in the clientMap
+2022-05-20T10:41:29.379988234: A taskID was fetched from the .dat-file
+2022-05-20T10:41:29.381664780: A new taskID was created.
+2022-05-20T10:41:29.382658490:  Unable to send project update for project 123 to assignee Creator: Not in the clientMap
+2022-05-20T10:41:29.383613575:  Unable to send project update for project 123 to assignee Linnéa: Not in the clientMap

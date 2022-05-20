@@ -21,7 +21,7 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
-    private Project project = new Project();
+    private Project project;
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
@@ -98,12 +98,6 @@ public class Controller {
         return false;
     }
 
-    public boolean checkUsername (String username) { //todo ändrat parametrar
-
-       // clientBuffer.put();
-        return false;
-    }
-
     public void displayMyPages () {
     }
 
@@ -160,9 +154,22 @@ public class Controller {
 
     public void createTask(Model.Task task) {
         project.addNewTask(task);
+        Package toSend = new Package.PackageBuilder()
+                .task(task)
+                .project(project)
+                .type(Package.NEW_TASK)
+                .build();
+        client.sendUpdate(toSend);
+
     }
 
-    public void editTask () {
+    public void taskEdited (Model.Task task) {
+        Package toSend = new Package.PackageBuilder()
+                .task(task)
+                .project(project)
+                .type(Package.TASK_EDITED)
+                .build();
+        client.sendUpdate(toSend);
     }
 
     public void assignToTask () {
@@ -201,12 +208,6 @@ public class Controller {
     public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
     }
 
-    public void sendStatistics () {
-    }
-
-    public void sendCalender () {
-    }
-
     public void changeProject (int projectID) {
 
     }
@@ -218,6 +219,9 @@ public class Controller {
      if(tempMap.containsKey(project.getProjectID())) {
          tempMap.replace(project.getProjectID(), project);
          user.setProjects(tempMap);
+     }
+     if(project.getProjectID() == this.project.getProjectID()) {
+         this.project = project;
      }
     }
 
@@ -283,6 +287,9 @@ public class Controller {
     private void projectUpdate(Project project) {
         if(user.getProjects().containsKey(project.getProjectID())) {
             user.getProjects().replace(project.getProjectID(), project);
+            if(project.getProjectID() == this.project.getProjectID()) {
+                this.project = project;
+            }
         } else {
             user.getProjects().put(project.getProjectID(), project);
         }

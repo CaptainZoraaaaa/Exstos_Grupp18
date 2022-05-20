@@ -12,5 +12,6 @@ public class TestFilewriter {
         HashMap<Integer, Project> projectMap = new HashMap<>();
         ServerFileManager.writeMapToFile(projectMap, "project");
         ServerFileManager.writeNewID(0, "project");
+        ServerFileManager.writeNewID(0, "task");
     }
 }
