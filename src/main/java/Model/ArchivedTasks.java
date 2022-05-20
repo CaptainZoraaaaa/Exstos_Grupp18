@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.HashMap;
-
+/// TODO: 2022-05-20 RADERA 
 public class ArchivedTasks {
     private HashMap<Task, Boolean> archive;
     public ArchivedTasks() {
