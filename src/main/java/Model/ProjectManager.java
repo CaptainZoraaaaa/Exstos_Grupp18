@@ -3,6 +3,8 @@ package Model;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+//TODO flytta över till controller och ta bort - Anna
+
 /**
  * @author Anna Håkansson
  * @version 1.0
