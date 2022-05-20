@@ -193,8 +193,12 @@ public class Controller {
     public void sendCalender () {
     }
 
-    public void changeProject (int projectID) {
-
+    public void changeProject (String projectID) {
+        for (int i = 0; i < this.projects.size(); i++) {
+            if (projectID.equals(projects.get(i).getProjectName())){
+                activeProject = projects.get(i);
+            }
+        }
     }
 
     public void operation () {
@@ -213,6 +217,7 @@ public class Controller {
     public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
         this.activeProject = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
         projects.add(activeProject);
+        //TODO TA BORT KOMMENTAR
         /*Package toSend = new Package.PackageBuilder()
                 .project(activeProject)
                 .type(Package.NEW_PROJECT)

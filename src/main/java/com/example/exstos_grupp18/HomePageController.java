@@ -4,6 +4,7 @@ import Model.Project;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -47,6 +48,8 @@ public class HomePageController implements Initializable {
     @FXML
     private VBox myLane;
     @FXML
+    private VBox projectList;
+    @FXML
     private ListView<Swimlane> myListLane;
     @FXML
     private ScrollPane myLaneScroll;
@@ -65,6 +68,9 @@ public class HomePageController implements Initializable {
      */
     @FXML
     void changeProject(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        System.out.println(button.getText());
+        controller.changeProject(button.getText());
         projectName.setText(projectButton.getText());
     }
 
@@ -146,14 +152,14 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLabel.setText(controller.getLoggedInUser());
-        myProjectVbox.setVisible(false);
         ArrayList<Project> currentList = controller.getAllProject();
-        if (currentList.size()>0) {
+        Button button = null;
             for (int i = 0; i < currentList.size(); i++) {
-                projectNameButton = new Button(currentList.get(i).getProjectName());
-                myProjectVbox.getChildren().add(projectNameButton);
+                button = new Button(currentList.get(i).getProjectName());
+                button.setId(String.valueOf(currentList.get(i).getProjectID()));
+                button.setOnAction(this::changeProject);
+                projectList.getChildren().addAll(button);
             }
-        }
     }
 
     /**
