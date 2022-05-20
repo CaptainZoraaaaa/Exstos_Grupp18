@@ -287,7 +287,7 @@ public class Controller {
     private void projectUpdate(Project project) {
         if(user.getProjects().containsKey(project.getProjectID())) {
             user.getProjects().replace(project.getProjectID(), project);
-            if(project.getProjectID() == this.project.getProjectID()) {
+            if(project.getProjectID() == this.project.getProjectID() || this.project == null) {
                 this.project = project;
             }
         } else {
