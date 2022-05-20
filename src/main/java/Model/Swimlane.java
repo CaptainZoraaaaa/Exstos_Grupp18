@@ -7,5 +7,6 @@ public enum Swimlane {
     InProgress,
     Waiting,
     Done,
+    Archived,
     My_lane;
 }
