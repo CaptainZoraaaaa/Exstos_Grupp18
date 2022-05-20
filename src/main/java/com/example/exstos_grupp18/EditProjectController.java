@@ -4,9 +4,17 @@ import Model.Project;
 import Sandbox.TestController;
 import controller.Controller;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -30,18 +38,23 @@ public class EditProjectController implements Initializable {
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
+
     private Project project;
     private Controller controller = Controller.getInstance();
     private LocalDate deadline;
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /**
      * Method to return to previous screen.
-     * @param event ActionEvent that reacts when the "back" button is pressed.
+     * @param actionEvent ActionEvent that reacts when the "back" button is pressed.
      */
     @FXML
-    void backToPreviousScreen(ActionEvent event) { //todo behöver kunna byta till föregående scen (antagligen kanban eller huvudvy)
+    void backToPreviousScreen(ActionEvent actionEvent) throws IOException {
+        changeScene(actionEvent, "HomePage.fxml");
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
@@ -57,14 +70,15 @@ public class EditProjectController implements Initializable {
      */
     /**
      * This method is used to edit a projects values.
-     * @param event event
+     * @param actionEvent event
      */
     @FXML
-    void editProject(ActionEvent event) {
+    void editProject(ActionEvent actionEvent) throws IOException {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
         controller.createNewProject(header, description, deadline, user, creator);
+        changeScene(actionEvent, "HomePage.fxml");
     }
     /**
      * Method for initializing the list of available users to select.
@@ -84,4 +98,11 @@ public class EditProjectController implements Initializable {
     private void setUsers(ActionEvent event) {
         user = assigneeList.getValue();
     } //TODO kolla om det går att ändra till multiple choise
+    public void changeScene(Event event, String newScene) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }

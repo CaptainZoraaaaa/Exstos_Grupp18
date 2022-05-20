@@ -40,8 +40,6 @@ public class TaskController extends Thread implements Initializable {
     private Parent root;
     private int taskId;
     private Controller controller = Controller.getInstance();
-   // private Image imageWhiteFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("white_flag.png")));
-   // private Image imageOrangeFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("orange_flag.png")));
 
     /**
      * This method is for edit/previewing a task. This method will load the new scen aswell as send over the task that got pressed.

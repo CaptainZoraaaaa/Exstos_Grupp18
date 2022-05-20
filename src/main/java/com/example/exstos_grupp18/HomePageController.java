@@ -24,6 +24,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to set up the scene Home Page.
+ * @author Christian Edvall & Emma Mörk.
+ * @version 2022-05-10.
+ */
 public class HomePageController implements Initializable {
 
 
@@ -45,6 +50,8 @@ public class HomePageController implements Initializable {
     private ListView<Swimlane> myListLane;
     @FXML
     private ScrollPane myLaneScroll;
+    @FXML
+    private Button editProjectButton;
 
     private Stage stage;
     private Scene scene;
@@ -52,26 +59,48 @@ public class HomePageController implements Initializable {
     private boolean projectSelectionVisible;
     private Controller controller = Controller.getInstance();
 
+    /**
+     * This method is used to change the project you're working in by changing the project name.
+     * @param event an actionevent when clicking on a project in the project menu for selecting projects.
+     */
     @FXML
     void changeProject(ActionEvent event) {
         projectName.setText(projectButton.getText());
     }
 
+    /**
+     * This method is used to change to the scene for creating a project.
+     * @param event an actionevent when clicking on Create project in the menu.
+     * @throws IOException Input/output-exception.
+     */
     @FXML
     void changeToCreateProject(ActionEvent event) throws IOException {
         changeScene(event, "NewProject.fxml");
     }
 
+    /**
+     * This method is used to change scene to the Kanban board.
+     * @param event an actionevent when clicking on View kanban in the menu.
+     * @throws IOException Input/output-exception.
+     */
     @FXML
     void changeToKanban(ActionEvent event) throws IOException {
         changeScene(event, "KanbanView.fxml");
     }
-
+    /**
+     * This method is used to log out of the project.
+     * @param event an actionevent when clicking on log out in the menu.
+     * @throws IOException Input/output-exception.
+     */
     @FXML
     void logOut(ActionEvent event) throws IOException {
         changeScene(event, "LoginView.fxml");
     }
 
+    /**
+     * This method is used to display the project menu, it's hidden by default.
+     * @param event an actionevent that displays the project menu och hides it when clicked.
+     */
     @FXML
     void showProjectSelection(ActionEvent event) {
         if (!projectSelectionVisible) {
@@ -83,6 +112,23 @@ public class HomePageController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to change the scene to edit a project.
+     * @param actionEvent an actionevent that displays the scene EditProject when clicked.
+     * @throws IOException Input/output-exception.
+     */
+    @FXML
+    void editProjectPressed(ActionEvent actionEvent) throws IOException {
+        changeScene(actionEvent, "EditProject.fxml");
+    }
+
+    /**
+     * This method is a template for changing a scene, it can be called upon by any methods and ca change to whatever
+     * scene is specified.
+     * @param event takes an actionevent from the calling method.
+     * @param newScene a String containing a scenes location.
+     * @throws IOException Input/output-exception.
+     */
     public void changeScene(Event event, String newScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
         root = fxmlLoader.load();
@@ -91,6 +137,12 @@ public class HomePageController implements Initializable {
         stage.setScene(scene);
     }
 
+    /**
+     * This method is used to initialize the scene, by doing so the scene can come pre-loaded with user information
+     * such as: who the logged in user is, what tasks they're assigned and what projects they are members of.
+     * @param url is a url
+     * @param resourceBundle is a resourcebundle.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLabel.setText(controller.getLoggedInUser());
@@ -103,6 +155,10 @@ public class HomePageController implements Initializable {
             }
         }
     }
+
+    /**
+     * This method is used by other scenes to set up tasks on the HomePage swimlane.
+     */
     public void setUpMySwimLane(){
         System.out.println(userLabel.getText());
         ArrayList<Task> current = controller.getTask();

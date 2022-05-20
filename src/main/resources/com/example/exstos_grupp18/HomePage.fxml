@@ -54,7 +54,12 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Pane prefHeight="591.0" prefWidth="232.0" />
+            <Button fx:id="editProjectButton" mnemonicParsing="false" onAction="#editProjectPressed" stylesheets="@../../../CSS/Menu.css" text="Edit project" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="30.0" />
+               </font>
+            </Button>
+            <Pane prefHeight="534.0" prefWidth="232.0" />
             <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="30.0" />
