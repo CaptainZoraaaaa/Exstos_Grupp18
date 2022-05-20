@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.LinkedList;
  * @author Christian Edvall
  * @version 1.0
  */
-public class Task {
+public class Task implements Serializable {
     private String header;
     private String description;
     private LocalDate estimatedTime;

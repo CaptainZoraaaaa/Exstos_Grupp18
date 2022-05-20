@@ -11,7 +11,11 @@ import java.io.*;
 import java.net.Socket;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+/**
+ * @author Max Tiderman & Anna Håkansson
+ */
 public class Controller {
     private Task task;
     private User user;
@@ -141,14 +145,39 @@ public class Controller {
         return OK;
     }
 
+    /**
+     * @author Anna Håkansson
+     *
+     * Method for logging out: sending the userobject in a logoutpackage to server
+     * and then disconnect client.
+     */
     public void logOut () {
+        Package logOutPackage = new Package.PackageBuilder()
+                .sender(user)
+                .type(Package.USER_LOGGED_OUT)
+                .build();
+        client.sendUpdate(logOutPackage);
+        client.disconnect();
     }
 
     public void createTask(Model.Task task) {
         activeProject.addNewTask(task);
+        Package toSend = new Package.PackageBuilder()
+                .task(task)
+                .project(activeProject)
+                .type(Package.NEW_TASK)
+                .build();
+        client.sendUpdate(toSend);
+
     }
 
-    public void editTask () {
+    public void taskEdited (Model.Task task) {
+        Package toSend = new Package.PackageBuilder()
+                .task(task)
+                .project(activeProject)
+                .type(Package.TASK_EDITED)
+                .build();
+        client.sendUpdate(toSend);
     }
 
     public void assignToTask () {
@@ -187,12 +216,6 @@ public class Controller {
     public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
     }
 
-    public void sendStatistics () {
-    }
-
-    public void sendCalender () {
-    }
-
     public void changeProject (String projectID) {
         for (int i = 0; i < this.projects.size(); i++) {
             if (projectID.equals(projects.get(i).getProjectName())){
@@ -202,6 +225,23 @@ public class Controller {
     }
 
     public void operation () {
+    }
+    public synchronized void projectUpdateRecieved(Project project) {
+     HashMap <Integer, Project> tempMap = user.getProjects();
+     if(tempMap.containsKey(project.getProjectID())) {
+         tempMap.replace(project.getProjectID(), project);
+         user.setProjects(tempMap);
+     }
+     if(project.getProjectID() == this.activeProject.getProjectID()) {
+         this.activeProject = project;
+     }
+    }
+
+    public void sendProjectUpdate(Project project) {
+        Package toSend = new Package.PackageBuilder()
+                .project(project)
+                .type(Package.PROJECT_EDITED)
+                .build();
     }
 
     public void newClient() {
@@ -215,14 +255,24 @@ public class Controller {
     }
 
     public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
-        this.activeProject = new Project.ProjectBuilder().projectName(header).description(description).deadline(deadline).build();
-        projects.add(activeProject);
-        //TODO TA BORT KOMMENTAR
-        /*Package toSend = new Package.PackageBuilder()
-                .project(activeProject)
+        HashMap<String, Boolean> assignees = new HashMap<>();
+        assignees.put(user, false);
+        assignees.put(creator, true);
+        Project project = new Project.ProjectBuilder()
+                    .projectName(header)
+                    .description(description)
+                    .deadline(deadline)
+                    .assignedUser(assignees)
+                    .build();
+        Package toSend = new Package.PackageBuilder()
+                .project(project)
                 .type(Package.NEW_PROJECT)
                 .build();
-        client.sendUpdate(toSend);*/
+        client.sendUpdate(toSend);
+        System.out.println(project.getProjectName());
+        if(this.project == null) {
+            this.project = project;
+        }
     }
     public void setCurrentTask(String projectName){
         for (Project customer : projects) {
@@ -238,8 +288,32 @@ public class Controller {
     public int getTaskSize(){
         return activeProject.getTaskSize();
     }
+
     public void setUpConnection() {
 
+    }
+
+    public void unpack(Package message) {
+        switch (message.getType()) {
+            case Package.PROJECT_UPDATE:
+                projectUpdate(message.getProject());
+                break;
+            case Package.PROJECT_REMOVED:
+
+                break;
+        }
+    }
+
+    private void projectUpdate(Project project) {
+        if(user.getProjects().containsKey(project.getProjectID())) {
+            user.getProjects().replace(project.getProjectID(), project);
+            if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {
+                this.activeProject = project;
+            }
+        } else {
+            user.getProjects().put(project.getProjectID(), project);
+        }
+        System.out.println("Got update");
     }
 
     public String getLoggedInUser() {
