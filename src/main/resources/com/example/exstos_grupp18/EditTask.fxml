@@ -150,7 +150,7 @@
                   <Insets right="5.0" />
                </GridPane.margin>
             </Button>
-            <DatePicker fx:id="taskDeadlineDate" disable="true" editable="false" onAction="#chooseDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="taskDeadlineDate" disable="true" editable="false" onAction="#chooseDate" promptText="Enter date in picker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="editTaskButton" layoutX="328.0" layoutY="634.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Save changes" textFill="WHITE">

@@ -328,4 +328,13 @@ public class Controller {
         return projects;
     }
 
+    public ArrayList<String> getAllUsersInProject(String projectName) {
+        ArrayList<String> projectUserList = new ArrayList<>();
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectName().equals(projectName)) {
+                projectUserList.addAll(projects.get(i).getAssignedUser().keySet());
+            }
+        }
+        return projectUserList;
+    }
 }
