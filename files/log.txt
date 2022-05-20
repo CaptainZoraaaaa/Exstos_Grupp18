@@ -1,1 +1,7 @@
-2022-05-20T09:53:26.670627: The client associated to user Pelle was added to the clientMap
+2022-05-20T16:05:43.935961353: The userMap was read from the .dat-file
+2022-05-20T16:05:43.936759485: The projectMap was read from the .dat-file
+2022-05-20T16:05:43.939179877: Server is running
+2022-05-20T16:06:00.835139838: A client just connected.
+2022-05-20T16:06:00.836255045: Login credentials for user Anna was accepted
+2022-05-20T16:06:00.836390227: User Anna was added to the onlineUsers-list
+2022-05-20T16:06:00.836511525: The client associated to user Anna was added to the clientMap
