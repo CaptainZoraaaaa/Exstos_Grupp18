@@ -314,7 +314,7 @@ public class ServerController {
     public synchronized void newTask(Task task, Project project) {
         int taskID = getIDFromFile(TYPE_TASK);
         writeNewID(taskID, TYPE_TASK);
-        task.setTASK_ID(taskID);
+        task.setTask_id(taskID);
         server.addTaskToProject(task, project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);

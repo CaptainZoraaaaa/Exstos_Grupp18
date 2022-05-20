@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public class TestFilewriter {
     public static void main(String[] args) {
+        ServerFileManager sfm = new ServerFileManager();
         HashMap<Integer, Project> projectMap = new HashMap<>();
         HashMap<String, User> userMap = new HashMap<>();
         ServerFileManager.writeMapToFile(projectMap, "project");
