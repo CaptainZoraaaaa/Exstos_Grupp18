@@ -74,8 +74,10 @@ public class TaskController extends Thread implements Initializable {
             if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText("View task");
-                URL url = getClass().getClassLoader().getResource("white_flag.png");
-             //   helpImage.setImage(imageWhiteFlag);
+                helpImage.setVisible(false);
+                if (current.get(i).isFlaggedForHelp()){
+                    helpImage.setVisible(true);
+                }
             }
         }
     }
