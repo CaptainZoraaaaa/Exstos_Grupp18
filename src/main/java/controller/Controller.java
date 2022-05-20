@@ -262,7 +262,7 @@ public class Controller {
                     .projectName(header)
                     .description(description)
                     .deadline(deadline)
-                    .assignedUser(assignees)
+                    .assignedUsers(assignees)
                     .build();
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
@@ -286,7 +286,7 @@ public class Controller {
          return activeProject.getTasks();
     }
     public int getTaskSize(){
-        return activeProject.getTaskSize();
+        return activeProject.getTaskListSize();
     }
 
     public void setUpConnection() {
