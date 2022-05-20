@@ -32,7 +32,6 @@ public class UserManager {
             user = new User.UserBuilder() //make new user with builder
                     .username(username)
                     .password(password)
-                    .image(image)
                     .build();
         }
         return user; //return the new user
