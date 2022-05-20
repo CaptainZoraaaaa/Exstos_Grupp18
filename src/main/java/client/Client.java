@@ -97,7 +97,4 @@ public class Client {
             inputClient = new InputClient(client,ois);
         }
     }
-    public void testning(){
-        System.out.println("körs");
-    }
 }
