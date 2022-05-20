@@ -1,6 +1,6 @@
 package client;
 
-import Model.Package;
+import Model.DataPackage;
 import controller.Controller;
 
 import java.io.BufferedInputStream;
@@ -39,7 +39,7 @@ public class InputClient extends Thread{
     public void run() {
         while (running) {
             try {
-                        Package message = (Package) ois.readObject();
+                        DataPackage message = (DataPackage) ois.readObject();
                         controller.unpack(message);
                         Thread.sleep(1000);
 

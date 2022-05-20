@@ -1,6 +1,6 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 
 /**
  * @author Anna Håkansson
@@ -16,43 +16,43 @@ public class ServerPackageHandler {
     public ServerPackageHandler(ServerController serverController) {
         this.serverController = serverController;
     }
-    public void unpackNewPackage(ClientHandler clientHandler, Package newPackage) { //TODO javadoca och implementera samliga ordentligt
-        switch (newPackage.getType()) {
-            case Package.USER_LOGGED_IN:
-                serverController.verifyCredentials(clientHandler, newPackage.getUsername(), newPackage.getPassword());
+    public void unpackNewPackage(ClientHandler clientHandler, DataPackage newDataPackage) { //TODO javadoca och implementera samliga ordentligt
+        switch (newDataPackage.getPackageType()) {
+            case DataPackage.USER_LOGGED_IN:
+                serverController.verifyCredentials(clientHandler, newDataPackage.getUsername(), newDataPackage.getPassword());
                 break;
-            case Package.NEW_USER_REGISTRATION:
-                serverController.newRegistration(clientHandler, newPackage.getSender());
+            case DataPackage.NEW_USER_REGISTRATION:
+                serverController.newRegistration(clientHandler, newDataPackage.getSender());
                 break;
-            case Package.USER_ASSIGNED_TO_PROJECT:
-                serverController.userAssignedToProject(newPackage.getUsername(), newPackage.getProject());
+            case DataPackage.USER_ASSIGNED_TO_PROJECT:
+                serverController.userAssignedToProject(newDataPackage.getUsername(), newDataPackage.getProject());
                 break;
-            case Package.USER_REMOVED_FROM_PROJECT:
-                serverController.userRemovedFromProject(newPackage.getSender(), newPackage.getProject());
+            case DataPackage.USER_REMOVED_FROM_PROJECT:
+                serverController.userRemovedFromProject(newDataPackage.getSender(), newDataPackage.getProject());
                 break;
-            case Package.USER_DELETED:
-                serverController.deleteUser(newPackage.getSender());
+            case DataPackage.USER_DELETED:
+                serverController.deleteUser(newDataPackage.getSender());
                 break;
-            case Package.USER_LOGGED_OUT:
-                serverController.userLoggedOut(newPackage.getSender());
+            case DataPackage.USER_LOGGED_OUT:
+                serverController.userLoggedOut(newDataPackage.getSender());
                 break;
-            case Package.NEW_TASK:
-                serverController.newTask(newPackage.getTask(), newPackage.getProject());
+            case DataPackage.NEW_TASK:
+                serverController.newTask(newDataPackage.getTask(), newDataPackage.getProject());
                 break;
-            case Package.TASK_EDITED:
-                serverController.taskEdited(newPackage.getTask(), newPackage.getProject());
+            case DataPackage.TASK_EDITED:
+                serverController.taskEdited(newDataPackage.getTask(), newDataPackage.getProject());
                 break;
-            case Package.TASK_REMOVED:
-                serverController.taskRemoved(newPackage.getTask(), newPackage.getProject());
+            case DataPackage.TASK_REMOVED:
+                serverController.taskRemoved(newDataPackage.getTask(), newDataPackage.getProject());
                 break;
-            case Package.NEW_PROJECT:
-                serverController.newProject(newPackage.getProject());
+            case DataPackage.NEW_PROJECT:
+                serverController.newProject(newDataPackage.getProject());
                 break;
-            case Package.PROJECT_EDITED:
-                serverController.projectEdited(newPackage.getProject());
+            case DataPackage.PROJECT_EDITED:
+                serverController.projectEdited(newDataPackage.getProject());
                 break;
-            case Package.PROJECT_REMOVED:
-                serverController.projectRemoved(newPackage.getProject());
+            case DataPackage.PROJECT_REMOVED:
+                serverController.projectRemoved(newDataPackage.getProject());
                 break;
         }
     }

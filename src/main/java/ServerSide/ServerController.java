@@ -1,6 +1,6 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.Project;
 import Model.Task;
 import Model.User;
@@ -132,10 +132,10 @@ public class ServerController {
         else {
             user = null; //else user is null
         }
-        Package loginReply = new Package.PackageBuilder()
-                .ok(loginOK)
+        DataPackage loginReply = new DataPackage.PackageBuilder()
+                .verificationSuccess(loginOK)
                 .userFromServer(user).
-                type(Package.LOGIN_VERIFICATION).
+                packageType(DataPackage.LOGIN_VERIFICATION).
                 build();
         clientHandler.sendMessage(loginReply); //send reply with if its ok and correct user if it was ok
     }
@@ -159,10 +159,10 @@ public class ServerController {
             newUser = null;
         }
         addUser(user);
-        Package reply = new Package.PackageBuilder()
-                .ok(registrationOK)
+        DataPackage reply = new DataPackage.PackageBuilder()
+                .verificationSuccess(registrationOK)
                 .userFromServer(newUser)
-                .type(Package.REGISTRATION_VERIFICATION)
+                .packageType(DataPackage.REGISTRATION_VERIFICATION)
                 .build();
         clientHandler.sendMessage(reply);
         ServerFileManager.writeMapToFile(server.getUserMap(), TYPE_USER);
@@ -287,9 +287,9 @@ public class ServerController {
      *@author Anna Håkansson
      */
     public void sendOutProjectUpdate(Project project) {
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
-                .type(Package.PROJECT_UPDATE)
+                .packageType(DataPackage.PROJECT_UPDATE)
                 .build();
         server.sendProjectUpdateToUsers(toSend);
     }
@@ -349,8 +349,8 @@ public class ServerController {
      *@author Anna Håkansson
      */
     public void projectRemoved(Project project) {
-        Package toSend = new Package.PackageBuilder()
-                .type(Package.PROJECT_REMOVED)
+        DataPackage toSend = new DataPackage.PackageBuilder()
+                .packageType(DataPackage.PROJECT_REMOVED)
                 .project(project)
                 .build();
         for(Map.Entry<String, User> user : getUserMap().entrySet()) {

@@ -1,7 +1,7 @@
 package controller;
 
 import Model.*;
-import Model.Package;
+import Model.DataPackage;
 import client.Client;
 import client.ClientBuffer;
 import javafx.concurrent.Task;
@@ -50,9 +50,9 @@ public class Controller {
     public boolean registerOnServer(String username, String password) {
         boolean OK = false;
         User user = user = new UserManager().createNewUser(username, password, null);
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .sender(user)
-                .type(Package.NEW_USER_REGISTRATION)
+                .packageType(DataPackage.NEW_USER_REGISTRATION)
                 .build();
         try {
             Socket socket = new Socket("localhost", 8080);
@@ -62,9 +62,9 @@ public class Controller {
 
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
-            Package recieved =(Package) ois.readObject();
-            if(recieved.getType() == Package.REGISTRATION_VERIFICATION) {
-                OK = recieved.isOK();
+            DataPackage recieved =(DataPackage) ois.readObject();
+            if(recieved.getPackageType() == DataPackage.REGISTRATION_VERIFICATION) {
+                OK = recieved.isVerificationSuccess();
             }
 
         } catch (IOException e) {
@@ -87,9 +87,9 @@ public class Controller {
     public boolean registerNewUser (String username, String password, Image profilePicture) {
         if(username != null && password != null ) {
             user = userManager.createNewUser(username, password, profilePicture);
-            Package toSend = new Package.PackageBuilder()
+            DataPackage toSend = new DataPackage.PackageBuilder()
                     .sender(user)
-                    .type(Package.NEW_USER_REGISTRATION)
+                    .packageType(DataPackage.NEW_USER_REGISTRATION)
                     .build();
 
         }
@@ -116,10 +116,10 @@ public class Controller {
         boolean OK = false;
         Socket socket;
         User user = user = new UserManager().createNewUser(username, password, null);
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .username(username)
                 .password(password)
-                .type(Package.USER_LOGGED_IN)
+                .packageType(DataPackage.USER_LOGGED_IN)
                 .build();
         try {
             socket = new Socket("localhost", 8080);
@@ -129,9 +129,9 @@ public class Controller {
 
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
-            Package recieved = (Package) ois.readObject();
-            if(recieved.getType() == Package.LOGIN_VERIFICATION) {
-                OK = recieved.isOK();
+            DataPackage recieved = (DataPackage) ois.readObject();
+            if(recieved.getPackageType() == DataPackage.LOGIN_VERIFICATION) {
+                OK = recieved.isVerificationSuccess();
                 this.user = recieved.getUserFromServer();
                 client = new Client(user, socket, oos, ois);
 
@@ -152,30 +152,30 @@ public class Controller {
      * and then disconnect client.
      */
     public void logOut () {
-        Package logOutPackage = new Package.PackageBuilder()
+        DataPackage logOutDataPackage = new DataPackage.PackageBuilder()
                 .sender(user)
-                .type(Package.USER_LOGGED_OUT)
+                .packageType(DataPackage.USER_LOGGED_OUT)
                 .build();
-        client.sendUpdate(logOutPackage);
+        client.sendUpdate(logOutDataPackage);
         client.disconnect();
     }
 
     public void createTask(Model.Task task) {
         activeProject.addNewTask(task);
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
                 .project(activeProject)
-                .type(Package.NEW_TASK)
+                .packageType(DataPackage.NEW_TASK)
                 .build();
         client.sendUpdate(toSend);
 
     }
 
     public void taskEdited (Model.Task task) {
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
                 .project(activeProject)
-                .type(Package.TASK_EDITED)
+                .packageType(DataPackage.TASK_EDITED)
                 .build();
         client.sendUpdate(toSend);
     }
@@ -238,9 +238,9 @@ public class Controller {
     }
 
     public void sendProjectUpdate(Project project) {
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
-                .type(Package.PROJECT_EDITED)
+                .packageType(DataPackage.PROJECT_EDITED)
                 .build();
     }
 
@@ -264,14 +264,14 @@ public class Controller {
                     .deadline(deadline)
                     .assignedUser(assignees)
                     .build();
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
-                .type(Package.NEW_PROJECT)
+                .packageType(DataPackage.NEW_PROJECT)
                 .build();
         client.sendUpdate(toSend);
         System.out.println(project.getProjectName());
-        if(this.project == null) {
-            this.project = project;
+        if(activeProject == null) {
+            this.activeProject = project;
         }
     }
     public void setCurrentTask(String projectName){
@@ -293,12 +293,12 @@ public class Controller {
 
     }
 
-    public void unpack(Package message) {
-        switch (message.getType()) {
-            case Package.PROJECT_UPDATE:
+    public void unpack(DataPackage message) {
+        switch (message.getPackageType()) {
+            case DataPackage.PROJECT_UPDATE:
                 projectUpdate(message.getProject());
                 break;
-            case Package.PROJECT_REMOVED:
+            case DataPackage.PROJECT_REMOVED:
 
                 break;
         }

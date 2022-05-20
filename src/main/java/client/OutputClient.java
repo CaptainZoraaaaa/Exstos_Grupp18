@@ -1,11 +1,9 @@
 package client;
 
-import Model.Package;
+import Model.DataPackage;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.Socket;
 
 /**
  * This class is the sender and sends messages to the server.
@@ -18,7 +16,7 @@ public class OutputClient {
         this.oos = oos;
     }
 
-    public void send(Package message) {
+    public void send(DataPackage message) {
         try {
             this.oos.writeObject(message);
             this.oos.flush();

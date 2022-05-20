@@ -1,6 +1,6 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.User;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class ClientHandler extends Thread {
     private Server server; //the server
     private User user; //user associated to the client
     private ServerStream serverStream;
-    private ServerBuffer<Package> serverBuffer;
+    private ServerBuffer<DataPackage> serverBuffer;
 
     /**
      * @author Anna Håkansson
@@ -39,25 +39,25 @@ public class ClientHandler extends Thread {
 
     /**
      * @author Anna Håkansson
-     * @param packageOut to be sent
+     * @param dataPackageOut to be sent
      *
      * Method for sending a message from the server to the client.
      */
-    public synchronized void sendMessage(Package packageOut) { //todo ändra till message sen när klassen finns
-        serverBuffer.put(packageOut);
+    public synchronized void sendMessage(DataPackage dataPackageOut) { //todo ändra till message sen när klassen finns
+        serverBuffer.put(dataPackageOut);
         notifyAll();
     }
 
     /**
      * @author Anna Håkansson
-     * @param newPackage recieved
+     * @param newDataPackage recieved
      *
      * Method that will be called upon when a message is recieved
      * in the ServerReciever.
      */
-    public synchronized void packageRecieved(Package newPackage) {
-        server.newPackage(this, newPackage);
-        System.out.println("Package recieved in client handler");
+    public synchronized void packageRecieved(DataPackage newDataPackage) {
+        server.newPackage(this, newDataPackage);
+        System.out.println("DataPackage recieved in client handler");
     }
 
     /**

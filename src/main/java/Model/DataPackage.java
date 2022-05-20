@@ -1,23 +1,21 @@
 package Model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  * This class is used to package different objects in order to send multiple objects at once and redistribute them.
  * @author Christian Edvall & Anna Håkansson
  */
-public class Package implements Serializable {
+public class DataPackage implements Serializable {
     /**
      * The below static final ints are used as identifiers for what kind of objects the package contains.
      */
-    public static final int USER_LOGGED_IN = 0; //user object (sender is enough)
-    public static final int NEW_USER_REGISTRATION = 1; //user object
+    public static final int USER_LOGGED_IN = 0; //user object (sender)
+    public static final int NEW_USER_REGISTRATION = 1; //user object (sender)
     public static final int USER_ASSIGNED_TO_PROJECT = 2; //String username & project object
-    public static final int USER_REMOVED_FROM_PROJECT = 3; //user & project object
-    public static final int USER_DELETED = 4; //user object
-    public static final int USER_LOGGED_OUT = 5; //user object
+    public static final int USER_REMOVED_FROM_PROJECT = 3; //user & project object (sender)
+    public static final int USER_DELETED = 4; //user object (sender)
+    public static final int USER_LOGGED_OUT = 5; //user object (sender)
     public static final int NEW_TASK = 6; //task & project object
     public static final int TASK_EDITED = 7; //task & project object
     public static final int TASK_REMOVED = 8; //task & project object
@@ -27,21 +25,16 @@ public class Package implements Serializable {
 
     public static final int LOGIN_VERIFICATION = 12; //boolean & user (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
-    public static final int PROJECT_UPDATE = 14; //project update from server
+    public static final int PROJECT_UPDATE = 14; //project update (from server)
 
     private User sender;
     private Task task;
-    private Board board;
     private Project project;
-    private LocalDateTime timeStamp;
     private String username;
-    private boolean OK;
-    private int type;
+    private boolean verificationSuccess;
+    private int packageType;
     private String password;
     private User userFromServer;
-
-    public Package() {
-    }
 
     public User getSender() {
         return sender;
@@ -59,14 +52,6 @@ public class Package implements Serializable {
         this.task = task;
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
     public Project getProject() {
         return project;
     }
@@ -75,15 +60,8 @@ public class Package implements Serializable {
         this.project = project;
     }
 
-    public LocalDateTime getTimeStamp(){
-        return timeStamp;
-    }
-
-    public void setLocalDateTime(LocalDateTime timeStamp){
-        this.timeStamp = timeStamp;
-    }
-    public int getType(){
-        return type;
+    public int getPackageType(){
+        return packageType;
     }
 
     public String getUsername() {
@@ -94,12 +72,12 @@ public class Package implements Serializable {
         this.username = username;
     }
 
-    public boolean isOK() {
-        return OK;
+    public boolean isVerificationSuccess() {
+        return verificationSuccess;
     }
 
-    public void setOK(boolean OK) {
-        this.OK = OK;
+    public void setVerificationSuccess(boolean verificationSuccess) {
+        this.verificationSuccess = verificationSuccess;
     }
 
     public String getPassword() {
@@ -122,14 +100,14 @@ public class Package implements Serializable {
      * Inner builder class for packages.
      */
     public static class PackageBuilder{
-        private final Package aPackage = new Package();
+        private final DataPackage aDataPackage = new DataPackage();
 
         /**
          * Upon call this method will finish building a package and return it.
-         * @return returns a Package object.
+         * @return returns a DataPackage object.
          */
-        public Package build(){
-            return aPackage;
+        public DataPackage build(){
+            return aDataPackage;
         }
 
         /**
@@ -139,23 +117,17 @@ public class Package implements Serializable {
          * @return returns itself.
          */
         public PackageBuilder sender(User sender){
-            aPackage.setSender(sender);
-            return this;
-        }
-
-
-        public PackageBuilder password(String password){
-            aPackage.setPassword(password);
+            aDataPackage.setSender(sender);
             return this;
         }
 
         /**
-         * This method is used to send the boards pf a project.
-         * @param board a Board object.
-         * @return returns itself.
+         * @author Anna Håkansson
+         * @param password to be set
+         * @return this
          */
-        public PackageBuilder board(Board board){
-            aPackage.setBoard(board);
+        public PackageBuilder password(String password){
+            aDataPackage.setPassword(password);
             return this;
         }
 
@@ -165,7 +137,7 @@ public class Package implements Serializable {
          * @return returns itself.
          */
         public PackageBuilder project(Project project){
-            aPackage.setProject(project);
+            aDataPackage.setProject(project);
             return this;
         }
 
@@ -178,7 +150,7 @@ public class Package implements Serializable {
          * @return itself
          */
         public PackageBuilder username(String username) {
-            aPackage.setUsername(username);
+            aDataPackage.setUsername(username);
             return this;
         }
 
@@ -187,11 +159,11 @@ public class Package implements Serializable {
          * This method is used when the server need to tell
          * a client if a request went ok.
          *
-         * @param ok if the request was a success
+         * @param verificationSuccess if the request was a success
          * @return itself
          */
-        public PackageBuilder ok(boolean ok) {
-            aPackage.setOK(ok);
+        public PackageBuilder verificationSuccess(boolean verificationSuccess) {
+            aDataPackage.setVerificationSuccess(verificationSuccess);
             return this;
         }
         /**
@@ -200,22 +172,27 @@ public class Package implements Serializable {
          * @return returns itself.
          */
         public PackageBuilder task(Task task){
-            aPackage.setTask(task);
-            return this;
-        }
-
-        public PackageBuilder userFromServer(User userFromServer){
-            aPackage.setUserFromServer(userFromServer);
+            aDataPackage.setTask(task);
             return this;
         }
 
         /**
-         * This method is used to set what type of Package the built package is. 
-         * @param type an integer that sets what type of package is being sent.
+         * @author Anna Håkansson
+         * @param userFromServer user object from
+         * @return this
+         */
+        public PackageBuilder userFromServer(User userFromServer){
+            aDataPackage.setUserFromServer(userFromServer);
+            return this;
+        }
+
+        /**
+         * This method is used to set what type of DataPackage the built package is.
+         * @param packageType an integer that sets what type of package is being sent.
          * @return returns itself.
          */
-        public PackageBuilder type(int type){
-            aPackage.type = type;
+        public PackageBuilder packageType(int packageType){
+            aDataPackage.packageType = packageType;
             return this;
         }
     }

@@ -1,12 +1,10 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.Project;
 import Model.Task;
 import Model.User;
 
-import java.io.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -352,7 +350,7 @@ public class Server {
      * by extracting the project from the package and iterating
      * over the assignees-map.
      * */
-    public synchronized void sendProjectUpdateToUsers(Package toSend){
+    public synchronized void sendProjectUpdateToUsers(DataPackage toSend){
         String logtext;
         Project project = toSend.getProject(); //get project from package
         for(Map.Entry<String, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
@@ -374,7 +372,7 @@ public class Server {
         }
     }
 
-    private void saveOfflineMessages(User user, Package toSend) {
+    private void saveOfflineMessages(User user, DataPackage toSend) {
         //todo implementera
     }
 
@@ -579,8 +577,8 @@ public class Server {
     }
 
 
-    public void newPackage(ClientHandler client, Package newPackage) {
-        serverPackageHandler.unpackNewPackage(client, newPackage);
+    public void newPackage(ClientHandler client, DataPackage newDataPackage) {
+        serverPackageHandler.unpackNewPackage(client, newDataPackage);
     }
 
     public ArrayList<String> getOnlineUsers() {

@@ -1,13 +1,12 @@
 package Sandbox;
 
-import Model.Package;
+import Model.DataPackage;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.time.LocalDateTime;
 
 public class testServer {
 
@@ -37,9 +36,9 @@ public class testServer {
                     ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
                     ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
                     try {
-                        Package p = (Package) ois.readObject();
-                        switch(p.getType()){
-                            case Package.NEW_USER_REGISTRATION -> {
+                        DataPackage p = (DataPackage) ois.readObject();
+                        switch(p.getPackageType()){
+                            case DataPackage.NEW_USER_REGISTRATION -> {
                                 System.out.println(p.getSender().getUsername());
                             }
                         }
