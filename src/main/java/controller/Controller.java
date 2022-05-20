@@ -248,4 +248,5 @@ public class Controller {
     public ArrayList<Project> getAllProject() {
         return projects;
     }
+
 }

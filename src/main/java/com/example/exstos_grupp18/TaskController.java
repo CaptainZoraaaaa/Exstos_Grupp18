@@ -43,8 +43,6 @@ public class TaskController extends Thread implements Initializable {
     private Parent root;
     private int taskId;
     private Controller controller = Controller.getInstance();
-   // private Image imageWhiteFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("white_flag.png")));
-   // private Image imageOrangeFlag = new Image(Objects.requireNonNull(getClass().getResourceAsStream("orange_flag.png")));
 
     @FXML
     void print(ActionEvent event) throws IOException { //todo javadoca
