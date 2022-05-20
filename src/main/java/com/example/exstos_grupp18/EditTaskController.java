@@ -161,7 +161,7 @@ public class EditTaskController implements Initializable {
         taskHeaderInputField.setText(task.getHeader());
         taskDescriptionInputField.setText(task.getDescription());
         taskDeadlineDate.setValue(task.getEstimatedTime());
-        assigneeList.setValue(task.getAssignees().get(0));
+        assigneeList.setValue(task.getAssignees().get(0)); /// TODO: 2022-05-20 Fixa så att detta hämtar en assigne fårn task. 
         statusList.setValue(task.getCurrentStatus());
         creatorField.setText(task.getCreator());
         taskCommentInputField.setText(task.getComments().get(0));

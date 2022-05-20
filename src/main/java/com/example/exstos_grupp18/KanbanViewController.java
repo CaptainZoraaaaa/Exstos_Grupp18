@@ -205,6 +205,7 @@ public class KanbanViewController implements Initializable {
         root = fxmlLoader.load();
         NewTaskController newTaskController = fxmlLoader.getController();
         newTaskController.setCreator(usernameLabel.getText());
+        newTaskController.setUserList(controller.getAllUsersInProject("Projeknamn"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

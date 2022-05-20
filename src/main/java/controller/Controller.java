@@ -28,10 +28,10 @@ public class Controller {
     private String loggedInUser;
 
     public Controller() {
-       // client = new Client(null, "localhost", 8080);
+        // client = new Client(null, "localhost", 8080);
     }
 
-    public static Controller getInstance(){
+    public static Controller getInstance() {
         return controller;
     }
 
@@ -40,7 +40,7 @@ public class Controller {
         projects.add(project);
     }
 
-    public void editProject () {
+    public void editProject() {
     }
 
     public boolean registerOnServer(String username, String password) {
@@ -58,8 +58,8 @@ public class Controller {
 
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
-            Package recieved =(Package) ois.readObject();
-            if(recieved.getType() == Package.REGISTRATION_VERIFICATION) {
+            Package recieved = (Package) ois.readObject();
+            if (recieved.getType() == Package.REGISTRATION_VERIFICATION) {
                 OK = recieved.isOK();
             }
 
@@ -71,44 +71,43 @@ public class Controller {
         return OK;
     }
 
-    public void listProjects () {
+    public void listProjects() {
 
     }
 
     /**
-     * @param username the chosen username
-     * @param password the chosen password
+     * @param username       the chosen username
+     * @param password       the chosen password
      * @param profilePicture
      */
-    public boolean registerNewUser (String username, String password, Image profilePicture) {
-        if(username != null && password != null ) {
+    public boolean registerNewUser(String username, String password, Image profilePicture) {
+        if (username != null && password != null) {
             user = userManager.createNewUser(username, password, profilePicture);
             Package toSend = new Package.PackageBuilder()
                     .sender(user)
                     .type(Package.NEW_USER_REGISTRATION)
                     .build();
 
-        }
-        else {
+        } else {
             return false;
         }
         //todo felmeddelande annars? ÄNDRADE TILL BOOLEAN
         return false;
     }
 
-    public boolean checkUsername (String username) { //todo ändrat parametrar
+    public boolean checkUsername(String username) { //todo ändrat parametrar
 
-       // clientBuffer.put();
+        // clientBuffer.put();
         return false;
     }
 
-    public void displayMyPages () {
+    public void displayMyPages() {
     }
 
-    public void displayCalender () {
+    public void displayCalender() {
     }
 
-    public boolean logIn (String username, String password) {
+    public boolean logIn(String username, String password) {
         boolean OK = false;
         Socket socket;
         User user = user = new UserManager().createNewUser(username, password, null);
@@ -126,7 +125,7 @@ public class Controller {
             ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 
             Package recieved = (Package) ois.readObject();
-            if(recieved.getType() == Package.LOGIN_VERIFICATION) {
+            if (recieved.getType() == Package.LOGIN_VERIFICATION) {
                 OK = recieved.isOK();
                 this.user = recieved.getUserFromServer();
                 client = new Client(user, socket, oos, ois);
@@ -141,69 +140,69 @@ public class Controller {
         return OK;
     }
 
-    public void logOut () {
+    public void logOut() {
     }
 
     public void createTask(Model.Task task) {
         activeProject.addNewTask(task);
     }
 
-    public void editTask () {
+    public void editTask() {
     }
 
-    public void assignToTask () {
+    public void assignToTask() {
     }
 
-    public void commentTask () {
+    public void commentTask() {
     }
 
-    public void editCommentOnTask () {
+    public void editCommentOnTask() {
     }
 
-    public void flagForHelp () {
+    public void flagForHelp() {
     }
 
-    public void deFlagHelp () {
+    public void deFlagHelp() {
     }
 
-    public void showFlaggedTasks () {
+    public void showFlaggedTasks() {
     }
 
-    public void archiveTasks () {
+    public void archiveTasks() {
     }
 
-    public void deleteTask () {
+    public void deleteTask() {
     }
 
-    public void retrieveTask () {
+    public void retrieveTask() {
     }
 
-    public void sendTaskDetails () {
+    public void sendTaskDetails() {
     }
 
-    public void sendProjectDetails () {
+    public void sendProjectDetails() {
     }
 
-    public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
+    public void changeSwimlaneTaskLimit(Swimlane swimlane, Task task) {
     }
 
-    public void sendStatistics () {
+    public void sendStatistics() {
     }
 
-    public void sendCalender () {
+    public void sendCalender() {
     }
 
-    public void changeProject (int projectID) {
+    public void changeProject(int projectID) {
 
     }
 
-    public void operation () {
+    public void operation() {
     }
 
     public void newClient() {
         try {
             Thread.sleep(1000);
-            this.client = new Client(null,null,8080);
+            this.client = new Client(null, null, 8080);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -219,7 +218,8 @@ public class Controller {
                 .build();
         client.sendUpdate(toSend);*/
     }
-    public void setCurrentTask(String projectName){
+
+    public void setCurrentTask(String projectName) {
         for (Project customer : projects) {
             if (customer.getProjectName().equals(projectName)) {
                 this.activeProject = customer;
@@ -227,12 +227,14 @@ public class Controller {
         }
     }
 
-    public ArrayList<Model.Task> getTask(){
-         return activeProject.getTasks();
+    public ArrayList<Model.Task> getTask() {
+        return activeProject.getTasks();
     }
-    public int getTaskSize(){
+
+    public int getTaskSize() {
         return activeProject.getTaskSize();
     }
+
     public void setUpConnection() {
 
     }
@@ -249,4 +251,13 @@ public class Controller {
         return projects;
     }
 
+    public ArrayList<String> getAllUsersInProject(String projectName) {
+        ArrayList<String> projectUserList = new ArrayList<>();
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectName().equals(projectName)) {
+                projectUserList.addAll(projects.get(i).getAssignedUser().keySet());
+            }
+        }
+        return projectUserList;
+    }
 }
