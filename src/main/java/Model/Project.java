@@ -7,10 +7,11 @@ import java.util.HashMap;
 
 /**
  * objects of this class holds the outline for a project.
+ *
  * @author Emma Mörk.
  */
 public class Project implements Serializable {
-    
+
     private String projectName;
     private LocalDate deadline;
     private String description;
@@ -53,6 +54,7 @@ public class Project implements Serializable {
     public void setAssignedUser(HashMap<String, Boolean> assignedUsers) { /// TODO: 2022-05-20  Denna ska tas bort, använda enbart setAssignedUsers()
         this.assignedUsers = assignedUsers;
     }
+
     public ProjectManager getProjectManager() {
         return projectManager;
     }
@@ -60,9 +62,9 @@ public class Project implements Serializable {
     public void setProjectManager(ProjectManager projectManager) {
         this.projectManager = projectManager;
     }
-    
+
     public void setName(String newName) { /// TODO: 2022-05-20 Kolla med Emma om denna ska användas?
-        
+
     }
 
     public HashMap<String, Boolean> getAssignedUsers() {
@@ -89,6 +91,7 @@ public class Project implements Serializable {
     public int getTaskListSize() {
         return taskList.size();
     }
+
     public void setProjectID(int projectID) {
         this.projectID = projectID;
     }
@@ -96,14 +99,14 @@ public class Project implements Serializable {
     /**
      * builder-class for Project
      */
-    public static class ProjectBuilder{
+    public static class ProjectBuilder {
 
         private final Project project = new Project();
 
-        public Project build(){
+        public Project build() {
             return project;
         }
-        
+
         public ProjectBuilder projectName(String projectName) {
             project.setProjectName(projectName);
             return this;
@@ -113,14 +116,17 @@ public class Project implements Serializable {
             project.setAssignedUser(assignees);
             return this;
         }
+
         public ProjectBuilder deadline(LocalDate deadline) {
             project.setDeadline(deadline);
             return this;
         }
+
         public ProjectBuilder description(String description) {
             project.setDescription(description);
             return this;
         }
+
         public ProjectBuilder userAdmin(User admin) {
             project.getAssignedUser().put(admin.getUsername(), true);
             return this;
