@@ -1,7 +1,13 @@
-2022-05-20T16:05:43.935961353: The userMap was read from the .dat-file
-2022-05-20T16:05:43.936759485: The projectMap was read from the .dat-file
-2022-05-20T16:05:43.939179877: Server is running
-2022-05-20T16:06:00.835139838: A client just connected.
-2022-05-20T16:06:00.836255045: Login credentials for user Anna was accepted
-2022-05-20T16:06:00.836390227: User Anna was added to the onlineUsers-list
-2022-05-20T16:06:00.836511525: The client associated to user Anna was added to the clientMap
+2022-05-20T16:17:10.289646195: The userMap was read from the .dat-file
+2022-05-20T16:17:10.290199476: The projectMap was read from the .dat-file
+2022-05-20T16:17:10.291465833: Server is running
+2022-05-20T16:17:27.435493160: A client just connected.
+2022-05-20T16:17:27.436826920: Login credentials for user Anna was accepted
+2022-05-20T16:17:27.436951960: User Anna was added to the onlineUsers-list
+2022-05-20T16:17:27.437055480: The client associated to user Anna was added to the clientMap
+2022-05-20T16:17:47.875707386: A projectID was fetched from the .dat-file
+2022-05-20T16:17:47.876015142: A new projectID was created.
+2022-05-20T16:17:47.876144986: Project #1 tgdfhx was added to the projectMap
+2022-05-20T16:17:47.876309126:  Unable to send project update for project tgdfhx to assignee Christian: Not in the clientMap
+2022-05-20T16:17:47.876412665:  Unable to send project update for project tgdfhx to assignee Emma: Not in the clientMap
+2022-05-20T16:17:47.879357811: The projectMap was written to the .dat-file

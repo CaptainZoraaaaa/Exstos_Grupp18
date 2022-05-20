@@ -412,7 +412,7 @@ public class Server {
     public synchronized void removeTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
             if (task != null) {
-                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTASK_ID() == task.getTASK_ID());
+                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTask_id() == task.getTask_id());
                 //todo logtext
             }
         }
@@ -427,23 +427,23 @@ public class Server {
             if (task != null) {
                 Project tempProject = projectMap.get(projectID);
                 for(Task taskInList : tempProject.getTasks()) {
-                    if(taskInList.getTASK_ID() == task.getTASK_ID()) {
+                    if(taskInList.getTask_id() == task.getTask_id()) {
                         taskInList = task;
                         projectMap.replace(projectID, tempProject);
-                        logtext = String.format("Updated task %d: %s in project %d: %s", task.getTASK_ID(), task.getHeader(), projectID, tempProject.getProjectName());
+                        logtext = String.format("Updated task %d: %s in project %d: %s", task.getTask_id(), task.getHeader(), projectID, tempProject.getProjectName());
                         found = true;
                     }
                 }
                 if(!found) {
-                    logtext = String.format("Unable to update task %d: %s in project %d: %s: Task isn't in projects tasklist", task.getTASK_ID(), task.getHeader(), projectID, project.getProjectName());
+                    logtext = String.format("Unable to update task %d: %s in project %d: %s: Task isn't in projects tasklist", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
                 } else {
                 }
             } else {
-                logtext = String.format("Unable to update task %d: %s in project %d: %s: Task was null", task.getTASK_ID(), task.getHeader(), projectID, project.getProjectName());
+                logtext = String.format("Unable to update task %d: %s in project %d: %s: Task was null", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
             }
         }
         else {
-            logtext = String.format("Unable to update task %d: %s in project %d: %s: ProjectID not in projectMap", task.getTASK_ID(), task.getHeader(), projectID, project.getProjectName());
+            logtext = String.format("Unable to update task %d: %s in project %d: %s: ProjectID not in projectMap", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
         }
     }
 
