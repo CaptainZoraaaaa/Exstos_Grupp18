@@ -79,7 +79,7 @@ public class NewTaskController implements Initializable {
         Task task = new Task.TaskBuilder()
                 .header(taskHeaderInputField.getText())
                 .description(taskDescriptionInputField.getText())
-                .estimatedTime(deadline)
+                .deadline(deadline)
                 .currentStatus(selectedStatus)
                 .assignee(currentUser)
                 .currentStatus(selectedStatus)

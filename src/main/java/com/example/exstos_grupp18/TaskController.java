@@ -54,7 +54,7 @@ public class TaskController extends Thread implements Initializable {
 
         ArrayList<Task> current = controller.getTask();
         for (int i = 0; i < current.size(); i++) {
-            if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
+            if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTask_id()))) {
                 EditTaskController editTaskController = fxmlLoader.getController();
                 editTaskController.loadedTask(current.get(i));
             }
@@ -72,7 +72,7 @@ public class TaskController extends Thread implements Initializable {
     public void run() {
         ArrayList<Task> current = controller.getTask();
         for (int i = 0; i < current.size(); i++) {
-            if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTASK_ID()))) {
+            if (printButton.getParent().getId().equals(String.valueOf(current.get(i).getTask_id()))) {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText("View task");
                 helpImage.setVisible(false);

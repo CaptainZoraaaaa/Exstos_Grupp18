@@ -25,7 +25,7 @@ public class TaskManager {
                 .id(taskId)
                 .header(header)
                 .description(description)
-                .estimatedTime(estimatedTime)
+                .deadline(estimatedTime)
                 .creator(creator)
                 .assignee(assignee)
                 .currentStatus(Swimlane.Backlog)
@@ -91,7 +91,7 @@ public class TaskManager {
      * @param task task object to refer to the correct task.
      */
     public void editEstimatedTime(LocalDate estimatedTime, Task task){
-        task.setEstimatedTime(estimatedTime);
+        task.setDeadline(estimatedTime);
     }
 
     /**
