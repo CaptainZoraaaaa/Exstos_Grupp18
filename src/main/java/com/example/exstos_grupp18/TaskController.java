@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -59,6 +60,16 @@ public class TaskController extends Thread implements Initializable {
         }
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    //Denna metod ska göra kallet till att flytta en task och sedan sätta denna tasks status till vilken swimlane den hamnar i.
+    @FXML
+    void dragTask(DragEvent dragEvent){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+        KanbanViewController kanbanViewController = fxmlLoader.getController();
+        kanbanViewController.setDroppedStatus();
+        dragEvent.setDropCompleted(true);
+
+
     }
 
     /**

@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -139,6 +140,25 @@ public class KanbanViewController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
+   @FXML
+   void setDroppedStatus(DragEvent actionEvent, Task task){
+        if(actionEvent.getTarget() == backlogList){
+            actionEvent.setDropCompleted(true);
+            task.setCurrentStatus(Swimlane.Backlog);
+        }
+        if(actionEvent.getTarget() == inProgressList){
+            actionEvent.setDropCompleted(true);
+            task.setCurrentStatus(Swimlane.InProgress);
+        }
+        if(actionEvent.getTarget() == waitingList){
+            actionEvent.setDropCompleted(true);
+            task.setCurrentStatus(Swimlane.Waiting);
+        }
+        if (actionEvent.getTarget() == doneList){
+            actionEvent.setDropCompleted(true);
+            task.setCurrentStatus(Swimlane.Done);
+        }
+   }
 
     //TODO javadoca
     @Override
@@ -214,4 +234,5 @@ public class KanbanViewController implements Initializable {
     public void setUserLabel(String username) {
         usernameLabel.setText(username);
     }
+
 }

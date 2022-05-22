@@ -251,6 +251,12 @@ public class Controller {
         return projects;
     }
 
+    /**
+     * This method is used to get all assigned users to a project.
+     * @param projectName a String containing a project name.
+     * @return an ArrayList of Strings.
+     * @author Christian Edvall
+     */
     public ArrayList<String> getAllUsersInProject(String projectName) {
         ArrayList<String> projectUserList = new ArrayList<>();
         for (int i = 0; i < projects.size(); i++) {
