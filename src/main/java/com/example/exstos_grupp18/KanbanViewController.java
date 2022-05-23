@@ -169,6 +169,7 @@ public class KanbanViewController implements Initializable {
         ArrayList<Task> currentTaskList = controller.getTask();
         totalTasks = currentTaskList.size();
         Node[] nodes = new Node[controller.getTaskSize()];
+        DraggableTasks draggableTasks = new DraggableTasks();
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
                 if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
@@ -176,24 +177,28 @@ public class KanbanViewController implements Initializable {
                     Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
+                    draggableTasks.makeDraggable(nodes[i]);
                     backlogList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
+                    draggableTasks.makeDraggable(nodes[i]);
                     inProgressList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
+                    draggableTasks.makeDraggable(nodes[i]);
                     waitingList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Done)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
+                    draggableTasks.makeDraggable(nodes[i]);
                     doneList.getChildren().add(nodes[i]);
                 }
             }

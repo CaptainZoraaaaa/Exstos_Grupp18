@@ -66,13 +66,11 @@ public class TaskController extends Thread implements Initializable {
     //Denna metod ska göra kallet till att flytta en task och sedan sätta denna tasks status till vilken swimlane den hamnar i.
     @FXML
     void dragTask(DragEvent dragEvent){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        KanbanViewController kanbanViewController = fxmlLoader.getController();
-        kanbanViewController.setDroppedStatus();
+
         dragEvent.setDropCompleted(true);
-
-
     }
+
+
 
     /**
      *This is a thread that starts when a new task is created. When the task loads in this thread will start and
