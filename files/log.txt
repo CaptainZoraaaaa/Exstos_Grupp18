@@ -1,8 +1,13 @@
-2022-05-23T11:20:23.085087631: The userMap was read from the .dat-file
-2022-05-23T11:20:23.107666364: The projectMap was read from the .dat-file
-2022-05-23T11:20:23.109619301: Server is running
-2022-05-23T11:21:12.562316080: A client just connected.
-2022-05-23T11:21:12.562745208: Login credentials for user Anna was accepted
-2022-05-23T11:21:12.562858891: User Anna was added to the onlineUsers-list
-2022-05-23T11:21:12.562970236: The client associated to user Anna was added to the clientMap
-2022-05-23T11:21:37.744744906: A client just connected.
+2022-05-23T11:37:03.223401088: The userMap was read from the .dat-file
+2022-05-23T11:37:03.247747567: The projectMap was read from the .dat-file
+2022-05-23T11:37:03.249964174: Server is running
+2022-05-23T11:37:13.246367147: A client just connected.
+2022-05-23T11:37:13.246808810: Login credentials for user Anna was accepted
+2022-05-23T11:37:13.246951830: User Anna was added to the onlineUsers-list
+2022-05-23T11:37:13.247073402: The client associated to user Anna was added to the clientMap
+2022-05-23T11:37:30.918796232: A projectID was fetched from the .dat-file
+2022-05-23T11:37:30.919163552: A new projectID was created.
+2022-05-23T11:37:30.919348946: Project #10 Anna66 was added to the projectMap
+2022-05-23T11:37:30.919578303:  Unable to send project update for project Anna66 to assignee Max: Not in the clientMap
+2022-05-23T11:37:30.919749899: Sending project update for project Anna66 to user Anna's ClientHandler
+2022-05-23T11:37:30.922078110: The projectMap was written to the .dat-file

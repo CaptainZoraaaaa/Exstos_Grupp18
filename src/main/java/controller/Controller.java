@@ -310,13 +310,18 @@ public class Controller {
 
     private void projectUpdate(Project project) {
         System.out.println("project update in controller");
-        if(user.getProjects().containsKey(project.getProjectID())) {
-            user.getProjects().replace(project.getProjectID(), project);
-            if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {
-                this.activeProject = project;
+        boolean projectInList = false;
+        for(Project inList : projects) {
+            if(project.getProjectID() == inList.getProjectID()) {
+                inList = project;
+                projectInList = true;
+                if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {
+                    this.activeProject = project;
+                }
             }
-        } else {
-            user.getProjects().put(project.getProjectID(), project);
+        }
+        if(!projectInList) {
+            projects.add(project);
         }
         System.out.println("Got update");
     }
