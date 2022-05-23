@@ -21,7 +21,7 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
-    private Project activeProject = null;
+    private Project activeProject = new Project();
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
@@ -111,7 +111,9 @@ public class Controller {
 
     public void displayCalender () {
     }
-
+    public boolean logInTest (String username, String password) {
+        return true;
+    }
     public boolean logIn (String username, String password) {
         boolean OK = false;
         Socket socket;
