@@ -133,6 +133,10 @@ public class Controller {
             if(recieved.getPackageType() == DataPackage.LOGIN_VERIFICATION) {
                 OK = recieved.isVerificationSuccess();
                 this.user = recieved.getUserFromServer();
+                this.projects = recieved.getProjectList();
+                for(Project project : projects) {
+                    System.out.println(project.getProjectName());
+                }
                 client = new Client(user, socket, oos, ois);
 
             }
@@ -305,6 +309,7 @@ public class Controller {
     }
 
     private void projectUpdate(Project project) {
+        System.out.println("project update in controller");
         if(user.getProjects().containsKey(project.getProjectID())) {
             user.getProjects().replace(project.getProjectID(), project);
             if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {

@@ -5,6 +5,7 @@ import Model.Project;
 import Model.Task;
 import Model.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -123,19 +124,22 @@ public class ServerController {
      */
     public void verifyCredentials(ClientHandler clientHandler, String username, String password) {
         User user;
+        ArrayList<Project> projectList = new ArrayList<>();
         boolean loginOK = server.verifyCredentials(username, password); //check if credentials are right
         if (loginOK) { //if they were
             user = server.getUserMap().get(username); //get user from userMap
             server.addOnlineUser(user); //add it to online users
             server.addClient(user.getUsername(), clientHandler); //add the client to clientMap
+            projectList = getUsersProjects(username);
         }
         else {
             user = null; //else user is null
         }
         DataPackage loginReply = new DataPackage.PackageBuilder()
                 .verificationSuccess(loginOK)
-                .userFromServer(user).
-                packageType(DataPackage.LOGIN_VERIFICATION).
+                .userFromServer(user)
+                .projectList(projectList)
+                .packageType(DataPackage.LOGIN_VERIFICATION).
                 build();
         clientHandler.sendMessage(loginReply); //send reply with if its ok and correct user if it was ok
     }
@@ -362,5 +366,17 @@ public class ServerController {
             }
         }
         server.deleteProject(project);
+    }
+
+    public ArrayList<Project> getUsersProjects(String username) {
+        ArrayList<Project> usersProjects = new ArrayList<>();
+        for(Map.Entry<Integer, Project> projectEntry : server.getProjectMap().entrySet()) {
+            Project project = projectEntry.getValue();
+            HashMap<String, Boolean> assignees = project.getAssignedUser();
+            if(assignees.containsKey(username)) {
+                usersProjects.add(project);
+            }
+        }
+        return usersProjects;
     }
 }

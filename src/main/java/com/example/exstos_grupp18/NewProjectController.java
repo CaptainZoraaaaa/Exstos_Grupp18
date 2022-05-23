@@ -66,7 +66,7 @@ public class NewProjectController implements Initializable {
         System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
-        String creator = creatorField.getText();
+        String creator = controller.getLoggedInUser();
         if (header.length() > 5 && header.length() < 50 && deadline != null ) {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));

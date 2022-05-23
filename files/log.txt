@@ -1,28 +1,8 @@
-2022-05-23T10:28:03.880217722: The userMap was read from the .dat-file
-2022-05-23T10:28:03.886748858: The projectMap was read from the .dat-file
-2022-05-23T10:28:03.887769891: Server is running
-2022-05-23T10:28:48.328892653: A client just connected.
-2022-05-23T10:28:48.330874929: Login credentials for user Anna was accepted
-2022-05-23T10:28:48.331221347: User Anna was added to the onlineUsers-list
-2022-05-23T10:28:48.331518163: The client associated to user Anna was added to the clientMap
-2022-05-23T10:29:13.195847475: A projectID was fetched from the .dat-file
-2022-05-23T10:29:13.196855354: A new projectID was created.
-2022-05-23T10:29:13.197451545: Project #3 Anna55 was added to the projectMap
-2022-05-23T10:29:13.198173596:  Unable to send project update for project Anna55 to assignee Emma: Not in the clientMap
-2022-05-23T10:29:13.206268287: The projectMap was written to the .dat-file
-2022-05-23T10:29:59.594859857: A taskID was fetched from the .dat-file
-2022-05-23T10:29:59.595076288: A new taskID was created.
-2022-05-23T10:33:50.332565026: A client just connected.
-2022-05-23T10:33:50.332848255: Login credentials for user Anna was accepted
-2022-05-23T10:33:50.333114702: User Anna was added to the onlineUsers-list
-2022-05-23T10:33:50.333276886: The clientMap already contains a user with the username Anna
-2022-05-23T10:34:08.462057348: A projectID was fetched from the .dat-file
-2022-05-23T10:34:08.463045512: A new projectID was created.
-2022-05-23T10:34:08.463911063: Project #4 123456 was added to the projectMap
-2022-05-23T10:34:08.464682555:  Unable to send project update for project 123456 to assignee Max: Not in the clientMap
-2022-05-23T10:34:08.465414054:  Unable to send project update for project 123456 to assignee Emma: Not in the clientMap
-2022-05-23T10:34:08.469730855: The projectMap was written to the .dat-file
-2022-05-23T10:34:24.511671894: A taskID was fetched from the .dat-file
-2022-05-23T10:34:24.512815297: A new taskID was created.
-2022-05-23T10:34:24.513647414:  Unable to send project update for project 123456 to assignee Max: Not in the clientMap
-2022-05-23T10:34:24.514387346:  Unable to send project update for project 123456 to assignee Emma: Not in the clientMap
+2022-05-23T11:20:23.085087631: The userMap was read from the .dat-file
+2022-05-23T11:20:23.107666364: The projectMap was read from the .dat-file
+2022-05-23T11:20:23.109619301: Server is running
+2022-05-23T11:21:12.562316080: A client just connected.
+2022-05-23T11:21:12.562745208: Login credentials for user Anna was accepted
+2022-05-23T11:21:12.562858891: User Anna was added to the onlineUsers-list
+2022-05-23T11:21:12.562970236: The client associated to user Anna was added to the clientMap
+2022-05-23T11:21:37.744744906: A client just connected.

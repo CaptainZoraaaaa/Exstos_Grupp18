@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class is used to package different objects in order to send multiple objects at once and redistribute them.
@@ -23,7 +24,7 @@ public class DataPackage implements Serializable {
     public static final int PROJECT_EDITED = 10; //project object
     public static final int PROJECT_REMOVED = 11; //project object
 
-    public static final int LOGIN_VERIFICATION = 12; //boolean & user (from server)
+    public static final int LOGIN_VERIFICATION = 12; //boolean & user & project arraylist (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
     public static final int PROJECT_UPDATE = 14; //project update (from server)
 
@@ -35,6 +36,7 @@ public class DataPackage implements Serializable {
     private int packageType;
     private String password;
     private User userFromServer;
+    private ArrayList<Project> projectList;
 
     public User getSender() {
         return sender;
@@ -96,6 +98,14 @@ public class DataPackage implements Serializable {
         this.userFromServer = userFromServer;
     }
 
+    public ArrayList<Project> getProjectList() {
+        return projectList;
+    }
+
+    public void setProjectList(ArrayList<Project> projectList) {
+        this.projectList = projectList;
+    }
+
     /**
      * Inner builder class for packages.
      */
@@ -151,6 +161,11 @@ public class DataPackage implements Serializable {
          */
         public PackageBuilder username(String username) {
             aDataPackage.setUsername(username);
+            return this;
+        }
+
+        public PackageBuilder projectList(ArrayList<Project> projectList) {
+            aDataPackage.setProjectList(projectList);
             return this;
         }
 
