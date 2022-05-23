@@ -68,7 +68,7 @@ public class KanbanViewController implements Initializable {
     @FXML
     private Button infoButton; //the info button on the drop down menu
     @FXML
-    private Button kanbanButton; //the kanban button on the drop down menu
+    private Button editProjectButton; //the edit project button
     @FXML
     private Button logOutButton; //the log out button
     @FXML
@@ -141,7 +141,11 @@ public class KanbanViewController implements Initializable {
         stage.setScene(scene);
     }
 
-    //TODO javadoca
+    /**
+     *This method will get all of the current projects tasks lopp trought them and check their status.
+     * Deppending on what status the task have the it will be placed in different VBOX's
+     * That are the equivelant of the swimlanes.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
@@ -153,7 +157,6 @@ public class KanbanViewController implements Initializable {
             try {
                 if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    Node scene = nodes[i];
                     nodes[i].setId(String.valueOf(i));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
@@ -201,7 +204,11 @@ public class KanbanViewController implements Initializable {
     }
 
 
-    //TODO javadoca
+    /**
+     * Method to create new task sends the user to a new scene where the user can create the task
+     * @param event - New Task button
+     * @throws IOException
+     */
     public void newTask(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
@@ -212,7 +219,14 @@ public class KanbanViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-
+    @FXML
+    void editProject(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditProject.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
