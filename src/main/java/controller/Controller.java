@@ -21,7 +21,7 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
-    private Project activeProject = new Project();
+    private Project activeProject = null;
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
@@ -336,5 +336,9 @@ public class Controller {
             }
         }
         return projectUserList;
+    }
+
+    public Project getActiveProject() {
+        return activeProject;
     }
 }

@@ -82,6 +82,7 @@ public class Client {
      */
     public void sendUpdate (DataPackage message) {
         outputClient.send(message);
+        System.out.println("sending update");
     }
 
     private class ThreadHandler extends Thread{

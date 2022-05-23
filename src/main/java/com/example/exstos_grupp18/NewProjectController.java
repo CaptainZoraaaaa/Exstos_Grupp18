@@ -63,6 +63,7 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void createNewProject(ActionEvent event) throws IOException {
+        System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
