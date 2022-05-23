@@ -168,17 +168,14 @@ public class HomePageController implements Initializable {
      * This method is used by other scenes to set up tasks on the HomePage swimlane.
      */
     public void setUpMySwimLane(){
-        System.out.println(userLabel.getText());
         ArrayList<Task> current = controller.getTask();
         Node[] nodes = new Node[controller.getTaskSize()];
 
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                System.out.println(current.get(i).getAssignees().contains(userLabel));
                 if (current.get(i).getAssignees().contains(userLabel.getText())) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
-                    System.out.println(nodes[i].getId());
                     myLane.getChildren().add(nodes[i]);
                 }
             } catch (IOException e) {
