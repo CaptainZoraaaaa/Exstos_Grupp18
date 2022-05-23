@@ -3,7 +3,8 @@
     -fx-background-color :  #bfcfdd;
     -fx-background-radius: 5em;
     -fx-background-insets: 0px;
-
+    -fx-font-family: "Roboto";
+    -fx-text-fill: #ffffff;
 }
 .button:hover{
     -fx-background-color :  #9eb6cb;

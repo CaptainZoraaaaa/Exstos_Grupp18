@@ -29,7 +29,7 @@ public class EditTaskController implements Initializable {
     @FXML
     private ChoiceBox<Swimlane> statusList;
     @FXML
-    private ChoiceBox<String> assigneeList;
+    private ChoiceBox<String> assigneeList; //todo kan detta göras så att man kan välja flera alternativ.
     @FXML
     private TextField creatorField;
     @FXML
@@ -57,8 +57,6 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for returning to previous screen.
-     * TODO: 2022-05-06 add change scene to this method body, dependent on the main menu.
-     *
      * @param event triggered by clicking the button backToPreviousScreenButton.
      */
     @FXML
@@ -81,8 +79,8 @@ public class EditTaskController implements Initializable {
         String comment = creatorField + ":\n" + taskCommentInputField.getText();
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
-        currentTask.setEstimatedTime(deadline);
-        currentTask.setAssignees(selectedUser); //// TODO: 2022-05-12 Denna funkar inte som den ska.  
+        currentTask.setDeadline(deadline);
+        currentTask.setAssignees(selectedUser); // TODO: 2022-05-12 Denna funkar inte som den ska.
         currentTask.setCurrentStatus(selectedStatus);
         currentTask.setCreator(creatorField.getText());
         currentTask.setComments(comment);
@@ -144,7 +142,6 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for setting the values in the list.
-     *
      * @param event Event is triggered by the above this::setUsers.
      */
     public void setUsers(ActionEvent event) {
@@ -153,7 +150,6 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for setting the values in the list.
-     *
      * @param event Event is triggered by the above this::setStatus.
      */
     public void setStatus(ActionEvent event) {
@@ -164,7 +160,7 @@ public class EditTaskController implements Initializable {
         this.currentTask = task;
         taskHeaderInputField.setText(task.getHeader());
         taskDescriptionInputField.setText(task.getDescription());
-        taskDeadlineDate.setValue(task.getEstimatedTime());
+        taskDeadlineDate.setValue(task.getDeadline());
         assigneeList.setValue(task.getAssignees().get(0));
         statusList.setValue(task.getCurrentStatus());
         creatorField.setText(task.getCreator());

@@ -3,6 +3,8 @@ package Model;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+//TODO flytta över till controller och ta bort - Anna
+
 /**
  * @author Anna Håkansson
  * @version 1.0
@@ -42,7 +44,7 @@ public class ProjectManager {
                     .projectName(name) //the name to be set
                     .description(description)//the description to be set
                     .deadline(deadline)//the deadline to be set
-                    .assignedUser(assignees)
+                    .assignedUsers(assignees)
                     .userAdmin(userAdmin) //the user that creates the project thus becoming project admin
                     .build(); //builds the thing
             return project; //returns the project that was created

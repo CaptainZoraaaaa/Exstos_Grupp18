@@ -50,7 +50,7 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -62,11 +62,22 @@ public class NewProjectController implements Initializable {
      * @param event ActionEvent that reacts when the "create" button is pressed.
      */
     @FXML
-    void createNewProject(ActionEvent event) {
+    void createNewProject(ActionEvent event) throws IOException {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, currentUser, creator);
+        if (header.length() > 5 && header.length() < 50 && deadline != null ) {
+            controller.createNewProject(header, description, deadline, currentUser, creator);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+            root = fxmlLoader.load();
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setScene(scene);
+        }
+        else {
+            //TODO IMPLEMENTERA FELLMEDALANDE
+        }
         //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
     /**
@@ -87,6 +98,7 @@ public class NewProjectController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
+        creatorField.setText(controller.getLoggedInUser());
     }
 
     /**
@@ -96,5 +108,13 @@ public class NewProjectController implements Initializable {
     public void setUsers(ActionEvent event){
         currentUser = assigneeList.getValue();
     } //TODO Se om det går att ändra till multiple choice.
+
+    /**
+     *
+     * @param usernameLabel
+     */
+    public void setCreator(String usernameLabel) {
+        creatorField.setText(usernameLabel);
+    }
 }
 

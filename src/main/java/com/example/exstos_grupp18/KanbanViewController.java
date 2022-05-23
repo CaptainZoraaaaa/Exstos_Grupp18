@@ -130,12 +130,12 @@ public class KanbanViewController implements Initializable {
      */
     @FXML
     public void goToMainMenu(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        HomePageController homePageController = fxmlLoader.getController();
+        homePageController.setUpMySwimLane();
         scene = new Scene(root);
-        MainMenuController mainMenuController = fxmlLoader.getController();
-        mainMenuController.setUserLabel(usernameLabel.getText());
         stage.setScene(scene);
         stage.setScene(scene);
     }
@@ -143,6 +143,9 @@ public class KanbanViewController implements Initializable {
     //TODO javadoca
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        usernameLabel.setText(controller.getLoggedInUser());
+
+        ArrayList<Task> current = controller.getTask();
         ArrayList<Task> currentTaskList = controller.getTask();
         totalTasks = currentTaskList.size();
         Node[] nodes = new Node[controller.getTaskSize()];
@@ -200,6 +203,9 @@ public class KanbanViewController implements Initializable {
     public void newTask(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
+        NewTaskController newTaskController = fxmlLoader.getController();
+        newTaskController.setCreator(usernameLabel.getText());
+        newTaskController.setUserList(controller.getAllUsersInProject("Projeknamn"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

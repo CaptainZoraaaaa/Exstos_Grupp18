@@ -1,7 +1,6 @@
 package client;
 
-import Model.Package;
-import Model.Project;
+import Model.DataPackage;
 import Model.User;
 
 import java.io.IOException;
@@ -81,7 +80,7 @@ public class Client {
      * This method is going send different messages to the server
      * @Author Max Tiderman
      */
-    public void sendUpdate (Package message) {
+    public void sendUpdate (DataPackage message) {
         outputClient.send(message);
     }
 
@@ -96,8 +95,5 @@ public class Client {
             outputClient = new OutputClient(oos);
             inputClient = new InputClient(client,ois);
         }
-    }
-    public void testning(){
-        System.out.println("körs");
     }
 }

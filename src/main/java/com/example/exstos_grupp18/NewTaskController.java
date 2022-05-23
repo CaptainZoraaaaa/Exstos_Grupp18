@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -46,6 +47,7 @@ public class NewTaskController implements Initializable {
     private Parent root;
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
+    private ArrayList<String> userList = new ArrayList<>();
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String currentUser;
     private boolean flagged;
@@ -75,11 +77,11 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
-        String comment = creatorField + ":\n" + taskCommentInputField.getText();
+        String comment = creatorField.getText() + ":\n" + taskCommentInputField.getText();
         Task task = new Task.TaskBuilder()
                 .header(taskHeaderInputField.getText())
                 .description(taskDescriptionInputField.getText())
-                .estimatedTime(deadline)
+                .deadline(deadline)
                 .currentStatus(selectedStatus)
                 .assignee(currentUser)
                 .currentStatus(selectedStatus)
@@ -91,6 +93,8 @@ public class NewTaskController implements Initializable {
         controller.createTask(task);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();
+        KanbanViewController kanbanViewController = fxmlLoader.getController();
+        kanbanViewController.setUserLabel(creatorField.getText());
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -124,7 +128,7 @@ public class NewTaskController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       assigneeList.getItems().addAll(users); ///This is used to att all indexes from an array to the ChoiceBox
+       assigneeList.getItems().addAll(users); ///This is used to att all indexes from an array to the ChoiceBox /// TODO: 2022-05-20 Denna ska istället hämta från project-medlemmar.
        assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
        statusList.getItems().addAll(status); //This is used to att all indexes from an array to the ChoiceBox
        statusList.setOnAction(this::setStatus); // this is used to select a user from the Choice
@@ -146,5 +150,11 @@ public class NewTaskController implements Initializable {
         currentUser = assigneeList.getValue();
     }
 
+    public void setCreator(String usernameLabel) {
+        creatorField.setText(usernameLabel);
+    }
+    public void setUserList(ArrayList userList){
+        this.userList = userList;
+    }
 }
 

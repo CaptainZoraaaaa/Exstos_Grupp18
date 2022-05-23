@@ -1,8 +1,5 @@
 package com.example.exstos_grupp18;
 
-import Model.Package;
-import Model.User;
-import Model.UserManager;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.Socket;
 
 /**
  * @author Max Tiderman

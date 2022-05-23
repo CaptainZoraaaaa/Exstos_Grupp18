@@ -239,7 +239,7 @@ modules.xml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# DataPackage Files #
 *.jar
 *.war
 *.nar
