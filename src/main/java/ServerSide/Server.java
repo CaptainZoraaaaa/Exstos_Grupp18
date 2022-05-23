@@ -1,15 +1,15 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.Project;
 import Model.Task;
 import Model.User;
 
-import java.io.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static ServerSide.ServerFileManager.writeLog;
 
 /**
  * @author Anna Håkansson
@@ -19,7 +19,6 @@ import java.util.Map;
  */
 public class Server {
     private Connection connection;
- //   private ServerController serverController;
     private HashMap<String, ClientHandler> clientMap;
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
@@ -27,6 +26,7 @@ public class Server {
     private ArrayList<String> onlineUsers = new ArrayList<>();
     private ServerPackageHandler serverPackageHandler;
     private ServerController serverController;
+    private ServerFileManager fileManager = new ServerFileManager();
 
     /**
      * @author Anna Håkansson
@@ -37,9 +37,9 @@ public class Server {
     public Server(ServerController serverController) {
         this.serverController = serverController;
         serverPackageHandler  = new ServerPackageHandler(serverController);
-        clientMap = readMapFromFile("client"); //todo vi behöver väl inte läsa in klienter?
-        userMap = readMapFromFile("user");
-        projectMap = readMapFromFile("project");
+        userMap = ServerFileManager.readMapFromFile("user");
+        projectMap = ServerFileManager.readMapFromFile("project");
+        clientMap = new HashMap<>();
         connect();
     }
 
@@ -72,8 +72,8 @@ public class Server {
         }
 
         if(type != null) { //if type not null
-            id = getIDFromFile(type); //get ID from .dat-file and assign to ID variable
-            writeNewID(id, type); //write a new ID for the next time someone wants an ID
+            id = ServerFileManager.getIDFromFile(type); //get ID from .dat-file and assign to ID variable
+            ServerFileManager.writeNewID(id, type); //write a new ID for the next time someone wants an ID
         }
         return id;
     }
@@ -87,7 +87,7 @@ public class Server {
      * This method uses the type-string to get access
      * to the right dat-file and returns the ID written
      * there.
-     */
+
     public synchronized int getIDFromFile(String type) {
         String logtext;
         int ID = -1; //if it doesnt work it will return the "fail"-value
@@ -95,14 +95,14 @@ public class Server {
 
         try(DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))) { //create stream
             ID = dis.readInt(); //read ID
-            logtext = String.format("A %s was fetched from the .dat-file", type);
+            logtext = String.format("A %sID was fetched from the .dat-file", type);
         } catch (IOException e) {
             logtext = String.format("Failure in Server.readIDFile due to %s", e);
             System.err.println(logtext);
         }
         writeLog(logtext);
         return ID;
-    }
+    }*/
 
     /**
      * @author Anna Håkansson
@@ -113,7 +113,7 @@ public class Server {
      * This method takes the previously used ID, increments
      * it and writes the new file to the right dat file according
      * to the "type"-string.
-     */
+
     public synchronized void writeNewID(int currentID, String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right file
@@ -121,13 +121,13 @@ public class Server {
         try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){ //create stream
             dos.write(newID); //write the new ID
             dos.flush();
-            logtext = String.format("A new %s was created.", type);
+            logtext = String.format("A new %sID was created.", type);
         } catch (Exception e) {
             logtext = String.format("Error in Server.writeNewID due to %s", e);
             System.err.println(logtext);
         }
         writeLog(logtext);
-    }
+    } */
 
     /**
      * @author Anna Håkansson
@@ -147,7 +147,7 @@ public class Server {
         else {
             logtext = String.format("The clientMap already contains a user with the username %s", username);
         }
-        writeLog(logtext);
+       writeLog(logtext);
     }
 
     /**
@@ -191,7 +191,7 @@ public class Server {
      * @param logText to be added to the log
      * Saves the LocalDateTime at the executing moment and appends
      * it together with the logtext to the logtext file.
-     */
+
     public synchronized void writeLog(String logText) {
         System.out.println(logText);
         try {
@@ -202,7 +202,7 @@ public class Server {
         } catch (IOException e) {
             System.err.println("Failure in Server.writeLog due to" + e);
         }
-    }
+    } */
 
     /**
      * @author Anna Håkansson
@@ -291,6 +291,7 @@ public class Server {
     public void disconnect() {
         writeLog("Disconnect method was called upon");
         connection.setAlive(false);
+        ServerFileManager.close();
     }
 
     /**
@@ -301,7 +302,7 @@ public class Server {
      *
      * Method for writing a hashmap to a .dat-file with an
      * object output stream.
-     */
+
     public synchronized void writeMapToFile(HashMap map, String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format string to get right filename
@@ -314,7 +315,7 @@ public class Server {
             System.err.println(logtext);
         }
         writeLog(logtext);
-    }
+    }*/
 
     /**
      * @author Anna Håkansson
@@ -324,7 +325,7 @@ public class Server {
      *
      * Method for reading a hashmap from a .dat-file by
      * giving the wanted type of map.
-     */
+
     public synchronized HashMap readMapFromFile(String type) {
         String logtext;
         String filename = String.format("files/%s.dat", type); //format the string to get the right filename
@@ -338,7 +339,7 @@ public class Server {
         }
         writeLog(logtext);
         return map;
-    }
+    } */
 
     /**
      * @author Anna Håkansson
@@ -349,7 +350,7 @@ public class Server {
      * by extracting the project from the package and iterating
      * over the assignees-map.
      * */
-    public synchronized void sendProjectUpdateToUsers(Package toSend){
+    public synchronized void sendProjectUpdateToUsers(DataPackage toSend){
         String logtext;
         Project project = toSend.getProject(); //get project from package
         for(Map.Entry<String, Boolean> entry : project.getAssignedUsers().entrySet()) { //for each hashmap entry
@@ -371,7 +372,7 @@ public class Server {
         }
     }
 
-    private void saveOfflineMessages(User user, Package toSend) {
+    private void saveOfflineMessages(User user, DataPackage toSend) {
         //todo implementera
     }
 
@@ -411,22 +412,38 @@ public class Server {
     public synchronized void removeTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
             if (task != null) {
-                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTASK_ID() == task.getTASK_ID());
+                projectMap.get(project.getProjectID()).getTasks().removeIf(taskInList -> taskInList.getTask_id() == task.getTask_id());
                 //todo logtext
             }
         }
     }
 
     public synchronized void updateTask(Task task, Project project) {
-        if(projectMap.containsKey(project.getProjectID())) {
+        int projectID = project.getProjectID();
+        String logtext;
+        boolean found = false;
+
+        if(projectMap.containsKey(projectID)) {
             if (task != null) {
-                for(Task taskInList : projectMap.get(project.getProjectID()).getTasks()) {
-                    if(taskInList.getTASK_ID() == task.getTASK_ID()) {
+                Project tempProject = projectMap.get(projectID);
+                for(Task taskInList : tempProject.getTasks()) {
+                    if(taskInList.getTask_id() == task.getTask_id()) {
                         taskInList = task;
+                        projectMap.replace(projectID, tempProject);
+                        logtext = String.format("Updated task %d: %s in project %d: %s", task.getTask_id(), task.getHeader(), projectID, tempProject.getProjectName());
+                        found = true;
                     }
-                    //todo logtext
                 }
+                if(!found) {
+                    logtext = String.format("Unable to update task %d: %s in project %d: %s: Task isn't in projects tasklist", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
+                } else {
+                }
+            } else {
+                logtext = String.format("Unable to update task %d: %s in project %d: %s: Task was null", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
             }
+        }
+        else {
+            logtext = String.format("Unable to update task %d: %s in project %d: %s: ProjectID not in projectMap", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
         }
     }
 
@@ -560,8 +577,8 @@ public class Server {
     }
 
 
-    public void newPackage(ClientHandler client, Package newPackage) {
-        serverPackageHandler.unpackNewPackage(client, newPackage);
+    public void newPackage(ClientHandler client, DataPackage newDataPackage) {
+        serverPackageHandler.unpackNewPackage(client, newDataPackage);
     }
 
     public ArrayList<String> getOnlineUsers() {

@@ -1,10 +1,11 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.Project;
 import Model.Task;
 import Model.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +50,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public int getIDFromFile(String type) {
-        return server.getIDFromFile(type);
+        return ServerFileManager.getIDFromFile(type);
     }
 
     /**
@@ -62,7 +63,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public void writeNewID(int currentID, String type) {
-        server.writeNewID(currentID, type);
+        ServerFileManager.writeNewID(currentID, type);
     }
 
     /**
@@ -85,12 +86,13 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
     public void newProject(Project project) {
-        int projectID = getIDFromFile(TYPE_PROJECT);
+        int projectID = ServerFileManager.getIDFromFile(TYPE_PROJECT);
         writeNewID(projectID, TYPE_PROJECT);
         project.setProjectID(projectID);
         server.addProject(project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
 
     /**
@@ -104,16 +106,6 @@ public class ServerController {
         server.addUser(user);
     }
 
-    /**
-     * @author Linnéa Flystam
-     *
-     * @param logText text that adds to log
-     *
-     * Method that calls to method with the same name in class Server with incoming parameter.
-     */
-    public void writeLog(String logText) {
-        server.writeLog(logText);
-    }
 
     /**
      * @author Linnéa Flystam & Anna Håkansson
@@ -132,19 +124,22 @@ public class ServerController {
      */
     public void verifyCredentials(ClientHandler clientHandler, String username, String password) {
         User user;
+        ArrayList<Project> projectList = new ArrayList<>();
         boolean loginOK = server.verifyCredentials(username, password); //check if credentials are right
         if (loginOK) { //if they were
             user = server.getUserMap().get(username); //get user from userMap
             server.addOnlineUser(user); //add it to online users
             server.addClient(user.getUsername(), clientHandler); //add the client to clientMap
+            projectList = getUsersProjects(username);
         }
         else {
             user = null; //else user is null
         }
-        Package loginReply = new Package.PackageBuilder()
-                .ok(loginOK)
-                .userFromServer(user).
-                type(Package.LOGIN_VERIFICATION).
+        DataPackage loginReply = new DataPackage.PackageBuilder()
+                .verificationSuccess(loginOK)
+                .userFromServer(user)
+                .projectList(projectList)
+                .packageType(DataPackage.LOGIN_VERIFICATION).
                 build();
         clientHandler.sendMessage(loginReply); //send reply with if its ok and correct user if it was ok
     }
@@ -168,12 +163,13 @@ public class ServerController {
             newUser = null;
         }
         addUser(user);
-        Package reply = new Package.PackageBuilder()
-                .ok(registrationOK)
+        DataPackage reply = new DataPackage.PackageBuilder()
+                .verificationSuccess(registrationOK)
                 .userFromServer(newUser)
-                .type(Package.REGISTRATION_VERIFICATION)
+                .packageType(DataPackage.REGISTRATION_VERIFICATION)
                 .build();
         clientHandler.sendMessage(reply);
+        ServerFileManager.writeMapToFile(server.getUserMap(), TYPE_USER);
     }
 
     /**
@@ -204,6 +200,7 @@ public class ServerController {
                 sendOutProjectUpdate(toSend);
             }
         }
+        ServerFileManager.writeMapToFile(server.getUserMap(), TYPE_USER);
     } //lägg till att ta bort från projekt
 
     /**
@@ -233,7 +230,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameters.
      */
     public void writeMapToFile(HashMap map, String type) {
-        server.writeMapToFile(map, type);
+        ServerFileManager.writeMapToFile(map, type);
     }
 
     /**
@@ -245,7 +242,7 @@ public class ServerController {
      * Method that calls to method with the same name in class Server with incoming parameter.
      */
     public HashMap readMapFromFile(String type) {
-        return server.readMapFromFile(type);
+        return ServerFileManager.readMapFromFile(type);
     }
 
     public void setClientMap(HashMap<String, ClientHandler> clientMap) {
@@ -294,9 +291,9 @@ public class ServerController {
      *@author Anna Håkansson
      */
     public void sendOutProjectUpdate(Project project) {
-        Package toSend = new Package.PackageBuilder()
+        DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
-                .type(Package.PROJECT_UPDATE)
+                .packageType(DataPackage.PROJECT_UPDATE)
                 .build();
         server.sendProjectUpdateToUsers(toSend);
     }
@@ -321,7 +318,7 @@ public class ServerController {
     public synchronized void newTask(Task task, Project project) {
         int taskID = getIDFromFile(TYPE_TASK);
         writeNewID(taskID, TYPE_TASK);
-        task.setTASK_ID(taskID);
+        task.setTask_id(taskID);
         server.addTaskToProject(task, project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
@@ -349,13 +346,15 @@ public class ServerController {
         server.updateProject(project);
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
     /**
      *@author Anna Håkansson
      */
     public void projectRemoved(Project project) {
-        Package toSend = new Package.PackageBuilder()
-                .type(Package.PROJECT_REMOVED)
+        DataPackage toSend = new DataPackage.PackageBuilder()
+                .packageType(DataPackage.PROJECT_REMOVED)
                 .project(project)
                 .build();
         for(Map.Entry<String, User> user : getUserMap().entrySet()) {
@@ -367,5 +366,17 @@ public class ServerController {
             }
         }
         server.deleteProject(project);
+    }
+
+    public ArrayList<Project> getUsersProjects(String username) {
+        ArrayList<Project> usersProjects = new ArrayList<>();
+        for(Map.Entry<Integer, Project> projectEntry : server.getProjectMap().entrySet()) {
+            Project project = projectEntry.getValue();
+            HashMap<String, Boolean> assignees = project.getAssignedUser();
+            if(assignees.containsKey(username)) {
+                usersProjects.add(project);
+            }
+        }
+        return usersProjects;
     }
 }

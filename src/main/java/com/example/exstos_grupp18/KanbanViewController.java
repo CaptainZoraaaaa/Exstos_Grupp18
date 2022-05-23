@@ -38,6 +38,7 @@ public class KanbanViewController implements Initializable {
     private boolean dropMenuVisible = false;
     private Controller controller = Controller.getInstance();
     private static KanbanViewController yes = new KanbanViewController();
+    private String currentProjectName;
 
     @FXML
     private ProgressBar backlogBar; //progress bar for backlog
@@ -164,8 +165,7 @@ public class KanbanViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
-
-        ArrayList<Task> current = controller.getTask();
+        currentProjectName = controller.getActiveProject().getProjectName();
         ArrayList<Task> currentTaskList = controller.getTask();
         totalTasks = currentTaskList.size();
         Node[] nodes = new Node[controller.getTaskSize()];
@@ -206,6 +206,8 @@ public class KanbanViewController implements Initializable {
         inProgressBar.setProgress(inProgressList.getChildren().size() / totalTasks);
         waitingBar.setProgress(waitingList.getChildren().size() / totalTasks);
         doneBar.setProgress(doneList.getChildren().size() / totalTasks);
+        usernameLabel.setText(controller.getLoggedInUser());
+
     }
 
     public void skriv(String scene) { //TODO testmetod tas bort när den är färdiganvänd
@@ -225,14 +227,14 @@ public class KanbanViewController implements Initializable {
         root = fxmlLoader.load();
         NewTaskController newTaskController = fxmlLoader.getController();
         newTaskController.setCreator(usernameLabel.getText());
-        newTaskController.setUserList(controller.getAllUsersInProject("Projeknamn"));
+        newTaskController.setUserList(controller.getAllUsersInProject(currentProjectName));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
     }
 
-    public void setUserLabel(String username) {
-        usernameLabel.setText(username);
+    public void setUserLabel(String text) {
+        usernameLabel.setText(text);
     }
 
 }

@@ -4,6 +4,7 @@ import Model.Project;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -43,9 +44,11 @@ public class HomePageController implements Initializable {
     @FXML
     private Label userLabel;
     @FXML
-    private VBox myProjectVbox;
+    private ScrollPane myProjectVbox;
     @FXML
     private VBox myLane;
+    @FXML
+    private VBox projectList;
     @FXML
     private ListView<Swimlane> myListLane;
     @FXML
@@ -65,7 +68,10 @@ public class HomePageController implements Initializable {
      */
     @FXML
     void changeProject(ActionEvent event) {
-        projectName.setText(projectButton.getText());
+        Button button = (Button) event.getSource();
+        System.out.println(button.getText());
+        projectName.setText(button.getText());
+        controller.changeProject(button.getText());
     }
 
     /**
@@ -148,29 +154,28 @@ public class HomePageController implements Initializable {
         userLabel.setText(controller.getLoggedInUser());
         myProjectVbox.setVisible(false);
         ArrayList<Project> currentList = controller.getAllProject();
-        if (currentList.size()>0) {
+        Button button = null;
             for (int i = 0; i < currentList.size(); i++) {
-                projectNameButton = new Button(currentList.get(i).getProjectName());
-                myProjectVbox.getChildren().add(projectNameButton);
+                button = new Button(currentList.get(i).getProjectName());
+                button.setId(String.valueOf(currentList.get(i).getProjectID()));
+                button.getStyleClass().add("Men");
+                button.setOnAction(this::changeProject);
+                projectList.getChildren().addAll(button);
             }
-        }
     }
 
     /**
      * This method is used by other scenes to set up tasks on the HomePage swimlane.
      */
     public void setUpMySwimLane(){
-        System.out.println(userLabel.getText());
         ArrayList<Task> current = controller.getTask();
         Node[] nodes = new Node[controller.getTaskSize()];
 
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
-                System.out.println(current.get(i).getAssignees().contains(userLabel));
                 if (current.get(i).getAssignees().contains(userLabel.getText())) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
                     nodes[i].setId(String.valueOf(i));
-                    System.out.println(nodes[i].getId());
                     myLane.getChildren().add(nodes[i]);
                 }
             } catch (IOException e) {

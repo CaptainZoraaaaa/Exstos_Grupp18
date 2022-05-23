@@ -8,14 +8,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 //TODO ändra guit
 /**
- * @author Max Tiderman
+ * @author Max Tiderman & Anna Håkansson
  */
 public class LoginController {
 
@@ -43,7 +48,7 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         if(controller.logIn(username, password)) {
-            controller.setLoggedInUser("Emma");
+            controller.setLoggedInUser(username);
             System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
@@ -56,6 +61,13 @@ public class LoginController {
             stage.setScene(scene);
         }
         else {
+
+            Label label = new Label("Failed to log in: Wrong credentials");
+            label.setTextFill(Paint.valueOf("Red"));
+            Popup popup = new Popup();
+            popup.getContent().add(label);
+            Stage stage = (Stage) usernameTextField.getScene().getWindow();
+            popup.show(stage);
             System.out.println(">> Login failed <<"); //todo skriv felmeddelande
         }
     }

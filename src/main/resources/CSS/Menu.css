@@ -3,7 +3,6 @@
     -fx-background-color :  #bfcfdd;
     -fx-background-radius: 5em;
     -fx-background-insets: 0px;
-
 }
 .button:hover{
     -fx-background-color :  #9eb6cb;

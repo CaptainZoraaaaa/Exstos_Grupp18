@@ -1,6 +1,6 @@
 package Sandbox;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.User;
 import client.Client;
 import client.InputClient;
@@ -75,7 +75,7 @@ public class TestClientModel extends Client {
      * This method is going send different messages to the server
      * @Author Max Tiderman
      */
-    public void sendUpdate (Package message) {
+    public void sendUpdate (DataPackage message) {
         outputClient.send(message);
     }
 

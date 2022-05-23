@@ -1,5 +1,8 @@
 package client;
 
+import Model.DataPackage;
+import controller.Controller;
+
 import java.io.BufferedInputStream;
 import java.io.EOFException;
 import java.io.IOException;
@@ -14,6 +17,7 @@ public class InputClient extends Thread{
     private ObjectInputStream ois;
     private Client client;
     private volatile boolean running = true;
+    private Controller controller = Controller.getInstance();
 
     public InputClient(Client client, Socket socket) {
         this.client = client;
@@ -35,9 +39,9 @@ public class InputClient extends Thread{
     public void run() {
         while (running) {
             try {
-                        Package message = (Package) ois.readObject();
-                        Thread.sleep(1000);
-
+                DataPackage message = (DataPackage) ois.readObject();
+                controller.unpack(message);
+                Thread.sleep(1000);
             } catch (EOFException e) {
 
             } catch (ClassNotFoundException e) {

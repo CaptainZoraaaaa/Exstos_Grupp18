@@ -1,8 +1,7 @@
 package Sandbox;
 
-import Model.Package;
+import Model.DataPackage;
 import Model.User;
-import client.Client;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -21,9 +20,9 @@ public class TestClient extends Thread {
 
             User user = new User.UserBuilder().username("Pelle").password("kuken").build();
 
-            Package package1 = new Package.PackageBuilder().type(1).sender(user).build();
+            DataPackage dataPackage1 = new DataPackage.PackageBuilder().packageType(1).sender(user).build();
 
-            oos.writeObject(package1);
+            oos.writeObject(dataPackage1);
             oos.flush();
 
             try {
@@ -32,8 +31,8 @@ public class TestClient extends Thread {
                 e.printStackTrace();
             }
             User user2 = new User.UserBuilder().username("Bengt").password("kuken").build();
-            package1 = new Package.PackageBuilder().type(1).sender(user2).build();
-            oos.writeObject(package1);
+            dataPackage1 = new DataPackage.PackageBuilder().packageType(1).sender(user2).build();
+            oos.writeObject(dataPackage1);
             oos.flush();
 
         } catch (IOException e) {
@@ -51,8 +50,8 @@ public class TestClient extends Thread {
         public void run() {
             try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()))) {
                 while (true) {
-                    Package aPackage = (Package) ois.readObject();
-                    System.out.println(aPackage.getType());
+                    DataPackage aDataPackage = (DataPackage) ois.readObject();
+                    System.out.println(aDataPackage.getPackageType());
                 }
             }catch (IOException | ClassNotFoundException e) {
                 System.err.println("Failure due to "+ e);

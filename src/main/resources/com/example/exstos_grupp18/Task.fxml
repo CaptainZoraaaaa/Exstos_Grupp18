@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="48.0" prefWidth="200.0" style="-fx-border-style: Dotted; -fx-border-color: #171717;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.TaskController">
    <children>
-      <Button fx:id="printButton" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#print" prefHeight="25.0" prefWidth="82.0" stylesheets="@../../../CSS/Menu.css" text="View task" />
+      <Button fx:id="printButton" layoutX="133.0" layoutY="10.0" mnemonicParsing="false" onAction="#editTask" prefHeight="25.0" prefWidth="82.0" stylesheets="@../../../CSS/Menu.css" text="View task" />
       <Label fx:id="textField" layoutX="33.0" layoutY="14.0" prefHeight="17.0" prefWidth="95.0" text="Label" />
       <ImageView fx:id="helpImage" fitHeight="25.0" fitWidth="29.0" layoutX="6.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -1,21 +1,20 @@
 package Model;
 
 
-import javafx.scene.image.Image;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class that's holds users with its projects and tasks
+ * @author Linnéa Flystam
+ *
+ */
 public class User implements Serializable {
 
     private String username;
     private String password;
-    private Image profilePicture;
-    private HashMap<Project, Boolean> projects = new HashMap<>();
-    private ArrayList<Task> myTasks = new ArrayList<>();
+    private HashMap<Integer, Project> projects = new HashMap<>();
 
-    private static int USERID = 0;
 
     public String getUsername() {
         return username;
@@ -33,29 +32,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Image getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(Image profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
-    public HashMap<Project, Boolean> getProjects() {
+    public HashMap<Integer, Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(HashMap<Project, Boolean> projects) {
+    public void setProjects(HashMap<Integer, Project> projects) {
         this.projects = projects;
     }
 
-    public ArrayList<Task> getMyTasks() {
-        return myTasks;
-    }
-
-    public void setMyTasks(ArrayList<Task> myTasks) {
-        this.myTasks = myTasks;
-    }
 
     /**
      * Builder-class to create new users.
@@ -98,17 +82,14 @@ public class User implements Serializable {
          * @param image an object of class Image with the users profile picture.
          * @return The method returns itself.
          */
-        public UserBuilder image(Image image) {
-            user.setProfilePicture(image);
-            return this;
-        }
+
 
         /**
          * This method is used to set the users projects to the incoming Hashmap.
          * @param projects a hashmap with the users projects.
          * @return The method returns itself.
          */
-        public UserBuilder projects(HashMap<Project, Boolean> projects) {
+        public UserBuilder projects(HashMap<Integer, Project> projects) {
             user.setProjects(projects);
             return this;
         }
@@ -118,15 +99,9 @@ public class User implements Serializable {
          * @param tasks an ArrayList with the users tasks.
          * @return The method returns itself.
          */
-        public UserBuilder tasks(ArrayList<Task> tasks) {
-            user.setMyTasks(tasks);
-            return this;
-        }
 
-        public UserBuilder profilePicture(Image profilePicture) {
-            user.setProfilePicture(profilePicture);
-            return this;
-        }
+
+
     }
 
 }

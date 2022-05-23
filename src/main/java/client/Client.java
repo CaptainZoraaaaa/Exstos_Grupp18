@@ -1,7 +1,6 @@
 package client;
 
-import Model.Package;
-import Model.Project;
+import Model.DataPackage;
 import Model.User;
 
 import java.io.IOException;
@@ -81,8 +80,9 @@ public class Client {
      * This method is going send different messages to the server
      * @Author Max Tiderman
      */
-    public void sendUpdate (Package message) {
+    public void sendUpdate (DataPackage message) {
         outputClient.send(message);
+        System.out.println("sending update");
     }
 
     private class ThreadHandler extends Thread{

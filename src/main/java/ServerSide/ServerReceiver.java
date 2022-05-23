@@ -1,9 +1,8 @@
 package ServerSide;
 
-import Model.Package;
+import Model.DataPackage;
 
 import java.io.BufferedInputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -12,7 +11,7 @@ import java.net.Socket;
  * ServerReceiver holds a inputstream receiving information from server
  */
 public class ServerReceiver extends Thread{
-    private Package packageObject;
+    private DataPackage dataPackageObject;
     private ClientHandler clientHandler;
     private ServerBuffer serverBuffer;
     private Socket socket;
@@ -39,8 +38,8 @@ public class ServerReceiver extends Thread{
 
         while (!socket.isClosed()) {
             try {
-                packageObject = (Package) ois.readObject();
-                clientHandler.packageRecieved(packageObject);
+                dataPackageObject = (DataPackage) ois.readObject();
+                clientHandler.packageRecieved(dataPackageObject);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {

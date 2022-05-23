@@ -79,7 +79,7 @@ public class EditTaskController implements Initializable {
         String comment = creatorField + ":\n" + taskCommentInputField.getText();
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
-        currentTask.setEstimatedTime(deadline);
+        currentTask.setDeadline(deadline);
         currentTask.setAssignees(selectedUser); // TODO: 2022-05-12 Denna funkar inte som den ska.
         currentTask.setCurrentStatus(selectedStatus);
         currentTask.setCreator(creatorField.getText());
@@ -160,8 +160,8 @@ public class EditTaskController implements Initializable {
         this.currentTask = task;
         taskHeaderInputField.setText(task.getHeader());
         taskDescriptionInputField.setText(task.getDescription());
-        taskDeadlineDate.setValue(task.getEstimatedTime());
-        assigneeList.setValue(task.getAssignees().get(0)); /// TODO: 2022-05-20 Fixa så att detta hämtar en assigne fårn task. 
+        taskDeadlineDate.setValue(task.getDeadline());
+        assigneeList.setValue(task.getAssignees().get(0));
         statusList.setValue(task.getCurrentStatus());
         creatorField.setText(task.getCreator());
         taskCommentInputField.setText(task.getComments().get(0));
