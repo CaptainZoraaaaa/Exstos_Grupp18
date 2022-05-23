@@ -319,9 +319,10 @@ public class ServerController {
         int taskID = getIDFromFile(TYPE_TASK);
         writeNewID(taskID, TYPE_TASK);
         task.setTask_id(taskID);
-        server.addTaskToProject(task, project);
-        Project toSend = getProjectMap().get(project.getProjectID());
+        Project toSend = server.addTaskToProject(task, project);
+       // getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
     /**
      *@author Anna Håkansson

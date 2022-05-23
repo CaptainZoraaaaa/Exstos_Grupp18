@@ -8,6 +8,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * This class is the reciever and recievs and unpackages messages from the server.
@@ -35,6 +36,10 @@ public class InputClient extends Thread{
         start();
     }
 
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
     @Override
     public void run() {
         while (running) {
@@ -46,6 +51,8 @@ public class InputClient extends Thread{
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (SocketException e) {
+                System.out.println("Socket is closed. Bye bye!");
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }

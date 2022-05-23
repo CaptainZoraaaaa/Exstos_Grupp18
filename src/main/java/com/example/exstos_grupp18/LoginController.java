@@ -52,6 +52,7 @@ public class LoginController {
             System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
+            System.out.println(username);
             //Används för att överföra data
 
 

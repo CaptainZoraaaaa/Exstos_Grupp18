@@ -1,13 +1,31 @@
-2022-05-23T11:37:03.223401088: The userMap was read from the .dat-file
-2022-05-23T11:37:03.247747567: The projectMap was read from the .dat-file
-2022-05-23T11:37:03.249964174: Server is running
-2022-05-23T11:37:13.246367147: A client just connected.
-2022-05-23T11:37:13.246808810: Login credentials for user Anna was accepted
-2022-05-23T11:37:13.246951830: User Anna was added to the onlineUsers-list
-2022-05-23T11:37:13.247073402: The client associated to user Anna was added to the clientMap
-2022-05-23T11:37:30.918796232: A projectID was fetched from the .dat-file
-2022-05-23T11:37:30.919163552: A new projectID was created.
-2022-05-23T11:37:30.919348946: Project #10 Anna66 was added to the projectMap
-2022-05-23T11:37:30.919578303:  Unable to send project update for project Anna66 to assignee Max: Not in the clientMap
-2022-05-23T11:37:30.919749899: Sending project update for project Anna66 to user Anna's ClientHandler
-2022-05-23T11:37:30.922078110: The projectMap was written to the .dat-file
+2022-05-23T13:44:12.595404824: The userMap was read from the .dat-file
+2022-05-23T13:44:12.618222951: The projectMap was read from the .dat-file
+2022-05-23T13:44:12.620418464: Server is running
+2022-05-23T13:44:22.535127671: A client just connected.
+2022-05-23T13:44:22.536538092: Login credentials for user Anna was accepted
+2022-05-23T13:44:22.536778621: User Anna was added to the onlineUsers-list
+2022-05-23T13:44:22.536996648: The client associated to user Anna was added to the clientMap
+2022-05-23T13:44:39.861537257: A client just connected.
+2022-05-23T13:44:39.861676671: Login credentials for user Linnéa was accepted
+2022-05-23T13:44:39.861766775: User Linnéa was added to the onlineUsers-list
+2022-05-23T13:44:39.861854030: The client associated to user Linnéa was added to the clientMap
+2022-05-23T13:45:01.603525259: A taskID was fetched from the .dat-file
+2022-05-23T13:45:01.603808702: A new taskID was created.
+2022-05-23T13:45:01.608530707: Sending project update for project TestPRojekt to user Linnéa's ClientHandler
+2022-05-23T13:45:01.608785786: Sending project update for project TestPRojekt to user Anna's ClientHandler
+2022-05-23T13:45:01.611532879: The projectMap was written to the .dat-file
+2022-05-23T13:48:45.280347974: User Anna was removed from the onlineUsers-list
+2022-05-23T13:48:49.148688886: User Linnéa was removed from the onlineUsers-list
+2022-05-23T13:49:09.820638814: A client just connected.
+2022-05-23T13:49:09.820815886: Login credentials for user Anna was accepted
+2022-05-23T13:49:09.820985616: User Anna was added to the onlineUsers-list
+2022-05-23T13:49:09.821064159: The client associated to user Anna was added to the clientMap
+2022-05-23T13:49:24.271786380: A client just connected.
+2022-05-23T13:49:24.272228885: Login credentials for user Linnéa was accepted
+2022-05-23T13:49:24.272522413: User Linnéa was added to the onlineUsers-list
+2022-05-23T13:49:24.272737892: The client associated to user Linnéa was added to the clientMap
+2022-05-23T13:49:53.410099695: A taskID was fetched from the .dat-file
+2022-05-23T13:49:53.410479915: A new taskID was created.
+2022-05-23T13:49:53.410780442: Sending project update for project TestPRojekt to user Linnéa's ClientHandler
+2022-05-23T13:49:53.411058524: Sending project update for project TestPRojekt to user Anna's ClientHandler
+2022-05-23T13:49:53.412928047: The projectMap was written to the .dat-file

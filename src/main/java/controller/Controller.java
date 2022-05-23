@@ -156,6 +156,7 @@ public class Controller {
      * and then disconnect client.
      */
     public void logOut () {
+        System.out.println("Logging out");
         DataPackage logOutDataPackage = new DataPackage.PackageBuilder()
                 .sender(user)
                 .packageType(DataPackage.USER_LOGGED_OUT)
@@ -165,7 +166,7 @@ public class Controller {
     }
 
     public void createTask(Model.Task task) {
-        activeProject.addNewTask(task);
+        //activeProject.addNewTask(task);
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
                 .project(activeProject)
@@ -309,13 +310,14 @@ public class Controller {
     }
 
     private void projectUpdate(Project project) {
+        System.out.println(project.getTasks().size());
         System.out.println("project update in controller");
         boolean projectInList = false;
         for(Project inList : projects) {
             if(project.getProjectID() == inList.getProjectID()) {
                 inList = project;
                 projectInList = true;
-                if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {
+                if(this.activeProject == null || project.getProjectID() == this.activeProject.getProjectID()) {
                     this.activeProject = project;
                 }
             }
@@ -323,6 +325,10 @@ public class Controller {
         if(!projectInList) {
             projects.add(project);
         }
+        for(Model.Task task : project.getTasks()) {
+            System.out.println(task.getHeader());
+        }
+        System.out.println(activeProject.getTasks().size());
         System.out.println("Got update");
     }
 
