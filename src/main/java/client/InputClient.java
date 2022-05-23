@@ -39,11 +39,9 @@ public class InputClient extends Thread{
     public void run() {
         while (running) {
             try {
-                        DataPackage message = (DataPackage) ois.readObject();
-                        controller.unpack(message);
-                        Thread.sleep(1000);
-
-
+                DataPackage message = (DataPackage) ois.readObject();
+                controller.unpack(message);
+                Thread.sleep(1000);
             } catch (EOFException e) {
 
             } catch (ClassNotFoundException e) {
