@@ -1,5 +1,7 @@
 package ServerSide;
 
+import Model.DataPackage;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -34,7 +36,12 @@ public class ServerSender extends Thread{
     public void run() {
         while (!socket.isClosed()){
             try {
-                oos.writeObject(serverBuffer.get());//write latest object added in ServerBuffer
+                DataPackage dataPackage = (DataPackage) serverBuffer.get();
+                if(dataPackage.getPackageType() == DataPackage.PROJECT_UPDATE) {
+                    System.out.println(dataPackage.getProject().getTasks().size() + " TASK SIZE IN SERVERSENDER");
+                    dataPackage.setTestString("PACKAGE FROM SERVER");
+                }
+                oos.writeObject(dataPackage);//write latest object added in ServerBuffer
                 oos.flush();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();

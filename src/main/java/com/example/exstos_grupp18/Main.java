@@ -1,5 +1,6 @@
 package com.example.exstos_grupp18;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +24,12 @@ public class Main extends Application {
         stage.setTitle("Exsto");
         stage.setScene(new Scene(fxmlLoader));
         stage.show();
+    }
+    @Override
+    public void stop() throws Exception {
+        Controller controller = Controller.getInstance();
+        controller.logOut();
+        super.stop();
     }
 
     public static void main(String[] args) {

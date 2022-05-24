@@ -173,6 +173,7 @@ public class Controller {
                 .project(activeProject)
                 .packageType(DataPackage.NEW_TASK)
                 .build();
+        toSend.setTestString("create task");
         client.sendUpdate(toSend);
 
     }
@@ -304,6 +305,7 @@ public class Controller {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
                 projectUpdate(message.getProject());
+                System.out.println(message.getTestString());
                 break;
             case DataPackage.PROJECT_REMOVED:
 

@@ -37,6 +37,7 @@ public class DataPackage implements Serializable {
     private String password;
     private User userFromServer;
     private ArrayList<Project> projectList;
+    private String testString;
 
     public User getSender() {
         return sender;
@@ -104,6 +105,14 @@ public class DataPackage implements Serializable {
 
     public void setProjectList(ArrayList<Project> projectList) {
         this.projectList = projectList;
+    }
+
+    public String getTestString() {
+        return testString;
+    }
+
+    public void setTestString(String testString) {
+        this.testString = testString;
     }
 
     /**
