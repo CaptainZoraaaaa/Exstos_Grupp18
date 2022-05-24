@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,7 +64,7 @@ public class NewProjectController implements Initializable {
      * @param event ActionEvent that reacts when the "create" button is pressed.
      */
     @FXML
-    void createNewProject(MouseEvent event) throws IOException {
+    void createNewProject(ActionEvent event) throws IOException {
         System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
