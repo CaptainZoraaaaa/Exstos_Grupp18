@@ -34,12 +34,6 @@ public class Main extends Application {
         super.stop();
     }
 
-    @Override
-    public void stop() throws Exception {
-        Controller controller = Controller.getInstance();
-        controller.logOut();
-        super.stop();
-    }
 
     public static void main(String[] args) {
         launch();
