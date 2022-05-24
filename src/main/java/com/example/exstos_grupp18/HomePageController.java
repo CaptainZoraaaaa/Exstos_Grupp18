@@ -94,7 +94,7 @@ public class HomePageController implements Initializable {
                 Node newProjectRoot =  fxmlLoader.load();
                // NewProjectController newProjectController = fxmlLoader.getController();
                 popOver = new PopOver(newProjectRoot);
-                popOver.setTitle("");
+                popOver.setTitle(" ");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
                 popOver.show(createProjectButton, 330, 165  );
