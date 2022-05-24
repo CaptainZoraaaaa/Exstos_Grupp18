@@ -1,7 +1,24 @@
-2022-05-24T13:28:46.262039068: The userMap was read from the .dat-file
-2022-05-24T13:28:46.291541244: The projectMap was read from the .dat-file
-2022-05-24T13:28:46.295006700: Server is running
-2022-05-24T13:28:55.631650326: A client just connected.
-2022-05-24T13:28:55.632027964: Login credentials for user Anna was accepted
-2022-05-24T13:28:55.632130461: User Anna was added to the onlineUsers-list
-2022-05-24T13:28:55.632232169: The client associated to user Anna was added to the clientMap
+2022-05-24T13:55:28.694266500: The userMap was read from the .dat-file
+2022-05-24T13:55:28.806967300: The projectMap was read from the .dat-file
+2022-05-24T13:55:28.814950400: Server is running
+2022-05-24T13:55:38.480680900: A client just connected.
+2022-05-24T13:55:38.480680900: Login credentials for user Max was not accepted,
+2022-05-24T13:55:50.274655200: A client just connected.
+2022-05-24T13:55:50.274655200: User Max's registration was verified: username is unique
+2022-05-24T13:55:50.275651700: Max was added to the userMap.
+2022-05-24T13:55:50.276649100: The userMap was written to the .dat-file
+2022-05-24T13:55:55.426973200: A client just connected.
+2022-05-24T13:55:55.426973200: Login credentials for user Max was accepted
+2022-05-24T13:55:55.435278100: User Max was added to the onlineUsers-list
+2022-05-24T13:55:55.435278100: The client associated to user Max was added to the clientMap
+2022-05-24T13:56:17.244939400: A projectID was fetched from the .dat-file
+2022-05-24T13:56:17.244939400: A new projectID was created.
+2022-05-24T13:56:17.244939400: Project #2 fghjkx was added to the projectMap
+2022-05-24T13:56:17.249926200: Sending project update for project fghjkx to user Max's ClientHandler
+2022-05-24T13:56:17.249926200:  Unable to send project update for project fghjkx to assignee Anna: Not in the clientMap
+2022-05-24T13:56:17.253915300: The projectMap was written to the .dat-file
+2022-05-24T13:56:34.852568100: A taskID was fetched from the .dat-file
+2022-05-24T13:56:34.852568100: A new taskID was created.
+2022-05-24T13:56:34.852568100: Sending project update for project fghjkx to user Max's ClientHandler
+2022-05-24T13:56:34.853565300:  Unable to send project update for project fghjkx to assignee Anna: Not in the clientMap
+2022-05-24T13:56:34.854563700: The projectMap was written to the .dat-file
