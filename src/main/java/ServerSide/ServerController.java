@@ -291,9 +291,11 @@ public class ServerController {
      *@author Anna Håkansson
      */
     public void sendOutProjectUpdate(Project project) {
+        Task[] tasks = project.getTasks().toArray(new Task[0]);
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
                 .packageType(DataPackage.PROJECT_UPDATE)
+                .taskList(tasks)
                 .build();
         server.sendProjectUpdateToUsers(toSend);
     }
@@ -319,9 +321,10 @@ public class ServerController {
         int taskID = getIDFromFile(TYPE_TASK);
         writeNewID(taskID, TYPE_TASK);
         task.setTask_id(taskID);
-        server.addTaskToProject(task, project);
-        Project toSend = getProjectMap().get(project.getProjectID());
+        Project toSend = server.addTaskToProject(task, project);
+       // getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
+        ServerFileManager.writeMapToFile(server.getProjectMap(), TYPE_PROJECT);
     }
     /**
      *@author Anna Håkansson

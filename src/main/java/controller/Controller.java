@@ -21,7 +21,7 @@ public class Controller {
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
-    private Project activeProject = new Project();
+    private Project activeProject = null;
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
@@ -158,6 +158,7 @@ public class Controller {
      * and then disconnect client.
      */
     public void logOut () {
+        System.out.println("Logging out");
         DataPackage logOutDataPackage = new DataPackage.PackageBuilder()
                 .sender(user)
                 .packageType(DataPackage.USER_LOGGED_OUT)
@@ -167,12 +168,13 @@ public class Controller {
     }
 
     public void createTask(Model.Task task) {
-        activeProject.addNewTask(task);
+        //activeProject.addNewTask(task);
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
                 .project(activeProject)
                 .packageType(DataPackage.NEW_TASK)
                 .build();
+        toSend.setTestString("create task");
         client.sendUpdate(toSend);
 
     }
@@ -268,6 +270,7 @@ public class Controller {
                     .projectName(header)
                     .description(description)
                     .deadline(deadline)
+                    .createdDate(LocalDate.now())
                     .assignedUsers(assignees)
                     .build();
         DataPackage toSend = new DataPackage.PackageBuilder()
@@ -302,7 +305,10 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
-                projectUpdate(message.getProject());
+                projectUpdate(message.getProject(), message.getTasks());
+                System.out.println(message.getTestString());
+                projectUpdate(message.getProject(), message.getTasks());
+                projectUpdate(message.getProject(), message.getTasks());
                 break;
             case DataPackage.PROJECT_REMOVED:
 
@@ -310,14 +316,21 @@ public class Controller {
         }
     }
 
-    private void projectUpdate(Project project) {
+    private void projectUpdate(Project project, Model.Task[] tasks) {
+        System.out.println(project.getTasks().size());
         System.out.println("project update in controller");
         boolean projectInList = false;
+        ArrayList<Model.Task> newTaskList = new ArrayList<>();
+        for(int i = 0; i < tasks.length; i++) {
+            newTaskList.add(tasks[i]);
+            System.out.println(i + tasks[i].getHeader());
+        }
+        project.setTaskList(newTaskList);
         for(Project inList : projects) {
             if(project.getProjectID() == inList.getProjectID()) {
                 inList = project;
                 projectInList = true;
-                if(project.getProjectID() == this.activeProject.getProjectID() || this.activeProject == null) {
+                if(this.activeProject == null || project.getProjectID() == this.activeProject.getProjectID()) {
                     this.activeProject = project;
                 }
             }

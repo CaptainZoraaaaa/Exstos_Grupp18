@@ -123,7 +123,6 @@ public class EditTaskController implements Initializable {
     @FXML
     void chooseDate(ActionEvent event) {
         deadline = taskDeadlineDate.getValue();
-
     }
 
     /**

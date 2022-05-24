@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -69,7 +71,7 @@ public class KanbanViewController implements Initializable {
     @FXML
     private Button infoButton; //the info button on the drop down menu
     @FXML
-    private Button kanbanButton; //the kanban button on the drop down menu
+    private Button editProjectButton; //the edit project button
     @FXML
     private Button logOutButton; //the log out button
     @FXML
@@ -145,7 +147,11 @@ public class KanbanViewController implements Initializable {
     void dragTask(MouseDragEvent mouseDragEvent){
     }
 
-    //TODO javadoca
+    /**
+     *This method will get all of the current projects tasks lopp trought them and check their status.
+     * Deppending on what status the task have the it will be placed in different VBOX's
+     * That are the equivelant of the swimlanes.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
@@ -158,8 +164,7 @@ public class KanbanViewController implements Initializable {
             try {
                 if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    Node scene = nodes[i];
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
                     backlogList.setScaleZ(1);
@@ -167,19 +172,19 @@ public class KanbanViewController implements Initializable {
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     inProgressList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     waitingList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Done)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     doneList.getChildren().add(nodes[i]);
                 }
@@ -194,6 +199,18 @@ public class KanbanViewController implements Initializable {
         inProgressBar.setProgress(inProgressList.getChildren().size() / totalTasks);
         waitingBar.setProgress(waitingList.getChildren().size() / totalTasks);
         doneBar.setProgress(doneList.getChildren().size() / totalTasks);
+
+        LocalDate now = LocalDate.now();
+        double daysLeft = Period.between(now,controller.getActiveProject().getDeadline()).getDays();//Dagar kavr tills slut datum
+        double dayFromBeginning = Period.between(controller.getActiveProject().getCreatedDate(), controller.getActiveProject().getDeadline()).getDays(); // Dagar från början
+        System.out.println(daysLeft);
+        System.out.println(dayFromBeginning);
+        if (daysLeft>0){
+            this.dropMenuBar.setProgress(1-(daysLeft/dayFromBeginning));
+        }
+        else{
+            this.dropMenuBar.setProgress(1);
+        }
         usernameLabel.setText(controller.getLoggedInUser());
 
     }
@@ -209,7 +226,11 @@ public class KanbanViewController implements Initializable {
     }
 
 
-    //TODO javadoca
+    /**
+     * Method to create new task sends the user to a new scene where the user can create the task
+     * @param event - New Task button
+     * @throws IOException
+     */
     public void newTask(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
@@ -220,7 +241,14 @@ public class KanbanViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-
+    @FXML
+    void editProject(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditProject.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }

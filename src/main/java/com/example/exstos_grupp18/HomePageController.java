@@ -22,6 +22,7 @@ import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -187,6 +188,7 @@ public class HomePageController implements Initializable {
                 button.setOnAction(this::changeProject);
                 projectList.getChildren().addAll(button);
             }
+        System.out.println(LocalDate.now());
     }
 
     /**
