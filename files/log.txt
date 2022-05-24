@@ -1,9 +1,7 @@
-2022-05-23T15:04:28.537714: The userMap was read from the .dat-file
-2022-05-23T15:04:28.588813: The projectMap was read from the .dat-file
-2022-05-23T15:04:28.594376: Server is running
-2022-05-23T15:04:35.075463: A client just connected.
-2022-05-23T15:04:35.081522: Login credentials for user Christian was accepted
-2022-05-23T15:04:35.081670: User Christian was added to the onlineUsers-list
-2022-05-23T15:04:35.081886: The client associated to user Christian was added to the clientMap
-2022-05-23T15:04:47.620213: A taskID was fetched from the .dat-file
-2022-05-23T15:04:47.621015: A new taskID was created.
+2022-05-24T14:36:17.342980: The userMap was read from the .dat-file
+2022-05-24T14:36:17.390499: The projectMap was read from the .dat-file
+2022-05-24T14:36:17.395146: Server is running
+2022-05-24T14:36:39.502086: A client just connected.
+2022-05-24T14:36:39.513151: Login credentials for user Christian was accepted
+2022-05-24T14:36:39.513331: User Christian was added to the onlineUsers-list
+2022-05-24T14:36:39.514641: The client associated to user Christian was added to the clientMap

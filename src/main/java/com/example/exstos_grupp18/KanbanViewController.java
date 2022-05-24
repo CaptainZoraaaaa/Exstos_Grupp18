@@ -143,7 +143,6 @@ public class KanbanViewController implements Initializable {
     }
     @FXML
     void dragTask(MouseDragEvent mouseDragEvent){
-        //System.out.println(mouseDragEvent.getTarget());
     }
 
     //TODO javadoca
