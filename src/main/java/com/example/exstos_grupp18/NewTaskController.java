@@ -90,6 +90,7 @@ public class NewTaskController implements Initializable {
                 .flaggedForHelp(flagged)
                 .id(controller.getTaskSize())
                 .build();
+        System.out.println(task.getHeader() + " HEADER IN NEW TASK CONTROLLER");
         controller.createTask(task);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();

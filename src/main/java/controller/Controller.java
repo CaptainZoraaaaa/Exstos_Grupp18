@@ -305,7 +305,7 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
-                projectUpdate(message.getProject());
+                projectUpdate(message.getProject(), message.getTasks());
                 System.out.println(message.getTestString());
                 projectUpdate(message.getProject(), message.getTasks());
                 projectUpdate(message.getProject(), message.getTasks());
@@ -337,9 +337,6 @@ public class Controller {
         }
         if(!projectInList) {
             projects.add(project);
-        }
-        for(Model.Task task : project.getTasks()) {
-            System.out.println(task.getHeader());
         }
         System.out.println("Got update");
     }
