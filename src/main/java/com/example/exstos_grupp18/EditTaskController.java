@@ -3,6 +3,7 @@ package com.example.exstos_grupp18;
 import Model.Swimlane;
 import Model.Task;
 import Sandbox.TestController;
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,7 @@ public class EditTaskController implements Initializable {
     private Scene scene;
     private Parent root;
     private Task currentTask;
+    private Controller controller = Controller.getInstance();
 
     /**
      * Method for returning to previous screen.
@@ -85,6 +87,8 @@ public class EditTaskController implements Initializable {
         currentTask.setCreator(creatorField.getText());
         currentTask.setComments(comment);
         currentTask.setFlaggedForHelp(flagged);
+        controller.taskEdited(currentTask);
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();

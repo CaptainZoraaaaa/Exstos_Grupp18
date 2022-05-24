@@ -331,6 +331,11 @@ public class ServerController {
      */
     public void taskEdited(Task task, Project project) {
         server.updateTask(task, project);
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Project toSend = getProjectMap().get(project.getProjectID());
         sendOutProjectUpdate(toSend);
     }
