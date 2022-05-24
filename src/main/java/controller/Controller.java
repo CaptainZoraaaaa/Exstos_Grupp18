@@ -317,7 +317,6 @@ public class Controller {
     }
 
     private void projectUpdate(Project project, Model.Task[] tasks) {
-        System.out.println(project.getTasks().size());
         System.out.println("project update in controller");
         boolean projectInList = false;
         ArrayList<Model.Task> newTaskList = new ArrayList<>();
@@ -326,9 +325,10 @@ public class Controller {
             System.out.println(i + tasks[i].getHeader());
         }
         project.setTaskList(newTaskList);
-        for(Project inList : projects) {
-            if(project.getProjectID() == inList.getProjectID()) {
-                inList = project;
+        for(int i = 0; i < projects.size(); i++) {
+            if(project.getProjectID() == projects.get(i).getProjectID()) {
+                projects.remove(i);
+                projects.add(i, project);
                 projectInList = true;
                 if(this.activeProject == null || project.getProjectID() == this.activeProject.getProjectID()) {
                     this.activeProject = project;
