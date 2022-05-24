@@ -302,6 +302,7 @@ public class Controller {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
                 projectUpdate(message.getProject(), message.getTasks());
+                projectUpdate(message.getProject(), message.getTasks());
                 break;
             case DataPackage.PROJECT_REMOVED:
 

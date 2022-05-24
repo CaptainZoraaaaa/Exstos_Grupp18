@@ -3,6 +3,7 @@ package ServerSide;
 import Model.DataPackage;
 
 import java.io.BufferedInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
@@ -40,7 +41,10 @@ public class ServerReceiver extends Thread{
             try {
                 dataPackageObject = (DataPackage) ois.readObject();
                 clientHandler.packageRecieved(dataPackageObject);
-            } catch (IOException e) {
+            } catch (EOFException e) {
+                //bara chilla
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
