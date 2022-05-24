@@ -11,7 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,10 +73,12 @@ public class NewProjectController implements Initializable {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            /*stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            stage.setScene(scene);
+            stage.setScene(scene);*/
+            HomePageController homePageController = fxmlLoader.getController();
+            homePageController.hideProjectPopOver();
         }
         else {
             //TODO IMPLEMENTERA FELLMEDALANDE

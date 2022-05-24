@@ -33,7 +33,7 @@
       <VBox layoutY="69.0" prefHeight="841.0" prefWidth="232.0" style="-fx-background-color: #BFCFDD;">
          <children>
             <Pane prefHeight="13.0" prefWidth="232.0" />
-            <Button fx:id="projectButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToCreateProject" prefHeight="59.0" prefWidth="305.0" stylesheets="@../../../CSS/Menu.css" text="Create Project" textFill="WHITE">
+            <Button fx:id="createProjectButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToCreateProject" prefHeight="59.0" prefWidth="305.0" stylesheets="@../../../CSS/Menu.css" text="Create Project" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="30.0" />
                </font>

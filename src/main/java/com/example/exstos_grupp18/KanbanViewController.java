@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -38,7 +39,7 @@ public class KanbanViewController implements Initializable {
     private ArrayList<Node> nodesInProgress = new ArrayList<>();
     private boolean dropMenuVisible = false;
     private Controller controller = Controller.getInstance();
-    private static KanbanViewController yes = new KanbanViewController();
+    private static KanbanViewController kanbanViewController = new KanbanViewController();
     private String currentProjectName;
 
     @FXML
@@ -100,7 +101,7 @@ public class KanbanViewController implements Initializable {
     private double totalTasks = 1;
 
     public static KanbanViewController getInstance() {
-        return yes;
+        return kanbanViewController;
     }
 
     /**
@@ -142,6 +143,9 @@ public class KanbanViewController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
+    @FXML
+    void dragTask(MouseDragEvent mouseDragEvent){
+    }
 
     /**
      *This method will get all of the current projects tasks lopp trought them and check their status.
@@ -154,6 +158,7 @@ public class KanbanViewController implements Initializable {
         currentProjectName = controller.getActiveProject().getProjectName();
         ArrayList<Task> currentTaskList = controller.getTask();
         totalTasks = currentTaskList.size();
+        DraggableTask draggableTask = new DraggableTask();
         Node[] nodes = new Node[controller.getTaskSize()];
         for (int i = 0; i < controller.getTaskSize(); i++) {
             try {
@@ -162,6 +167,8 @@ public class KanbanViewController implements Initializable {
                     nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
+                    backlogList.setScaleZ(1);
+                    nodes[i].setScaleZ(1000);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
@@ -181,6 +188,7 @@ public class KanbanViewController implements Initializable {
                     //System.out.println(nodes[i].getId());
                     doneList.getChildren().add(nodes[i]);
                 }
+                draggableTask.makeDraggable(nodes[i]);
             }
             catch (IOException e) {
                 e.printStackTrace();
