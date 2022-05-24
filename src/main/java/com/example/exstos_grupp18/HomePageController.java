@@ -4,7 +4,6 @@ import Model.Project;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -19,6 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +37,7 @@ public class HomePageController implements Initializable {
     @FXML
     private Button canBanBtn;
     @FXML
-    private Button projectButton;
+    private Button createProjectButton;
     @FXML
     private Label projectName;
     @FXML
@@ -62,6 +62,7 @@ public class HomePageController implements Initializable {
     private Parent root;
     private boolean projectSelectionVisible;
     private Controller controller = Controller.getInstance();
+    private PopOver popOver = new PopOver();
 
     /**
      * This method is used to change the project you're working in by changing the project name.
@@ -82,7 +83,31 @@ public class HomePageController implements Initializable {
      */
     @FXML
     void changeToCreateProject(ActionEvent event) throws IOException {
-        changeScene(event, "NewProject.fxml");
+        //changeScene(event, "NewProject.fxml");
+        createProjectPopOver();
+    }
+    @FXML
+    void createProjectPopOver(){
+        if(popOver == null || !popOver.isShowing()){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewProject.fxml"));
+                Node newProjectRoot =  fxmlLoader.load();
+               // NewProjectController newProjectController = fxmlLoader.getController();
+                popOver = new PopOver(newProjectRoot);
+                popOver.setTitle("New Project");
+                popOver.setDetachable(false);
+                popOver.setHeaderAlwaysVisible(true);
+                popOver.show(createProjectButton, 330, 165  );
+                //popOver.getStyleClass().add("popOver");
+
+            } catch (IOException e ){
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    void hideProjectPopOver(){
+        popOver.setAutoHide(true);
     }
 
     /**
