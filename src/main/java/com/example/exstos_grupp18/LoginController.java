@@ -46,7 +46,7 @@ public class LoginController {
     public void logIn(ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-
+        // Change logInTest to logIn() for real use;
         if(controller.logIn(username, password)) {
             controller.setLoggedInUser(username);
             System.out.println(">> Login successful <<");

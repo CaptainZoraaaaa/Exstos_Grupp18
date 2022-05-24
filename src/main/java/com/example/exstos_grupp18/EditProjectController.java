@@ -31,6 +31,8 @@ public class EditProjectController implements Initializable {
     @FXML
     private Button editProjectButton;
     @FXML
+    private Button editButton;
+    @FXML
     private ChoiceBox<String> assigneeList;
     @FXML
     private DatePicker projectDeadlineDate;
@@ -87,9 +89,22 @@ public class EditProjectController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Project project = controller.getActiveProject();
+        projectHeaderInputField.setText(project.getProjectName());
+        projectDescriptionInputField.setText(project.getDescription());
+        projectDeadlineDate.setValue(project.getDeadline());
+
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
         creatorField.setText(controller.getLoggedInUser());
+    }
+
+    @FXML
+    void unlockFields(ActionEvent event) {
+        projectHeaderInputField.setDisable(!projectHeaderInputField.isDisable());
+        projectDescriptionInputField.setDisable(!projectDescriptionInputField.isDisable());
+        projectDeadlineDate.setDisable(!projectDeadlineDate.isDisabled());
+        assigneeList.setDisable(!assigneeList.isDisable());
     }
     /**
      * Method for setting the values in the assigneeList.

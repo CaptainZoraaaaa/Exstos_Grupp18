@@ -46,6 +46,10 @@ public class InputClient extends Thread{
             try {
                 DataPackage message = (DataPackage) ois.readObject();
                 controller.unpack(message);
+                if(message.getPackageType() == DataPackage.PROJECT_UPDATE) {
+                    System.out.println(message.getProject().getTasks().size());
+                    System.out.println(message.getTestString());
+                }
                 Thread.sleep(1000);
             } catch (EOFException e) {
 

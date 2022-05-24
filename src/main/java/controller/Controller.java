@@ -111,7 +111,9 @@ public class Controller {
 
     public void displayCalender () {
     }
-
+    public boolean logInTest (String username, String password) {
+        return true;
+    }
     public boolean logIn (String username, String password) {
         boolean OK = false;
         Socket socket;
@@ -172,6 +174,7 @@ public class Controller {
                 .project(activeProject)
                 .packageType(DataPackage.NEW_TASK)
                 .build();
+        toSend.setTestString("create task");
         client.sendUpdate(toSend);
 
     }
@@ -267,6 +270,7 @@ public class Controller {
                     .projectName(header)
                     .description(description)
                     .deadline(deadline)
+                    .createdDate(LocalDate.now())
                     .assignedUsers(assignees)
                     .build();
         DataPackage toSend = new DataPackage.PackageBuilder()
@@ -301,6 +305,8 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
+                projectUpdate(message.getProject());
+                System.out.println(message.getTestString());
                 projectUpdate(message.getProject(), message.getTasks());
                 projectUpdate(message.getProject(), message.getTasks());
                 break;
