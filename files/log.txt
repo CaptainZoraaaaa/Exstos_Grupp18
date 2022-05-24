@@ -1,17 +1,4 @@
-2022-05-24T19:07:02.510002900: The userMap was read from the .dat-file
-2022-05-24T19:07:02.524961100: The projectMap was read from the .dat-file
-2022-05-24T19:07:02.526955600: Server is running
-2022-05-24T19:07:13.770182100: A client just connected.
-2022-05-24T19:07:13.772204400: Login credentials for user Anna was accepted
-2022-05-24T19:07:13.772204400: User Anna was added to the onlineUsers-list
-2022-05-24T19:07:13.772204400: The client associated to user Anna was added to the clientMap
-2022-05-24T19:07:24.954611500: A client just connected.
-2022-05-24T19:07:24.954611500: Login credentials for user Emma was accepted
-2022-05-24T19:07:24.954611500: User Emma was added to the onlineUsers-list
-2022-05-24T19:07:24.955607600: The client associated to user Emma was added to the clientMap
-2022-05-24T19:07:44.746638200: Updated task 5: task55 in project 1: Projekt11
-2022-05-24T19:07:44.761597900: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-24T19:07:44.762608800: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-05-24T19:08:16.038198600: Updated task 5: task55 in project 1: Projekt11
-2022-05-24T19:08:16.055185: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-24T19:08:16.055185: Sending project update for project Projekt11 to user Anna's ClientHandler
+2022-05-24T21:02:09.090907: The userMap was read from the .dat-file
+2022-05-24T21:02:09.107309: The projectMap was read from the .dat-file
+2022-05-24T21:02:09.111718: Failure in Connection.run when creating Serversocket due to java.net.BindException: Address already in use
+2022-05-24T21:02:09.112009: Server is closing down. Bye bye!
