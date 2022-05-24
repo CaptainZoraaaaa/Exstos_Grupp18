@@ -159,25 +159,25 @@ public class KanbanViewController implements Initializable {
             try {
                 if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Backlog)) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     backlogList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.InProgress)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     inProgressList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Waiting)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     waitingList.getChildren().add(nodes[i]);
                 }
                 else if (currentTaskList.get(i).getCurrentStatus().equals(Swimlane.Done)){
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(currentTaskList.get(i).getTask_id()));
                     //System.out.println(nodes[i].getId());
                     doneList.getChildren().add(nodes[i]);
                 }

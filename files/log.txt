@@ -1,17 +1,7 @@
-2022-05-24T12:55:54.804134: The userMap was read from the .dat-file
-2022-05-24T12:55:54.804576: The projectMap was read from the .dat-file
-2022-05-24T12:55:54.806661: Server is running
-2022-05-24T12:56:04.003105: A client just connected.
-2022-05-24T12:56:04.020695: User Emma's registration was verified: username is unique
-2022-05-24T12:56:04.021203: Emma was added to the userMap.
-2022-05-24T12:56:04.023614: The userMap was written to the .dat-file
-2022-05-24T12:56:06.894598: A client just connected.
-2022-05-24T12:56:06.894904: Login credentials for user Emma was accepted
-2022-05-24T12:56:06.895079: User Emma was added to the onlineUsers-list
-2022-05-24T12:56:06.895228: The client associated to user Emma was added to the clientMap
-2022-05-24T13:08:13.806081: A client just connected.
-2022-05-24T13:08:13.806872: Login credentials for user Emma was accepted
-2022-05-24T13:08:13.807207: User Emma was added to the onlineUsers-list
-2022-05-24T13:08:13.807421: The clientMap already contains a user with the username Emma
-2022-05-24T13:08:51.497003: A client just connected.
-2022-05-24T13:08:51.497197: Login credentials for user Pelle was not accepted,
+2022-05-24T13:28:46.262039068: The userMap was read from the .dat-file
+2022-05-24T13:28:46.291541244: The projectMap was read from the .dat-file
+2022-05-24T13:28:46.295006700: Server is running
+2022-05-24T13:28:55.631650326: A client just connected.
+2022-05-24T13:28:55.632027964: Login credentials for user Anna was accepted
+2022-05-24T13:28:55.632130461: User Anna was added to the onlineUsers-list
+2022-05-24T13:28:55.632232169: The client associated to user Anna was added to the clientMap
