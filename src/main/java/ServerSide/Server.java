@@ -358,6 +358,7 @@ public class Server {
 
             if(clientMap.containsKey(username)) { //if the clientmap contains this username
                 if (onlineUsers.contains(username)) {
+                    System.out.println(toSend.getProject().getTasks().size() + "TASK <- ");
                     clientMap.get(username).sendMessage(toSend); //get the client and send the message
                     logtext = String.format("Sending project update for project %s to user %s's ClientHandler", project.getProjectName(), username);
                 }
@@ -447,12 +448,18 @@ public class Server {
         }
     }
 
-    public synchronized void addTaskToProject(Task task, Project project) {
+    public synchronized Project addTaskToProject(Task task, Project project) {
+        Project project1 = null;
         if(projectMap.containsKey(project.getProjectID())) {
             if (task != null) {
-                projectMap.get(project.getProjectID()).getTasks().add(task);
+                project1 = projectMap.get(project.getProjectID());
+                project1.getTasks().add(task);
+                projectMap.replace(project.getProjectID(), project1);
+               // projectMap.get(project.getProjectID()).getTasks().add(task);
+                System.out.println(task.getHeader());
             }
         }
+        return project1;
     }
 
     public synchronized void removeUserFromProject(User sender, Project project) {
@@ -535,8 +542,8 @@ public class Server {
      */
     public synchronized void removeOnlineUser(User user) {
         String logtext;
-        if(onlineUsers.contains(user)) { //if list contain user
-            onlineUsers.remove(user); //remove it
+        if(onlineUsers.contains(user.getUsername())) { //if list contain user
+            onlineUsers.remove(user.getUsername()); //remove it
             logtext = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
         }
         else {

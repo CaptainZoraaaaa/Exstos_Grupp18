@@ -71,6 +71,9 @@ public class Client {
      */
     public void disconnect () {
         try {
+            inputClient.setRunning(false);
+            oos.close();
+            ois.close();
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();

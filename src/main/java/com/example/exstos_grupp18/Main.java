@@ -2,6 +2,7 @@ package com.example.exstos_grupp18;
 
 import controller.Controller;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,8 +24,16 @@ public class Main extends Application {
         Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginView.fxml")));
         stage.setTitle("Exsto");
         stage.setScene(new Scene(fxmlLoader));
+
         stage.show();
     }
+    @Override
+    public void stop() throws Exception {
+        Controller controller = Controller.getInstance();
+        controller.logOut();
+        super.stop();
+    }
+
     @Override
     public void stop() throws Exception {
         Controller controller = Controller.getInstance();
