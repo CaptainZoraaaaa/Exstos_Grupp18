@@ -14,6 +14,7 @@ public class Project implements Serializable {
 
     private String projectName;
     private LocalDate deadline;
+    private LocalDate createdDate;
     private String description;
     private HashMap<String, Boolean> assignedUsers;
     private ArrayList<Task> taskList = new ArrayList<>();
@@ -96,6 +97,14 @@ public class Project implements Serializable {
         this.projectID = projectID;
     }
 
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     /**
      * builder-class for Project
      */
@@ -114,6 +123,11 @@ public class Project implements Serializable {
 
         public ProjectBuilder assignedUsers(HashMap<String, Boolean> assignees) {
             project.setAssignedUser(assignees);
+            return this;
+        }
+
+        public ProjectBuilder createdDate (LocalDate createdDate) {
+            project.setCreatedDate(createdDate);
             return this;
         }
 

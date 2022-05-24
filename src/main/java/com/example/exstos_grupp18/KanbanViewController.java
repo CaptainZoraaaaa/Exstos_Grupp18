@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -189,6 +191,16 @@ public class KanbanViewController implements Initializable {
         inProgressBar.setProgress(inProgressList.getChildren().size() / totalTasks);
         waitingBar.setProgress(waitingList.getChildren().size() / totalTasks);
         doneBar.setProgress(doneList.getChildren().size() / totalTasks);
+
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(now,controller.getActiveProject().getDeadline());
+        Period period2 = Period.between(controller.getActiveProject().getCreatedDate(), controller.getActiveProject().getDeadline());
+        if (period.getDays()>0){
+            this.dropMenuBar.setProgress(1-(period2.getDays()/period.getDays()));
+        }
+        else{
+            dropMenuBar.setProgress(1);
+        }
         usernameLabel.setText(controller.getLoggedInUser());
 
     }
