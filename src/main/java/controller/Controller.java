@@ -305,7 +305,7 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
-                projectUpdate(message.getProject());
+                projectUpdate(message.getProject(), message.getTasks());
                 System.out.println(message.getTestString());
                 projectUpdate(message.getProject(), message.getTasks());
                 break;
@@ -314,6 +314,8 @@ public class Controller {
                 break;
         }
     }
+
+
 
     private void projectUpdate(Project project, Model.Task[] tasks) {
         System.out.println(project.getTasks().size());
