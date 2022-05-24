@@ -77,6 +77,7 @@ public class EditTaskController implements Initializable {
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
         String comment = creatorField + ":\n" + taskCommentInputField.getText();
+
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
         currentTask.setDeadline(deadline);

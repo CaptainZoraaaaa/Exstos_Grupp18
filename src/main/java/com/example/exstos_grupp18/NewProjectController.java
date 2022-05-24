@@ -3,7 +3,9 @@ package com.example.exstos_grupp18;
 
 import Sandbox.TestController;
 import controller.Controller;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +13,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +27,7 @@ import java.util.ResourceBundle;
  * This class is a GUI and displays a page for creating a new project.
  * @author Christian Edvall
  */
-public class NewProjectController implements Initializable {
+public class NewProjectController implements Initializable  {
 
     @FXML
     private TextField creatorField;
@@ -44,6 +49,7 @@ public class NewProjectController implements Initializable {
     private Scene scene;
     private Parent root;
 
+
     /**
      * Method to return to previous screen.
      * @param event ActionEvent that reacts when the "back" button is pressed.
@@ -60,6 +66,7 @@ public class NewProjectController implements Initializable {
     /**
      * This method is used to create a new project.
      * @param event ActionEvent that reacts when the "create" button is pressed.
+     * @author Linnéa Flystam och Christian Edvall
      */
     @FXML
     void createNewProject(ActionEvent event) throws IOException {
@@ -77,7 +84,15 @@ public class NewProjectController implements Initializable {
             stage.setScene(scene);
         }
         else {
-            //TODO IMPLEMENTERA FELLMEDALANDE
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: Information missing. Enter header and deadline");
+            label.setTextFill(Paint.valueOf("Red"));
+            Popup popup = new Popup();
+            popup.getContent().add(label);
+            Stage stage2 = (Stage) creatorField.getScene().getWindow();
+            popup.show(stage2);
+
+
         }
         //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
@@ -117,5 +132,10 @@ public class NewProjectController implements Initializable {
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
     }
+
+
+
+
+
 }
 

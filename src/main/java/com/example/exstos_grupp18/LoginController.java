@@ -62,7 +62,7 @@ public class LoginController {
         }
         else {
 
-            Label label = new Label("Failed to log in: Wrong credentials");
+            Label label = new Label("Failed to log in: Wrong credentials. Enter matching username and password");
             label.setTextFill(Paint.valueOf("Red"));
             Popup popup = new Popup();
             popup.getContent().add(label);

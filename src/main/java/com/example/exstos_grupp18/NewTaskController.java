@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -74,6 +76,7 @@ public class NewTaskController implements Initializable {
      * entered values to the controller and change the scene to KanbanView.fxml.
      * @param event event
      * @throws IOException thrown exception.
+     * @author Linnéa Flystam och Christian Edvall
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
@@ -90,15 +93,29 @@ public class NewTaskController implements Initializable {
                 .flaggedForHelp(flagged)
                 .id(controller.getTaskSize())
                 .build();
-        controller.createTask(task);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        KanbanViewController kanbanViewController = fxmlLoader.getController();
-        kanbanViewController.setUserLabel(creatorField.getText());
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        String header = taskHeaderInputField.getText();
+        String description = taskDescriptionInputField.getText();
+
+        if(header.length() > 1 && header.length() < 50) {
+            controller.createTask(task);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+            root = fxmlLoader.load();
+            KanbanViewController kanbanViewController = fxmlLoader.getController();
+            kanbanViewController.setUserLabel(creatorField.getText());
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setScene(scene);
+        } else {
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create task: Information missing. Enter header, deadline and assignees");
+            label.setTextFill(Paint.valueOf("Red"));
+            Popup popup = new Popup();
+            popup.getContent().add(label);
+            Stage stage2 = (Stage) creatorField.getScene().getWindow();
+            popup.show(stage2);
+        }
+
     }
 
     /**
