@@ -52,16 +52,16 @@
             </HBox>
             <HBox fx:id="myProjectsHbox" layoutX="141.0" layoutY="49.0" prefHeight="50.0" prefWidth="1167.0" spacing="40.0" style="-fx-background-color: #9eb6cb;">
                <children>
-                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Current project" textFill="WHITE">
+                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Current project" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
-                  <Button fx:id="editProjectButton" mnemonicParsing="false" onAction="#editProject" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Edit Project" textFill="WHITE" />
-                  <Button fx:id="calendarButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Calendar" textFill="WHITE" />
-                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Help" textFill="WHITE" />
-                  <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" style="-fx-background-color: #9eb6cb;" stylesheets="@../../../CSS/Menu.css" text="Settings" textFill="WHITE">
+                  <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
+                  <Button fx:id="editProjectButton" mnemonicParsing="false" onAction="#editProject" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Edit Project" textFill="WHITE" />
+                  <Button fx:id="calendarButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Calendar" textFill="WHITE" />
+                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Help" textFill="WHITE" />
+                  <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Settings" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>

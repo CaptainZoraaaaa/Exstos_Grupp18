@@ -47,7 +47,7 @@ public class LoginController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         // Change logInTest to logIn() for real use;
-        if(controller.logInTest(username, password)) {
+        if(controller.logIn(username, password)) {
             controller.setLoggedInUser(username);
             System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
