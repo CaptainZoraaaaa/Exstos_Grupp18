@@ -1,42 +1,28 @@
-2022-05-24T12:31:53.414633371: The userMap was read from the .dat-file
-2022-05-24T12:31:53.434122367: The projectMap was read from the .dat-file
-2022-05-24T12:31:53.437642517: Server is running
-2022-05-24T12:32:07.014012327: A client just connected.
-2022-05-24T12:32:07.015095949: Login credentials for user Emma was accepted
-2022-05-24T12:32:07.015274053: User Emma was added to the onlineUsers-list
-2022-05-24T12:32:07.015447123: The client associated to user Emma was added to the clientMap
-2022-05-24T12:32:21.210033344: A client just connected.
-2022-05-24T12:32:21.210424742: Login credentials for user Max was accepted
-2022-05-24T12:32:21.210612532: User Max was added to the onlineUsers-list
-2022-05-24T12:32:21.210765275: The client associated to user Max was added to the clientMap
-2022-05-24T12:32:37.490634397: A projectID was fetched from the .dat-file
-2022-05-24T12:32:37.492321122: A new projectID was created.
-2022-05-24T12:32:37.493176894: Project #4 Projekt1 was added to the projectMap
-2022-05-24T12:32:37.513573795: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:32:37.514019520: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:32:37.521177800: The projectMap was written to the .dat-file
-2022-05-24T12:33:15.755743200: A taskID was fetched from the .dat-file
-2022-05-24T12:33:15.757059388: A new taskID was created.
-2022-05-24T12:33:15.758293888: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:33:15.759567479: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:33:15.767624297: The projectMap was written to the .dat-file
-2022-05-24T12:33:46.684472770: A taskID was fetched from the .dat-file
-2022-05-24T12:33:46.685643368: A new taskID was created.
-2022-05-24T12:33:46.686383806: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:33:46.687316102: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:33:46.697064811: The projectMap was written to the .dat-file
-2022-05-24T12:34:08.466285799: A taskID was fetched from the .dat-file
-2022-05-24T12:34:08.467629103: A new taskID was created.
-2022-05-24T12:34:08.468528675: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:34:08.469997829: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:34:08.476929373: The projectMap was written to the .dat-file
-2022-05-24T12:34:58.177932302: A taskID was fetched from the .dat-file
-2022-05-24T12:34:58.179094761: A new taskID was created.
-2022-05-24T12:34:58.180240368: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:34:58.181165973: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:34:58.184307024: The projectMap was written to the .dat-file
-2022-05-24T12:38:33.461763578: A taskID was fetched from the .dat-file
-2022-05-24T12:38:33.462589562: A new taskID was created.
-2022-05-24T12:38:33.463295139: Sending project update for project Projekt1 to user Max's ClientHandler
-2022-05-24T12:38:33.463967391: Sending project update for project Projekt1 to user Emma's ClientHandler
-2022-05-24T12:38:33.470001607: The projectMap was written to the .dat-file
+2022-05-24T13:18:17.340944700: The userMap was read from the .dat-file
+2022-05-24T13:18:17.392523500: The projectMap was read from the .dat-file
+2022-05-24T13:18:17.395585900: Server is running
+2022-05-24T13:18:34.049230800: A client just connected.
+2022-05-24T13:18:34.050231400: Login credentials for user Max was accepted
+2022-05-24T13:18:34.050231400: User Max was added to the onlineUsers-list
+2022-05-24T13:18:34.050231400: The client associated to user Max was added to the clientMap
+2022-05-24T13:18:54.642836200: A projectID was fetched from the .dat-file
+2022-05-24T13:18:54.643833300: A new projectID was created.
+2022-05-24T13:18:54.643833300: Project #2 Hejehjehj was added to the projectMap
+2022-05-24T13:18:54.646860400: Sending project update for project Hejehjehj to user Max's ClientHandler
+2022-05-24T13:18:54.648820200: The projectMap was written to the .dat-file
+2022-05-24T13:19:12.575247300: A taskID was fetched from the .dat-file
+2022-05-24T13:19:12.575247300: A new taskID was created.
+2022-05-24T13:19:12.576244800: Sending project update for project Hejehjehj to user Max's ClientHandler
+2022-05-24T13:19:12.577240600: The projectMap was written to the .dat-file
+2022-05-24T13:19:33.677143300: A projectID was fetched from the .dat-file
+2022-05-24T13:19:33.678100500: A new projectID was created.
+2022-05-24T13:19:33.678100500: Project #3 HEJEHJEHJ was added to the projectMap
+2022-05-24T13:19:33.678100500: Sending project update for project HEJEHJEHJ to user Max's ClientHandler
+2022-05-24T13:19:33.678100500:  Unable to send project update for project HEJEHJEHJ to assignee Linnéa: Not in the clientMap
+2022-05-24T13:19:33.679098500: The projectMap was written to the .dat-file
+2022-05-24T13:19:41.911487900: User Max was removed from the onlineUsers-list
+2022-05-24T13:20:08.752013: A client just connected.
+2022-05-24T13:20:08.752013: Login credentials for user Max was accepted
+2022-05-24T13:20:08.753011400: User Max was added to the onlineUsers-list
+2022-05-24T13:20:08.753011400: The client associated to user Max was added to the clientMap
+2022-05-24T13:20:27.620376700: User Max was removed from the onlineUsers-list
