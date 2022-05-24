@@ -421,15 +421,18 @@ public class Server {
 
     public synchronized void updateTask(Task task, Project project) {
         int projectID = project.getProjectID();
-        String logtext;
+        String logtext = null;
         boolean found = false;
 
         if(projectMap.containsKey(projectID)) {
             if (task != null) {
                 Project tempProject = projectMap.get(projectID);
-                for(Task taskInList : tempProject.getTasks()) {
-                    if(taskInList.getTask_id() == task.getTask_id()) {
-                        taskInList = task;
+                ArrayList<Task> taskList = tempProject.getTasks();
+                for(int i = 0; i < taskList.size(); i++) {
+                    if(taskList.get(i).getTask_id() == task.getTask_id()) {
+                        taskList.remove(i);
+                        taskList.add(i, task);
+                        tempProject.setTaskList(taskList);
                         projectMap.replace(projectID, tempProject);
                         logtext = String.format("Updated task %d: %s in project %d: %s", task.getTask_id(), task.getHeader(), projectID, tempProject.getProjectName());
                         found = true;
@@ -446,6 +449,7 @@ public class Server {
         else {
             logtext = String.format("Unable to update task %d: %s in project %d: %s: ProjectID not in projectMap", task.getTask_id(), task.getHeader(), projectID, project.getProjectName());
         }
+        writeLog(logtext);
     }
 
     public synchronized Project addTaskToProject(Task task, Project project) {
