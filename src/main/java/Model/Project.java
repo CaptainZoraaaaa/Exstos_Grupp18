@@ -88,6 +88,10 @@ public class Project implements Serializable {
         return this.taskList;
     }
 
+    public void setTaskList(ArrayList<Task> taskList) {
+        this.taskList = taskList;
+    }
+
     public int getTaskListSize() {
         return taskList.size();
     }

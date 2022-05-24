@@ -301,7 +301,7 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
-                projectUpdate(message.getProject());
+                projectUpdate(message.getProject(), message.getTasks());
                 break;
             case DataPackage.PROJECT_REMOVED:
 
@@ -309,10 +309,16 @@ public class Controller {
         }
     }
 
-    private void projectUpdate(Project project) {
+    private void projectUpdate(Project project, Model.Task[] tasks) {
         System.out.println(project.getTasks().size());
         System.out.println("project update in controller");
         boolean projectInList = false;
+        ArrayList<Model.Task> newTaskList = new ArrayList<>();
+        for(int i = 0; i < tasks.length; i++) {
+            newTaskList.add(tasks[i]);
+            System.out.println(i + tasks[i].getHeader());
+        }
+        project.setTaskList(newTaskList);
         for(Project inList : projects) {
             if(project.getProjectID() == inList.getProjectID()) {
                 inList = project;
@@ -328,7 +334,6 @@ public class Controller {
         for(Model.Task task : project.getTasks()) {
             System.out.println(task.getHeader());
         }
-        System.out.println(activeProject.getTasks().size());
         System.out.println("Got update");
     }
 

@@ -26,7 +26,7 @@ public class DataPackage implements Serializable {
 
     public static final int LOGIN_VERIFICATION = 12; //boolean & user & project arraylist (from server)
     public static final int REGISTRATION_VERIFICATION = 13; //boolean (from server)
-    public static final int PROJECT_UPDATE = 14; //project update (from server)
+    public static final int PROJECT_UPDATE = 14; //project object and Task[] object (from server)
 
     private User sender;
     private Task task;
@@ -37,6 +37,7 @@ public class DataPackage implements Serializable {
     private String password;
     private User userFromServer;
     private ArrayList<Project> projectList;
+    private Task[] tasks;
 
     public User getSender() {
         return sender;
@@ -104,6 +105,14 @@ public class DataPackage implements Serializable {
 
     public void setProjectList(ArrayList<Project> projectList) {
         this.projectList = projectList;
+    }
+
+    public Task[] getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Task[] tasks) {
+        this.tasks = tasks;
     }
 
     /**
@@ -188,6 +197,11 @@ public class DataPackage implements Serializable {
          */
         public PackageBuilder task(Task task){
             aDataPackage.setTask(task);
+            return this;
+        }
+
+        public PackageBuilder taskList(Task[] tasks){
+            aDataPackage.setTasks(tasks);
             return this;
         }
 

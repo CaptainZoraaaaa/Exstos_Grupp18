@@ -291,9 +291,11 @@ public class ServerController {
      *@author Anna Håkansson
      */
     public void sendOutProjectUpdate(Project project) {
+        Task[] tasks = project.getTasks().toArray(new Task[0]);
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .project(project)
                 .packageType(DataPackage.PROJECT_UPDATE)
+                .taskList(tasks)
                 .build();
         server.sendProjectUpdateToUsers(toSend);
     }
