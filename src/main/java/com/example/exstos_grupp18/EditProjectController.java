@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,6 +51,7 @@ public class EditProjectController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Popup popup;
 
     /**
      * Method to return to previous screen.
@@ -76,11 +79,25 @@ public class EditProjectController implements Initializable {
      */
     @FXML
     void editProject(ActionEvent actionEvent) throws IOException {
+        if (popup != null) {
+            if(popup.isShowing()) {
+                popup.hide();
+            }
+        }
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, user, creator);
-        changeScene(actionEvent, "HomePage.fxml");
+        if (header.length() > 5 && header.length() < 50) {
+            controller.createNewProject(header, description, deadline, user, creator);
+            changeScene(actionEvent, "HomePage.fxml");
+        }
+        System.out.println(">> error message <<");
+        Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
+        label.setTextFill(Paint.valueOf("Red"));
+        popup = new Popup();
+        popup.getContent().add(label);
+        Stage stage2 = (Stage) creatorField.getScene().getWindow();
+        popup.show(stage2);
     }
     /**
      * Method for initializing the list of available users to select.
@@ -114,6 +131,11 @@ public class EditProjectController implements Initializable {
         user = assigneeList.getValue();
     } //TODO kolla om det går att ändra till multiple choise
     public void changeScene(Event event, String newScene) throws IOException {
+        if (popup != null) {
+            if(popup.isShowing()) {
+                popup.hide();
+            }
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
         root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
