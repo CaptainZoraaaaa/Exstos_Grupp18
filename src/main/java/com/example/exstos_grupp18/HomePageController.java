@@ -104,7 +104,7 @@ public class HomePageController implements Initializable {
                 Node newProjectRoot = fxmlLoader.load();
                 // NewProjectController newProjectController = fxmlLoader.getController();
                 popOver = new PopOver(newProjectRoot); //Adding the node to the popover.
-                popOver.setTitle("New Project");
+                popOver.setTitle(" ");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
                 popOver.show(createProjectButton, 330, 165); //Displaying the popover at a specific coordinate.

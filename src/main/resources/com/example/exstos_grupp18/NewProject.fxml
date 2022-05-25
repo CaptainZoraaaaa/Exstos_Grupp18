@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewProjectController">
@@ -99,13 +100,19 @@
                </font></TextField>
          </children>
       </GridPane>
-      <Button fx:id="createNewProjectButton" layoutX="417.0" layoutY="629.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
+      <Button fx:id="createNewProjectButton" layoutX="408.0" layoutY="608.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="42.0" prefWidth="150.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="91.0" layoutY="630.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="246.0" layoutY="608.0" mnemonicParsing="false" onAction="#backToPreviousScreen" prefHeight="42.0" prefWidth="90.0" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9eb6cb" height="147.0" layoutY="-1.0" stroke="#9eb6cb" strokeType="INSIDE" width="600.0" />
+      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="136.0" layoutY="36.0" prefHeight="73.0" prefWidth="382.0" text="New project" textFill="WHITE">
+         <font>
+            <Font name="Oriya Sangam MN" size="48.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
