@@ -1,4 +1,32 @@
-2022-05-24T21:02:09.090907: The userMap was read from the .dat-file
-2022-05-24T21:02:09.107309: The projectMap was read from the .dat-file
-2022-05-24T21:02:09.111718: Failure in Connection.run when creating Serversocket due to java.net.BindException: Address already in use
-2022-05-24T21:02:09.112009: Server is closing down. Bye bye!
+2022-05-25T09:34:26.062178: The userMap was read from the .dat-file
+2022-05-25T09:34:26.111034: The projectMap was read from the .dat-file
+2022-05-25T09:34:26.116624: Server is running
+2022-05-25T09:34:46.108327: A client just connected.
+2022-05-25T09:34:46.117493: Login credentials for user Christian was accepted
+2022-05-25T09:34:46.117658: User Christian was added to the onlineUsers-list
+2022-05-25T09:34:46.118746: The client associated to user Christian was added to the clientMap
+2022-05-25T09:35:29.555217: User Christian was removed from the onlineUsers-list
+2022-05-25T09:36:15.267544: A client just connected.
+2022-05-25T09:36:15.267953: Login credentials for user Christian was accepted
+2022-05-25T09:36:15.268742: User Christian was added to the onlineUsers-list
+2022-05-25T09:36:15.269046: The client associated to user Christian was added to the clientMap
+2022-05-25T09:36:41.158168: User Christian was removed from the onlineUsers-list
+2022-05-25T09:36:57.873414: A client just connected.
+2022-05-25T09:36:57.874061: Login credentials for user Christian was accepted
+2022-05-25T09:36:57.874206: User Christian was added to the onlineUsers-list
+2022-05-25T09:36:57.874324: The client associated to user Christian was added to the clientMap
+2022-05-25T09:40:43.961543: User Christian was removed from the onlineUsers-list
+2022-05-25T09:41:11.119352: A client just connected.
+2022-05-25T09:41:11.125019: Login credentials for user Christian was accepted
+2022-05-25T09:41:11.129030: User Christian was added to the onlineUsers-list
+2022-05-25T09:41:11.130076: The client associated to user Christian was added to the clientMap
+2022-05-25T09:41:28.770076: A projectID was fetched from the .dat-file
+2022-05-25T09:41:28.771878: A new projectID was created.
+2022-05-25T09:41:28.772164: Project #3 1111test was added to the projectMap
+2022-05-25T09:41:28.850182: Sending project update for project 1111test to user Christian's ClientHandler
+2022-05-25T09:41:28.874622: The projectMap was written to the .dat-file
+2022-05-25T09:44:00.705894: User Christian was removed from the onlineUsers-list
+2022-05-25T09:44:35.020010: Login credentials for user Christian was accepted
+2022-05-25T09:44:35.025582: A client just connected.
+2022-05-25T09:44:35.025761: User Christian was added to the onlineUsers-list
+2022-05-25T09:44:35.025958: The client associated to user Christian was added to the clientMap

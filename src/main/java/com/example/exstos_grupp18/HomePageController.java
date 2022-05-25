@@ -120,12 +120,16 @@ public class HomePageController implements Initializable {
      * Attempt to hide the popup when create project is pressed. NOT WORKING.
      */
     @FXML
-    void hideProjectPopOver(MouseEvent event) {
+    void hideProjectPopOver() {
+       // popOver.hide();
+        /*
         Platform.runLater(() -> {
             new MouseEvent(MouseEvent.MOUSE_PRESSED, 0,
                     0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
                     true, true, true, true, true, true, null);
         });
+
+         */
     }
 
     /**
