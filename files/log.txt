@@ -1,4 +1,19 @@
-2022-05-24T21:02:09.090907: The userMap was read from the .dat-file
-2022-05-24T21:02:09.107309: The projectMap was read from the .dat-file
-2022-05-24T21:02:09.111718: Failure in Connection.run when creating Serversocket due to java.net.BindException: Address already in use
-2022-05-24T21:02:09.112009: Server is closing down. Bye bye!
+2022-05-25T08:44:13.860273411: The userMap was read from the .dat-file
+2022-05-25T08:44:13.875114683: The projectMap was read from the .dat-file
+2022-05-25T08:44:13.876531012: Server is running
+2022-05-25T08:44:22.986802515: A client just connected.
+2022-05-25T08:44:22.987487540: Login credentials for user Anna was accepted
+2022-05-25T08:44:22.987596891: User Anna was added to the onlineUsers-list
+2022-05-25T08:44:22.987687026: The client associated to user Anna was added to the clientMap
+2022-05-25T08:44:35.524055612: A client just connected.
+2022-05-25T08:44:35.524287563: Login credentials for user Emma was accepted
+2022-05-25T08:44:35.524443420: User Emma was added to the onlineUsers-list
+2022-05-25T08:44:35.524587607: The client associated to user Emma was added to the clientMap
+2022-05-25T08:45:38.620455909: Updated task 10: Test in project 1: Projekt11
+2022-05-25T08:45:38.640217491: Sending project update for project Projekt11 to user Emma's ClientHandler
+2022-05-25T08:45:38.640557445: Sending project update for project Projekt11 to user Anna's ClientHandler
+2022-05-25T08:48:51.548646322: User Emma was removed from the onlineUsers-list
+2022-05-25T08:49:22.844809960: A client just connected.
+2022-05-25T08:49:22.844990712: Login credentials for user Emma was accepted
+2022-05-25T08:49:22.845082918: User Emma was added to the onlineUsers-list
+2022-05-25T08:49:22.845161775: The client associated to user Emma was added to the clientMap

@@ -203,7 +203,7 @@ public class HomePageController implements Initializable {
             try {
                 if (current.get(i).getAssignees().contains(userLabel.getText())) {
                     nodes[i] = FXMLLoader.load(getClass().getResource("Task.fxml"));
-                    nodes[i].setId(String.valueOf(i));
+                    nodes[i].setId(String.valueOf(current.get(i).getTask_id()));
                     myLane.getChildren().add(nodes[i]);
                 }
             } catch (IOException e) {
