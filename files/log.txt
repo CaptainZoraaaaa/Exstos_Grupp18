@@ -1,4 +1,4 @@
-2022-05-24T21:02:09.090907: The userMap was read from the .dat-file
-2022-05-24T21:02:09.107309: The projectMap was read from the .dat-file
-2022-05-24T21:02:09.111718: Failure in Connection.run when creating Serversocket due to java.net.BindException: Address already in use
-2022-05-24T21:02:09.112009: Server is closing down. Bye bye!
+2022-05-25T10:24:53.998907100: The projectMap was written to the .dat-file
+2022-05-25T10:24:53.998907100: The userMap was written to the .dat-file
+2022-05-25T10:24:53.998907100: A new projectID was created.
+2022-05-25T10:24:53.998907100: A new taskID was created.
