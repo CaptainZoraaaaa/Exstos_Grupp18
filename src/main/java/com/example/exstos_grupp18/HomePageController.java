@@ -86,18 +86,22 @@ public class HomePageController implements Initializable {
         //changeScene(event, "NewProject.fxml");
         createProjectPopOver();
     }
+
+    /**
+     * This method creates a popover of the NewProject.fxml-scene, and displays it next to the button Create project.
+     */
     @FXML
     void createProjectPopOver(){
-        if(popOver == null || !popOver.isShowing()){
+        if(popOver == null || !popOver.isShowing()){ //Stopping more than one popover to show up.
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewProject.fxml"));
                 Node newProjectRoot =  fxmlLoader.load();
                // NewProjectController newProjectController = fxmlLoader.getController();
-                popOver = new PopOver(newProjectRoot);
+                popOver = new PopOver(newProjectRoot); //Adding the node to the popover.
                 popOver.setTitle(" ");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
-                popOver.show(createProjectButton, 330, 165  );
+                popOver.show(createProjectButton, 330, 165  ); //Displaying the popover at a specific coordinate.
                 //popOver.getStyleClass().add("popOver");
 
             } catch (IOException e ){
@@ -106,6 +110,9 @@ public class HomePageController implements Initializable {
         }
     }
 
+    /**
+     * Attempt to hide the popup when create project is pressed. NOT WORKING.
+     */
     @FXML
     void hideProjectPopOver(){
         popOver.setAutoHide(true);
