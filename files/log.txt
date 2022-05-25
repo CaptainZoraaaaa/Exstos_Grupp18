@@ -17,3 +17,24 @@
 2022-05-25T08:49:22.844990712: Login credentials for user Emma was accepted
 2022-05-25T08:49:22.845082918: User Emma was added to the onlineUsers-list
 2022-05-25T08:49:22.845161775: The client associated to user Emma was added to the clientMap
+2022-05-25T08:55:49.782327762: User Anna was removed from the onlineUsers-list
+2022-05-25T08:58:51.418806825: A client just connected.
+2022-05-25T08:58:51.419083923: Login credentials for user Anna was accepted
+2022-05-25T08:58:51.419326460: User Anna was added to the onlineUsers-list
+2022-05-25T08:58:51.419550082: The client associated to user Anna was added to the clientMap
+2022-05-25T08:58:57.985002391: User Anna was removed from the onlineUsers-list
+2022-05-25T08:59:59.305710967: A client just connected.
+2022-05-25T08:59:59.305918918: Login credentials for user Anna was accepted
+2022-05-25T08:59:59.306020713: User Anna was added to the onlineUsers-list
+2022-05-25T08:59:59.306114854: The client associated to user Anna was added to the clientMap
+2022-05-25T09:00:06.254899350: User Anna was removed from the onlineUsers-list
+2022-05-25T09:00:11.890198047: A client just connected.
+2022-05-25T09:00:11.890376956: Login credentials for user Anna was accepted
+2022-05-25T09:00:11.890479930: User Anna was added to the onlineUsers-list
+2022-05-25T09:00:11.890565680: The client associated to user Anna was added to the clientMap
+2022-05-25T09:00:21.964008678: User Anna was removed from the onlineUsers-list
+2022-05-25T09:01:53.934182213: A client just connected.
+2022-05-25T09:01:53.934339135: Login credentials for user Anna was accepted
+2022-05-25T09:01:53.934453252: User Anna was added to the onlineUsers-list
+2022-05-25T09:01:53.934553169: The client associated to user Anna was added to the clientMap
+2022-05-25T09:01:55.480431184: User Anna was removed from the onlineUsers-list

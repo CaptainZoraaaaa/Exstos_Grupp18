@@ -127,7 +127,12 @@ public class HomePageController implements Initializable {
      */
     @FXML
     void logOut(ActionEvent event) throws IOException {
-        changeScene(event, "LoginView.fxml");
+        controller.logOut();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     /**

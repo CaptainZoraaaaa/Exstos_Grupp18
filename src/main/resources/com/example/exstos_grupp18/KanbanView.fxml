@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
    <children>
       <Pane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: f8f7f4;">
          <children>
@@ -88,7 +88,7 @@
                         <Font name="Roboto Black" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
+                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="19.0" />
                      </font>

@@ -249,6 +249,15 @@ public class KanbanViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        controller.logOut();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
