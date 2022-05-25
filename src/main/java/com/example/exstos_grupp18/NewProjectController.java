@@ -92,13 +92,13 @@ public class NewProjectController implements Initializable {
             stage.setScene(scene);
         }
         else {
-            System.out.println(">> error message <<");
+            /*System.out.println(">> error message <<");
             Label label = new Label("Failed to create project: Information missing. Enter header and deadline");
             label.setTextFill(Paint.valueOf("Red"));
             popup = new Popup();
             popup.getContent().add(label);
             Stage stage2 = (Stage) creatorField.getScene().getWindow();
-            popup.show(stage2);
+            popup.show(stage2);*/
 
 
         }
