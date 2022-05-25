@@ -96,7 +96,7 @@ public class HomePageController implements Initializable {
                 popOver = new PopOver(newProjectRoot);
                 popOver.setTitle(" ");
                 popOver.setDetachable(false);
-                popOver.setHeaderAlwaysVisible(true);
+                popOver.setHeaderAlwaysVisible(false);
                 popOver.show(createProjectButton, 330, 165  );
                 //popOver.getStyleClass().add("popOver");
 

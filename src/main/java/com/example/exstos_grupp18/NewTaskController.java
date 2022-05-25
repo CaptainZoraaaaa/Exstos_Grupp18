@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -92,14 +94,12 @@ public class NewTaskController implements Initializable {
                 .build();
         System.out.println(task.getHeader() + " HEADER IN NEW TASK CONTROLLER");
         controller.createTask(task);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
         root = fxmlLoader.load();
         KanbanViewController kanbanViewController = fxmlLoader.getController();
         kanbanViewController.setUserLabel(creatorField.getText());
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        kanbanViewController.hideNewTaskPopOver();
     }
 
     /**
@@ -154,8 +154,11 @@ public class NewTaskController implements Initializable {
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
     }
+
     public void setUserList(ArrayList userList){
         this.userList = userList;
     }
+
+
 }
 

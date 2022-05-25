@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +42,7 @@ public class KanbanViewController implements Initializable {
     private Controller controller = Controller.getInstance();
     private static KanbanViewController kanbanViewController = new KanbanViewController();
     private String currentProjectName;
+    private PopOver popOver = new PopOver();
 
     @FXML
     private ProgressBar backlogBar; //progress bar for backlog
@@ -232,6 +234,9 @@ public class KanbanViewController implements Initializable {
      * @throws IOException
      */
     public void newTask(ActionEvent event) throws IOException {
+        this.newTaskPopOver();
+
+        /*
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
         root = fxmlLoader.load();
         NewTaskController newTaskController = fxmlLoader.getController();
@@ -240,6 +245,8 @@ public class KanbanViewController implements Initializable {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+
+         */
     }
     @FXML
     void editProject(ActionEvent event) throws IOException {
@@ -252,4 +259,30 @@ public class KanbanViewController implements Initializable {
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
+
+    @FXML
+    void newTaskPopOver(){
+        if(popOver == null || !popOver.isShowing()){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
+            Node newProjectRoot = null;
+            try {
+                newProjectRoot = fxmlLoader.load();
+                popOver = new PopOver(newProjectRoot);
+                popOver.setTitle("");
+                popOver.setDetachable(false);
+                popOver.setHeaderAlwaysVisible(false);
+                popOver.show(newTaskButton, 330, 165);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
+
+    @FXML
+    void hideNewTaskPopOver(){
+        popOver.setAutoHide(true);
+    }
+
 }
