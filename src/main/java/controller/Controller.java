@@ -5,6 +5,7 @@ import Model.DataPackage;
 import client.Client;
 import client.ClientBuffer;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.scene.image.Image;
 
 import java.io.*;
@@ -224,12 +225,13 @@ public class Controller {
     public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
     }
 
-    public void changeProject (String projectID) {
+    public void changeProject(String projectID) {
         for (int i = 0; i < this.projects.size(); i++) {
             if (projectID.equals(projects.get(i).getProjectName())){
                 activeProject = projects.get(i);
             }
         }
+
     }
 
     public void operation () {
@@ -366,5 +368,11 @@ public class Controller {
 
     public Project getActiveProject() {
         return activeProject;
+    }
+
+    public void saveProjectEdits(String header, String description, LocalDate deadline) {
+        activeProject.setProjectName(header);
+        activeProject.setDescription(description);
+        activeProject.setDeadline(deadline);
     }
 }

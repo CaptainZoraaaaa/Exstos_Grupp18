@@ -74,6 +74,7 @@ public class HomePageController implements Initializable {
         System.out.println(button.getText());
         projectName.setText(button.getText());
         controller.changeProject(button.getText());
+        setUpMySwimLane();
     }
 
     /**
@@ -211,6 +212,7 @@ public class HomePageController implements Initializable {
      * This method is used by other scenes to set up tasks on the HomePage swimlane.
      */
     public void setUpMySwimLane(){
+        myLane.getChildren().removeAll(myLane.getChildren());
         ArrayList<Task> current = controller.getTask();
         Node[] nodes = new Node[controller.getTaskSize()];
 

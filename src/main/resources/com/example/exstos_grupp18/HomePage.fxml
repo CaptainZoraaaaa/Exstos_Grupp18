@@ -54,7 +54,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Pane prefHeight="591.0" prefWidth="232.0" />
+            <Pane prefHeight="553.0" prefWidth="232.0" />
             <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
                <font>
                   <Font name="Roboto" size="30.0" />
@@ -76,7 +76,7 @@
       </Pane>
       <ScrollPane fx:id="myProjectVbox" layoutX="232.0" layoutY="141.0" prefHeight="770.0" prefWidth="195.0" style="-fx-background-color: #BFCFDD;">
          <content>
-            <VBox fx:id="projectList" prefHeight="755.0" prefWidth="192.0" style="-fx-background-color: #BFCFDD;" />
+            <VBox fx:id="projectList" prefHeight="763.0" prefWidth="192.0" style="-fx-background-color: #9eb6cb;" />
          </content>
       </ScrollPane>
    </children>

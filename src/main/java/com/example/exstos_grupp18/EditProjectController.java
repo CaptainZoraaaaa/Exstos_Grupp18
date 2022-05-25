@@ -88,7 +88,7 @@ public class EditProjectController implements Initializable {
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
         if (header.length() > 5 && header.length() < 50) {
-            controller.createNewProject(header, description, deadline, user, creator);
+            controller.saveProjectEdits(header, description, deadline);
             changeScene(actionEvent, "HomePage.fxml");
         }
         System.out.println(">> error message <<");
