@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
 
@@ -45,6 +47,7 @@ public class NewProjectController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Popup popup;
 
     /**
      * Method to return to previous screen.
@@ -52,6 +55,11 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
+        if (popup != null) {
+            if(popup.isShowing()) {
+                popup.hide();
+            }
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         root = fxmlLoader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -65,6 +73,11 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void createNewProject(ActionEvent event) throws IOException {
+        if (popup != null) {
+            if(popup.isShowing()) {
+                popup.hide();
+            }
+        }
         System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
@@ -73,15 +86,21 @@ public class NewProjectController implements Initializable {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
-            /*stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            stage.setScene(scene);*/
-            HomePageController homePageController = fxmlLoader.getController();
-            homePageController.hideProjectPopOver();
+            stage.setScene(scene);
         }
         else {
-            //TODO IMPLEMENTERA FELLMEDALANDE
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: Information missing. Enter header and deadline");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            Stage stage2 = (Stage) creatorField.getScene().getWindow();
+            popup.show(stage2);
+
+
         }
         //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
