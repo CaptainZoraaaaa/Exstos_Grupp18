@@ -36,6 +36,8 @@ public class NewProjectController implements Initializable {
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
+    @FXML
+    private Button createNewProjectButton;
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
@@ -64,7 +66,7 @@ public class NewProjectController implements Initializable {
      * @param event ActionEvent that reacts when the "create" button is pressed.
      */
     @FXML
-    void createNewProject(ActionEvent event) throws IOException {
+    void createNewProject(MouseEvent event) throws IOException {
         System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
@@ -73,12 +75,12 @@ public class NewProjectController implements Initializable {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
-            /*stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            stage.setScene(scene);*/
+            stage.setScene(scene);
             HomePageController homePageController = fxmlLoader.getController();
-            homePageController.hideProjectPopOver();
+            homePageController.hideProjectPopOver(event);
         }
         else {
             //TODO IMPLEMENTERA FELLMEDALANDE

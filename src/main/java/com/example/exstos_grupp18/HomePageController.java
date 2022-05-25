@@ -4,6 +4,7 @@ import Model.Project;
 import Model.Swimlane;
 import Model.Task;
 import controller.Controller;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
@@ -28,6 +31,7 @@ import java.util.ResourceBundle;
 
 /**
  * This class is used to set up the scene Home Page.
+ *
  * @author Christian Edvall & Emma Mörk.
  * @version 2022-05-10.
  */
@@ -66,6 +70,7 @@ public class HomePageController implements Initializable {
 
     /**
      * This method is used to change the project you're working in by changing the project name.
+     *
      * @param event an actionevent when clicking on a project in the project menu for selecting projects.
      */
     @FXML
@@ -78,6 +83,7 @@ public class HomePageController implements Initializable {
 
     /**
      * This method is used to change to the scene for creating a project.
+     *
      * @param event an actionevent when clicking on Create project in the menu.
      * @throws IOException Input/output-exception.
      */
@@ -91,20 +97,20 @@ public class HomePageController implements Initializable {
      * This method creates a popover of the NewProject.fxml-scene, and displays it next to the button Create project.
      */
     @FXML
-    void createProjectPopOver(){
-        if(popOver == null || !popOver.isShowing()){ //Stopping more than one popover to show up.
+    void createProjectPopOver() {
+        if (popOver == null || !popOver.isShowing()) { //Stopping more than one popover to show up.
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewProject.fxml"));
-                Node newProjectRoot =  fxmlLoader.load();
-               // NewProjectController newProjectController = fxmlLoader.getController();
+                Node newProjectRoot = fxmlLoader.load();
+                // NewProjectController newProjectController = fxmlLoader.getController();
                 popOver = new PopOver(newProjectRoot); //Adding the node to the popover.
                 popOver.setTitle("New Project");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
-                popOver.show(createProjectButton, 330, 165  ); //Displaying the popover at a specific coordinate.
+                popOver.show(createProjectButton, 330, 165); //Displaying the popover at a specific coordinate.
                 //popOver.getStyleClass().add("popOver");
 
-            } catch (IOException e ){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -114,12 +120,17 @@ public class HomePageController implements Initializable {
      * Attempt to hide the popup when create project is pressed. NOT WORKING.
      */
     @FXML
-    void hideProjectPopOver(){
-        popOver.setAutoHide(true);
+    void hideProjectPopOver(MouseEvent event) {
+        Platform.runLater(() -> {
+            new MouseEvent(MouseEvent.MOUSE_PRESSED, 0,
+                    0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
+                    true, true, true, true, true, true, null);
+        });
     }
 
     /**
      * This method is used to change scene to the Kanban board.
+     *
      * @param event an actionevent when clicking on View kanban in the menu.
      * @throws IOException Input/output-exception.
      */
@@ -127,8 +138,10 @@ public class HomePageController implements Initializable {
     void changeToKanban(ActionEvent event) throws IOException {
         changeScene(event, "KanbanView.fxml");
     }
+
     /**
      * This method is used to log out of the project.
+     *
      * @param event an actionevent when clicking on log out in the menu.
      * @throws IOException Input/output-exception.
      */
@@ -139,6 +152,7 @@ public class HomePageController implements Initializable {
 
     /**
      * This method is used to display the project menu, it's hidden by default.
+     *
      * @param event an actionevent that displays the project menu och hides it when clicked.
      */
     @FXML
@@ -154,6 +168,7 @@ public class HomePageController implements Initializable {
 
     /**
      * This method is used to change the scene to edit a project.
+     *
      * @param actionEvent an actionevent that displays the scene EditProject when clicked.
      * @throws IOException Input/output-exception.
      */
@@ -165,7 +180,8 @@ public class HomePageController implements Initializable {
     /**
      * This method is a template for changing a scene, it can be called upon by any methods and ca change to whatever
      * scene is specified.
-     * @param event takes an actionevent from the calling method.
+     *
+     * @param event    takes an actionevent from the calling method.
      * @param newScene a String containing a scenes location.
      * @throws IOException Input/output-exception.
      */
@@ -180,7 +196,8 @@ public class HomePageController implements Initializable {
     /**
      * This method is used to initialize the scene, by doing so the scene can come pre-loaded with user information
      * such as: who the logged in user is, what tasks they're assigned and what projects they are members of.
-     * @param url is a url
+     *
+     * @param url            is a url
      * @param resourceBundle is a resourcebundle.
      */
     @Override
@@ -189,20 +206,20 @@ public class HomePageController implements Initializable {
         myProjectVbox.setVisible(false);
         ArrayList<Project> currentList = controller.getAllProject();
         Button button = null;
-            for (int i = 0; i < currentList.size(); i++) {
-                button = new Button(currentList.get(i).getProjectName());
-                button.setId(String.valueOf(currentList.get(i).getProjectID()));
-                button.getStyleClass().add("Men");
-                button.setOnAction(this::changeProject);
-                projectList.getChildren().addAll(button);
-            }
+        for (int i = 0; i < currentList.size(); i++) {
+            button = new Button(currentList.get(i).getProjectName());
+            button.setId(String.valueOf(currentList.get(i).getProjectID()));
+            button.getStyleClass().add("Men");
+            button.setOnAction(this::changeProject);
+            projectList.getChildren().addAll(button);
+        }
         System.out.println(LocalDate.now());
     }
 
     /**
      * This method is used by other scenes to set up tasks on the HomePage swimlane.
      */
-    public void setUpMySwimLane(){
+    public void setUpMySwimLane() {
         ArrayList<Task> current = controller.getTask();
         Node[] nodes = new Node[controller.getTaskSize()];
 
