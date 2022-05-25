@@ -56,7 +56,7 @@ public class EditProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, "HomePage.fxml");
+        changeScene(actionEvent, "KanbanView.fxml");
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.

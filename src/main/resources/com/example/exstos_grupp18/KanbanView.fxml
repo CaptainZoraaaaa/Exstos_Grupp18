@@ -39,20 +39,20 @@
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="waitingList" prefHeight="540.0" prefWidth="255.0" />
+                        <VBox fx:id="waitingList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="doneSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="doneList" prefHeight="540.0" prefWidth="255.0" />
+                        <VBox fx:id="doneList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
                </children>
             </HBox>
-            <HBox fx:id="myProjectsHbox" layoutX="141.0" layoutY="49.0" prefHeight="50.0" prefWidth="1167.0" spacing="40.0" style="-fx-background-color: #9eb6cb;">
+            <HBox fx:id="myProjectsHbox" layoutX="141.0" layoutY="49.0" prefHeight="50.0" prefWidth="1167.0" spacing="40.0" style="-fx-background-color: #9eb6cb;" visible="false">
                <children>
-                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Current project" textFill="WHITE">
+                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" stylesheets="@../../../CSS/Menu.css" text="Current project" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -105,7 +105,7 @@
                   </Label>
                </children>
             </Pane>
-            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="404.0" prefWidth="241.0" spacing="80.0">
+            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="371.0" prefWidth="241.0" spacing="80.0">
                <children>
                   <ProgressBar fx:id="backlogBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" style="-fx-background-color: #bfcfdd;" />
                   <ProgressBar fx:id="inProgressBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
@@ -157,7 +157,7 @@
                   <Font name="Roboto Black" size="18.0" />
                </font>
             </Label>
-            <Pane fx:id="mainBarPane" layoutX="141.0" layoutY="99.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;">
+            <Pane fx:id="mainBarPane" layoutX="141.0" layoutY="99.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;" visible="false">
                <children>
                   <ProgressBar fx:id="dropMenuBar" layoutX="37.0" layoutY="4.0" prefHeight="20.0" prefWidth="1110.0" progress="0.0" />
                   <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
