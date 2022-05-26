@@ -34,7 +34,11 @@ public class LoginController {
     @FXML
     private TextField usernameTextField;
 
-    //todo javadoca
+    /**
+     * This method runs the NewUserView which is a separate scene.
+     * @param event an actionevent when clicking on New user in the menu.
+     * @throws IOException In/out exception.
+     */
     public void newUserScene (ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewUserView.fxml"));
         root = fxmlLoader.load();
@@ -42,7 +46,13 @@ public class LoginController {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-    //todo javadoca
+
+    /**
+     * This method handles login requests and authenticates credentials, when credentials are correct the user can
+     * continue to the next scene, if not a error message will show.
+     * @param event an actionevent when clicking on the button Login.
+     * @throws IOException In/Out exception.
+     */
     public void logIn(ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
@@ -54,8 +64,6 @@ public class LoginController {
             root = fxmlLoader.load();
             System.out.println(username);
             //Används för att överföra data
-
-
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
             scene = new Scene(root);
             stage.setScene(scene);
@@ -68,8 +76,10 @@ public class LoginController {
             Popup popup = new Popup();
             popup.getContent().add(label);
             Stage stage = (Stage) usernameTextField.getScene().getWindow();
+            popup.setX(900.0);
+            popup.setY(660.0);
             popup.show(stage);
-            System.out.println(">> Login failed <<"); //todo skriv felmeddelande
+            System.out.println(">> Login failed <<");
         }
     }
 }

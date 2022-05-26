@@ -95,6 +95,7 @@ public class HomePageController implements Initializable {
 
     /**
      * This method creates a popover of the NewProject.fxml-scene, and displays it next to the button Create project.
+     * @author Christian Edvall
      */
     @FXML
     void createProjectPopOver() {
