@@ -340,6 +340,7 @@ public class Controller {
         if(!projectInList) {
             projects.add(project);
         }
+        activeProject = project;
         System.out.println("Got update");
     }
 

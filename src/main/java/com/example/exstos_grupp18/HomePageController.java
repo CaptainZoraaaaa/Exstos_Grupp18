@@ -218,6 +218,9 @@ public class HomePageController implements Initializable {
             projectList.getChildren().addAll(button);
         }
         System.out.println(LocalDate.now());
+        if (controller.getActiveProject() != null) {
+            projectName.setText(controller.getActiveProject().getProjectName());
+        }
     }
 
     /**
