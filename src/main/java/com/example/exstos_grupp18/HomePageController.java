@@ -19,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
@@ -60,6 +61,8 @@ public class HomePageController implements Initializable {
     private ScrollPane myLaneScroll;
     @FXML
     private Button editProjectButton;
+    @FXML
+    private AnchorPane anchorPane;
 
     private Stage stage;
     private Scene scene;
@@ -103,14 +106,13 @@ public class HomePageController implements Initializable {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewProject.fxml"));
                 Node newProjectRoot = fxmlLoader.load();
-                // NewProjectController newProjectController = fxmlLoader.getController();
+                NewProjectController newProjectController = fxmlLoader.getController();
+                newProjectController.setHomePageController(this);
                 popOver = new PopOver(newProjectRoot); //Adding the node to the popover.
                 popOver.setTitle(" ");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
                 popOver.show(createProjectButton, 330, 165); //Displaying the popover at a specific coordinate.
-                //popOver.getStyleClass().add("popOver");
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -118,19 +120,12 @@ public class HomePageController implements Initializable {
     }
 
     /**
-     * Attempt to hide the popup when create project is pressed. NOT WORKING.
+     * Hides the Popover for Create project.
+     * @author Christian Edvall
      */
     @FXML
     void hideProjectPopOver() {
-       // popOver.hide();
-        /*
-        Platform.runLater(() -> {
-            new MouseEvent(MouseEvent.MOUSE_PRESSED, 0,
-                    0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
-                    true, true, true, true, true, true, null);
-        });
-
-         */
+        popOver.hide();
     }
 
     /**

@@ -1,23 +1,17 @@
-2022-05-26T09:43:07.991073: The userMap was read from the .dat-file
-2022-05-26T09:43:08.059341: The projectMap was read from the .dat-file
-2022-05-26T09:43:08.075698: Server is running
-2022-05-26T09:43:34.987383: A client just connected.
-2022-05-26T09:43:35.001452: Login credentials for user  was not accepted,
-2022-05-26T09:45:47.621538: A client just connected.
-2022-05-26T09:45:47.626903: Login credentials for user  was not accepted,
-2022-05-26T09:46:20.650542: A client just connected.
-2022-05-26T09:46:20.673057: Login credentials for user  was not accepted,
-2022-05-26T09:46:56.708947: A client just connected.
-2022-05-26T09:46:56.714595: Login credentials for user  was not accepted,
-2022-05-26T09:47:35.479723: A client just connected.
-2022-05-26T09:47:35.484002: Login credentials for user  was not accepted,
-2022-05-26T09:48:13.726680: A client just connected.
-2022-05-26T09:48:13.734277: Login credentials for user  was not accepted,
-2022-05-26T10:02:59.655748: A client just connected.
-2022-05-26T10:02:59.666732: Login credentials for user  was not accepted,
-2022-05-26T10:04:23.839097: A client just connected.
-2022-05-26T10:04:23.851465: Login credentials for user  was not accepted,
-2022-05-26T10:06:49.149803: A client just connected.
-2022-05-26T10:06:49.194681: Login credentials for user  was not accepted,
-2022-05-26T10:07:50.884187: A client just connected.
-2022-05-26T10:07:50.891763: Login credentials for user  was not accepted,
+2022-05-26T12:28:14.028533: The userMap was read from the .dat-file
+2022-05-26T12:28:14.052434: The projectMap was read from the .dat-file
+2022-05-26T12:28:14.055035: Server is running
+2022-05-26T12:28:37.025826: A client just connected.
+2022-05-26T12:28:37.033587: Login credentials for user Christian was accepted
+2022-05-26T12:28:37.033726: User Christian was added to the onlineUsers-list
+2022-05-26T12:28:37.033946: The client associated to user Christian was added to the clientMap
+2022-05-26T12:38:18.678528: User Christian was removed from the onlineUsers-list
+2022-05-26T12:38:57.656035: A client just connected.
+2022-05-26T12:38:57.656478: Login credentials for user Christian was accepted
+2022-05-26T12:38:57.656581: User Christian was added to the onlineUsers-list
+2022-05-26T12:38:57.656679: The client associated to user Christian was added to the clientMap
+2022-05-26T12:39:11.202265: A projectID was fetched from the .dat-file
+2022-05-26T12:39:11.202838: A new projectID was created.
+2022-05-26T12:39:11.202963: Project #11 123468dthwf was added to the projectMap
+2022-05-26T12:39:11.218307: Sending project update for project 123468dthwf to user Christian's ClientHandler
+2022-05-26T12:39:11.226254: The projectMap was written to the .dat-file

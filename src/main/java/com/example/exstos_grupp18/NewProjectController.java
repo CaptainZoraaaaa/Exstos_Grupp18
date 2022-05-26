@@ -49,6 +49,7 @@ public class NewProjectController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private HomePageController homePageController;
 
     /**
      * Method to return to previous screen.
@@ -75,15 +76,6 @@ public class NewProjectController implements Initializable {
         String creator = controller.getLoggedInUser();
         if (header.length() > 5 && header.length() < 50 && deadline != null ) {
             controller.createNewProject(header, description, deadline, currentUser, creator);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            root = fxmlLoader.load();
-            /*
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setScene(scene);
-             */
-            HomePageController homePageController = fxmlLoader.getController();
             homePageController.hideProjectPopOver();
         }
         else {
@@ -98,6 +90,10 @@ public class NewProjectController implements Initializable {
     @FXML
     void chooseDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
+    }
+
+    public void setHomePageController(HomePageController homePageController) {
+        this.homePageController = homePageController;
     }
 
     /**
