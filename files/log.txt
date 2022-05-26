@@ -1,31 +1,23 @@
-2022-05-25T09:24:10.908947: The userMap was read from the .dat-file
-2022-05-25T09:24:10.934742: The projectMap was read from the .dat-file
-2022-05-25T09:24:10.938194: Server is running
-2022-05-25T09:24:28.125787: A client just connected.
-2022-05-25T09:24:28.127519: Login credentials for user Emma was accepted
-2022-05-25T09:24:28.127780: User Emma was added to the onlineUsers-list
-2022-05-25T09:24:28.127991: The client associated to user Emma was added to the clientMap
-2022-05-25T09:25:27.181511: A taskID was fetched from the .dat-file
-2022-05-25T09:25:27.182236: A new taskID was created.
-2022-05-25T09:25:27.190847: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-25T09:25:27.191172:  Unable to send project update for project Projekt11 to assignee Anna: Not in the clientMap
-2022-05-25T09:25:27.196638: The projectMap was written to the .dat-file
-2022-05-25T09:27:18.988839: User Emma was removed from the onlineUsers-list
-2022-05-25T09:27:33.688715: A client just connected.
-2022-05-25T09:27:33.689156: Login credentials for user Emma was accepted
-2022-05-25T09:27:33.689371: User Emma was added to the onlineUsers-list
-2022-05-25T09:27:33.689569: The client associated to user Emma was added to the clientMap
-2022-05-25T09:28:41.263814: A taskID was fetched from the .dat-file
-2022-05-25T09:28:41.264432: A new taskID was created.
-2022-05-25T09:28:41.264992: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-25T09:28:41.265375:  Unable to send project update for project Projekt11 to assignee Anna: Not in the clientMap
-2022-05-25T09:28:41.269350: The projectMap was written to the .dat-file
-2022-05-25T09:29:05.553304: Updated task 14: TestFullSnubbe in project 1: Projekt11
-2022-05-25T09:29:05.566851: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-25T09:29:05.567288:  Unable to send project update for project Projekt11 to assignee Anna: Not in the clientMap
-2022-05-25T09:29:28.138764: Updated task 14: TestFullSnubbe in project 1: Projekt11
-2022-05-25T09:29:28.150014: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-25T09:29:28.150406:  Unable to send project update for project Projekt11 to assignee Anna: Not in the clientMap
-2022-05-25T09:29:36.821676: Updated task 14: TestFullSnubbe in project 1: Projekt11
-2022-05-25T09:29:36.832604: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-25T09:29:36.833058:  Unable to send project update for project Projekt11 to assignee Anna: Not in the clientMap
+2022-05-26T09:43:07.991073: The userMap was read from the .dat-file
+2022-05-26T09:43:08.059341: The projectMap was read from the .dat-file
+2022-05-26T09:43:08.075698: Server is running
+2022-05-26T09:43:34.987383: A client just connected.
+2022-05-26T09:43:35.001452: Login credentials for user  was not accepted,
+2022-05-26T09:45:47.621538: A client just connected.
+2022-05-26T09:45:47.626903: Login credentials for user  was not accepted,
+2022-05-26T09:46:20.650542: A client just connected.
+2022-05-26T09:46:20.673057: Login credentials for user  was not accepted,
+2022-05-26T09:46:56.708947: A client just connected.
+2022-05-26T09:46:56.714595: Login credentials for user  was not accepted,
+2022-05-26T09:47:35.479723: A client just connected.
+2022-05-26T09:47:35.484002: Login credentials for user  was not accepted,
+2022-05-26T09:48:13.726680: A client just connected.
+2022-05-26T09:48:13.734277: Login credentials for user  was not accepted,
+2022-05-26T10:02:59.655748: A client just connected.
+2022-05-26T10:02:59.666732: Login credentials for user  was not accepted,
+2022-05-26T10:04:23.839097: A client just connected.
+2022-05-26T10:04:23.851465: Login credentials for user  was not accepted,
+2022-05-26T10:06:49.149803: A client just connected.
+2022-05-26T10:06:49.194681: Login credentials for user  was not accepted,
+2022-05-26T10:07:50.884187: A client just connected.
+2022-05-26T10:07:50.891763: Login credentials for user  was not accepted,

@@ -3,6 +3,7 @@ package com.example.exstos_grupp18;
 
 import Sandbox.TestController;
 import controller.Controller;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
@@ -36,6 +38,8 @@ public class NewProjectController implements Initializable {
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
+    @FXML
+    private Button createNewProjectButton;
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
@@ -73,10 +77,12 @@ public class NewProjectController implements Initializable {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
-            /*stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            /*
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            stage.setScene(scene);*/
+            stage.setScene(scene);
+             */
             HomePageController homePageController = fxmlLoader.getController();
             homePageController.hideProjectPopOver();
         }
