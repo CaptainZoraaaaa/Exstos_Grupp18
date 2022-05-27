@@ -1,17 +1,12 @@
-2022-05-26T12:28:14.028533: The userMap was read from the .dat-file
-2022-05-26T12:28:14.052434: The projectMap was read from the .dat-file
-2022-05-26T12:28:14.055035: Server is running
-2022-05-26T12:28:37.025826: A client just connected.
-2022-05-26T12:28:37.033587: Login credentials for user Christian was accepted
-2022-05-26T12:28:37.033726: User Christian was added to the onlineUsers-list
-2022-05-26T12:28:37.033946: The client associated to user Christian was added to the clientMap
-2022-05-26T12:38:18.678528: User Christian was removed from the onlineUsers-list
-2022-05-26T12:38:57.656035: A client just connected.
-2022-05-26T12:38:57.656478: Login credentials for user Christian was accepted
-2022-05-26T12:38:57.656581: User Christian was added to the onlineUsers-list
-2022-05-26T12:38:57.656679: The client associated to user Christian was added to the clientMap
-2022-05-26T12:39:11.202265: A projectID was fetched from the .dat-file
-2022-05-26T12:39:11.202838: A new projectID was created.
-2022-05-26T12:39:11.202963: Project #11 123468dthwf was added to the projectMap
-2022-05-26T12:39:11.218307: Sending project update for project 123468dthwf to user Christian's ClientHandler
-2022-05-26T12:39:11.226254: The projectMap was written to the .dat-file
+2022-05-26T13:33:20.805818: The userMap was read from the .dat-file
+2022-05-26T13:33:20.832329: The projectMap was read from the .dat-file
+2022-05-26T13:33:20.836229: Server is running
+2022-05-26T13:33:30.845365: A client just connected.
+2022-05-26T13:33:30.854011: Login credentials for user Christian was accepted
+2022-05-26T13:33:30.854187: User Christian was added to the onlineUsers-list
+2022-05-26T13:33:30.855185: The client associated to user Christian was added to the clientMap
+2022-05-26T13:34:37.363550: A client just connected.
+2022-05-26T13:34:37.368661: Login credentials for user Christian was accepted
+2022-05-26T13:34:37.368754: User Christian was added to the onlineUsers-list
+2022-05-26T13:34:37.368827: The clientMap already contains a user with the username Christian
+2022-05-26T13:34:39.614235: User Christian was removed from the onlineUsers-list

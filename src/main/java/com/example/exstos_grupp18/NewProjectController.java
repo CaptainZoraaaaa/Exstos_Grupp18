@@ -81,7 +81,6 @@ public class NewProjectController implements Initializable {
         else {
             //TODO IMPLEMENTERA FELLMEDALANDE
         }
-        //testController.createNewProject(projectHeaderInputField.getText(), projectDescriptionInputField.getText(), deadline, currentUser, creatorField.getText());
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
