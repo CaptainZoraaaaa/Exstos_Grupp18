@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -73,14 +75,24 @@ public class EditProjectController implements Initializable {
     /**
      * This method is used to edit a projects values.
      * @param actionEvent event
+     * @author Linnéa Flystam och Christian Edvall
      */
     @FXML
     void editProject(ActionEvent actionEvent) throws IOException {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, user, creator);
-        changeScene(actionEvent, "HomePage.fxml");
+        if (header.length() > 5 && header.length() < 50) {
+            controller.createNewProject(header, description, deadline, user, creator);
+            changeScene(actionEvent, "HomePage.fxml");
+        }
+        System.out.println(">> error message <<");
+        Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
+        label.setTextFill(Paint.valueOf("Red"));
+        Popup popup = new Popup();
+        popup.getContent().add(label);
+        Stage stage2 = (Stage) creatorField.getScene().getWindow();
+        popup.show(stage2);
     }
     /**
      * Method for initializing the list of available users to select.

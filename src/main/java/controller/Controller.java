@@ -4,7 +4,10 @@ import Model.*;
 import Model.DataPackage;
 import client.Client;
 import client.ClientBuffer;
+import com.example.exstos_grupp18.HomePageController;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 import java.io.*;
@@ -369,4 +372,6 @@ public class Controller {
     public Project getActiveProject() {
         return activeProject;
     }
+
+
 }

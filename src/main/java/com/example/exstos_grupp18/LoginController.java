@@ -28,6 +28,7 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Popup popup;
 
     @FXML
     private PasswordField passwordTextField;
@@ -54,6 +55,9 @@ public class LoginController {
      * @throws IOException In/Out exception.
      */
     public void logIn(ActionEvent event) throws IOException {
+        if(popup != null){
+            popup.hide();
+        }
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         // Change logInTest to logIn() for real use;
@@ -70,10 +74,9 @@ public class LoginController {
             stage.setScene(scene);
         }
         else {
-
-            Label label = new Label("Failed to log in: Wrong credentials");
+            Label label = new Label("Failed to log in: Wrong credentials. Enter matching username and password");
             label.setTextFill(Paint.valueOf("Red"));
-            Popup popup = new Popup();
+            popup = new Popup();
             popup.getContent().add(label);
             Stage stage = (Stage) usernameTextField.getScene().getWindow();
             popup.setX(900.0);
