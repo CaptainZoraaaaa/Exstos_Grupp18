@@ -1,7 +1,48 @@
-2022-05-27T09:31:42.821125: The userMap was read from the .dat-file
-2022-05-27T09:31:42.861322: The projectMap was read from the .dat-file
-2022-05-27T09:31:42.865557: Server is running
-2022-05-27T09:31:56.462926: A client just connected.
-2022-05-27T09:31:56.472254: Login credentials for user Christian was accepted
-2022-05-27T09:31:56.472443: User Christian was added to the onlineUsers-list
-2022-05-27T09:31:56.473855: The client associated to user Christian was added to the clientMap
+2022-05-27T09:47:08.155834: The userMap was read from the .dat-file
+2022-05-27T09:47:08.193103: The projectMap was read from the .dat-file
+2022-05-27T09:47:08.196936: Server is running
+2022-05-27T09:47:19.076978: A client just connected.
+2022-05-27T09:47:19.084947: Login credentials for user Christian was accepted
+2022-05-27T09:47:19.085242: User Christian was added to the onlineUsers-list
+2022-05-27T09:47:19.086571: The client associated to user Christian was added to the clientMap
+2022-05-27T09:48:00.634978: A client just connected.
+2022-05-27T09:48:00.642357: Login credentials for user Christian was accepted
+2022-05-27T09:48:00.642509: User Christian was added to the onlineUsers-list
+2022-05-27T09:48:00.642627: The clientMap already contains a user with the username Christian
+2022-05-27T09:48:45.620552: A client just connected.
+2022-05-27T09:48:45.623716: Login credentials for user Christian was accepted
+2022-05-27T09:48:45.623878: User Christian was added to the onlineUsers-list
+2022-05-27T09:48:45.623979: The clientMap already contains a user with the username Christian
+2022-05-27T09:49:41.032886: A client just connected.
+2022-05-27T09:49:41.036556: Login credentials for user Christian was accepted
+2022-05-27T09:49:41.036787: User Christian was added to the onlineUsers-list
+2022-05-27T09:49:41.036927: The clientMap already contains a user with the username Christian
+2022-05-27T09:50:21.502681: A client just connected.
+2022-05-27T09:50:21.504308: Login credentials for user Christian was accepted
+2022-05-27T09:50:21.504551: User Christian was added to the onlineUsers-list
+2022-05-27T09:50:21.504706: The clientMap already contains a user with the username Christian
+2022-05-27T09:51:02.914384: A client just connected.
+2022-05-27T09:51:02.922296: Login credentials for user Christian was accepted
+2022-05-27T09:51:02.922962: User Christian was added to the onlineUsers-list
+2022-05-27T09:51:02.923313: The clientMap already contains a user with the username Christian
+2022-05-27T09:52:33.434105: A client just connected.
+2022-05-27T09:52:33.435215: Login credentials for user Christian was accepted
+2022-05-27T09:52:33.435593: User Christian was added to the onlineUsers-list
+2022-05-27T09:52:33.435825: The clientMap already contains a user with the username Christian
+2022-05-27T09:53:14.909044: A client just connected.
+2022-05-27T09:53:14.910647: Login credentials for user Christian was accepted
+2022-05-27T09:53:14.910992: User Christian was added to the onlineUsers-list
+2022-05-27T09:53:14.911222: The clientMap already contains a user with the username Christian
+2022-05-27T09:56:35.942578: Login credentials for user Christian was accepted
+2022-05-27T09:56:35.949306: User Christian was added to the onlineUsers-list
+2022-05-27T09:56:35.949534: The clientMap already contains a user with the username Christian
+2022-05-27T09:56:35.951920: A client just connected.
+2022-05-27T09:57:07.903889: User Christian was removed from the onlineUsers-list
+2022-05-27T09:58:24.932171: A client just connected.
+2022-05-27T09:58:24.936515: Login credentials for user Christian was accepted
+2022-05-27T09:58:24.936901: User Christian was added to the onlineUsers-list
+2022-05-27T09:58:24.937226: The client associated to user Christian was added to the clientMap
+2022-05-27T09:59:47.372086: A client just connected.
+2022-05-27T09:59:47.374130: Login credentials for user Christian was accepted
+2022-05-27T09:59:47.374417: User Christian was added to the onlineUsers-list
+2022-05-27T09:59:47.374732: The clientMap already contains a user with the username Christian

@@ -57,6 +57,7 @@ public class NewProjectController implements Initializable {
     private Parent root;
     private HomePageController homePageController;
     private PopOver popOver;
+    private Popup popup;
 
     /**
      * Method to return to previous screen.
@@ -78,6 +79,9 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void createNewProject(ActionEvent event) throws IOException {
+        if (popup != null){
+            popup.hide();
+        }
         System.out.println("create project");
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
@@ -86,16 +90,35 @@ public class NewProjectController implements Initializable {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             homePageController.hideProjectPopOver();
         }
-        else {
+        else if(header.length() < 5){
             System.out.println(">> error message <<");
-            Label label = new Label("Failed to create project: Information missing. Enter header and deadline");
+            Label label = new Label("Failed to create project: header is less than 5 characters");
             label.setTextFill(Paint.valueOf("Red"));
-            Popup popup = new Popup();
+            popup = new Popup();
             popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
             popup.show(popOver);
-
-
-
+        }
+        else if(header.length() > 50){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: enter header is larger than 50 characters");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
+        }
+        else if(deadline == null){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: missing deadline");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
         }
     }
     /**
