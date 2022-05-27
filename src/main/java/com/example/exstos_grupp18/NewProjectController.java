@@ -132,13 +132,19 @@ public class NewProjectController implements Initializable {
     } //TODO Se om det går att ändra till multiple choice.
 
     /**
-     *
-     * @param usernameLabel
+     *This method sets the creator field to who is currently logged in.
+     * @param usernameLabel a String containing the logged in person.
      */
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
     }
 
+    /**
+     * This method takes in a popover as a parameter and sets it to the instance variable, allowing use of the popup in
+     * the popover for later usages.
+     * @author Christian Edvall
+     * @param popOver Popover object.
+     */
     public void sendPopOver(PopOver popOver) {
         this.popOver = popOver;
     }
