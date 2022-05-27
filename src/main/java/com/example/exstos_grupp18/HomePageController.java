@@ -113,6 +113,7 @@ public class HomePageController implements Initializable {
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(true);
                 popOver.show(createProjectButton, 330, 165); //Displaying the popover at a specific coordinate.
+                newProjectController.sendPopOver(popOver);
             } catch (IOException e) {
                 e.printStackTrace();
             }

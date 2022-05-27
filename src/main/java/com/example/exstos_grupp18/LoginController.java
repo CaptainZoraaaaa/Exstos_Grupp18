@@ -70,7 +70,6 @@ public class LoginController {
             stage.setScene(scene);
         }
         else {
-
             Label label = new Label("Failed to log in: Wrong credentials. Enter matching username and password");
             label.setTextFill(Paint.valueOf("Red"));
             Popup popup = new Popup();

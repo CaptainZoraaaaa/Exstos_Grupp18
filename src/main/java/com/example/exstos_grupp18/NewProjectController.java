@@ -20,6 +20,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
@@ -55,6 +56,7 @@ public class NewProjectController implements Initializable {
     private Scene scene;
     private Parent root;
     private HomePageController homePageController;
+    private PopOver popOver;
 
     /**
      * Method to return to previous screen.
@@ -90,8 +92,8 @@ public class NewProjectController implements Initializable {
             label.setTextFill(Paint.valueOf("Red"));
             Popup popup = new Popup();
             popup.getContent().add(label);
-            Stage stage2 = (Stage) creatorField.getScene().getWindow();
-            popup.show(stage2);
+            popup.show(popOver);
+
 
 
         }
@@ -135,6 +137,10 @@ public class NewProjectController implements Initializable {
      */
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
+    }
+
+    public void sendPopOver(PopOver popOver) {
+        this.popOver = popOver;
     }
 }
 

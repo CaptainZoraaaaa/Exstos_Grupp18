@@ -1,12 +1,7 @@
-2022-05-26T13:33:20.805818: The userMap was read from the .dat-file
-2022-05-26T13:33:20.832329: The projectMap was read from the .dat-file
-2022-05-26T13:33:20.836229: Server is running
-2022-05-26T13:33:30.845365: A client just connected.
-2022-05-26T13:33:30.854011: Login credentials for user Christian was accepted
-2022-05-26T13:33:30.854187: User Christian was added to the onlineUsers-list
-2022-05-26T13:33:30.855185: The client associated to user Christian was added to the clientMap
-2022-05-26T13:34:37.363550: A client just connected.
-2022-05-26T13:34:37.368661: Login credentials for user Christian was accepted
-2022-05-26T13:34:37.368754: User Christian was added to the onlineUsers-list
-2022-05-26T13:34:37.368827: The clientMap already contains a user with the username Christian
-2022-05-26T13:34:39.614235: User Christian was removed from the onlineUsers-list
+2022-05-27T09:31:42.821125: The userMap was read from the .dat-file
+2022-05-27T09:31:42.861322: The projectMap was read from the .dat-file
+2022-05-27T09:31:42.865557: Server is running
+2022-05-27T09:31:56.462926: A client just connected.
+2022-05-27T09:31:56.472254: Login credentials for user Christian was accepted
+2022-05-27T09:31:56.472443: User Christian was added to the onlineUsers-list
+2022-05-27T09:31:56.473855: The client associated to user Christian was added to the clientMap
