@@ -193,13 +193,15 @@ public class KanbanViewController implements Initializable {
         doneBar.setProgress(doneList.getChildren().size() / totalTasks);
 
         LocalDate now = LocalDate.now();
-        Period period = Period.between(now,controller.getActiveProject().getDeadline());
-        Period period2 = Period.between(controller.getActiveProject().getCreatedDate(), controller.getActiveProject().getDeadline());
-        if (period.getDays()>0){
-            this.dropMenuBar.setProgress(1-(period2.getDays()/period.getDays()));
+        double daysLeft = Period.between(now,controller.getActiveProject().getDeadline()).getDays();//Dagar kavr tills slut datum
+        double dayFromBeginning = Period.between(controller.getActiveProject().getCreatedDate(), controller.getActiveProject().getDeadline()).getDays(); // Dagar från början
+        System.out.println(daysLeft);
+        System.out.println(dayFromBeginning);
+        if (daysLeft>0){
+            this.dropMenuBar.setProgress(1-(daysLeft/dayFromBeginning));
         }
         else{
-            dropMenuBar.setProgress(1);
+            this.dropMenuBar.setProgress(1);
         }
         usernameLabel.setText(controller.getLoggedInUser());
 
