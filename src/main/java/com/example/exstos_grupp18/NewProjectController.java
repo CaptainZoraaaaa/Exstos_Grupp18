@@ -129,7 +129,6 @@ public class NewProjectController implements Initializable {
     void chooseDate(ActionEvent event) {
         deadline = projectDeadlineDate.getValue();
     }
-
     public void setHomePageController(HomePageController homePageController) {
         this.homePageController = homePageController;
     }

@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -143,15 +144,17 @@ public class KanbanViewController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
-    @FXML
-    void dragTask(MouseDragEvent mouseDragEvent){
-    }
-
     /**
      *This method will get all of the current projects tasks lopp trought them and check their status.
      * Deppending on what status the task have the it will be placed in different VBOX's
      * That are the equivelant of the swimlanes.
      */
+    @FXML
+    void taskOverEvent(MouseEvent event){
+        System.out.println(event.getSource());
+        System.out.println(event.getX());
+        System.out.println(event.getY());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
