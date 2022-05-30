@@ -44,7 +44,7 @@ public class Controller {
         projects.add(project);
     }
 
-    public void editProject () {
+    public void editProject(String header, String description, LocalDate deadline, String user, String creator) {
     }
 
     public boolean registerOnServer(String username, String password) {

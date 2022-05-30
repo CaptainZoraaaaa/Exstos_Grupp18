@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,7 +58,7 @@ public class EditProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, "HomePage.fxml");
+        changeScene(actionEvent, "KanbanView.fxml");
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
@@ -79,8 +81,17 @@ public class EditProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
-        controller.createNewProject(header, description, deadline, user, creator);
-        changeScene(actionEvent, "HomePage.fxml");
+        if (header.length() > 5 && header.length() < 50) {
+            controller.editProject(header, description, deadline, user, creator);
+            changeScene(actionEvent, "HomePage.fxml");
+        }
+        System.out.println(">> error message <<");
+        Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
+        label.setTextFill(Paint.valueOf("Red"));
+        Popup popup = new Popup();
+        popup.getContent().add(label);
+        Stage stage2 = (Stage) creatorField.getScene().getWindow();
+        popup.show(stage2);
     }
     /**
      * Method for initializing the list of available users to select.
@@ -97,6 +108,13 @@ public class EditProjectController implements Initializable {
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
         creatorField.setText(controller.getLoggedInUser());
+        projectHeaderInputField.setDisable(true);
+        projectDescriptionInputField.setDisable(true);
+        projectDeadlineDate.setDisable(true);
+        assigneeList.setDisable(true);
+        if(!project.getAssignedUsers().get(controller.getLoggedInUser())) {
+
+        }
     }
 
     @FXML

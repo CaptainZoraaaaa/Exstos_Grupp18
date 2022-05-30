@@ -123,7 +123,6 @@ public class KanbanViewController implements Initializable {
      */
     public void myProjectsPressed() {
         mainBarPane.setVisible(!mainBarPane.isVisible());
-        myProjectsHbox.setVisible(!myProjectsHbox.isVisible());
          //set the pane for the progress bar
     }
 
@@ -212,6 +211,7 @@ public class KanbanViewController implements Initializable {
             this.dropMenuBar.setProgress(1);
         }
         usernameLabel.setText(controller.getLoggedInUser());
+        mainBarPane.setVisible(false);
 
     }
 
@@ -251,5 +251,17 @@ public class KanbanViewController implements Initializable {
     }
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
+    }
+
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        controller.logOut();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
+
     }
 }
