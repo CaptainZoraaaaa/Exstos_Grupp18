@@ -83,7 +83,7 @@ public class EditProjectController implements Initializable {
         String creator = creatorField.getText();
         if (header.length() > 5 && header.length() < 50) {
             controller.editProject(header, description, deadline, user, creator);
-            changeScene(actionEvent, "HomePage.fxml");
+            changeScene(actionEvent, "KanbanView.fxml");
         }
         System.out.println(">> error message <<");
         Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
@@ -113,7 +113,16 @@ public class EditProjectController implements Initializable {
         projectDeadlineDate.setDisable(true);
         assigneeList.setDisable(true);
         if(!project.getAssignedUsers().get(controller.getLoggedInUser())) {
-
+            editProjectButton.setVisible(false);
+            editProjectButton.setDisable(true);
+            editButton.setVisible(false);
+            editButton.setDisable(true);
+        }
+        else {
+            editProjectButton.setVisible(true);
+            editProjectButton.setDisable(false);
+            editButton.setVisible(true);
+            editButton.setDisable(false);
         }
     }
 
