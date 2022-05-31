@@ -82,17 +82,20 @@ public class EditProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
+        LocalDate deadline1 = projectDeadlineDate.getValue();
         if (header.length() > 5 && header.length() < 50) {
-            controller.editProject(header, description, deadline, user, creator);
+            controller.editProject(header, description, deadline1, user, creator);
             changeScene(actionEvent, "KanbanView.fxml");
         }
-        System.out.println(">> error message <<");
-        Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
-        label.setTextFill(Paint.valueOf("Red"));
-        Popup popup = new Popup();
-        popup.getContent().add(label);
-        Stage stage2 = (Stage) creatorField.getScene().getWindow();
-        popup.show(stage2);
+        else {
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
+            label.setTextFill(Paint.valueOf("Red"));
+            Popup popup = new Popup();
+            popup.getContent().add(label);
+            Stage stage2 = (Stage) creatorField.getScene().getWindow();
+            popup.show(stage2);
+        }
     }
     /**
      * Method for initializing the list of available users to select.
