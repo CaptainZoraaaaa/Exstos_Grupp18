@@ -1,17 +1,17 @@
-2022-05-24T19:07:02.510002900: The userMap was read from the .dat-file
-2022-05-24T19:07:02.524961100: The projectMap was read from the .dat-file
-2022-05-24T19:07:02.526955600: Server is running
-2022-05-24T19:07:13.770182100: A client just connected.
-2022-05-24T19:07:13.772204400: Login credentials for user Anna was accepted
-2022-05-24T19:07:13.772204400: User Anna was added to the onlineUsers-list
-2022-05-24T19:07:13.772204400: The client associated to user Anna was added to the clientMap
-2022-05-24T19:07:24.954611500: A client just connected.
-2022-05-24T19:07:24.954611500: Login credentials for user Emma was accepted
-2022-05-24T19:07:24.954611500: User Emma was added to the onlineUsers-list
-2022-05-24T19:07:24.955607600: The client associated to user Emma was added to the clientMap
-2022-05-24T19:07:44.746638200: Updated task 5: task55 in project 1: Projekt11
-2022-05-24T19:07:44.761597900: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-24T19:07:44.762608800: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-05-24T19:08:16.038198600: Updated task 5: task55 in project 1: Projekt11
-2022-05-24T19:08:16.055185: Sending project update for project Projekt11 to user Emma's ClientHandler
-2022-05-24T19:08:16.055185: Sending project update for project Projekt11 to user Anna's ClientHandler
+2022-05-31T08:41:04.979219200: The userMap was read from the .dat-file
+2022-05-31T08:41:05.013128400: The projectMap was read from the .dat-file
+2022-05-31T08:41:05.019111600: Server is running
+2022-05-31T08:41:27.795601700: Login credentials for user Anna was accepted
+2022-05-31T08:41:27.795601700: User Anna was added to the onlineUsers-list
+2022-05-31T08:41:27.795601700: The client associated to user Anna was added to the clientMap
+2022-05-31T08:41:27.798622500: A client just connected.
+2022-05-31T08:44:44.518431600: A projectID was fetched from the .dat-file
+2022-05-31T08:44:44.518431600: A new projectID was created.
+2022-05-31T08:44:44.518431600: Project #17 projeckt was added to the projectMap
+2022-05-31T08:44:44.519429600:  Unable to send project update for project projeckt to assignee Max: Not in the clientMap
+2022-05-31T08:44:44.524417300: Sending project update for project projeckt to user Anna's ClientHandler
+2022-05-31T08:44:44.527407800: The projectMap was written to the .dat-file
+2022-05-31T08:45:22.955351500: Project 17: projeckt was updated.
+2022-05-31T08:45:22.955351500:  Unable to send project update for project projeckt to assignee Max: Not in the clientMap
+2022-05-31T08:45:22.955351500: Sending project update for project projeckt to user Anna's ClientHandler
+2022-05-31T08:45:22.957346200: The projectMap was written to the .dat-file
