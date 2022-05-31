@@ -83,8 +83,8 @@ public class EditProjectController implements Initializable {
         String description = projectDescriptionInputField.getText();
         String creator = creatorField.getText();
         if (header.length() > 5 && header.length() < 50) {
-            controller.createNewProject(header, description, deadline, user, creator);
-            changeScene(actionEvent, "HomePage.fxml");
+            controller.editProject(header, description, deadline, user, creator);
+            changeScene(actionEvent, "KanbanView.fxml");
         }
         System.out.println(">> error message <<");
         Label label = new Label("Failed to edit project: Information missing. Enter header and deadline");
@@ -109,6 +109,22 @@ public class EditProjectController implements Initializable {
         assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
         assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
         creatorField.setText(controller.getLoggedInUser());
+        projectHeaderInputField.setDisable(true);
+        projectDescriptionInputField.setDisable(true);
+        projectDeadlineDate.setDisable(true);
+        assigneeList.setDisable(true);
+        if(!project.getAssignedUsers().get(controller.getLoggedInUser())) {
+            editProjectButton.setVisible(false);
+            editProjectButton.setDisable(true);
+            editButton.setVisible(false);
+            editButton.setDisable(true);
+        }
+        else {
+            editProjectButton.setVisible(true);
+            editProjectButton.setDisable(false);
+            editButton.setVisible(true);
+            editButton.setDisable(false);
+        }
     }
 
     @FXML

@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +48,18 @@ public class Controller {
         projects.add(project);
     }
 
-    public void editProject () {
+    public void editProject(String header, String description, LocalDate deadline, String user, String creator) {
+        activeProject.setProjectName(header);
+        activeProject.setDescription(description);
+        activeProject.setDeadline(deadline);
+        if(!activeProject.getAssignedUsers().containsKey(user)) {
+            activeProject.getAssignedUser().put(user, false);
+        }
+        DataPackage dataPackage = new DataPackage.PackageBuilder()
+                .project(activeProject)
+                .packageType(DataPackage.PROJECT_EDITED)
+                .build();
+        client.sendUpdate(dataPackage);
     }
 
     public boolean registerOnServer(String username, String password) {
