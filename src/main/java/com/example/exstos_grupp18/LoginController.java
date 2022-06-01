@@ -55,13 +55,13 @@ public class LoginController {
      * @throws IOException In/Out exception.
      */
     public void logIn(ActionEvent event) throws IOException {
-        if(popup != null){
-            popup.hide();
-        }
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         // Change logInTest to logIn() for real use;
         if(controller.logIn(username, password)) {
+            if(popup != null){
+                popup.hide();
+            }
             controller.setLoggedInUser(username);
             System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
