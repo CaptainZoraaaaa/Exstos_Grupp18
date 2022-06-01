@@ -239,18 +239,6 @@ public class KanbanViewController implements Initializable {
      */
     public void newTask(ActionEvent event) throws IOException {
         this.newTaskPopOver();
-
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
-        root = fxmlLoader.load();
-        NewTaskController newTaskController = fxmlLoader.getController();
-        newTaskController.setCreator(usernameLabel.getText());
-        newTaskController.setUserList(controller.getAllUsersInProject(currentProjectName));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-
-         */
     }
     @FXML
     void editProject(ActionEvent event) throws IOException {
@@ -263,7 +251,6 @@ public class KanbanViewController implements Initializable {
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
-
     @FXML
     void newTaskPopOver(){
         if(popOver == null || !popOver.isShowing()){
@@ -271,19 +258,19 @@ public class KanbanViewController implements Initializable {
             Node newProjectRoot = null;
             try {
                 newProjectRoot = fxmlLoader.load();
+                NewTaskController newTaskController = fxmlLoader.getController();
+                newTaskController.setHomePageController(this);
                 popOver = new PopOver(newProjectRoot);
                 popOver.setTitle("");
                 popOver.setDetachable(false);
                 popOver.setHeaderAlwaysVisible(false);
                 popOver.show(newTaskButton, 330, 165);
+                newTaskController.setPopOver(popOver);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
-
     @FXML
     void hideNewTaskPopOver(){
         popOver.setAutoHide(true);
