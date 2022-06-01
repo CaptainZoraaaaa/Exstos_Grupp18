@@ -20,28 +20,28 @@
          <children>
             <HBox layoutX="61.0" layoutY="281.0" prefHeight="542.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: f8f7f4;">
                <children>
-                  <ScrollPane fx:id="backlogSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="backlogSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="backlogList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="inProgressSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="inProgressSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="inProgressList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="waitingSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="waitingSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="waitingList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="doneSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="doneSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
