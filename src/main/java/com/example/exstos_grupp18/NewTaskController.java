@@ -101,8 +101,18 @@ public class NewTaskController implements Initializable {
         String header = taskHeaderInputField.getText();
         String description = taskDescriptionInputField.getText();
 
-        if(header.length() > 1 && header.length() <= 50) {
+        if(header.length() > 1 && header.length() <= 50 && deadline != null && assigneeList != null) {
             controller.createTask(task);
+            /*
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+            root = fxmlLoader.load();
+            KanbanViewController kanbanViewController = fxmlLoader.getController();
+            kanbanViewController.setUserLabel(creatorField.getText());
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setScene(scene);*/
+            kanbanViewController.hideNewTaskPopOver();
         }
         else if(header.length() < 1) {
             System.out.println(">> error message <<");
@@ -199,7 +209,7 @@ public class NewTaskController implements Initializable {
      * @param kanbanViewController object of KanbanviewController.
      * @author Christian Edvall
      */
-    public void setHomePageController(KanbanViewController kanbanViewController){
+    public void setKanbanViewController(KanbanViewController kanbanViewController){
         this.kanbanViewController = kanbanViewController;
     }
     public void setPopOver(PopOver popOver){

@@ -259,7 +259,7 @@ public class KanbanViewController implements Initializable {
             try {
                 newProjectRoot = fxmlLoader.load();
                 NewTaskController newTaskController = fxmlLoader.getController();
-                newTaskController.setHomePageController(this);
+                newTaskController.setKanbanViewController(this);
                 popOver = new PopOver(newProjectRoot);
                 popOver.setTitle("");
                 popOver.setDetachable(false);
