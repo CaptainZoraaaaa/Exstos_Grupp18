@@ -120,6 +120,7 @@ public class NewProjectController implements Initializable {
             popup.setX(550);
             popup.show(popOver);
         }
+        System.out.println("snälla funka");
     }
     /**
      * Method for setting the date to the date selected in the DatePicker.
