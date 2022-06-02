@@ -10,27 +10,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.HomePageController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.HomePageController">
    <children>
-      <HBox prefHeight="75.0" prefWidth="1500.0" style="-fx-background-color: #BFCFDD;">
+      <HBox prefHeight="75.0" prefWidth="1400.0" style="-fx-background-color: #BFCFDD;">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="projectName" layoutX="750.0" layoutY="5.0" text="EXSTO" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="48.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="userLabel" layoutX="33.0" layoutY="5.0" text="User" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="48.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            <Pane prefHeight="75.0" prefWidth="19.0" />
+            <Label fx:id="userLabel" prefHeight="58.0" prefWidth="102.0" text="User" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="48.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="75.0" prefWidth="557.0" />
+            <Label fx:id="projectName" text="EXSTO" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="48.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="75.0" prefWidth="309.0" />
+            <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="30.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
          </children>
       </HBox>
-      <VBox layoutY="69.0" prefHeight="841.0" prefWidth="232.0" style="-fx-background-color: #BFCFDD;">
+      <VBox layoutY="62.0" prefHeight="738.0" prefWidth="232.0" style="-fx-background-color: #BFCFDD;">
          <children>
             <Pane prefHeight="13.0" prefWidth="232.0" />
             <Button fx:id="createProjectButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeToCreateProject" prefHeight="59.0" prefWidth="305.0" stylesheets="@../../../CSS/Menu.css" text="Create Project" textFill="WHITE">
@@ -54,29 +61,21 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Pane prefHeight="591.0" prefWidth="232.0" />
-            <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#logOut" prefHeight="67.0" prefWidth="300.0" stylesheets="@../../../CSS/Menu.css" text="Log Out" textFill="WHITE">
-               <font>
-                  <Font name="Roboto" size="30.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
+            <Pane prefHeight="449.0" prefWidth="232.0" />
          </children>
       </VBox>
-      <Pane layoutX="750.0" layoutY="141.0" prefHeight="693.0" prefWidth="500.0" style="-fx-background-color: #BFCFDD; -fx-background-radius: 5;">
+      <Pane layoutX="565.0" layoutY="142.0" prefHeight="596.0" prefWidth="500.0" style="-fx-background-color: #BFCFDD; -fx-background-radius: 5;">
          <children>
-            <ScrollPane layoutX="21.0" layoutY="14.0" prefHeight="652.0" prefWidth="458.0">
+            <ScrollPane layoutX="21.0" layoutY="14.0" prefHeight="565.0" prefWidth="458.0">
                <content>
-                  <VBox fx:id="myLane" prefHeight="652.0" prefWidth="458.0" />
+                  <VBox fx:id="myLane" prefHeight="575.0" prefWidth="455.0" />
                </content>
             </ScrollPane>
          </children>
       </Pane>
-      <ScrollPane fx:id="myProjectVbox" layoutX="232.0" layoutY="141.0" prefHeight="770.0" prefWidth="195.0" style="-fx-background-color: #BFCFDD;">
+      <ScrollPane fx:id="myProjectVbox" layoutX="232.0" layoutY="141.0" prefHeight="618.0" prefWidth="195.0" style="-fx-background-color: #BFCFDD;">
          <content>
-            <VBox fx:id="projectList" prefHeight="755.0" prefWidth="192.0" style="-fx-background-color: #BFCFDD;" />
+            <VBox fx:id="projectList" prefHeight="622.0" prefWidth="192.0" style="-fx-background-color: #BFCFDD;" />
          </content>
       </ScrollPane>
    </children>

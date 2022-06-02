@@ -1,4 +1,3 @@
-2022-06-02T15:09:59.978829: The projectMap was written to the .dat-file
-2022-06-02T15:09:59.979916: The userMap was written to the .dat-file
-2022-06-02T15:09:59.980227: A new projectID was created.
-2022-06-02T15:09:59.980411: A new taskID was created.
+2022-06-02T16:23:21.428559: The userMap was read from the .dat-file
+2022-06-02T16:23:21.429573: The projectMap was read from the .dat-file
+2022-06-02T16:23:21.435668: Server is running
