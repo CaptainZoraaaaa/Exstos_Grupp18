@@ -1,11 +1,28 @@
-2022-06-02T11:21:13.956897800: The userMap was read from the .dat-file
-2022-06-02T11:21:13.977591300: The projectMap was read from the .dat-file
-2022-06-02T11:21:13.979766600: Server is running
-2022-06-02T11:21:23.248628800: A client just connected.
-2022-06-02T11:21:23.251624800: Login credentials for user Max was accepted
-2022-06-02T11:21:23.251624800: User Max was added to the onlineUsers-list
-2022-06-02T11:21:23.252621500: The client associated to user Max was added to the clientMap
-2022-06-02T11:21:41.272254400: A taskID was fetched from the .dat-file
-2022-06-02T11:21:41.274339500: A new taskID was created.
-2022-06-02T11:21:41.300178800: Sending project update for project 123456MAX TESTKLASS to user Max's ClientHandler
-2022-06-02T11:21:41.314148400: The projectMap was written to the .dat-file
+2022-06-02T11:25:32.048265700: The userMap was read from the .dat-file
+2022-06-02T11:25:32.050260800: The projectMap was read from the .dat-file
+2022-06-02T11:25:32.053563400: Server is running
+2022-06-02T11:25:41.107893800: A client just connected.
+2022-06-02T11:25:41.156078100: Login credentials for user Max was not accepted,
+2022-06-02T11:25:49.960726600: A client just connected.
+2022-06-02T11:25:49.968706900: User Max's registration was verified: username is unique
+2022-06-02T11:25:49.972701100: Max was added to the userMap.
+2022-06-02T11:25:49.982687700: The userMap was written to the .dat-file
+2022-06-02T11:25:55.349360700: A client just connected.
+2022-06-02T11:25:55.351349300: Login credentials for user Max was accepted
+2022-06-02T11:25:55.351349300: User Max was added to the onlineUsers-list
+2022-06-02T11:25:55.352346100: The client associated to user Max was added to the clientMap
+2022-06-02T11:27:36.666373800: A projectID was fetched from the .dat-file
+2022-06-02T11:27:36.667372200: A new projectID was created.
+2022-06-02T11:27:36.667372200: Project #1 asdfasdfaMMMMMMMMMM was added to the projectMap
+2022-06-02T11:27:36.667372200:  Unable to send project update for project asdfasdfaMMMMMMMMMM to assignee dfasdfasdfasd: Not in the clientMap
+2022-06-02T11:27:36.676433: Sending project update for project asdfasdfaMMMMMMMMMM to user Max's ClientHandler
+2022-06-02T11:27:36.680424700: The projectMap was written to the .dat-file
+2022-06-02T11:27:53.009131600: A taskID was fetched from the .dat-file
+2022-06-02T11:27:53.010128600: A new taskID was created.
+2022-06-02T11:27:53.010128600:  Unable to send project update for project asdfasdfaMMMMMMMMMM to assignee dfasdfasdfasd: Not in the clientMap
+2022-06-02T11:27:53.011125800: Sending project update for project asdfasdfaMMMMMMMMMM to user Max's ClientHandler
+2022-06-02T11:27:53.012123100: The projectMap was written to the .dat-file
+2022-06-02T11:28:04.283141200: Updated task 1: MMMMMMM in project 1: asdfasdfaMMMMMMMMMM
+2022-06-02T11:28:04.307772700:  Unable to send project update for project asdfasdfaMMMMMMMMMM to assignee dfasdfasdfasd: Not in the clientMap
+2022-06-02T11:28:04.307772700: Sending project update for project asdfasdfaMMMMMMMMMM to user Max's ClientHandler
+2022-06-02T11:28:08.125082400: User Max was removed from the onlineUsers-list
