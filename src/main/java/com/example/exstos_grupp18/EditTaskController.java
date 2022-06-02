@@ -26,8 +26,6 @@ import java.util.ResourceBundle;
 public class EditTaskController implements Initializable {
 
     @FXML
-    private ImageView background; //todo se över om vi ska ta bort
-    @FXML
     private ChoiceBox<Swimlane> statusList;
     @FXML
     private ChoiceBox<String> assigneeList; //todo kan detta göras så att man kan välja flera alternativ.
@@ -79,6 +77,7 @@ public class EditTaskController implements Initializable {
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
         String comment = creatorField + ":\n" + taskCommentInputField.getText();
+
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
         currentTask.setDeadline(deadline);

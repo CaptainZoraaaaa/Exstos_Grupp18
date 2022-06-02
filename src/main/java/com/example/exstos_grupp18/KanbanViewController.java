@@ -11,11 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,11 +37,11 @@ public class KanbanViewController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    private ArrayList<Node> nodesInProgress = new ArrayList<>();
     private boolean dropMenuVisible = false;
     private Controller controller = Controller.getInstance();
     private static KanbanViewController kanbanViewController = new KanbanViewController();
     private String currentProjectName;
+    private PopOver popOver = new PopOver();
 
     @FXML
     private ProgressBar backlogBar; //progress bar for backlog
@@ -123,7 +124,6 @@ public class KanbanViewController implements Initializable {
      */
     public void myProjectsPressed() {
         mainBarPane.setVisible(!mainBarPane.isVisible());
-        myProjectsHbox.setVisible(!myProjectsHbox.isVisible());
          //set the pane for the progress bar
     }
 
@@ -143,15 +143,17 @@ public class KanbanViewController implements Initializable {
         stage.setScene(scene);
         stage.setScene(scene);
     }
-    @FXML
-    void dragTask(MouseDragEvent mouseDragEvent){
-    }
-
     /**
      *This method will get all of the current projects tasks lopp trought them and check their status.
      * Deppending on what status the task have the it will be placed in different VBOX's
      * That are the equivelant of the swimlanes.
      */
+    @FXML
+    void taskOverEvent(MouseEvent event){
+        System.out.println(event.getSource());
+        System.out.println(event.getX());
+        System.out.println(event.getY());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
@@ -212,6 +214,7 @@ public class KanbanViewController implements Initializable {
             this.dropMenuBar.setProgress(1);
         }
         usernameLabel.setText(controller.getLoggedInUser());
+        mainBarPane.setVisible(false);
 
     }
 
@@ -232,14 +235,7 @@ public class KanbanViewController implements Initializable {
      * @throws IOException
      */
     public void newTask(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
-        root = fxmlLoader.load();
-        NewTaskController newTaskController = fxmlLoader.getController();
-        newTaskController.setCreator(usernameLabel.getText());
-        newTaskController.setUserList(controller.getAllUsersInProject(currentProjectName));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
+        this.newTaskPopOver();
     }
     @FXML
     void editProject(ActionEvent event) throws IOException {
@@ -251,5 +247,42 @@ public class KanbanViewController implements Initializable {
     }
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
+    }
+    @FXML
+    void newTaskPopOver(){
+        if(popOver == null || !popOver.isShowing()){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
+            Node newProjectRoot = null;
+            try {
+                newProjectRoot = fxmlLoader.load();
+                NewTaskController newTaskController = fxmlLoader.getController();
+                newTaskController.setKanbanViewController(this);
+                popOver = new PopOver(newProjectRoot);
+                popOver.setTitle("");
+                popOver.setDetachable(false);
+                popOver.setHeaderAlwaysVisible(false);
+                popOver.show(newTaskButton, 330, 165);
+                newTaskController.setPopOver(popOver);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    void hideNewTaskPopOver(){
+        popOver.setAutoHide(true);
+    }
+
+
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        controller.logOut();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginView.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setScene(scene);
+
     }
 }

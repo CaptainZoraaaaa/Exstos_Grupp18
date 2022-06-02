@@ -8,32 +8,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewTaskController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewTaskController">
    <children>
-      <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/background.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="IMAGE" fitHeight="900.0" fitWidth="1500.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/background.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="194.0" layoutY="104.0" prefHeight="60.0" prefWidth="199.0" text="New task">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9eb6cb" height="147.0" stroke="#9eb6cb" strokeType="INSIDE" width="600.0" />
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="130.0" layoutY="37.0" prefHeight="73.0" prefWidth="341.0" text="New task" textFill="WHITE">
          <font>
-            <Font name="Roboto" size="48.0" />
+            <Font name="Oriya Sangam MN" size="48.0" />
          </font>
       </Label>
-      <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
+      <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="310.0" style="-fx-background-color: #f8f7f4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="110.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="117.0" />
@@ -153,11 +143,11 @@
             <DatePicker fx:id="taskDeadlineDate" onAction="#chooseDate" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button fx:id="createNewTaskButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
+      <Button fx:id="createNewTaskButton" layoutX="328.0" layoutY="635.0" mnemonicParsing="false" onAction="#createNewTask" prefHeight="26.0" prefWidth="125.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="144.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>

@@ -11,7 +11,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Paint;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -53,6 +57,9 @@ public class NewTaskController implements Initializable {
     private boolean flagged;
     private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Waiting, Swimlane.Done};
     private Swimlane selectedStatus;
+    private KanbanViewController kanbanViewController;
+    private PopOver popOver = new PopOver();
+    private Popup popup = new Popup();
 
     /**
      * This method is used for returning to the previous screen, in this case that is the KanbanView.fxml.
@@ -74,6 +81,7 @@ public class NewTaskController implements Initializable {
      * entered values to the controller and change the scene to KanbanView.fxml.
      * @param event event
      * @throws IOException thrown exception.
+     * @author Linnéa Flystam och Christian Edvall
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
@@ -90,16 +98,54 @@ public class NewTaskController implements Initializable {
                 .flaggedForHelp(flagged)
                 .id(controller.getTaskSize())
                 .build();
-        System.out.println(task.getHeader() + " HEADER IN NEW TASK CONTROLLER");
-        controller.createTask(task);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        KanbanViewController kanbanViewController = fxmlLoader.getController();
-        kanbanViewController.setUserLabel(creatorField.getText());
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        String header = taskHeaderInputField.getText();
+        String description = taskDescriptionInputField.getText();
+
+        if(header.length() > 1 && header.length() <= 50 && deadline != null && assigneeList != null) {
+            controller.createTask(task);
+            /*
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
+            root = fxmlLoader.load();
+            KanbanViewController kanbanViewController = fxmlLoader.getController();
+            kanbanViewController.setUserLabel(creatorField.getText());
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setScene(scene);*/
+            kanbanViewController.hideNewTaskPopOver();
+        }
+        else if(header.length() < 1) {
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create task: header is missing.");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.show(popOver);
+        }
+        else if(header.length() > 50){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create task: header is larger than 50.");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.show(popOver);
+        }
+        else if(deadline == null){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create task: no specified deadline.");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.show(popOver);
+        }
+        else if(assigneeList == null){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create task: no assignees added.");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.show(popOver);
+        }
     }
 
     /**
@@ -156,6 +202,18 @@ public class NewTaskController implements Initializable {
     }
     public void setUserList(ArrayList userList){
         this.userList = userList;
+    }
+
+    /**
+     * This method is used for setting the KanbanviewController.
+     * @param kanbanViewController object of KanbanviewController.
+     * @author Christian Edvall
+     */
+    public void setKanbanViewController(KanbanViewController kanbanViewController){
+        this.kanbanViewController = kanbanViewController;
+    }
+    public void setPopOver(PopOver popOver){
+        this.popOver = popOver;
     }
 }
 

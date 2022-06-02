@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
    <children>
       <Pane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: f8f7f4;">
          <children>
@@ -25,47 +25,29 @@
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="backlogList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
+                        <VBox fx:id="backlogList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="inProgressSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="inProgressList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
+                        <VBox fx:id="inProgressList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="waitingSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="waitingList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
+                        <VBox fx:id="waitingList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="doneSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="doneList" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
+                        <VBox fx:id="doneList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
-               </children>
-            </HBox>
-            <HBox fx:id="myProjectsHbox" layoutX="141.0" layoutY="49.0" prefHeight="50.0" prefWidth="1167.0" spacing="40.0" style="-fx-background-color: #9eb6cb;" visible="false">
-               <children>
-                  <Button fx:id="currentProjectButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" stylesheets="@../../../CSS/Menu.css" text="Current project" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
-                  <Button fx:id="editProjectButton" mnemonicParsing="false" onAction="#editProject" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Edit Project" textFill="WHITE" />
-                  <Button fx:id="calendarButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Calendar" textFill="WHITE" />
-                  <Button fx:id="helpButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Help" textFill="WHITE" />
-                  <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="79.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Settings" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="13.0" />
-                     </font>
-                  </Button>
                </children>
             </HBox>
             <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" onAction="#newTask" prefHeight="57.0" prefWidth="126.0" stylesheets="@../../../CSS/Menu.css" text="New Task" textFill="WHITE">
@@ -74,21 +56,16 @@
                </effect></Button>
             <Pane prefHeight="50.0" prefWidth="1500.0" style="-fx-background-color: #bfcfdd;">
                <children>
-                  <Button fx:id="myProjectsButton" layoutX="142.0" layoutY="-1.0" mnemonicParsing="false" onAction="#myProjectsPressed" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="My Projects" textFill="WHITE">
+                  <Button fx:id="myProjectsButton" layoutX="142.0" layoutY="-1.0" mnemonicParsing="false" onAction="#myProjectsPressed" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Deadline" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="13.0" />
                      </font></Button>
-                  <Button fx:id="personalViewButton" layoutX="337.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" stylesheets="@../../../CSS/Menu.css" text="Personal View" textFill="WHITE">
+                  <Button layoutX="309.0" layoutY="-1.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Main Menu" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="530.0" layoutY="-1.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Main Menu" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Black" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
+                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="19.0" />
                      </font>
@@ -103,6 +80,7 @@
                         <Font name="Roboto Black" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="infoButton" layoutX="485.0" mnemonicParsing="false" onAction="#editProject" prefHeight="50.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
                </children>
             </Pane>
             <VBox layoutX="1228.0" layoutY="337.0" prefHeight="371.0" prefWidth="241.0" spacing="80.0">
@@ -157,7 +135,7 @@
                   <Font name="Roboto Black" size="18.0" />
                </font>
             </Label>
-            <Pane fx:id="mainBarPane" layoutX="141.0" layoutY="99.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;" visible="false">
+            <Pane fx:id="mainBarPane" layoutX="141.0" layoutY="50.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;">
                <children>
                   <ProgressBar fx:id="dropMenuBar" layoutX="37.0" layoutY="4.0" prefHeight="20.0" prefWidth="1110.0" progress="0.0" />
                   <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
