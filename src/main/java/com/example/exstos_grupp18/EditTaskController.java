@@ -76,7 +76,8 @@ public class EditTaskController implements Initializable {
      */
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
-        String comment = creatorField + ":\n" + taskCommentInputField.getText();
+        String comment = String.format("%s: %n %s%n", creatorField.getText(), taskCommentInputField.getText());
+        System.out.println(comment);
 
         currentTask.setHeader(taskHeaderInputField.getText());
         currentTask.setDescription(taskDescriptionInputField.getText());
@@ -140,6 +141,7 @@ public class EditTaskController implements Initializable {
         assigneeList.setOnAction(this::setUsers);
         statusList.getItems().addAll(status);
         statusList.setOnAction(this::setStatus);
+        creatorField.setText(controller.getLoggedInUser());
     }
 
     /**
@@ -166,7 +168,13 @@ public class EditTaskController implements Initializable {
         assigneeList.setValue(task.getAssignees().get(0));
         statusList.setValue(task.getCurrentStatus());
         creatorField.setText(task.getCreator());
-        taskCommentInputField.setText(task.getComments().get(0));
+        StringBuilder comments = new StringBuilder();
+        for(String comment : task.getComments()) {
+            comments.append(comment);
+        }
+        String finalString = comments.toString();
+        System.out.println(finalString);
+        taskCommentInputField.setText(finalString);
         if (task.isFlaggedForHelp()) {
             helpBox.setSelected(true);
         }

@@ -546,14 +546,17 @@ public class Server {
      */
     public synchronized void removeOnlineUser(User user) {
         String logtext;
-        if(onlineUsers.contains(user.getUsername())) { //if list contain user
-            onlineUsers.remove(user.getUsername()); //remove it
-            logtext = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
+        if(user != null){
+            if (onlineUsers.contains(user.getUsername())) { //if list contain user
+                onlineUsers.remove(user.getUsername()); //remove it
+                logtext = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
+            }
+            else {
+                logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list", user.getUsername());
+            }
+            writeLog(logtext);
         }
-        else {
-            logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list", user.getUsername());
-        }
-        writeLog(logtext);
+
     }
     public synchronized void setClientMap(HashMap<String, ClientHandler> clientMap) {
         this.clientMap = clientMap;
