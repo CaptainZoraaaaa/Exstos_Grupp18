@@ -14,8 +14,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
@@ -26,6 +29,7 @@ import org.controlsfx.control.action.Action;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -46,6 +50,12 @@ public class NewProjectController implements Initializable {
     private TextField projectHeaderInputField;
     @FXML
     private Button createNewProjectButton;
+    @FXML
+    private ImageView questionMarkImage;
+    @FXML
+    private TextField assigneeField;
+    @FXML
+    private HBox assigneeHBox;
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
@@ -58,6 +68,7 @@ public class NewProjectController implements Initializable {
     private HomePageController homePageController;
     private PopOver popOver;
     private Popup popup;
+    private ArrayList<String> assignees = new ArrayList<>();
 
     /**
      * Method to return to previous screen.
@@ -86,8 +97,8 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = controller.getLoggedInUser();
-        if (header.length() > 5 && header.length() < 50 && deadline != null ) {
-            controller.createNewProject(header, description, deadline, currentUser, creator);
+        if (header.length() > 5 && header.length() < 50 && deadline != null && description.length() > 0 && description.length() <= 300) {
+            controller.createNewProject(header, description, deadline, assignees, creator);
             homePageController.hideProjectPopOver();
         }
         else if(header.length() < 5){
@@ -102,7 +113,27 @@ public class NewProjectController implements Initializable {
         }
         else if(header.length() > 50){
             System.out.println(">> error message <<");
-            Label label = new Label("Failed to create project: enter header is larger than 50 characters");
+            Label label = new Label("Failed to create project: entered header is larger than 50 characters");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
+        }
+        else if(description.length() == 0){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: description is empty");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
+        }
+        else if(description.length() > 300){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: entered description is larger than 300 characters");
             label.setTextFill(Paint.valueOf("Red"));
             popup = new Popup();
             popup.getContent().add(label);
@@ -141,9 +172,21 @@ public class NewProjectController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
-        assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
+        //assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
+        //assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
         creatorField.setText(controller.getLoggedInUser());
+        Tooltip tooltip = new Tooltip("Write the username of the requested assignee and press 'Add'.\n You can then add another user the same way. Make sure to spell the username right!");
+        Tooltip.install(questionMarkImage, tooltip);
+    }
+
+    @FXML
+    public void addUserToAssignees(ActionEvent event) {
+        String assignee = assigneeField.getText();
+        assignees.add(assignee);
+        assigneeField.clear();
+        Label label = new Label(assignee);
+        assigneeHBox.getChildren().add(label);
+
     }
 
     /**

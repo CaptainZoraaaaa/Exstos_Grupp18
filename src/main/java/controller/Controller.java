@@ -3,11 +3,7 @@ package controller;
 import Model.*;
 import Model.DataPackage;
 import client.Client;
-import client.ClientBuffer;
-import com.example.exstos_grupp18.HomePageController;
 import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 import java.io.*;
@@ -28,9 +24,7 @@ public class Controller {
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
-    private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
-    private static ClientBuffer clientBuffer = new ClientBuffer();
 
     private String loggedInUser;
 
@@ -47,7 +41,20 @@ public class Controller {
         projects.add(project);
     }
 
-    public void editProject () {
+    public void editProject(String header, String description, LocalDate deadline, ArrayList<String> assignees, String creator) {
+        activeProject.setProjectName(header);
+        activeProject.setDescription(description);
+        activeProject.setDeadline(deadline);
+        for (String user: assignees) {
+            if(!activeProject.getAssignedUsers().containsKey(user)) {
+                activeProject.getAssignedUser().put(user, false);
+            }
+        }
+        DataPackage dataPackage = new DataPackage.PackageBuilder()
+                .project(activeProject)
+                .packageType(DataPackage.PROJECT_EDITED)
+                .build();
+        client.sendUpdate(dataPackage);
     }
 
     public boolean registerOnServer(String username, String password) {
@@ -265,9 +272,11 @@ public class Controller {
 
     }
 
-    public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
+    public void createNewProject(String header, String description, LocalDate deadline, ArrayList<String> assigneeList, String creator) {
         HashMap<String, Boolean> assignees = new HashMap<>();
-        assignees.put(user, false);
+        for (String user : assigneeList) {
+            assignees.put(user, false);
+        }
         assignees.put(creator, true);
         Project project = new Project.ProjectBuilder()
                     .projectName(header)

@@ -2,37 +2,34 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditProjectController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.EditProjectController">
    <children>
-      <ImageView fitHeight="900.0" fitWidth="1500.0" layoutX="-15.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/background.png" />
-         </image>
-      </ImageView>
-      <GridPane layoutX="144.0" layoutY="182.0" prefHeight="414.0" prefWidth="299.0" style="-fx-background-color: #f8f7f4;">
+      <GridPane layoutX="73.0" layoutY="171.0" prefHeight="425.0" prefWidth="443.0" style="-fx-background-color: #f8f7f4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="110.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="117.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="10.0" prefWidth="255.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="1.0" prefWidth="23.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="46.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="82.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -43,17 +40,6 @@
                <padding>
                   <Insets left="5.0" />
                </padding>
-               <font>
-                  <Font name="Roboto" size="13.0" />
-               </font>
-            </Label>
-            <Label focusTraversable="false" prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets top="-55.0" />
-               </GridPane.margin>
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
@@ -80,7 +66,7 @@
                   <Font name="Roboto" size="13.0" />
                </font>
             </Label>
-            <Label focusTraversable="false" text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label focusTraversable="false" text="Creator" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -100,31 +86,38 @@
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
             <DatePicker fx:id="projectDeadlineDate" editable="false" onAction="#chooseDate" promptText="Choose a date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="assigneeList" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="creatorField" disable="true" editable="false" focusTraversable="false" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="creatorField" disable="true" editable="false" focusTraversable="false" text="Creator" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font>
             </TextField>
-            <Button fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#unlockFields" prefHeight="25.0" prefWidth="60.0" stylesheets="@../../../CSS/Menu.css" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="20.0" left="90.0" />
-               </GridPane.margin>
-            </Button>
+            <TextField fx:id="assigneeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addUserToAssignees" stylesheets="@../CSS/Menu.css" text="Add" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <HBox fx:id="assigneeBox" prefHeight="26.0" prefWidth="176.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label focusTraversable="false" prefHeight="17.0" prefWidth="79.0" text="Description" GridPane.rowIndex="1">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
-      <Button fx:id="editProjectButton" layoutX="313.0" layoutY="635.0" mnemonicParsing="false" onAction="#editProject" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Accept changes" textFill="WHITE">
+      <Button fx:id="editProjectButton" layoutX="425.0" layoutY="638.0" mnemonicParsing="false" onAction="#editProject" prefHeight="26.0" prefWidth="115.0" stylesheets="@../../../CSS/Menu.css" text="Accept changes" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="145.0" layoutY="635.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="149.0" layoutY="640.0" mnemonicParsing="false" onAction="#backToPreviousScreen" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="Edit project">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9eb6cb" height="147.0" stroke="#9eb6cb" strokeType="INSIDE" width="600.0" />
+      <Label layoutX="149.0" layoutY="57.0" prefHeight="60.0" prefWidth="288.0" text="Project info">
          <font>
-            <Font name="Roboto" size="48.0" />
+            <Font name="Oriya Sangam MN" size="48.0" />
          </font>
       </Label>
+      <Button fx:id="editButton" layoutX="337.0" layoutY="639.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#unlockFields" prefHeight="25.0" prefWidth="60.0" stylesheets="@../../../CSS/Menu.css" text="Edit" textFill="WHITE" />
    </children>
 </AnchorPane>

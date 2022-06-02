@@ -20,16 +20,6 @@ public class InputClient extends Thread{
     private volatile boolean running = true;
     private Controller controller = Controller.getInstance();
 
-    public InputClient(Client client, Socket socket) {
-        this.client = client;
-        try {
-            this.ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        start();
-    }
-
     public InputClient(Client client, ObjectInputStream ois) {
         this.client = client;
         this.ois = ois;
