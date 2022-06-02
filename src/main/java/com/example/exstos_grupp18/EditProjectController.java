@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -19,6 +20,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -33,16 +37,20 @@ public class EditProjectController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private ChoiceBox<String> assigneeList;
-    @FXML
     private DatePicker projectDeadlineDate;
     @FXML
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
+    @FXML
+    private Button addButton;
+    @FXML
+    private HBox assigneeBox;
+    @FXML
+    private TextField assigneeField;
 
     private Controller controller = Controller.getInstance();
-    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
+    private ArrayList<String> assignees = new ArrayList<>();
     private String user;
     private LocalDate deadline;
     private Stage stage;
@@ -81,7 +89,7 @@ public class EditProjectController implements Initializable {
         String creator = creatorField.getText();
         LocalDate deadline1 = projectDeadlineDate.getValue();
         if (header.length() > 5 && header.length() < 50) {
-            controller.editProject(header, description, deadline1, user, creator);
+            controller.editProject(header, description, deadline1, assignees, creator);
             changeScene(actionEvent, "KanbanView.fxml");
         }
         else {
@@ -106,18 +114,31 @@ public class EditProjectController implements Initializable {
         projectDescriptionInputField.setText(project.getDescription());
         projectDeadlineDate.setValue(project.getDeadline());
 
-        assigneeList.getItems().addAll(users); //This is used to att all indexes from an array to the ChoiceBox
-        assigneeList.setOnAction(this::setUsers); // this is ues to select a user from the Choice
+        HashMap<String, Boolean> assigneeMap = controller.getActiveProject().getAssignedUser();
+        for(Map.Entry<String, Boolean> assignee : assigneeMap.entrySet()) {
+            if(!assignee.getValue()) {
+                assignees.add(assignee.getKey());
+            }
+        }
+        for(String user : assignees) {
+            Label label = new Label(user);
+            assigneeBox.getChildren().add(label);
+
+        }
+
         creatorField.setText(controller.getLoggedInUser());
         projectHeaderInputField.setDisable(true);
         projectDescriptionInputField.setDisable(true);
         projectDeadlineDate.setDisable(true);
-        assigneeList.setDisable(true);
+        assigneeField.setDisable(true);
+        addButton.setDisable(true);
         if(!project.getAssignedUsers().get(controller.getLoggedInUser())) {
             editProjectButton.setVisible(false);
             editProjectButton.setDisable(true);
             editButton.setVisible(false);
             editButton.setDisable(true);
+            addButton.setVisible(false);
+            addButton.setDisable(true);
         }
         else {
             editProjectButton.setVisible(true);
@@ -132,14 +153,15 @@ public class EditProjectController implements Initializable {
         projectHeaderInputField.setDisable(!projectHeaderInputField.isDisable());
         projectDescriptionInputField.setDisable(!projectDescriptionInputField.isDisable());
         projectDeadlineDate.setDisable(!projectDeadlineDate.isDisabled());
-        assigneeList.setDisable(!assigneeList.isDisable());
+        addButton.setDisable(!addButton.isDisable());
+        assigneeField.setDisable(!assigneeField.isDisable());
     }
     /**
      * Method for setting the values in the assigneeList.
      * @param event event.
      */
     private void setUsers(ActionEvent event) {
-        user = assigneeList.getValue();
+
     } //TODO kolla om det går att ändra till multiple choise
     public void changeScene(Event event, String newScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
@@ -147,5 +169,14 @@ public class EditProjectController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    @FXML
+    public void addUserToAssignees(ActionEvent event) {
+        String assignee = assigneeField.getText();
+        assignees.add(assignee);
+        assigneeField.clear();
+        Label label = new Label(assignee);
+        assigneeBox.getChildren().add(label);
+
     }
 }

@@ -41,12 +41,14 @@ public class Controller {
         projects.add(project);
     }
 
-    public void editProject(String header, String description, LocalDate deadline, String user, String creator) {
+    public void editProject(String header, String description, LocalDate deadline, ArrayList<String> assignees, String creator) {
         activeProject.setProjectName(header);
         activeProject.setDescription(description);
         activeProject.setDeadline(deadline);
-        if(!activeProject.getAssignedUsers().containsKey(user)) {
-            activeProject.getAssignedUser().put(user, false);
+        for (String user: assignees) {
+            if(!activeProject.getAssignedUsers().containsKey(user)) {
+                activeProject.getAssignedUser().put(user, false);
+            }
         }
         DataPackage dataPackage = new DataPackage.PackageBuilder()
                 .project(activeProject)
