@@ -3,16 +3,11 @@ package controller;
 import Model.*;
 import Model.DataPackage;
 import client.Client;
-import client.ClientBuffer;
-import com.example.exstos_grupp18.HomePageController;
 import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.SocketException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,9 +24,7 @@ public class Controller {
     private TaskManager taskManager;
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
-    private ServerStub serverStub = new ServerStub();
     private static Controller controller = new Controller();
-    private static ClientBuffer clientBuffer = new ClientBuffer();
 
     private String loggedInUser;
 
