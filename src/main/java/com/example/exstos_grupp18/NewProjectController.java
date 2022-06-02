@@ -122,7 +122,7 @@ public class NewProjectController implements Initializable {
         }
         else if(description.length() > 300){
             System.out.println(">> error message <<");
-            Label label = new Label("Failed to create project: entered description is larger than 50 characters");
+            Label label = new Label("Failed to create project: entered description is larger than 300 characters");
             label.setTextFill(Paint.valueOf("Red"));
             popup = new Popup();
             popup.getContent().add(label);

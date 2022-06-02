@@ -16,8 +16,8 @@ public class Client {
 
     private int port;
     private String ip;
-    private User user;
     private Socket socket;
+    private User user;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private InputClient inputClient;
@@ -36,11 +36,6 @@ public class Client {
         connect();
     }
 
-    public Client(User user, Socket socket) {
-        this.user = user;
-        this.socket = socket;
-        connect();
-    }
 
     public Client(User user, Socket socket, ObjectOutputStream oos, ObjectInputStream ois) {
         this.user = user;
