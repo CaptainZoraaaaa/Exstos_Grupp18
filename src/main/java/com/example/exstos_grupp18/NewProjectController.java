@@ -86,7 +86,7 @@ public class NewProjectController implements Initializable {
         String header = projectHeaderInputField.getText();
         String description = projectDescriptionInputField.getText();
         String creator = controller.getLoggedInUser();
-        if (header.length() > 5 && header.length() < 50 && deadline != null ) {
+        if (header.length() > 5 && header.length() < 50 && deadline != null && description.length() > 0 && description.length() <= 300) {
             controller.createNewProject(header, description, deadline, currentUser, creator);
             homePageController.hideProjectPopOver();
         }
@@ -102,7 +102,27 @@ public class NewProjectController implements Initializable {
         }
         else if(header.length() > 50){
             System.out.println(">> error message <<");
-            Label label = new Label("Failed to create project: enter header is larger than 50 characters");
+            Label label = new Label("Failed to create project: entered header is larger than 50 characters");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
+        }
+        else if(description.length() == 0){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: description is empty");
+            label.setTextFill(Paint.valueOf("Red"));
+            popup = new Popup();
+            popup.getContent().add(label);
+            popup.setY(775);
+            popup.setX(550);
+            popup.show(popOver);
+        }
+        else if(description.length() > 300){
+            System.out.println(">> error message <<");
+            Label label = new Label("Failed to create project: entered description is larger than 50 characters");
             label.setTextFill(Paint.valueOf("Red"));
             popup = new Popup();
             popup.getContent().add(label);

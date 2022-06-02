@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
 import java.net.URL;
@@ -42,6 +43,7 @@ public class KanbanViewController implements Initializable {
     private Controller controller = Controller.getInstance();
     private static KanbanViewController kanbanViewController = new KanbanViewController();
     private String currentProjectName;
+    private PopOver popOver = new PopOver();
 
     @FXML
     private ProgressBar backlogBar; //progress bar for backlog
@@ -124,6 +126,7 @@ public class KanbanViewController implements Initializable {
      */
     public void myProjectsPressed() {
         mainBarPane.setVisible(!mainBarPane.isVisible());
+        myProjectsHbox.setVisible(!myProjectsHbox.isVisible());
          //set the pane for the progress bar
     }
 
@@ -235,14 +238,7 @@ public class KanbanViewController implements Initializable {
      * @throws IOException
      */
     public void newTask(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
-        root = fxmlLoader.load();
-        NewTaskController newTaskController = fxmlLoader.getController();
-        newTaskController.setCreator(usernameLabel.getText());
-        newTaskController.setUserList(controller.getAllUsersInProject(currentProjectName));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
+        this.newTaskPopOver();
     }
     @FXML
     void editProject(ActionEvent event) throws IOException {
@@ -255,6 +251,31 @@ public class KanbanViewController implements Initializable {
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
+    @FXML
+    void newTaskPopOver(){
+        if(popOver == null || !popOver.isShowing()){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NewTask.fxml"));
+            Node newProjectRoot = null;
+            try {
+                newProjectRoot = fxmlLoader.load();
+                NewTaskController newTaskController = fxmlLoader.getController();
+                newTaskController.setKanbanViewController(this);
+                popOver = new PopOver(newProjectRoot);
+                popOver.setTitle("");
+                popOver.setDetachable(false);
+                popOver.setHeaderAlwaysVisible(false);
+                popOver.show(newTaskButton, 330, 165);
+                newTaskController.setPopOver(popOver);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @FXML
+    void hideNewTaskPopOver(){
+        popOver.setAutoHide(true);
+    }
+
 
     @FXML
     public void logOut(ActionEvent event) throws IOException {

@@ -16,10 +16,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-color: #f8f7f4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.NewProjectController">
    <children>
-      <GridPane layoutX="39.0" layoutY="187.0" prefHeight="409.0" prefWidth="534.0" style="-fx-background-color: #f8f7f4;">
+      <GridPane layoutX="145.0" layoutY="199.0" prefHeight="409.0" prefWidth="310.0" style="-fx-background-color: #f8f7f4;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.47271728515625" minWidth="10.0" prefWidth="133.0272979736328" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.9727020263672" minWidth="10.0" prefWidth="333.9727020263672" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.9727020263672" minWidth="10.0" prefWidth="160.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
@@ -88,7 +88,7 @@
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextField>
-            <TextArea fx:id="projectDescriptionInputField" prefHeight="200.0" prefWidth="200.0" promptText="Project description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextArea fx:id="projectDescriptionInputField" prefHeight="83.0" prefWidth="213.0" promptText="Project description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Roboto" size="13.0" />
                </font></TextArea>
@@ -100,11 +100,11 @@
                </font></TextField>
          </children>
       </GridPane>
-      <Button fx:id="createNewProjectButton" layoutX="408.0" layoutY="608.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="42.0" prefWidth="150.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
+      <Button fx:id="createNewProjectButton" layoutX="300.0" layoutY="617.0" mnemonicParsing="false" onAction="#createNewProject" prefHeight="42.0" prefWidth="150.0" stylesheets="@../../../CSS/Menu.css" text="Create" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
-      <Button fx:id="backToPreviousScreenButton" layoutX="246.0" layoutY="608.0" mnemonicParsing="false" onAction="#backToPreviousScreen" prefHeight="42.0" prefWidth="90.0" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
+      <Button fx:id="backToPreviousScreenButton" layoutX="136.0" layoutY="617.0" mnemonicParsing="false" onAction="#backToPreviousScreen" prefHeight="42.0" prefWidth="90.0" stylesheets="@../../../CSS/Menu.css" text="Back" textFill="WHITE">
          <font>
             <Font name="Roboto" size="13.0" />
          </font></Button>
