@@ -1,7 +1,3 @@
-2022-06-02T14:14:24.196695600: The userMap was read from the .dat-file
-2022-06-02T14:14:24.232303600: The projectMap was read from the .dat-file
-2022-06-02T14:14:24.235811600: Server is running
-2022-06-02T14:14:41.778351600: A client just connected.
-2022-06-02T14:14:41.782186600: Login credentials for user Max was accepted
-2022-06-02T14:14:41.782186600: User Max was added to the onlineUsers-list
-2022-06-02T14:14:41.782186600: The client associated to user Max was added to the clientMap
+2022-06-02T16:23:21.428559: The userMap was read from the .dat-file
+2022-06-02T16:23:21.429573: The projectMap was read from the .dat-file
+2022-06-02T16:23:21.435668: Server is running
