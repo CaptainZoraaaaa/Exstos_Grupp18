@@ -1,22 +1,11 @@
-2022-06-02T08:56:41.761102707: The userMap was read from the .dat-file
-2022-06-02T08:56:41.773357731: The projectMap was read from the .dat-file
-2022-06-02T08:56:41.774970413: Server is running
-2022-06-02T08:56:54.135239717: A client just connected.
-2022-06-02T08:56:54.136814591: Login credentials for user Anna was accepted
-2022-06-02T08:56:54.137031475: User Anna was added to the onlineUsers-list
-2022-06-02T08:56:54.137216317: The client associated to user Anna was added to the clientMap
-2022-06-02T08:57:51.877935634: User Anna was removed from the onlineUsers-list
-2022-06-02T08:57:59.218686586: A client just connected.
-2022-06-02T08:57:59.219119840: Login credentials for user Anna was accepted
-2022-06-02T08:57:59.219366333: User Anna was added to the onlineUsers-list
-2022-06-02T08:57:59.219586475: The client associated to user Anna was added to the clientMap
-2022-06-02T09:00:03.639622146: User Anna was removed from the onlineUsers-list
-2022-06-02T09:00:11.997339881: A client just connected.
-2022-06-02T09:00:11.997793177: Login credentials for user Anna was accepted
-2022-06-02T09:00:11.998045228: User Anna was added to the onlineUsers-list
-2022-06-02T09:00:11.998286869: The client associated to user Anna was added to the clientMap
-2022-06-02T09:02:06.533397056: User Anna was removed from the onlineUsers-list
-2022-06-02T09:02:27.855980947: A client just connected.
-2022-06-02T09:02:27.856270156: Login credentials for user Anna was accepted
-2022-06-02T09:02:27.856505882: User Anna was added to the onlineUsers-list
-2022-06-02T09:02:27.856726279: The client associated to user Anna was added to the clientMap
+2022-06-02T11:21:13.956897800: The userMap was read from the .dat-file
+2022-06-02T11:21:13.977591300: The projectMap was read from the .dat-file
+2022-06-02T11:21:13.979766600: Server is running
+2022-06-02T11:21:23.248628800: A client just connected.
+2022-06-02T11:21:23.251624800: Login credentials for user Max was accepted
+2022-06-02T11:21:23.251624800: User Max was added to the onlineUsers-list
+2022-06-02T11:21:23.252621500: The client associated to user Max was added to the clientMap
+2022-06-02T11:21:41.272254400: A taskID was fetched from the .dat-file
+2022-06-02T11:21:41.274339500: A new taskID was created.
+2022-06-02T11:21:41.300178800: Sending project update for project 123456MAX TESTKLASS to user Max's ClientHandler
+2022-06-02T11:21:41.314148400: The projectMap was written to the .dat-file
