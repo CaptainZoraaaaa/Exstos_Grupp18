@@ -277,9 +277,11 @@ public class Controller {
 
     }
 
-    public void createNewProject(String header, String description, LocalDate deadline, String user, String creator) {
+    public void createNewProject(String header, String description, LocalDate deadline, ArrayList<String> assigneeList, String creator) {
         HashMap<String, Boolean> assignees = new HashMap<>();
-        assignees.put(user, false);
+        for (String user : assigneeList) {
+            assignees.put(user, false);
+        }
         assignees.put(creator, true);
         Project project = new Project.ProjectBuilder()
                     .projectName(header)
