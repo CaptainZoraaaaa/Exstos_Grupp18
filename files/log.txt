@@ -1,4 +1,7 @@
-2022-06-02T15:09:59.978829: The projectMap was written to the .dat-file
-2022-06-02T15:09:59.979916: The userMap was written to the .dat-file
-2022-06-02T15:09:59.980227: A new projectID was created.
-2022-06-02T15:09:59.980411: A new taskID was created.
+2022-06-02T14:14:24.196695600: The userMap was read from the .dat-file
+2022-06-02T14:14:24.232303600: The projectMap was read from the .dat-file
+2022-06-02T14:14:24.235811600: Server is running
+2022-06-02T14:14:41.778351600: A client just connected.
+2022-06-02T14:14:41.782186600: Login credentials for user Max was accepted
+2022-06-02T14:14:41.782186600: User Max was added to the onlineUsers-list
+2022-06-02T14:14:41.782186600: The client associated to user Max was added to the clientMap
