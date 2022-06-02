@@ -46,6 +46,8 @@ public class EditProjectController implements Initializable {
     private Button addButton;
     @FXML
     private HBox assigneeBox;
+    @FXML
+    private TextField assigneeField;
 
     private Controller controller = Controller.getInstance();
     private ArrayList<String> assignees = new ArrayList<>();
@@ -87,7 +89,7 @@ public class EditProjectController implements Initializable {
         String creator = creatorField.getText();
         LocalDate deadline1 = projectDeadlineDate.getValue();
         if (header.length() > 5 && header.length() < 50) {
-            controller.editProject(header, description, deadline1, user, creator);
+            controller.editProject(header, description, deadline1, assignees, creator);
             changeScene(actionEvent, "KanbanView.fxml");
         }
         else {
@@ -161,5 +163,14 @@ public class EditProjectController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    @FXML
+    public void addUserToAssignees(ActionEvent event) {
+        String assignee = assigneeField.getText();
+        assignees.add(assignee);
+        assigneeField.clear();
+        Label label = new Label(assignee);
+        assigneeBox.getChildren().add(label);
+
     }
 }
