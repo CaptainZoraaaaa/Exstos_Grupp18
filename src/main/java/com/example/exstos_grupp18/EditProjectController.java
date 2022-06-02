@@ -27,8 +27,6 @@ import java.util.ResourceBundle;
 public class EditProjectController implements Initializable {
 
     @FXML
-    private Button backToPreviousScreenButton;
-    @FXML
     private TextField creatorField;
     @FXML
     private Button editProjectButton;
@@ -43,11 +41,10 @@ public class EditProjectController implements Initializable {
     @FXML
     private TextField projectHeaderInputField;
 
-    private Project project;
     private Controller controller = Controller.getInstance();
-    private LocalDate deadline;
     private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String user;
+    private LocalDate deadline;
     private Stage stage;
     private Scene scene;
     private Parent root;

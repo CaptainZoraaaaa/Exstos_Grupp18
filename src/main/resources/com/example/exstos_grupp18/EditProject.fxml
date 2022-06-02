@@ -117,6 +117,7 @@
          </font></Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9eb6cb" height="147.0" stroke="#9eb6cb" strokeType="INSIDE" width="600.0" />
       <Label layoutX="171.0" layoutY="50.0" prefHeight="73.0" prefWidth="332.0" text="Edit project" textFill="WHITE">
+      </Label>
       <Label layoutX="172.0" layoutY="104.0" prefHeight="60.0" prefWidth="256.0" text="Project info">
          <font>
             <Font name="Oriya Sangam MN" size="48.0" />

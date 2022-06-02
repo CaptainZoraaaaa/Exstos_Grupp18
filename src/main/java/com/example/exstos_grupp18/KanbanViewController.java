@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -38,7 +37,6 @@ public class KanbanViewController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    private ArrayList<Node> nodesInProgress = new ArrayList<>();
     private boolean dropMenuVisible = false;
     private Controller controller = Controller.getInstance();
     private static KanbanViewController kanbanViewController = new KanbanViewController();
@@ -126,7 +124,6 @@ public class KanbanViewController implements Initializable {
      */
     public void myProjectsPressed() {
         mainBarPane.setVisible(!mainBarPane.isVisible());
-        myProjectsHbox.setVisible(!myProjectsHbox.isVisible());
          //set the pane for the progress bar
     }
 

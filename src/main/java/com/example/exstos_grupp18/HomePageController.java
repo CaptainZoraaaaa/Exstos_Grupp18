@@ -40,13 +40,9 @@ public class HomePageController implements Initializable {
 
 
     @FXML
-    private Button canBanBtn;
-    @FXML
     private Button createProjectButton;
     @FXML
     private Label projectName;
-    @FXML
-    private Button projectNameButton;
     @FXML
     private Label userLabel;
     @FXML
@@ -55,14 +51,6 @@ public class HomePageController implements Initializable {
     private VBox myLane;
     @FXML
     private VBox projectList;
-    @FXML
-    private ListView<Swimlane> myListLane;
-    @FXML
-    private ScrollPane myLaneScroll;
-    @FXML
-    private Button editProjectButton;
-    @FXML
-    private AnchorPane anchorPane;
 
     private Stage stage;
     private Scene scene;
