@@ -76,12 +76,7 @@ public class NewProjectController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        homePageController.hideProjectPopOver();
     }
     /**
      * This method is used to create a new project.

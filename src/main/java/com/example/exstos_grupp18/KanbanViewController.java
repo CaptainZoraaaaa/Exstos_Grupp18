@@ -270,7 +270,7 @@ public class KanbanViewController implements Initializable {
     }
     @FXML
     void hideNewTaskPopOver(){
-        popOver.setAutoHide(true);
+        popOver.hide();
     }
 
 

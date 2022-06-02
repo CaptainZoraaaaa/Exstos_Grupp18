@@ -65,7 +65,7 @@ public class Controller {
                 .packageType(DataPackage.NEW_USER_REGISTRATION)
                 .build();
         try {
-            Socket socket = new Socket("localhost", 8080);
+            Socket socket = new Socket("192.168.40", 8080);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(toSend);
             oos.flush();
@@ -134,7 +134,7 @@ public class Controller {
                 .packageType(DataPackage.USER_LOGGED_IN)
                 .build();
         try {
-            socket = new Socket("localhost", 8080);
+            socket = new Socket("192.168.40", 8080);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(toSend);
             oos.flush();

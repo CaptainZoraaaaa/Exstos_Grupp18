@@ -68,12 +68,7 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        kanbanViewController.hideNewTaskPopOver();
     }
 
     /**
@@ -85,6 +80,9 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
+        if (popup != null){
+            popup.hide();
+        }
         String comment = creatorField.getText() + ":\n" + taskCommentInputField.getText();
         Task task = new Task.TaskBuilder()
                 .header(taskHeaderInputField.getText())
@@ -103,15 +101,6 @@ public class NewTaskController implements Initializable {
 
         if(header.length() > 1 && header.length() <= 50 && deadline != null && assigneeList != null) {
             controller.createTask(task);
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-            root = fxmlLoader.load();
-            KanbanViewController kanbanViewController = fxmlLoader.getController();
-            kanbanViewController.setUserLabel(creatorField.getText());
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setScene(scene);*/
             kanbanViewController.hideNewTaskPopOver();
         }
         else if(header.length() < 1) {
