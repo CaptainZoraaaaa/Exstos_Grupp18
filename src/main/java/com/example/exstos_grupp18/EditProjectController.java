@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
- * @author Christian Edvall
+ * @author Christian Edvall & Anna Håkansson
  */
 public class EditProjectController implements Initializable {
 
