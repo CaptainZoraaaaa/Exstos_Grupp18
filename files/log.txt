@@ -49,3 +49,53 @@
 2022-05-31T09:21:29.551789800:  Unable to send project update for project projeckt112 to assignee Linnéa: Not in the clientMap
 2022-05-31T09:21:29.551789800: Sending project update for project projeckt112 to user Anna's ClientHandler
 2022-05-31T09:21:29.552787400: The projectMap was written to the .dat-file
+2022-05-31T09:45:46.006746: User Anna was removed from the onlineUsers-list
+2022-05-31T09:46:02.453498100: A client just connected.
+2022-05-31T09:46:02.453498100: Login credentials for user Anna was accepted
+2022-05-31T09:46:02.453498100: User Anna was added to the onlineUsers-list
+2022-05-31T09:46:02.453498100: The client associated to user Anna was added to the clientMap
+2022-05-31T09:46:33.164106400: User Anna was removed from the onlineUsers-list
+2022-05-31T09:46:42.201529100: A client just connected.
+2022-05-31T09:46:42.201529100: Login credentials for user Anna was accepted
+2022-05-31T09:46:42.201529100: User Anna was added to the onlineUsers-list
+2022-05-31T09:46:42.201529100: The client associated to user Anna was added to the clientMap
+2022-05-31T10:01:53.272597900: User Anna was removed from the onlineUsers-list
+2022-05-31T10:02:03.847617400: A client just connected.
+2022-05-31T10:02:03.847617400: Login credentials for user Anna was accepted
+2022-05-31T10:02:03.847617400: User Anna was added to the onlineUsers-list
+2022-05-31T10:02:03.848614300: The client associated to user Anna was added to the clientMap
+2022-05-31T10:02:18.738144100: User Anna was removed from the onlineUsers-list
+2022-05-31T10:02:28.055732300: A client just connected.
+2022-05-31T10:02:28.056731700: Login credentials for user Anna was accepted
+2022-05-31T10:02:28.056731700: User Anna was added to the onlineUsers-list
+2022-05-31T10:02:28.056731700: The client associated to user Anna was added to the clientMap
+2022-05-31T10:03:22.631854200: User Anna was removed from the onlineUsers-list
+2022-05-31T10:03:31.210739500: A client just connected.
+2022-05-31T10:03:31.210739500: Login credentials for user Anna was accepted
+2022-05-31T10:03:31.210739500: User Anna was added to the onlineUsers-list
+2022-05-31T10:03:31.211735600: The client associated to user Anna was added to the clientMap
+2022-05-31T10:04:48.588508400: User Anna was removed from the onlineUsers-list
+2022-05-31T10:05:00.772285100: A client just connected.
+2022-05-31T10:05:00.772285100: Login credentials for user Anna was accepted
+2022-05-31T10:05:00.772285100: User Anna was added to the onlineUsers-list
+2022-05-31T10:05:00.772285100: The client associated to user Anna was added to the clientMap
+2022-05-31T10:07:49.320581600: User Anna was removed from the onlineUsers-list
+2022-05-31T10:07:59.207762: A client just connected.
+2022-05-31T10:07:59.207762: Login credentials for user Anna was accepted
+2022-05-31T10:07:59.207762: User Anna was added to the onlineUsers-list
+2022-05-31T10:07:59.207762: The client associated to user Anna was added to the clientMap
+2022-05-31T10:08:36.562717800: A projectID was fetched from the .dat-file
+2022-05-31T10:08:36.562717800: A new projectID was created.
+2022-05-31T10:08:36.562717800: Project #18 Testprojekt was added to the projectMap
+2022-05-31T10:08:36.563714700:  Unable to send project update for project Testprojekt to assignee Max: Not in the clientMap
+2022-05-31T10:08:36.563714700:  Unable to send project update for project Testprojekt to assignee Christian: Not in the clientMap
+2022-05-31T10:08:36.563714700:  Unable to send project update for project Testprojekt to assignee Emma: Not in the clientMap
+2022-05-31T10:08:36.563714700:  Unable to send project update for project Testprojekt to assignee Linnéa: Not in the clientMap
+2022-05-31T10:08:36.563714700: Sending project update for project Testprojekt to user Anna's ClientHandler
+2022-05-31T10:08:36.564711300: The projectMap was written to the .dat-file
+2022-05-31T10:09:40.897039600: User Anna was removed from the onlineUsers-list
+2022-05-31T10:09:51.061490900: A client just connected.
+2022-05-31T10:09:51.061490900: Login credentials for user Anna was accepted
+2022-05-31T10:09:51.061490900: User Anna was added to the onlineUsers-list
+2022-05-31T10:09:51.061490900: The client associated to user Anna was added to the clientMap
+2022-05-31T10:17:23.616224600: User Anna was removed from the onlineUsers-list
