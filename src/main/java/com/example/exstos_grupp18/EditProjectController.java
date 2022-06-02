@@ -130,11 +130,15 @@ public class EditProjectController implements Initializable {
         projectHeaderInputField.setDisable(true);
         projectDescriptionInputField.setDisable(true);
         projectDeadlineDate.setDisable(true);
+        assigneeField.setDisable(true);
+        addButton.setDisable(true);
         if(!project.getAssignedUsers().get(controller.getLoggedInUser())) {
             editProjectButton.setVisible(false);
             editProjectButton.setDisable(true);
             editButton.setVisible(false);
             editButton.setDisable(true);
+            addButton.setVisible(false);
+            addButton.setDisable(true);
         }
         else {
             editProjectButton.setVisible(true);
@@ -149,6 +153,8 @@ public class EditProjectController implements Initializable {
         projectHeaderInputField.setDisable(!projectHeaderInputField.isDisable());
         projectDescriptionInputField.setDisable(!projectDescriptionInputField.isDisable());
         projectDeadlineDate.setDisable(!projectDeadlineDate.isDisabled());
+        addButton.setDisable(!addButton.isDisable());
+        assigneeField.setDisable(!assigneeField.isDisable());
     }
     /**
      * Method for setting the values in the assigneeList.

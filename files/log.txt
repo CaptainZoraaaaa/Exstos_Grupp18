@@ -1,22 +1,13 @@
-2022-06-02T08:56:41.761102707: The userMap was read from the .dat-file
-2022-06-02T08:56:41.773357731: The projectMap was read from the .dat-file
-2022-06-02T08:56:41.774970413: Server is running
-2022-06-02T08:56:54.135239717: A client just connected.
-2022-06-02T08:56:54.136814591: Login credentials for user Anna was accepted
-2022-06-02T08:56:54.137031475: User Anna was added to the onlineUsers-list
-2022-06-02T08:56:54.137216317: The client associated to user Anna was added to the clientMap
-2022-06-02T08:57:51.877935634: User Anna was removed from the onlineUsers-list
-2022-06-02T08:57:59.218686586: A client just connected.
-2022-06-02T08:57:59.219119840: Login credentials for user Anna was accepted
-2022-06-02T08:57:59.219366333: User Anna was added to the onlineUsers-list
-2022-06-02T08:57:59.219586475: The client associated to user Anna was added to the clientMap
-2022-06-02T09:00:03.639622146: User Anna was removed from the onlineUsers-list
-2022-06-02T09:00:11.997339881: A client just connected.
-2022-06-02T09:00:11.997793177: Login credentials for user Anna was accepted
-2022-06-02T09:00:11.998045228: User Anna was added to the onlineUsers-list
-2022-06-02T09:00:11.998286869: The client associated to user Anna was added to the clientMap
-2022-06-02T09:02:06.533397056: User Anna was removed from the onlineUsers-list
-2022-06-02T09:02:27.855980947: A client just connected.
-2022-06-02T09:02:27.856270156: Login credentials for user Anna was accepted
-2022-06-02T09:02:27.856505882: User Anna was added to the onlineUsers-list
-2022-06-02T09:02:27.856726279: The client associated to user Anna was added to the clientMap
+2022-06-02T10:54:44.990205965: The userMap was read from the .dat-file
+2022-06-02T10:54:45.006611375: The projectMap was read from the .dat-file
+2022-06-02T10:54:45.007802604: Server is running
+2022-06-02T10:54:59.241494565: A client just connected.
+2022-06-02T10:54:59.243210940: Login credentials for user Anna was accepted
+2022-06-02T10:54:59.243475117: User Anna was added to the onlineUsers-list
+2022-06-02T10:54:59.243704118: The client associated to user Anna was added to the clientMap
+2022-06-02T10:57:59.052692118: User Anna was removed from the onlineUsers-list
+2022-06-02T10:58:09.381109544: A client just connected.
+2022-06-02T10:58:09.381428007: Login credentials for user Anna was accepted
+2022-06-02T10:58:09.381637771: User Anna was added to the onlineUsers-list
+2022-06-02T10:58:09.381807508: The client associated to user Anna was added to the clientMap
+2022-06-02T10:58:48.022685384: User Anna was removed from the onlineUsers-list
