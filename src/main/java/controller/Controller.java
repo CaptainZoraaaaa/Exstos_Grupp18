@@ -56,7 +56,7 @@ public class Controller {
                 .packageType(DataPackage.NEW_USER_REGISTRATION)
                 .build();
         try {
-            Socket socket = new Socket("192.168.9.78", 8080);
+            Socket socket = new Socket("Localhost", 8080);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(toSend);
             oos.flush();
@@ -125,7 +125,7 @@ public class Controller {
                 .packageType(DataPackage.USER_LOGGED_IN)
                 .build();
         try {
-            socket = new Socket("192.168.9.78", 8080);
+            socket = new Socket("Localhost", 8080);
             ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             oos.writeObject(toSend);
             oos.flush();
@@ -189,42 +189,6 @@ public class Controller {
         client.sendUpdate(toSend);
     }
 
-    public void assignToTask () {
-    }
-
-    public void commentTask () {
-    }
-
-    public void editCommentOnTask () {
-    }
-
-    public void flagForHelp () {
-    }
-
-    public void deFlagHelp () {
-    }
-
-    public void showFlaggedTasks () {
-    }
-
-    public void archiveTasks () {
-    }
-
-    public void deleteTask () {
-    }
-
-    public void retrieveTask () {
-    }
-
-    public void sendTaskDetails () {
-    }
-
-    public void sendProjectDetails () {
-    }
-
-    public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
-    }
-
     public void changeProject(String projectID) {
         for (int i = 0; i < this.projects.size(); i++) {
             if (projectID.equals(projects.get(i).getProjectName())){
@@ -232,9 +196,6 @@ public class Controller {
             }
         }
 
-    }
-
-    public void operation () {
     }
     public synchronized void projectUpdateRecieved(Project project) {
      HashMap <Integer, Project> tempMap = user.getProjects();
