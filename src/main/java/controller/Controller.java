@@ -391,5 +391,6 @@ public class Controller {
 
     public void setLastSwimlanePosition(Swimlane status) {
         activeProject.setNewTaskStatus(currentTaskId, status);
+        currentTaskId = -1;
     }
 }

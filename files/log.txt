@@ -1,45 +1,93 @@
-2022-06-03T10:15:59.845787: The userMap was read from the .dat-file
-2022-06-03T10:15:59.902954: The projectMap was read from the .dat-file
-2022-06-03T10:15:59.909717: Server is running
-2022-06-03T10:16:19.262731: A client just connected.
-2022-06-03T10:16:19.272022: Login credentials for user Christian was not accepted,
-2022-06-03T10:16:25.593076: A client just connected.
-2022-06-03T10:16:25.593856: Login credentials for user Christian was not accepted,
-2022-06-03T10:16:30.494043: A client just connected.
-2022-06-03T10:16:30.497567: User Christian's registration was verified: username is unique
-2022-06-03T10:16:30.500095: Christian was added to the userMap.
-2022-06-03T10:16:30.525893: The userMap was written to the .dat-file
-2022-06-03T10:16:34.609877: A client just connected.
-2022-06-03T10:16:34.610443: Login credentials for user Christian was accepted
-2022-06-03T10:16:34.610726: User Christian was added to the onlineUsers-list
-2022-06-03T10:16:34.610989: The client associated to user Christian was added to the clientMap
-2022-06-03T10:16:53.926734: A projectID was fetched from the .dat-file
-2022-06-03T10:16:53.928731: A new projectID was created.
-2022-06-03T10:16:53.929011: Project #3 header was added to the projectMap
-2022-06-03T10:16:53.952660: Sending project update for project header to user Christian's ClientHandler
-2022-06-03T10:16:53.963187: The projectMap was written to the .dat-file
-2022-06-03T10:17:20.937615: A taskID was fetched from the .dat-file
-2022-06-03T10:17:20.938209: A new taskID was created.
-2022-06-03T10:17:20.938891: Sending project update for project header to user Christian's ClientHandler
-2022-06-03T10:17:20.942979: The projectMap was written to the .dat-file
-2022-06-03T10:20:39.956456: A client just connected.
-2022-06-03T10:20:40.025101: Login credentials for user Christian was accepted
-2022-06-03T10:20:40.026026: User Christian was added to the onlineUsers-list
-2022-06-03T10:20:40.026295: The clientMap already contains a user with the username Christian
-2022-06-03T10:29:29.224533: A client just connected.
-2022-06-03T10:29:29.237316: Login credentials for user Christian was accepted
-2022-06-03T10:29:29.238264: User Christian was added to the onlineUsers-list
-2022-06-03T10:29:29.238534: The clientMap already contains a user with the username Christian
-2022-06-03T10:31:31.188296: A client just connected.
-2022-06-03T10:31:31.197787: Login credentials for user Christian was accepted
-2022-06-03T10:31:31.198102: User Christian was added to the onlineUsers-list
-2022-06-03T10:31:31.198362: The clientMap already contains a user with the username Christian
-2022-06-03T10:46:21.892111: A client just connected.
-2022-06-03T10:46:21.920876: Login credentials for user Christian was accepted
-2022-06-03T10:46:21.924301: User Christian was added to the onlineUsers-list
-2022-06-03T10:46:21.924616: The clientMap already contains a user with the username Christian
-2022-06-03T10:50:21.411982: A client just connected.
-2022-06-03T10:50:21.427837: Login credentials for user Christian was accepted
-2022-06-03T10:50:21.428208: User Christian was added to the onlineUsers-list
-2022-06-03T10:50:21.428424: The clientMap already contains a user with the username Christian
-2022-06-03T10:50:38.844692: User Christian was removed from the onlineUsers-list
+2022-06-03T11:16:16.844629: The userMap was read from the .dat-file
+2022-06-03T11:16:16.845574: The projectMap was read from the .dat-file
+2022-06-03T11:16:16.849869: Server is running
+2022-06-03T11:16:40.136086: A client just connected.
+2022-06-03T11:16:40.176894: User Christian's registration was verified: username is unique
+2022-06-03T11:16:40.177625: Christian was added to the userMap.
+2022-06-03T11:16:40.188785: The userMap was written to the .dat-file
+2022-06-03T11:16:46.994345: A client just connected.
+2022-06-03T11:16:46.995144: Login credentials for user Christian was accepted
+2022-06-03T11:16:46.995349: User Christian was added to the onlineUsers-list
+2022-06-03T11:16:46.995508: The client associated to user Christian was added to the clientMap
+2022-06-03T11:17:09.557595: A projectID was fetched from the .dat-file
+2022-06-03T11:17:09.559396: A new projectID was created.
+2022-06-03T11:17:09.559602: Project #1 TestDragAndDrop was added to the projectMap
+2022-06-03T11:17:09.559840:  Unable to send project update for project TestDragAndDrop to assignee : Not in the clientMap
+2022-06-03T11:17:09.583652: Sending project update for project TestDragAndDrop to user Christian's ClientHandler
+2022-06-03T11:17:09.593683: The projectMap was written to the .dat-file
+2022-06-03T11:17:39.392161: A taskID was fetched from the .dat-file
+2022-06-03T11:17:39.394038: A new taskID was created.
+2022-06-03T11:17:39.395140:  Unable to send project update for project TestDragAndDrop to assignee : Not in the clientMap
+2022-06-03T11:17:39.395352: Sending project update for project TestDragAndDrop to user Christian's ClientHandler
+2022-06-03T11:17:39.399480: The projectMap was written to the .dat-file
+2022-06-03T11:19:49.171239: A client just connected.
+2022-06-03T11:19:49.191803: Login credentials for user Christian was accepted
+2022-06-03T11:19:49.192259: User Christian was added to the onlineUsers-list
+2022-06-03T11:19:49.192593: The clientMap already contains a user with the username Christian
+2022-06-03T11:21:34.034122: A client just connected.
+2022-06-03T11:21:34.041513: Login credentials for user Christian was accepted
+2022-06-03T11:21:34.041796: User Christian was added to the onlineUsers-list
+2022-06-03T11:21:34.042064: The clientMap already contains a user with the username Christian
+2022-06-03T11:23:50.566097: A client just connected.
+2022-06-03T11:23:50.570365: Login credentials for user Christian was accepted
+2022-06-03T11:23:50.570707: User Christian was added to the onlineUsers-list
+2022-06-03T11:23:50.571070: The clientMap already contains a user with the username Christian
+2022-06-03T11:26:34.765329: A client just connected.
+2022-06-03T11:26:34.766468: Login credentials for user Christian was accepted
+2022-06-03T11:26:34.766722: User Christian was added to the onlineUsers-list
+2022-06-03T11:26:34.766897: The clientMap already contains a user with the username Christian
+2022-06-03T11:27:53.003350: A taskID was fetched from the .dat-file
+2022-06-03T11:27:53.006470: A new taskID was created.
+2022-06-03T11:27:53.006992:  Unable to send project update for project TestDragAndDrop to assignee : Not in the clientMap
+2022-06-03T11:27:53.008162: Sending project update for project TestDragAndDrop to user Christian's ClientHandler
+2022-06-03T11:27:53.087121: The projectMap was written to the .dat-file
+2022-06-03T11:28:14.863049: A taskID was fetched from the .dat-file
+2022-06-03T11:28:14.864835: A new taskID was created.
+2022-06-03T11:28:14.869120:  Unable to send project update for project TestDragAndDrop to assignee : Not in the clientMap
+2022-06-03T11:28:14.870319: Sending project update for project TestDragAndDrop to user Christian's ClientHandler
+2022-06-03T11:28:14.881522: The projectMap was written to the .dat-file
+2022-06-03T11:28:48.042676: A taskID was fetched from the .dat-file
+2022-06-03T11:28:48.045334: A new taskID was created.
+2022-06-03T11:28:48.045986:  Unable to send project update for project TestDragAndDrop to assignee : Not in the clientMap
+2022-06-03T11:28:48.046392: Sending project update for project TestDragAndDrop to user Christian's ClientHandler
+2022-06-03T11:28:48.048819: The projectMap was written to the .dat-file
+2022-06-03T11:28:59.413217: User Christian was removed from the onlineUsers-list
+2022-06-03T11:29:32.380950: A client just connected.
+2022-06-03T11:29:32.383615: Login credentials for user Christian was accepted
+2022-06-03T11:29:32.384935: User Christian was added to the onlineUsers-list
+2022-06-03T11:29:32.385288: The client associated to user Christian was added to the clientMap
+2022-06-03T11:32:09.479820: A projectID was fetched from the .dat-file
+2022-06-03T11:32:09.485864: A new projectID was created.
+2022-06-03T11:32:09.487498: Project #2 TestDragAndDrop2 was added to the projectMap
+2022-06-03T11:32:09.487817:  Unable to send project update for project TestDragAndDrop2 to assignee : Not in the clientMap
+2022-06-03T11:32:09.488265: Sending project update for project TestDragAndDrop2 to user Christian's ClientHandler
+2022-06-03T11:32:09.491879: The projectMap was written to the .dat-file
+2022-06-03T11:32:30.764330: A taskID was fetched from the .dat-file
+2022-06-03T11:32:30.766995: A new taskID was created.
+2022-06-03T11:32:30.782282:  Unable to send project update for project TestDragAndDrop2 to assignee : Not in the clientMap
+2022-06-03T11:32:30.783057: Sending project update for project TestDragAndDrop2 to user Christian's ClientHandler
+2022-06-03T11:32:30.862194: The projectMap was written to the .dat-file
+2022-06-03T11:32:42.467897: A taskID was fetched from the .dat-file
+2022-06-03T11:32:42.474073: A new taskID was created.
+2022-06-03T11:32:42.475129:  Unable to send project update for project TestDragAndDrop2 to assignee : Not in the clientMap
+2022-06-03T11:32:42.476740: Sending project update for project TestDragAndDrop2 to user Christian's ClientHandler
+2022-06-03T11:32:42.504227: The projectMap was written to the .dat-file
+2022-06-03T11:32:56.519861: A taskID was fetched from the .dat-file
+2022-06-03T11:32:56.521077: A new taskID was created.
+2022-06-03T11:32:56.521781:  Unable to send project update for project TestDragAndDrop2 to assignee : Not in the clientMap
+2022-06-03T11:32:56.522226: Sending project update for project TestDragAndDrop2 to user Christian's ClientHandler
+2022-06-03T11:32:56.530324: The projectMap was written to the .dat-file
+2022-06-03T11:33:05.700830: A taskID was fetched from the .dat-file
+2022-06-03T11:33:05.701601: A new taskID was created.
+2022-06-03T11:33:05.702140:  Unable to send project update for project TestDragAndDrop2 to assignee : Not in the clientMap
+2022-06-03T11:33:05.705023: Sending project update for project TestDragAndDrop2 to user Christian's ClientHandler
+2022-06-03T11:33:05.779897: The projectMap was written to the .dat-file
+2022-06-03T11:39:37.071263: A client just connected.
+2022-06-03T11:39:37.096194: Login credentials for user Christian was accepted
+2022-06-03T11:39:37.120240: User Christian was added to the onlineUsers-list
+2022-06-03T11:39:37.138293: The clientMap already contains a user with the username Christian
+2022-06-03T11:41:37.647629: A client just connected.
+2022-06-03T11:41:37.656239: Login credentials for user Christian was accepted
+2022-06-03T11:41:37.656509: User Christian was added to the onlineUsers-list
+2022-06-03T11:41:37.656909: The clientMap already contains a user with the username Christian
+2022-06-03T11:41:48.410853: User Christian was removed from the onlineUsers-list

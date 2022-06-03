@@ -150,7 +150,6 @@ public class KanbanViewController implements Initializable {
      */
     @FXML
     void taskReleased(MouseEvent event){
-        event.getSource();
         System.out.println(event.getSource());
         switch (event.getSource().toString()){
             case "VBox[id=backlogList]" -> controller.setLastSwimlanePosition(Swimlane.Backlog);
