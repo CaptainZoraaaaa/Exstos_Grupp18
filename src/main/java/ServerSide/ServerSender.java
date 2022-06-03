@@ -37,10 +37,6 @@ public class ServerSender extends Thread{
         while (!socket.isClosed()){
             try {
                 DataPackage dataPackage = (DataPackage) serverBuffer.get();
-                if(dataPackage.getPackageType() == DataPackage.PROJECT_UPDATE) {
-                    System.out.println(dataPackage.getProject().getTasks().size() + " TASK SIZE IN SERVERSENDER");
-                    dataPackage.setTestString("PACKAGE FROM SERVER");
-                }
                 oos.writeObject(dataPackage);//write latest object added in ServerBuffer
                 oos.flush();
             } catch (IOException | InterruptedException e) {

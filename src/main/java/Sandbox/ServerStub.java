@@ -1,6 +1,16 @@
-package Model;
+package Sandbox;
+
+import Model.User;
+import Model.UserManager;
 
 import java.util.ArrayList;
+
+/**
+ * THIS CLASS IS DEPRECATED AND IS NOT USED IN THE PRODUCT.
+ * WE CHOSE TO KEEP THE CLASSES WE DO NOT USE FOR THEIR VALUE
+ * AS ARTEFACTS.
+ * THEREFORE, THIS CLASS IS NOT INCLUDED IN THE CLASS DIAGRAM
+ */
 
 /**
  * @author Anna Håkansson

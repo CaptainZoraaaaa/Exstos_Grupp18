@@ -1,12 +1,8 @@
 package com.example.exstos_grupp18;
 
 
-import Sandbox.TestController;
 import controller.Controller;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,16 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
-import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,15 +32,11 @@ public class NewProjectController implements Initializable {
     @FXML
     private TextField creatorField;
     @FXML
-    private ChoiceBox<String> assigneeList;
-    @FXML
     private DatePicker projectDeadlineDate;
     @FXML
     private TextArea projectDescriptionInputField;
     @FXML
     private TextField projectHeaderInputField;
-    @FXML
-    private Button createNewProjectButton;
     @FXML
     private ImageView questionMarkImage;
     @FXML
@@ -59,8 +46,6 @@ public class NewProjectController implements Initializable {
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
-    private TestController testController = new TestController();
-    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"}; //todo temporärt
     private String currentUser;
     private Stage stage;
     private Scene scene;
@@ -183,14 +168,6 @@ public class NewProjectController implements Initializable {
         assigneeHBox.getChildren().add(label);
 
     }
-
-    /**
-     * This method is used to set a user from the ChoiceBox.
-     * @param event event
-     */
-    public void setUsers(ActionEvent event){
-        currentUser = assigneeList.getValue();
-    } //TODO Se om det går att ändra till multiple choice.
 
     /**
      *This method sets the creator field to who is currently logged in.

@@ -52,7 +52,6 @@ public class NewTaskController implements Initializable {
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
     private ArrayList<String> userList = new ArrayList<>();
-    private String[] users = {"Anna", "Christian", "Emma", "Linnéa", "Max"};
     private String currentUser;
     private boolean flagged;
     private Swimlane[] status = {Swimlane.Backlog, Swimlane.InProgress, Swimlane.Waiting, Swimlane.Done};
@@ -164,7 +163,7 @@ public class NewTaskController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       assigneeList.getItems().addAll(users); ///This is used to att all indexes from an array to the ChoiceBox /// TODO: 2022-05-20 Denna ska istället hämta från project-medlemmar.
+      // assigneeList.getItems().addAll(users); ///This is used to att all indexes from an array to the ChoiceBox /// TODO: 2022-05-20 Denna ska istället hämta från project-medlemmar.
        assigneeList.setOnAction(this::setUsers); // this is used to select a user from the Choice
        statusList.getItems().addAll(status); //This is used to att all indexes from an array to the ChoiceBox
        statusList.setOnAction(this::setStatus); // this is used to select a user from the Choice
