@@ -32,7 +32,6 @@ import java.util.ResourceBundle;
 
 /**
  * This class is used to set up the scene Home Page.
- *
  * @author Christian Edvall & Emma Mörk.
  * @version 2022-05-10.
  */
@@ -61,7 +60,6 @@ public class HomePageController implements Initializable {
 
     /**
      * This method is used to change the project you're working in by changing the project name.
-     *
      * @param event an actionevent when clicking on a project in the project menu for selecting projects.
      */
     @FXML
@@ -157,17 +155,6 @@ public class HomePageController implements Initializable {
     }
 
     /**
-     * This method is used to change the scene to edit a project.
-     *
-     * @param actionEvent an actionevent that displays the scene EditProject when clicked.
-     * @throws IOException Input/output-exception.
-     */
-    @FXML
-    void editProjectPressed(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, "EditProject.fxml");
-    }
-
-    /**
      * This method is a template for changing a scene, it can be called upon by any methods and ca change to whatever
      * scene is specified.
      *
@@ -186,8 +173,7 @@ public class HomePageController implements Initializable {
     /**
      * This method is used to initialize the scene, by doing so the scene can come pre-loaded with user information
      * such as: who the logged in user is, what tasks they're assigned and what projects they are members of.
-     *
-     * @param url            is a url
+     * @param url is a url
      * @param resourceBundle is a resourcebundle.
      */
     @Override

@@ -25,7 +25,6 @@ import java.util.ResourceBundle;
 /**
  * This class is used to display the GUI for creating a new task.
  * @author Christian Edvall
- * todo: implementera back to previous screen och kommentera
  */
 public class NewTaskController implements Initializable {
 

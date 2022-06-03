@@ -1,5 +1,6 @@
-package com.example.exstos_grupp18;
+package Sandbox;
 
+import com.example.exstos_grupp18.Main;
 import controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class TestMain2 extends Application {
+public class TestMain1 extends Application {
     private static Main main = new Main(); //todo ta bort när vi har ändrat
     private static Stage stg;
 
@@ -31,6 +32,7 @@ public class TestMain2 extends Application {
         controller.logOut();
         super.stop();
     }
+
     public static void main(String[] args) {
         launch();
     }

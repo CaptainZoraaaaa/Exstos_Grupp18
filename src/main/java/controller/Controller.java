@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * //// TODO: 2022-06-03 beskriving. 
  * @author Max Tiderman & Anna Håkansson
  */
 public class Controller {
@@ -29,7 +30,7 @@ public class Controller {
     public static Controller getInstance(){
         return controller;
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public void editProject(String header, String description, LocalDate deadline, ArrayList<String> assignees, String creator) {
         activeProject.setProjectName(header);
         activeProject.setDescription(description);
@@ -45,7 +46,7 @@ public class Controller {
                 .build();
         client.sendUpdate(dataPackage);
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public boolean registerOnServer(String username, String password) {
         boolean OK = false;
         User user = user = new UserManager().createNewUser(username, password, null);
@@ -73,7 +74,7 @@ public class Controller {
         }
         return OK;
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public boolean logIn (String username, String password) {
         boolean OK = false;
         Socket socket;
@@ -126,7 +127,7 @@ public class Controller {
         client.sendUpdate(logOutDataPackage);
         client.disconnect();
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public void createTask(Model.Task task) {
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
@@ -136,7 +137,7 @@ public class Controller {
         client.sendUpdate(toSend);
 
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public void taskEdited (Model.Task task) {
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
@@ -145,7 +146,7 @@ public class Controller {
                 .build();
         client.sendUpdate(toSend);
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public void changeProject (String projectID) {
         for (int i = 0; i < this.projects.size(); i++) {
             if (projectID.equals(projects.get(i).getProjectName())){
@@ -153,7 +154,7 @@ public class Controller {
             }
         }
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public void createNewProject(String header, String description, LocalDate deadline, ArrayList<String> assigneeList, String creator) {
         HashMap<String, Boolean> assignees = new HashMap<>();
         for (String user : assigneeList) {
@@ -184,11 +185,7 @@ public class Controller {
     public int getTaskSize(){
         return activeProject.getTaskListSize();
     }
-
-    public void setUpConnection() {
-
-    }
-
+    //// TODO: 2022-06-03 javadoc.
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
@@ -199,9 +196,7 @@ public class Controller {
                 break;
         }
     }
-
-
-
+    //// TODO: 2022-06-03 javadoc.
     private void projectUpdate(Project project, Model.Task[] tasks) {
         System.out.println("project update in controller");
         boolean projectInList = false;
@@ -239,7 +234,7 @@ public class Controller {
     public ArrayList<Project> getAllProject() {
         return projects;
     }
-
+    //// TODO: 2022-06-03 javado eller ta bort?
     public ArrayList<String> getAllUsersInProject(String projectName) {
         ArrayList<String> projectUserList = new ArrayList<>();
         for (int i = 0; i < projects.size(); i++) {
@@ -254,11 +249,15 @@ public class Controller {
         return activeProject;
     }
 
-
     public void setCurrenTaskID(int taskId) {
         this.currentTaskId = taskId;
     }
 
+    /**
+     * This methdo sets the latest position of a task in a swimlane, the position is determined on where the task
+     * is dropped.
+     * @param status Enum swimlane-type.
+     */
     public void setLastSwimlanePosition(Swimlane status) {
         Model.Task task = activeProject.setNewTaskStatus(currentTaskId, status);
         System.out.println(task.getHeader());

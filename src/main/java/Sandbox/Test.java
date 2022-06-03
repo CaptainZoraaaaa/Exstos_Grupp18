@@ -1,4 +1,4 @@
-package com.example.exstos_grupp18;
+package Sandbox;
 
 import Model.User;
 import Model.UserManager;

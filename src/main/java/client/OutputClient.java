@@ -15,7 +15,7 @@ public class OutputClient {
     public OutputClient(ObjectOutputStream oos) {
         this.oos = oos;
     }
-
+    //// TODO: 2022-06-03 javadoc.
     public void send(DataPackage message) {
         try {
             this.oos.writeObject(message);

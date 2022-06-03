@@ -29,7 +29,7 @@ public class InputClient extends Thread{
     public void setRunning(boolean running) {
         this.running = running;
     }
-
+    //// TODO: 2022-06-03 Javadoc.
     @Override
     public void run() {
         while (running) {

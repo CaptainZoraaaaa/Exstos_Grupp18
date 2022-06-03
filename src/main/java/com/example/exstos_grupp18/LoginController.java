@@ -18,8 +18,8 @@ import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-//TODO ändra guit
 /**
+ * //todo beskrivning.
  * @author Max Tiderman & Anna Håkansson
  */
 public class LoginController {

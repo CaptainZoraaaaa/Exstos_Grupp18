@@ -12,15 +12,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
+ * Controller for EditTask.fxml.
  * @author Christian Edvall
  */
 public class EditTaskController implements Initializable {
@@ -71,8 +70,7 @@ public class EditTaskController implements Initializable {
 
     /**
      * Method for saving changes in a task, at the moment this is connected to the TestController.
-     *
-     * @param event
+     * @param event ActionEvent.
      */
     @FXML
     void saveChanges(ActionEvent event) throws IOException {
@@ -112,7 +110,7 @@ public class EditTaskController implements Initializable {
             flagged = false;
         }
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     @FXML
     void setTaskToEditable(ActionEvent event) {
         taskHeaderInputField.setEditable(true);
@@ -123,7 +121,7 @@ public class EditTaskController implements Initializable {
         taskCommentInputField.setEditable(true);
         helpBox.setDisable(false);
     }
-
+    //// TODO: 2022-06-03 javadoc 
     @FXML
     void chooseDate(ActionEvent event) {
         deadline = taskDeadlineDate.getValue();
@@ -159,7 +157,7 @@ public class EditTaskController implements Initializable {
     public void setStatus(ActionEvent event) {
         selectedStatus = statusList.getValue();
     }
-
+    //// TODO: 2022-06-03 Javadoc
     public void loadedTask(Task task) {
         this.currentTask = task;
         taskHeaderInputField.setText(task.getHeader());

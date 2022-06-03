@@ -24,7 +24,7 @@ public class Client {
     private OutputClient outputClient;
 
     /**
-     * This is the construktor and prepares the connecion to the server
+     * This is the constructor and prepares the connecion to the server
      * @param user - What user just logged in
      * @param ip - ip for the server
      * @param port - port to communicate through
@@ -51,11 +51,7 @@ public class Client {
      */
     public void connect () {
         try {
-         //   this.socket = new Socket(ip, port);
-          //  this.oos = new ObjectOutputStream(socket.getOutputStream());
-           // this.ois = new ObjectInputStream(socket.getInputStream());
             new ThreadHandler(this).start();
-         //   new InputClient().start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,13 +78,13 @@ public class Client {
         outputClient.send(message);
         System.out.println("sending update");
     }
-
+    //// TODO: 2022-06-03 Javadoc. 
     private class ThreadHandler extends Thread{
         private Client client;
         public ThreadHandler(Client client){
             this.client = client;
         }
-
+        //// TODO: 2022-06-03 Javadoc.
         @Override
         public void run() {
             outputClient = new OutputClient(oos);

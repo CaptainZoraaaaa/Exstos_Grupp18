@@ -12,12 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,11 +24,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
- * @author Anna Håkansson
- *
- * last update 05-05-22
- *
  * Controller for the Kanban view.
+ * @author Anna Håkansson
  */
 public class KanbanViewController implements Initializable {
     private Stage stage;
@@ -126,6 +121,7 @@ public class KanbanViewController implements Initializable {
             case "VBox[id=doneList]" ->  controller.setLastSwimlanePosition(Swimlane.Done);
         }
     }
+    //// TODO: 2022-06-03 javadoc. 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
@@ -199,6 +195,7 @@ public class KanbanViewController implements Initializable {
     public void newTask(ActionEvent event) throws IOException {
         this.newTaskPopOver();
     }
+    //// TODO: 2022-06-03 javadoc. 
     @FXML
     void editProject(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditProject.fxml"));
@@ -207,9 +204,11 @@ public class KanbanViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+    //// TODO: 2022-06-03 javadoc. 
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
+    //// TODO: 2022-06-03 javadoc. 
     @FXML
     void newTaskPopOver(){
         if(popOver == null || !popOver.isShowing()){
@@ -230,12 +229,12 @@ public class KanbanViewController implements Initializable {
             }
         }
     }
+    //// TODO: 2022-06-03 javadoc. 
     @FXML
     void hideNewTaskPopOver(){
         popOver.hide();
     }
-
-
+    //// TODO: 2022-06-03 javadoc.
     @FXML
     public void logOut(ActionEvent event) throws IOException {
         controller.logOut();
@@ -245,6 +244,5 @@ public class KanbanViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setScene(scene);
-
     }
 }

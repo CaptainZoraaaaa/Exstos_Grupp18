@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
+ * Controller for EditProject.fxml
  * @author Christian Edvall & Anna Håkansson
  */
 public class EditProjectController implements Initializable {
@@ -147,7 +148,7 @@ public class EditProjectController implements Initializable {
             editButton.setDisable(false);
         }
     }
-
+    //// TODO: 2022-06-03 javadoc.
     @FXML
     void unlockFields(ActionEvent event) {
         projectHeaderInputField.setDisable(!projectHeaderInputField.isDisable());
@@ -162,7 +163,8 @@ public class EditProjectController implements Initializable {
      */
     private void setUsers(ActionEvent event) {
 
-    } //TODO kolla om det går att ändra till multiple choise
+    }
+    //// TODO: 2022-06-03 javadoc.
     public void changeScene(Event event, String newScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
         root = fxmlLoader.load();
@@ -170,6 +172,7 @@ public class EditProjectController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+    //// TODO: 2022-06-03 Javadoc. 
     @FXML
     public void addUserToAssignees(ActionEvent event) {
         String assignee = assigneeField.getText();

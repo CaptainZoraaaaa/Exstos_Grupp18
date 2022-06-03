@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
+ * //// TODO: 2022-06-03 beskrivning. 
  * @author Max Tiderman
  */
 public class TaskController extends Thread implements Initializable {

@@ -4,9 +4,7 @@ package com.example.exstos_grupp18;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,7 +14,6 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.controlsfx.control.PopOver;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -158,7 +155,7 @@ public class NewProjectController implements Initializable {
         Tooltip tooltip = new Tooltip("Write the username of the requested assignee and press 'Add'.\n You can then add another user the same way. Make sure to spell the username right!");
         Tooltip.install(questionMarkImage, tooltip);
     }
-
+    //// TODO: 2022-06-03 Javadoc. 
     @FXML
     public void addUserToAssignees(ActionEvent event) {
         String assignee = assigneeField.getText();

@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.*;
 
 /**
+ * //// TODO: 2022-06-03 Beskrivning. 
  * @author Max Tiderman
  */
 public class NewUserController {
@@ -29,7 +30,7 @@ public class NewUserController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    //// TODO: 2022-06-03 javadoc. 
     @FXML
     public void newRegistration(ActionEvent event) throws IOException {
         String username = usernameField.getText();
@@ -44,6 +45,7 @@ public class NewUserController {
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
+                //// TODO: 2022-06-03 popup för lyckad försök. 
             }
             else {
                 System.out.println(">> Registration failed <<"); //TODO implementera felmeddelanden

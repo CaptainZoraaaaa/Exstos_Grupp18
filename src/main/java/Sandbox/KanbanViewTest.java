@@ -1,8 +1,8 @@
-package com.example.exstos_grupp18;
+package Sandbox;
 
 import Model.Task;
 import Model.TaskManager;
-import Model.User;
+import com.example.exstos_grupp18.Main;
 import controller.KanbanViewControllerArchived;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
