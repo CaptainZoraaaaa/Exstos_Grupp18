@@ -186,9 +186,18 @@ public class NewTaskController implements Initializable {
         currentUser = assigneeList.getValue();
     }
 
+    /**
+     * this method sets the different users to choose from in the project.
+     * @param usernameLabel a username.
+     */
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
     }
+
+    /**
+     * This is a wip, the idea is to use this method to set new users to a projects list, instead of the static ones.
+     * @param userList an ArrayList of users.
+     */
     public void setUserList(ArrayList userList){
         this.userList = userList;
     }
@@ -201,6 +210,12 @@ public class NewTaskController implements Initializable {
     public void setKanbanViewController(KanbanViewController kanbanViewController){
         this.kanbanViewController = kanbanViewController;
     }
+
+    /**
+     * This method is used by KanbanViewController to send the popover to NewTaskController so that NewTaskController
+     * can close the popover when done.
+     * @param popOver a popover.
+     */
     public void setPopOver(PopOver popOver){
         this.popOver = popOver;
     }
