@@ -37,7 +37,6 @@ public class DataPackage implements Serializable {
     private String password;
     private User userFromServer;
     private ArrayList<Project> projectList;
-    private String testString;
     private Task[] tasks;
 
     public User getSender() {
@@ -108,14 +107,6 @@ public class DataPackage implements Serializable {
         this.projectList = projectList;
     }
 
-    public String getTestString() {
-        return testString;
-    }
-
-    public void setTestString(String testString) {
-        this.testString = testString;
-    }
-
     public Task[] getTasks() {
         return tasks;
     }
@@ -182,6 +173,11 @@ public class DataPackage implements Serializable {
             return this;
         }
 
+        /**
+         * @author Anna Håkansson
+         * @param projectList
+         * @return
+         */
         public PackageBuilder projectList(ArrayList<Project> projectList) {
             aDataPackage.setProjectList(projectList);
             return this;
@@ -209,6 +205,11 @@ public class DataPackage implements Serializable {
             return this;
         }
 
+        /**
+         * @author Anna Håkansson
+         * @param tasks
+         * @return
+         */
         public PackageBuilder taskList(Task[] tasks){
             aDataPackage.setTasks(tasks);
             return this;

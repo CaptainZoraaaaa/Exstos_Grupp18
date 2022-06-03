@@ -20,8 +20,6 @@ public class Project implements Serializable {
     private ArrayList<Task> taskList = new ArrayList<>();
     private ProjectManager projectManager;
     private int projectID;
-    private int maxTasksInProgress; //// TODO: 2022-05-20  Ta bort? 
-    private int maxTasksWaiting; //// TODO: 2022-05-20 Ta bort?
 
 
     public String getProjectName() {
@@ -56,14 +54,6 @@ public class Project implements Serializable {
         this.assignedUsers = assignedUsers;
     }
 
-    public ProjectManager getProjectManager() {
-        return projectManager;
-    }
-
-    public void setProjectManager(ProjectManager projectManager) {
-        this.projectManager = projectManager;
-    }
-
     public void setName(String newName) { /// TODO: 2022-05-20 Kolla med Emma om denna ska användas?
 
     }
@@ -72,17 +62,8 @@ public class Project implements Serializable {
         return assignedUsers;
     }
 
-    //TODO lägg till i assigned users
-    public void setAssignedUsers(HashMap<String, Boolean> assignees) {
-
-    }
-
     public int getProjectID() {
         return projectID;
-    }
-
-    public void addNewTask(Task task) {
-        taskList.add(task);
     }
 
     public ArrayList<Task> getTasks() {

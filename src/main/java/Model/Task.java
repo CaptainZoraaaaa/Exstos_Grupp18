@@ -16,7 +16,6 @@ public class Task implements Serializable {
     private LocalDate deadline;
     private Swimlane currentStatus;
     private ArrayList<String> assignees = new ArrayList<>();
-    private ArrayList<Task> dependencies = new ArrayList<>();
     private boolean flaggedForHelp;
     private String creator;
     private LinkedList<String> comments = new LinkedList<>();
@@ -60,15 +59,6 @@ public class Task implements Serializable {
 
     public void setAssignees(String assignee) {
         assignees.add(assignee);
-    }
-
-    //todo ta bort metod alternativt implementera funktionalitet
-    public ArrayList<Task> getDependencies() {
-        return dependencies;
-    }
-
-    public void setDependencies(ArrayList<Task> dependencies) {
-        this.dependencies = dependencies;
     }
 
     public boolean isFlaggedForHelp() {
@@ -184,17 +174,6 @@ public class Task implements Serializable {
          */
         public TaskBuilder assignee(String assignee) {
             task.setAssignees(assignee);
-            return this;
-        }
-
-        /**
-         * This method adds what tasks the task created are dependent on.
-         *
-         * @param dependency Is an ArrayList of tasks.
-         * @return The method returns itself.
-         */
-        public TaskBuilder dependency(ArrayList<Task> dependency) {
-            task.setDependencies(dependency);
             return this;
         }
 

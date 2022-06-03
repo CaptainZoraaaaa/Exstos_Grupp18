@@ -1,6 +1,12 @@
 package com.example.exstos_grupp18;
 
-import client.Client;
+/**
+ * THIS CLASS IS DEPRECATED AND IS NOT USED IN THE PRODUCT.
+ * WE CHOSE TO KEEP THE CLASSES WE DO NOT USE FOR THEIR VALUE
+ * AS ARTEFACTS.
+ * THEREFORE, THIS CLASS IS NOT INCLUDED IN THE CLASS DIAGRAM
+ */
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

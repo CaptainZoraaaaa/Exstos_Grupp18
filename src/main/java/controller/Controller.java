@@ -3,7 +3,6 @@ package controller;
 import Model.*;
 import Model.DataPackage;
 import client.Client;
-import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
 import java.io.*;
@@ -16,29 +15,16 @@ import java.util.HashMap;
  * @author Max Tiderman & Anna Håkansson
  */
 public class Controller {
-    private Task task;
     private User user;
     private Client client;
     private ArrayList<Project> projects = new ArrayList<>();
     private Project activeProject = null;
-    private TaskManager taskManager;
-    private UserManager userManager = new UserManager();
-    private ProjectManager projectManager;
     private static Controller controller = new Controller();
-
     private String loggedInUser;
 
-    public Controller() {
-       // client = new Client(null, "localhost", 8080);
-    }
 
     public static Controller getInstance(){
         return controller;
-    }
-
-    public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
-        Project project = projectManager.createProject(name, description, deadline, userAdmin);
-        projects.add(project);
     }
 
     public void editProject(String header, String description, LocalDate deadline, ArrayList<String> assignees, String creator) {
@@ -85,45 +71,6 @@ public class Controller {
         return OK;
     }
 
-    public void listProjects () {
-
-    }
-
-    /**
-     * @param username the chosen username
-     * @param password the chosen password
-     * @param profilePicture
-     */
-    public boolean registerNewUser (String username, String password, Image profilePicture) {
-        if(username != null && password != null ) {
-            user = userManager.createNewUser(username, password, profilePicture);
-            DataPackage toSend = new DataPackage.PackageBuilder()
-                    .sender(user)
-                    .packageType(DataPackage.NEW_USER_REGISTRATION)
-                    .build();
-
-        }
-        else {
-            return false;
-        }
-        //todo felmeddelande annars? ÄNDRADE TILL BOOLEAN
-        return false;
-    }
-
-    public boolean checkUsername (String username) { //todo ändrat parametrar
-
-       // clientBuffer.put();
-        return false;
-    }
-
-    public void displayMyPages () {
-    }
-
-    public void displayCalender () {
-    }
-    public boolean logInTest (String username, String password) {
-        return true;
-    }
     public boolean logIn (String username, String password) {
         boolean OK = false;
         Socket socket;
@@ -178,13 +125,11 @@ public class Controller {
     }
 
     public void createTask(Model.Task task) {
-        //activeProject.addNewTask(task);
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
                 .project(activeProject)
                 .packageType(DataPackage.NEW_TASK)
                 .build();
-        toSend.setTestString("create task");
         client.sendUpdate(toSend);
 
     }
@@ -198,78 +143,12 @@ public class Controller {
         client.sendUpdate(toSend);
     }
 
-    public void assignToTask () {
-    }
-
-    public void commentTask () {
-    }
-
-    public void editCommentOnTask () {
-    }
-
-    public void flagForHelp () {
-    }
-
-    public void deFlagHelp () {
-    }
-
-    public void showFlaggedTasks () {
-    }
-
-    public void archiveTasks () {
-    }
-
-    public void deleteTask () {
-    }
-
-    public void retrieveTask () {
-    }
-
-    public void sendTaskDetails () {
-    }
-
-    public void sendProjectDetails () {
-    }
-
-    public void changeSwimlaneTaskLimit (Swimlane swimlane, Task task) {
-    }
-
     public void changeProject (String projectID) {
         for (int i = 0; i < this.projects.size(); i++) {
             if (projectID.equals(projects.get(i).getProjectName())){
                 activeProject = projects.get(i);
             }
         }
-    }
-
-    public void operation () {
-    }
-    public synchronized void projectUpdateRecieved(Project project) {
-     HashMap <Integer, Project> tempMap = user.getProjects();
-     if(tempMap.containsKey(project.getProjectID())) {
-         tempMap.replace(project.getProjectID(), project);
-         user.setProjects(tempMap);
-     }
-     if(project.getProjectID() == this.activeProject.getProjectID()) {
-         this.activeProject = project;
-     }
-    }
-
-    public void sendProjectUpdate(Project project) {
-        DataPackage toSend = new DataPackage.PackageBuilder()
-                .project(project)
-                .packageType(DataPackage.PROJECT_EDITED)
-                .build();
-    }
-
-    public void newClient() {
-        try {
-            Thread.sleep(1000);
-            this.client = new Client(null,null,8080);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public void createNewProject(String header, String description, LocalDate deadline, ArrayList<String> assigneeList, String creator) {
@@ -295,13 +174,6 @@ public class Controller {
             this.activeProject = project;
         }
     }
-    public void setCurrentTask(String projectName){
-        for (Project customer : projects) {
-            if (customer.getProjectName().equals(projectName)) {
-                this.activeProject = customer;
-            }
-        }
-    }
 
     public ArrayList<Model.Task> getTask(){
          return activeProject.getTasks();
@@ -317,9 +189,6 @@ public class Controller {
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
-                projectUpdate(message.getProject(), message.getTasks());
-                System.out.println(message.getTestString());
-                projectUpdate(message.getProject(), message.getTasks());
                 projectUpdate(message.getProject(), message.getTasks());
                 break;
             case DataPackage.PROJECT_REMOVED:
@@ -381,6 +250,5 @@ public class Controller {
     public Project getActiveProject() {
         return activeProject;
     }
-
 
 }
