@@ -1,4 +1,5 @@
 # Exstos_Grupp18
+# Skapare: Anna Håkansson, Christian Edvall, Emma Mörk, Linnéa Flystam & Max Tiderman
 Git: https://github.com/CaptainZoraaaaa/Exstos_Grupp18.git
 
 Starta Exsto: 
@@ -30,4 +31,6 @@ Användning:
   - Rubrik, deadline och status är alla tvingade fält.
 - Efter att en task skapats behöver man i nuläget navigera tillbaka till HomePage genom att trycka på knappen Main menu sedan trycka på View Kanban igen.
 - En nyligen skapad task ska nu synas på Kanbanboarden.
+
+
 
