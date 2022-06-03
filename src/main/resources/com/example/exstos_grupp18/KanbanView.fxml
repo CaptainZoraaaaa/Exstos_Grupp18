@@ -24,28 +24,28 @@
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="backlogList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
+                        <VBox fx:id="backlogList" onMouseEntered="#taskReleased" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="inProgressSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="inProgressList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
+                        <VBox fx:id="inProgressList" onMouseEntered="#taskReleased" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="waitingSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="waitingList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
+                        <VBox fx:id="waitingList" onMouseEntered="#taskReleased" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
                   <ScrollPane fx:id="doneSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
-                        <VBox fx:id="doneList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
+                        <VBox fx:id="doneList" onMouseEntered="#taskReleased" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
                </children>
             </HBox>

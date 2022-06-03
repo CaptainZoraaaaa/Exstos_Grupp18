@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -62,6 +63,10 @@ public class TaskController extends Thread implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+    @FXML
+    void chosenTask(MouseEvent event){
+        controller.setCurrenTaskID(getTask());
+    }
 
     /**
      *This is a thread that starts when a new task is created. When the task loads in this thread will start and
@@ -98,4 +103,9 @@ public class TaskController extends Thread implements Initializable {
     public void setUsers(ActionEvent event){
         test = status.getValue();
     } //todo javadoca
+    
+    public String getTask(){
+        System.out.println(printButton.getParent().getId());
+        return printButton.getParent().getId();
+    }
 }
