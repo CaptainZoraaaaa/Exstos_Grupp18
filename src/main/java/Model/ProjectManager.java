@@ -3,7 +3,6 @@ package Model;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-//TODO flytta över till controller och ta bort - Anna
 /**
  * THIS CLASS IS DEPRECATED AND IS NOT USED IN THE PRODUCT.
  * WE CHOSE TO KEEP THE CLASSES WE DO NOT USE FOR THEIR VALUE

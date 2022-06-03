@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 /**
  * This class represents a task in Exsto and all of it's instance variables have their own getters and setters.
- *
  * @author Christian Edvall
  */
 public class Task implements Serializable {

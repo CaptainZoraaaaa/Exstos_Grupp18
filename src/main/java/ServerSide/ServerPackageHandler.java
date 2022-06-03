@@ -16,6 +16,7 @@ public class ServerPackageHandler {
     public ServerPackageHandler(ServerController serverController) {
         this.serverController = serverController;
     }
+    //// TODO: 2022-06-03 javadoc.
     public void unpackNewPackage(ClientHandler clientHandler, DataPackage newDataPackage) { //TODO javadoca och implementera samliga ordentligt
         switch (newDataPackage.getPackageType()) {
             case DataPackage.USER_LOGGED_IN:

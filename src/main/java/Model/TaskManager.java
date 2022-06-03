@@ -3,9 +3,15 @@ package Model;
 import java.time.LocalDate;
 
 /**
+ * THIS CLASS IS DEPRECATED AND IS NOT USED IN THE PRODUCT.
+ * WE CHOSE TO KEEP THE CLASSES WE DO NOT USE FOR THEIR VALUE
+ * AS ARTEFACTS.
+ * THEREFORE, THIS CLASS IS NOT INCLUDED IN THE CLASS DIAGRAM
+ */
+
+/**
  * This class is used to handle operations for a task.
  * @author Christian Edvall
- * @// TODO: 2022-04-19 Update class-diagram to match the code. 
  */
 public class TaskManager {
     private Task task;

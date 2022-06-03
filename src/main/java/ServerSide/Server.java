@@ -4,11 +4,9 @@ import Model.DataPackage;
 import Model.Project;
 import Model.Task;
 import Model.User;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import static ServerSide.ServerFileManager.writeLog;
 
 /**
@@ -26,7 +24,7 @@ public class Server {
     private ArrayList<String> onlineUsers = new ArrayList<>();
     private ServerPackageHandler serverPackageHandler;
     private ServerController serverController;
-    private ServerFileManager fileManager = new ServerFileManager();
+    private ServerFileManager fileManager = new ServerFileManager(); //This variable is used.
 
     /**
      * @author Anna Håkansson
@@ -77,57 +75,6 @@ public class Server {
         }
         return id;
     }
-
-    /**
-     * @author Anna Håkansson
-     *
-     * @param type the class that needs an ID
-     * @return the ID fetched from file and -1 if the reading failed
-     *
-     * This method uses the type-string to get access
-     * to the right dat-file and returns the ID written
-     * there.
-
-    public synchronized int getIDFromFile(String type) {
-        String logtext;
-        int ID = -1; //if it doesnt work it will return the "fail"-value
-        String filename = String.format("files/%s.dat", type); //format the string to get the right filename
-
-        try(DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))) { //create stream
-            ID = dis.readInt(); //read ID
-            logtext = String.format("A %sID was fetched from the .dat-file", type);
-        } catch (IOException e) {
-            logtext = String.format("Failure in Server.readIDFile due to %s", e);
-            System.err.println(logtext);
-        }
-        writeLog(logtext);
-        return ID;
-    }*/
-
-    /**
-     * @author Anna Håkansson
-     *
-     * @param currentID the ID that was used last
-     * @param type that needs it's ID-value incremented
-     *
-     * This method takes the previously used ID, increments
-     * it and writes the new file to the right dat file according
-     * to the "type"-string.
-
-    public synchronized void writeNewID(int currentID, String type) {
-        String logtext;
-        String filename = String.format("files/%s.dat", type); //format string to get right file
-        int newID = currentID + 1; //increment ID
-        try (DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){ //create stream
-            dos.write(newID); //write the new ID
-            dos.flush();
-            logtext = String.format("A new %sID was created.", type);
-        } catch (Exception e) {
-            logtext = String.format("Error in Server.writeNewID due to %s", e);
-            System.err.println(logtext);
-        }
-        writeLog(logtext);
-    } */
 
     /**
      * @author Anna Håkansson
@@ -188,23 +135,6 @@ public class Server {
     }
 
     /**
-     * @param logText to be added to the log
-     * Saves the LocalDateTime at the executing moment and appends
-     * it together with the logtext to the logtext file.
-
-    public synchronized void writeLog(String logText) {
-        System.out.println(logText);
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("files/log.txt")); //create writer
-            bw.append(String.format("%s: %s", LocalDateTime.now(), logText)); //append the time and the logtext (e.g. add an extra line instead of overwriting)
-            bw.flush();
-            bw.close();
-        } catch (IOException e) {
-            System.err.println("Failure in Server.writeLog due to" + e);
-        }
-    } */
-
-    /**
      * @author Anna Håkansson
      *
      * @param username used to sign in with
@@ -254,7 +184,7 @@ public class Server {
     /**
      * @author Anna Håkansson
      * @param user to be deleted
-     *
+     * Not in use, but can be implemented.
      * Method for removing a user from the userMap (e.g. the system)
      */
     public synchronized void deleteUser(User user) {
@@ -297,53 +227,6 @@ public class Server {
     /**
      * @author Anna Håkansson
      *
-     * @param map to be written to file
-     * @param type the type of map (user/client/project)
-     *
-     * Method for writing a hashmap to a .dat-file with an
-     * object output stream.
-
-    public synchronized void writeMapToFile(HashMap map, String type) {
-        String logtext;
-        String filename = String.format("files/%s.dat", type); //format string to get right filename
-        try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) { //create stream
-            oos.writeObject(map); //write
-            oos.flush();
-            logtext = String.format("The %sMap was written to the .dat-file", type);
-        } catch (IOException e) {
-            logtext = String.format("Failure in Server.writeMapToFile while reading %sMap due to %s", type, e);
-            System.err.println(logtext);
-        }
-        writeLog(logtext);
-    }*/
-
-    /**
-     * @author Anna Håkansson
-     *
-     * @param type of map to be read
-     * @return the map read from the .dat-file
-     *
-     * Method for reading a hashmap from a .dat-file by
-     * giving the wanted type of map.
-
-    public synchronized HashMap readMapFromFile(String type) {
-        String logtext;
-        String filename = String.format("files/%s.dat", type); //format the string to get the right filename
-        HashMap map = null; //initialize map
-        try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))){ //create stream
-            map = (HashMap) ois.readObject(); //read map
-            logtext = String.format("The %sMap was read from the .dat-file", type);
-        } catch (IOException | ClassNotFoundException e) {
-            logtext = String.format("Failure in Server.readMapFromFile while reading %sMap due to %s", type, e);
-            System.err.println(logtext);
-        }
-        writeLog(logtext);
-        return map;
-    } */
-
-    /**
-     * @author Anna Håkansson
-     *
      * @param toSend the package to be sent
      *
      * Method for sending a project update to assigned users
@@ -373,10 +256,6 @@ public class Server {
         }
     }
 
-    private void saveOfflineMessages(User user, DataPackage toSend) {
-        //todo implementera
-    }
-
     /**
      * @author Anna Håkansson
      *
@@ -397,7 +276,7 @@ public class Server {
         writeLog(logtext);
     }
 
-
+    //// TODO: 2022-06-03 javadoc.
     public synchronized void deleteProject(Project project) {
         String logtext;
         if(projectMap.containsKey(project.getProjectID())) {
@@ -409,7 +288,7 @@ public class Server {
         }
         writeLog(logtext);
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public synchronized void removeTask(Task task, Project project) {
         if(projectMap.containsKey(project.getProjectID())) {
             if (task != null) {
@@ -418,7 +297,7 @@ public class Server {
             }
         }
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public synchronized void updateTask(Task task, Project project) {
         int projectID = project.getProjectID();
         String logtext = null;
@@ -451,7 +330,7 @@ public class Server {
         }
         writeLog(logtext);
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public synchronized Project addTaskToProject(Task task, Project project) {
         Project project1 = null;
         if(projectMap.containsKey(project.getProjectID())) {
@@ -465,7 +344,7 @@ public class Server {
         }
         return project1;
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public synchronized void removeUserFromProject(User sender, Project project) {
         String logtext;
         if (sender != null && project != null) {
@@ -484,7 +363,7 @@ public class Server {
         }
         writeLog(logtext);
     }
-
+    //// TODO: 2022-06-03 javadoc. 
     public synchronized boolean addUserToProject(String username, Project project) {
         String logtext;
         boolean ok;
@@ -509,14 +388,6 @@ public class Server {
         return ok;
     }
 
-    public synchronized boolean newUserRegistration(User sender) {
-        boolean ok = verifyRegistration(sender);
-        if(ok) {
-            addUser(sender);
-        }
-        return ok;
-    }
-
     /**
      * @author Anna Håkansson
      * @param user online user to be added
@@ -525,15 +396,15 @@ public class Server {
      * in it.
      */
     public synchronized void addOnlineUser(User user) {
-        String logtext;
+        String logText;
         if (!onlineUsers.contains(user)) { //if list does not contain this user
             onlineUsers.add(user.getUsername()); //add it to the list
-            logtext = String.format("User %s was added to the onlineUsers-list", user.getUsername());
+            logText = String.format("User %s was added to the onlineUsers-list", user.getUsername());
         }
         else {
-            logtext = String.format("User %s couldn't be added to the onlineUsers-list: Its already in the list.", user.getUsername());
+            logText = String.format("User %s couldn't be added to the onlineUsers-list: Its already in the list.", user.getUsername());
         }
-        writeLog(logtext);
+        writeLog(logText);
 
     }
 
@@ -545,57 +416,53 @@ public class Server {
      * Method for removing a user from the onlineList, if it is in it.
      */
     public synchronized void removeOnlineUser(User user) {
-        String logtext;
+        String logText;
         if(user != null){
             if (onlineUsers.contains(user.getUsername())) { //if list contain user
                 onlineUsers.remove(user.getUsername()); //remove it
-                logtext = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
+                logText = String.format("User %s was removed from the onlineUsers-list", user.getUsername());
             }
             else {
-                logtext = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list", user.getUsername());
+                logText = String.format("User %s couldn't be removed from the onlineUsers-list: It is not in the list", user.getUsername());
             }
-            writeLog(logtext);
+            writeLog(logText);
         }
 
     }
+
     public synchronized void setClientMap(HashMap<String, ClientHandler> clientMap) {
         this.clientMap = clientMap;
-    }
-
-    public synchronized void setProjectMap(HashMap<Integer, Project> projectMap) {
-        this.projectMap = projectMap;
-    }
-
-    public synchronized void setUserMap(HashMap<String, User> userMap) {
-        this.userMap = userMap;
-    }
-
-    public synchronized Connection getConnection() {
-        return connection;
-    }
-
-    public synchronized HashMap<Integer, Project> getProjectMap() {
-        return projectMap;
     }
 
     public synchronized HashMap<String, ClientHandler> getClientMap() {
         return clientMap;
     }
 
+    public synchronized HashMap<Integer, Project> getProjectMap() {
+        return projectMap;
+    }
+
+    public synchronized void setUserMap(HashMap<String, User> userMap) {
+        this.userMap = userMap;
+    }
+
     public synchronized HashMap<String, User> getUserMap() {
         return userMap;
+    }
+
+    public synchronized Connection getConnection() {
+        return connection;
     }
 
     public int getPort() {
         return port;
     }
 
+    public ArrayList<String> getOnlineUsers() {
+        return onlineUsers;
+    }
 
     public void newPackage(ClientHandler client, DataPackage newDataPackage) {
         serverPackageHandler.unpackNewPackage(client, newDataPackage);
-    }
-
-    public ArrayList<String> getOnlineUsers() {
-        return onlineUsers;
     }
 }

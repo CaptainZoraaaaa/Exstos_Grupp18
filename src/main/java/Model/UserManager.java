@@ -3,6 +3,15 @@ package Model;
 import controller.Controller;
 import javafx.scene.image.Image;
 
+
+/**
+ * THIS CLASS IS DEPRECATED AND IS NOT USED IN THE PRODUCT.
+ * WE CHOSE TO KEEP THE CLASSES WE DO NOT USE FOR THEIR VALUE
+ * AS ARTEFACTS.
+ * THEREFORE, THIS CLASS IS NOT INCLUDED IN THE CLASS DIAGRAM
+ */
+
+
 /**
  * @author Anna Håkansson
  * @version 1.0

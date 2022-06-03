@@ -2,7 +2,6 @@ package ServerSide;
 
 import Model.DataPackage;
 import Model.User;
-
 import java.io.IOException;
 import java.net.Socket;
 
@@ -55,26 +54,15 @@ public class ClientHandler extends Thread {
      * Method that will be called upon when a message is recieved
      * in the ServerReciever.
      */
-    public synchronized void packageRecieved(DataPackage newDataPackage) {
+    public synchronized void packageReceived(DataPackage newDataPackage) {
         server.newPackage(this, newDataPackage);
         System.out.println("DataPackage recieved in client handler");
     }
 
     /**
-     * @author Anna Håkansson
-     *
-     * @param user associeted to the client is needed to be able to
-     *             add a client to the clientList.
-     *
-     * Method for adding the client to the clientList.
+     * Closes the socket
+     * @author Anna Håkansson.
      */
-    public synchronized void addToServerClientList(User user) {
-        if (user != null) { //if user isnt null
-            this.user = user; //assign the user to instance variable
-            server.addClient(user.getUsername(), this); //add the username (key) and this client (value) to the servers clientMap
-        }
-    }
-
     public void disconnect() {
         try {
             socket.close();

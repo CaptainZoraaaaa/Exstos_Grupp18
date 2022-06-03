@@ -76,14 +76,6 @@ public class User implements Serializable {
             user.setPassword(password);
             return this;
         }
-
-        /**
-         * This method is used to set a profile picture to the incoming Image value.
-         * @param image an object of class Image with the users profile picture.
-         * @return The method returns itself.
-         */
-
-
         /**
          * This method is used to set the users projects to the incoming Hashmap.
          * @param projects a hashmap with the users projects.
@@ -93,15 +85,6 @@ public class User implements Serializable {
             user.setProjects(projects);
             return this;
         }
-
-        /**
-         * This method is used to set the users tasks to the incoming Arraylist.
-         * @param tasks an ArrayList with the users tasks.
-         * @return The method returns itself.
-         */
-
-
-
     }
 
 }

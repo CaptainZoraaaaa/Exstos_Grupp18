@@ -9,7 +9,8 @@ import java.io.ObjectInputStream;
 import java.net.Socket;
 
 /**
- * ServerReceiver holds a inputstream receiving information from server
+ * ServerReceiver holds a input stream receiving information from server
+ * @author Anna Håkansson & Emma Mörk.
  */
 public class ServerReceiver extends Thread{
     private DataPackage dataPackageObject;
@@ -40,7 +41,7 @@ public class ServerReceiver extends Thread{
         while (!socket.isClosed()) {
             try {
                 dataPackageObject = (DataPackage) ois.readObject();
-                clientHandler.packageRecieved(dataPackageObject);
+                clientHandler.packageReceived(dataPackageObject);
             } catch (EOFException e) {
                 //bara chilla
             }

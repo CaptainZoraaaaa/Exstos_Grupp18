@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * @author Emma Mörk
  * this class handles server output and server input for a client
+ * @author Emma Mörk
  */
 public class ServerStream {
     private Socket socket;
@@ -17,13 +17,13 @@ public class ServerStream {
         this.clientHandler = clientHandler;
         this.serverBuffer = serverBuffer;
 
-        StartThreads();
+        startThreads();
     }
 
     /**
      * creates and run two threads, one for output and one for input (from server)
      */
-    private void StartThreads() {
+    private void startThreads() {
         new ServerReceiver(clientHandler, serverBuffer, socket).start();
         new ServerSender(serverBuffer, socket).start();
     }

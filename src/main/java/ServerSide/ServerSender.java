@@ -11,6 +11,7 @@ import java.net.Socket;
  * ServerSender hold outputstream which send information to server
  * this thread is notified by the ServerBuffet when there is anything new to send, by using method get() we send last added
  * object
+ * @author Emma Märk
  */
 public class ServerSender extends Thread{
     private ServerBuffer serverBuffer;

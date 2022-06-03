@@ -7,6 +7,7 @@ import java.util.LinkedList;
  *           anytime a package is created/received to be sent to the server, we use put( ) method to put it in the
  *           buffer, this also trigger the notifyAll() which notify threads on wait() to start. The servers use get()-method
  *           to send the latest object, and then removes it
+ *           //// TODO: 2022-06-03 Lägg till author. 
  */
 public class ServerBuffer<T> {
     private LinkedList<T> buffer = new LinkedList<T>();
