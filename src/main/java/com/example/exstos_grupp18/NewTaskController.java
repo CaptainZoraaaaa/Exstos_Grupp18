@@ -68,12 +68,7 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void backToPreviousScreen(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setScene(scene);
+        kanbanViewController.hideNewTaskPopOver();
     }
 
     /**
@@ -85,6 +80,9 @@ public class NewTaskController implements Initializable {
      */
     @FXML
     void createNewTask(ActionEvent event) throws IOException {
+        if (popup != null){
+            popup.hide();
+        }
         String comment = creatorField.getText() + ":\n" + taskCommentInputField.getText();
         Task task = new Task.TaskBuilder()
                 .header(taskHeaderInputField.getText())
@@ -103,15 +101,6 @@ public class NewTaskController implements Initializable {
 
         if(header.length() > 1 && header.length() <= 50 && deadline != null && assigneeList != null) {
             controller.createTask(task);
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("KanbanView.fxml"));
-            root = fxmlLoader.load();
-            KanbanViewController kanbanViewController = fxmlLoader.getController();
-            kanbanViewController.setUserLabel(creatorField.getText());
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setScene(scene);*/
             kanbanViewController.hideNewTaskPopOver();
         }
         else if(header.length() < 1) {
@@ -197,9 +186,18 @@ public class NewTaskController implements Initializable {
         currentUser = assigneeList.getValue();
     }
 
+    /**
+     * this method sets the different users to choose from in the project.
+     * @param usernameLabel a username.
+     */
     public void setCreator(String usernameLabel) {
         creatorField.setText(usernameLabel);
     }
+
+    /**
+     * This is a wip, the idea is to use this method to set new users to a projects list, instead of the static ones.
+     * @param userList an ArrayList of users.
+     */
     public void setUserList(ArrayList userList){
         this.userList = userList;
     }
@@ -212,6 +210,11 @@ public class NewTaskController implements Initializable {
     public void setKanbanViewController(KanbanViewController kanbanViewController){
         this.kanbanViewController = kanbanViewController;
     }
+    /**
+     * This method is used by KanbanViewController to send the popover to NewTaskController so that NewTaskController
+     * can close the popover when done.
+     * @param popOver a popover.
+     */
     public void setPopOver(PopOver popOver){
         this.popOver = popOver;
     }

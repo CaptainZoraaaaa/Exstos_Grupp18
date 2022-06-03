@@ -149,10 +149,14 @@ public class KanbanViewController implements Initializable {
      * That are the equivelant of the swimlanes.
      */
     @FXML
-    void taskOverEvent(MouseEvent event){
+    void taskReleased(MouseEvent event){
         System.out.println(event.getSource());
-        System.out.println(event.getX());
-        System.out.println(event.getY());
+        switch (event.getSource().toString()){
+            case "VBox[id=backlogList]" -> controller.setLastSwimlanePosition(Swimlane.Backlog);
+            case "VBox[id=inProgressList]" -> controller.setLastSwimlanePosition(Swimlane.InProgress);
+            case "VBox[id=waitingList]" ->  controller.setLastSwimlanePosition(Swimlane.Waiting);
+            case "VBox[id=doneList]" ->  controller.setLastSwimlanePosition(Swimlane.Done);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -270,7 +274,7 @@ public class KanbanViewController implements Initializable {
     }
     @FXML
     void hideNewTaskPopOver(){
-        popOver.setAutoHide(true);
+        popOver.hide();
     }
 
 

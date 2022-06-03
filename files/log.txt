@@ -1,55 +1,7 @@
-2022-06-02T16:12:32.678030374: The userMap was read from the .dat-file
-2022-06-02T16:12:32.695975823: The projectMap was read from the .dat-file
-2022-06-02T16:12:32.697230418: Server is running
-2022-06-02T16:15:08.477646652: A client just connected.
-2022-06-02T16:15:08.479011233: Login credentials for user Anna was accepted
-2022-06-02T16:15:08.479231542: User Anna was added to the onlineUsers-list
-2022-06-02T16:15:08.479427503: The client associated to user Anna was added to the clientMap
-2022-06-02T16:15:45.352349040: Updated task 1: Task11 in project 1: Projekt11
-2022-06-02T16:15:45.363257966:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:15:45.376706629: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-06-02T16:16:04.867421194: Updated task 2: Task22 in project 1: Projekt11
-2022-06-02T16:16:04.878316604:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:16:04.879265749: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-06-02T16:18:05.599984536: User Anna was removed from the onlineUsers-list
-2022-06-02T16:18:14.676796495: A client just connected.
-2022-06-02T16:18:14.677101212: Login credentials for user Anna was accepted
-2022-06-02T16:18:14.677349216: User Anna was added to the onlineUsers-list
-2022-06-02T16:18:14.677534591: The client associated to user Anna was added to the clientMap
-2022-06-02T16:18:33.066733434: Updated task 2: Task22 in project 1: Projekt11
-2022-06-02T16:18:33.083138121:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:18:33.083513369: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-06-02T16:18:42.672199269: User Anna was removed from the onlineUsers-list
-2022-06-02T16:24:25.786799314: A client just connected.
-2022-06-02T16:24:25.787456561: Login credentials for user Christian was accepted
-2022-06-02T16:24:25.788242789: User Christian was added to the onlineUsers-list
-2022-06-02T16:24:25.788890197: The client associated to user Christian was added to the clientMap
-2022-06-02T16:24:36.397181515: User Christian was removed from the onlineUsers-list
-2022-06-02T16:25:14.908416528: A client just connected.
-2022-06-02T16:25:14.908691323: Login credentials for user Anna was accepted
-2022-06-02T16:25:14.908925279: User Anna was added to the onlineUsers-list
-2022-06-02T16:25:14.909108763: The client associated to user Anna was added to the clientMap
-2022-06-02T16:25:31.411144318: Updated task 2: Task22 in project 1: Projekt11
-2022-06-02T16:25:31.421971817:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:25:31.422440347: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-06-02T16:27:16.576581448: A client just connected.
-2022-06-02T16:27:16.576841586: Login credentials for user Christian was accepted
-2022-06-02T16:27:16.577019125: User Christian was added to the onlineUsers-list
-2022-06-02T16:27:16.577158957: The client associated to user Christian was added to the clientMap
-2022-06-02T16:27:31.605307092: User Christian was removed from the onlineUsers-list
-2022-06-02T16:27:36.877857603: User Anna was removed from the onlineUsers-list
-2022-06-02T16:27:46.459588177: A client just connected.
-2022-06-02T16:27:46.459750426: Login credentials for user Anna was accepted
-2022-06-02T16:27:46.459881662: User Anna was added to the onlineUsers-list
-2022-06-02T16:27:46.459958742: The client associated to user Anna was added to the clientMap
-2022-06-02T16:27:58.171840047: Updated task 2: Task22 in project 1: Projekt11
-2022-06-02T16:27:58.182853476:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:27:58.183796036: Sending project update for project Projekt11 to user Anna's ClientHandler
-2022-06-02T16:29:07.042956363: User Anna was removed from the onlineUsers-list
-2022-06-02T16:29:15.392649380: A client just connected.
-2022-06-02T16:29:15.392881855: Login credentials for user Anna was accepted
-2022-06-02T16:29:15.393075523: User Anna was added to the onlineUsers-list
-2022-06-02T16:29:15.393216032: The client associated to user Anna was added to the clientMap
-2022-06-02T16:29:56.423520601: Updated task 2: Task22 in project 1: Projekt11
-2022-06-02T16:29:56.434590735:  Unable to send project update for project Projekt11 to assignee Emma: Not in the clientMap
-2022-06-02T16:29:56.435110891: Sending project update for project Projekt11 to user Anna's ClientHandler
+2022-06-03T14:03:23.313787: The userMap was read from the .dat-file
+2022-06-03T14:03:23.345809: The projectMap was read from the .dat-file
+2022-06-03T14:03:23.350505: Server is running
+2022-06-03T14:03:44.155952: A client just connected.
+2022-06-03T14:03:44.163216: Login credentials for user Anna was accepted
+2022-06-03T14:03:44.163516: User Anna was added to the onlineUsers-list
+2022-06-03T14:03:44.164492: The client associated to user Anna was added to the clientMap
