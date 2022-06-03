@@ -108,6 +108,13 @@ public class Project implements Serializable {
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
+    public void setNewTaskStatus(int id, Swimlane status){
+        for (int i = 0; i < taskList.size(); i++){
+            if(taskList.get(i).getTask_id() == id){
+                taskList.get(i).setCurrentStatus(status);
+            }
+        }
+    }
 
     /**
      * builder-class for Project

@@ -25,8 +25,10 @@ public class Controller {
     private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
     private static Controller controller = new Controller();
+    private Swimlane swimLaneType;
 
     private String loggedInUser;
+    private int currentTaskId;
 
     public Controller() {
        // client = new Client(null, "localhost", 8080);
@@ -383,4 +385,11 @@ public class Controller {
     }
 
 
+    public void setCurrenTaskID(String taskId) {
+        this.currentTaskId = Integer.parseInt(taskId);
+    }
+
+    public void setLastSwimlanePosition(Swimlane status) {
+        activeProject.setNewTaskStatus(currentTaskId, status);
+    }
 }

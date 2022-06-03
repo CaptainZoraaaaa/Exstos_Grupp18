@@ -1,3 +1,45 @@
-2022-06-02T16:23:21.428559: The userMap was read from the .dat-file
-2022-06-02T16:23:21.429573: The projectMap was read from the .dat-file
-2022-06-02T16:23:21.435668: Server is running
+2022-06-03T10:15:59.845787: The userMap was read from the .dat-file
+2022-06-03T10:15:59.902954: The projectMap was read from the .dat-file
+2022-06-03T10:15:59.909717: Server is running
+2022-06-03T10:16:19.262731: A client just connected.
+2022-06-03T10:16:19.272022: Login credentials for user Christian was not accepted,
+2022-06-03T10:16:25.593076: A client just connected.
+2022-06-03T10:16:25.593856: Login credentials for user Christian was not accepted,
+2022-06-03T10:16:30.494043: A client just connected.
+2022-06-03T10:16:30.497567: User Christian's registration was verified: username is unique
+2022-06-03T10:16:30.500095: Christian was added to the userMap.
+2022-06-03T10:16:30.525893: The userMap was written to the .dat-file
+2022-06-03T10:16:34.609877: A client just connected.
+2022-06-03T10:16:34.610443: Login credentials for user Christian was accepted
+2022-06-03T10:16:34.610726: User Christian was added to the onlineUsers-list
+2022-06-03T10:16:34.610989: The client associated to user Christian was added to the clientMap
+2022-06-03T10:16:53.926734: A projectID was fetched from the .dat-file
+2022-06-03T10:16:53.928731: A new projectID was created.
+2022-06-03T10:16:53.929011: Project #3 header was added to the projectMap
+2022-06-03T10:16:53.952660: Sending project update for project header to user Christian's ClientHandler
+2022-06-03T10:16:53.963187: The projectMap was written to the .dat-file
+2022-06-03T10:17:20.937615: A taskID was fetched from the .dat-file
+2022-06-03T10:17:20.938209: A new taskID was created.
+2022-06-03T10:17:20.938891: Sending project update for project header to user Christian's ClientHandler
+2022-06-03T10:17:20.942979: The projectMap was written to the .dat-file
+2022-06-03T10:20:39.956456: A client just connected.
+2022-06-03T10:20:40.025101: Login credentials for user Christian was accepted
+2022-06-03T10:20:40.026026: User Christian was added to the onlineUsers-list
+2022-06-03T10:20:40.026295: The clientMap already contains a user with the username Christian
+2022-06-03T10:29:29.224533: A client just connected.
+2022-06-03T10:29:29.237316: Login credentials for user Christian was accepted
+2022-06-03T10:29:29.238264: User Christian was added to the onlineUsers-list
+2022-06-03T10:29:29.238534: The clientMap already contains a user with the username Christian
+2022-06-03T10:31:31.188296: A client just connected.
+2022-06-03T10:31:31.197787: Login credentials for user Christian was accepted
+2022-06-03T10:31:31.198102: User Christian was added to the onlineUsers-list
+2022-06-03T10:31:31.198362: The clientMap already contains a user with the username Christian
+2022-06-03T10:46:21.892111: A client just connected.
+2022-06-03T10:46:21.920876: Login credentials for user Christian was accepted
+2022-06-03T10:46:21.924301: User Christian was added to the onlineUsers-list
+2022-06-03T10:46:21.924616: The clientMap already contains a user with the username Christian
+2022-06-03T10:50:21.411982: A client just connected.
+2022-06-03T10:50:21.427837: Login credentials for user Christian was accepted
+2022-06-03T10:50:21.428208: User Christian was added to the onlineUsers-list
+2022-06-03T10:50:21.428424: The clientMap already contains a user with the username Christian
+2022-06-03T10:50:38.844692: User Christian was removed from the onlineUsers-list
