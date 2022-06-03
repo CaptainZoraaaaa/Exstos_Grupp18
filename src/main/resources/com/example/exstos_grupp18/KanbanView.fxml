@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,34 +13,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exstos_grupp18.KanbanViewController">
    <children>
-      <Pane prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: f8f7f4;">
+      <Pane prefHeight="700.0" prefWidth="1400.0" style="-fx-background-color: f8f7f4;">
          <children>
-            <HBox layoutX="61.0" layoutY="281.0" prefHeight="542.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: f8f7f4;">
+            <HBox layoutX="26.0" layoutY="129.0" prefHeight="542.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: f8f7f4;">
                <children>
-                  <ScrollPane fx:id="backlogSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="backlogSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="backlogList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="inProgressSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="inProgressSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="inProgressList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="waitingSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="waitingSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
                      <content>
                         <VBox fx:id="waitingList" onMouseEntered="#taskOverEvent" prefHeight="540.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
                      </content></ScrollPane>
-                  <ScrollPane fx:id="doneSwimlane" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
+                  <ScrollPane fx:id="doneSwimlane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="604.0" prefWidth="356.0">
                      <effect>
                         <InnerShadow blurType="ONE_PASS_BOX" />
                      </effect>
@@ -50,48 +49,71 @@
                      </content></ScrollPane>
                </children>
             </HBox>
-            <Button fx:id="newTaskButton" layoutX="1285.0" layoutY="723.0" mnemonicParsing="false" onAction="#newTask" prefHeight="57.0" prefWidth="126.0" stylesheets="@../../../CSS/Menu.css" text="New Task" textFill="WHITE">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" />
-               </effect></Button>
-            <Pane prefHeight="50.0" prefWidth="1500.0" style="-fx-background-color: #bfcfdd;">
+            <Pane prefHeight="50.0" prefWidth="1400.0" style="-fx-background-color: #bfcfdd;">
                <children>
-                  <Button fx:id="myProjectsButton" layoutX="142.0" layoutY="-1.0" mnemonicParsing="false" onAction="#myProjectsPressed" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Deadline" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Black" size="13.0" />
-                     </font></Button>
-                  <Button layoutX="309.0" layoutY="-1.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Main Menu" textFill="WHITE">
+                  <Button fx:id="myProjectsButton" layoutX="484.0" layoutY="-1.0" mnemonicParsing="false" onAction="#myProjectsPressed" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Deadline" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="logOutButton" layoutX="1351.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
+                  <Button layoutX="139.0" layoutY="-1.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="50.0" prefWidth="149.0" stylesheets="@../../../CSS/Menu.css" text="Main Menu" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="logOutButton" layoutX="1217.0" layoutY="-1.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #bfcfdd;" text="Log out" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="19.0" />
                      </font>
                   </Button>
-                  <Label layoutX="25.0" layoutY="5.0" text="Logged in as" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="11.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel" layoutX="20.0" layoutY="24.0" text="Username" textFill="WHITE">
+                  <Label fx:id="usernameLabel" layoutX="21.0" layoutY="14.0" text="Username" textFill="WHITE">
                      <font>
                         <Font name="Roboto Black" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="infoButton" layoutX="485.0" mnemonicParsing="false" onAction="#editProject" prefHeight="50.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
+                  <Button fx:id="infoButton" layoutX="640.0" layoutY="-1.0" mnemonicParsing="false" onAction="#editProject" prefHeight="50.0" prefWidth="154.0" stylesheets="@../../../CSS/Menu.css" text="Info" textFill="WHITE" />
+                  <Button fx:id="newTaskButton" layoutX="328.0" layoutY="-1.0" mnemonicParsing="false" onAction="#newTask" prefHeight="57.0" prefWidth="126.0" stylesheets="@../../../CSS/Menu.css" text="New Task" textFill="WHITE" />
                </children>
             </Pane>
-            <VBox layoutX="1228.0" layoutY="337.0" prefHeight="371.0" prefWidth="241.0" spacing="80.0">
+            <VBox layoutX="1195.0" layoutY="203.0" prefHeight="361.0" prefWidth="188.0" spacing="80.0">
                <children>
                   <ProgressBar fx:id="backlogBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" style="-fx-background-color: #bfcfdd;" />
-                  <ProgressBar fx:id="inProgressBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
                   <ProgressBar fx:id="waitingBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
+                  <ProgressBar fx:id="inProgressBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
                   <ProgressBar fx:id="doneBar" prefHeight="20.0" prefWidth="246.0" progress="0.0" />
                </children>
             </VBox>
-            <VBox layoutX="1228.0" layoutY="313.0" prefHeight="397.0" prefWidth="270.0" spacing="80.0">
+            <Label layoutX="26.0" layoutY="96.0" text="Backlog" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="316.0" layoutY="96.0" text="In Progress" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="606.0" layoutY="96.0" text="Waiting" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="896.0" layoutY="96.0" text="Done" textFill="#7d9db9">
+               <font>
+                  <Font name="Roboto Black" size="18.0" />
+               </font>
+            </Label>
+            <Pane fx:id="mainBarPane" layoutX="136.0" layoutY="50.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;">
+               <children>
+                  <ProgressBar fx:id="dropMenuBar" layoutX="37.0" layoutY="4.0" prefHeight="20.0" prefWidth="1110.0" progress="0.0" />
+                  <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/clock.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox layoutX="1194.0" layoutY="179.0" prefHeight="397.0" prefWidth="270.0" spacing="80.0">
                <children>
                   <Label fx:id="backlogBarLabel" text="Backlog" textFill="#7d9db9">
                      <font>
@@ -115,36 +137,6 @@
                   </Label>
                </children>
             </VBox>
-            <Label layoutX="61.0" layoutY="248.0" text="Backlog" textFill="#7d9db9">
-               <font>
-                  <Font name="Roboto Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="351.0" layoutY="248.0" text="In Progress" textFill="#7d9db9">
-               <font>
-                  <Font name="Roboto Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="641.0" layoutY="248.0" text="Waiting" textFill="#7d9db9">
-               <font>
-                  <Font name="Roboto Black" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="931.0" layoutY="248.0" text="Done" textFill="#7d9db9">
-               <font>
-                  <Font name="Roboto Black" size="18.0" />
-               </font>
-            </Label>
-            <Pane fx:id="mainBarPane" layoutX="141.0" layoutY="50.0" prefHeight="31.0" prefWidth="1167.0" style="-fx-background-color: #9eb6cb;">
-               <children>
-                  <ProgressBar fx:id="dropMenuBar" layoutX="37.0" layoutY="4.0" prefHeight="20.0" prefWidth="1110.0" progress="0.0" />
-                  <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/clock.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
          </children>
       </Pane>
    </children>
