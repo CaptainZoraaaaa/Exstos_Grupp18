@@ -385,12 +385,14 @@ public class Controller {
     }
 
 
-    public void setCurrenTaskID(String taskId) {
-        this.currentTaskId = Integer.parseInt(taskId);
+    public void setCurrenTaskID(int taskId) {
+        this.currentTaskId = taskId;
     }
 
     public void setLastSwimlanePosition(Swimlane status) {
-        activeProject.setNewTaskStatus(currentTaskId, status);
+        Model.Task task = activeProject.setNewTaskStatus(currentTaskId, status);
+        System.out.println(task.getHeader());
+        taskEdited(task);
         currentTaskId = -1;
     }
 }

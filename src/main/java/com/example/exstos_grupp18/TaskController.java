@@ -63,11 +63,15 @@ public class TaskController extends Thread implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    /**
+     * This method sends a task id to the Controller, when clicked and released by a mouse.
+     * @param event Mouse click and released event.
+     */
     @FXML
     void chosenTask(MouseEvent event){
-        controller.setCurrenTaskID(getTask());
+        controller.setCurrenTaskID(taskId);
     }
-
     /**
      *This is a thread that starts when a new task is created. When the task loads in this thread will start and
      *compare this scenes id with the task object id if the task id match with the scene id the scene will then load the data from that object.
@@ -81,6 +85,7 @@ public class TaskController extends Thread implements Initializable {
                 textField.setText(current.get(i).getHeader());
                 printButton.setText("View task");
                 helpImage.setVisible(false);
+                taskId = Integer.parseInt(printButton.getParent().getId());
                 if (current.get(i).isFlaggedForHelp()){
                     helpImage.setVisible(true);
                 }
