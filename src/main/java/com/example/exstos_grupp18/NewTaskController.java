@@ -210,7 +210,6 @@ public class NewTaskController implements Initializable {
     public void setKanbanViewController(KanbanViewController kanbanViewController){
         this.kanbanViewController = kanbanViewController;
     }
-
     /**
      * This method is used by KanbanViewController to send the popover to NewTaskController so that NewTaskController
      * can close the popover when done.
