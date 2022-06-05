@@ -3,7 +3,6 @@ package controller;
 import Model.*;
 import Model.DataPackage;
 import client.Client;
-import javafx.scene.image.Image;
 
 import java.io.*;
 import java.net.Socket;
@@ -12,7 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * //// TODO: 2022-06-03 beskriving. 
+ * Class for handling the control flow on the client side
+ * of the application
+ *
  * @author Max Tiderman & Anna Håkansson
  */
 public class Controller {
@@ -30,7 +31,17 @@ public class Controller {
     public static Controller getInstance(){
         return controller;
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * @author Anna Håkansson
+     *
+     * method for saving the edited information and send the update to the server
+     * @param header
+     * @param description
+     * @param deadline
+     * @param assignees
+     * @param creator
+     */
     public void editProject(String header, String description, LocalDate deadline, ArrayList<String> assignees, String creator) {
         activeProject.setProjectName(header);
         activeProject.setDescription(description);
@@ -46,7 +57,16 @@ public class Controller {
                 .build();
         client.sendUpdate(dataPackage);
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     *
+     * method for registrating a new user on the server, returns if registration was ok
+     * connects with a temporary socket
+     * @param username
+     * @param password
+     * @return if registration was ok
+     */
     public boolean registerOnServer(String username, String password) {
         boolean OK = false;
         User user = user = new UserManager().createNewUser(username, password, null);
@@ -74,7 +94,16 @@ public class Controller {
         }
         return OK;
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     *
+     * method for sendig a login request to server. returns if login was ok. if it was ok,
+     * the socket is saved for the client object.
+     * @param username
+     * @param password
+     * @return if login was ok
+     */
     public boolean logIn (String username, String password) {
         boolean OK = false;
         Socket socket;
@@ -127,7 +156,12 @@ public class Controller {
         client.sendUpdate(logOutDataPackage);
         client.disconnect();
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     * method for sending a newly created task to server
+     * @param task
+     */
     public void createTask(Model.Task task) {
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
@@ -137,7 +171,12 @@ public class Controller {
         client.sendUpdate(toSend);
 
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     * method for sending an updated task to server
+     * @param task
+     */
     public void taskEdited (Model.Task task) {
         DataPackage toSend = new DataPackage.PackageBuilder()
                 .task(task)
@@ -154,7 +193,16 @@ public class Controller {
             }
         }
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     * method for creating new project object and send it to server
+     * @param header
+     * @param description
+     * @param deadline
+     * @param assigneeList
+     * @param creator
+     */
     public void createNewProject(String header, String description, LocalDate deadline, ArrayList<String> assigneeList, String creator) {
         HashMap<String, Boolean> assignees = new HashMap<>();
         for (String user : assigneeList) {
@@ -185,7 +233,12 @@ public class Controller {
     public int getTaskSize(){
         return activeProject.getTaskListSize();
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     * method for unpacking a new datapackage from server
+     * @param message
+     */
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
@@ -196,7 +249,14 @@ public class Controller {
                 break;
         }
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * @author Anna Håkansson
+     *
+     * method for handling a project update recieved from server
+     * @param project
+     * @param tasks
+     */
     private void projectUpdate(Project project, Model.Task[] tasks) {
         System.out.println("project update in controller");
         boolean projectInList = false;
