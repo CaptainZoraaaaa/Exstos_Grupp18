@@ -27,6 +27,12 @@ public class Main extends Application {
 
         stage.show();
     }
+
+    /**
+     * overridden method that calls on the logout method
+     * when exiting the app
+     * @throws Exception
+     */
     @Override
     public void stop() throws Exception {
         Controller controller = Controller.getInstance();

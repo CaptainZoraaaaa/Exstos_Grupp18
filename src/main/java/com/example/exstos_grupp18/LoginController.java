@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 /**
- * //todo beskrivning.
+ * This is the javaFX-controller for the login view
  * @author Max Tiderman & Anna Håkansson
  */
 public class LoginController {

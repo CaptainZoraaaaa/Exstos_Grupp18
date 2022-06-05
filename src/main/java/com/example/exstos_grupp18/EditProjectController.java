@@ -178,7 +178,13 @@ public class EditProjectController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
     }
-    //// TODO: 2022-06-03 Javadoc. 
+
+    /**
+     * @author Anna Håkansson
+     * takes string input from textfields and adds it
+     * to assignee arraylist
+     * @param event
+     */
     @FXML
     public void addUserToAssignees(ActionEvent event) {
         String assignee = assigneeField.getText();

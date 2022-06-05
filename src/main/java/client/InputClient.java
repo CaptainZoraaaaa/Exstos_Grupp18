@@ -26,6 +26,11 @@ public class InputClient extends Thread{
         start();
     }
 
+    /**
+     * @author Anna Håkansson
+     * method for setting running to false and end thread
+     * @param running
+     */
     public void setRunning(boolean running) {
         this.running = running;
     }
