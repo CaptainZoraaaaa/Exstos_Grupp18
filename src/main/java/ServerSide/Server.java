@@ -20,7 +20,7 @@ public class Server {
     private HashMap<String, ClientHandler> clientMap;
     private HashMap<String, User> userMap;
     private HashMap<Integer, Project> projectMap;
-    private final int port = 8080;
+    private final int port = 8079;
     private ArrayList<String> onlineUsers = new ArrayList<>();
     private ServerPackageHandler serverPackageHandler;
     private ServerController serverController;

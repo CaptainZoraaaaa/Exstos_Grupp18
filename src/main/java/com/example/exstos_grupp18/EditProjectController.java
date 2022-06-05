@@ -164,7 +164,13 @@ public class EditProjectController implements Initializable {
     private void setUsers(ActionEvent event) {
 
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * This method is used to change a scene.
+     * @param event a actionevent.
+     * @param newScene a String containing the url for a scene.
+     * @throws IOException throws IOException
+     */
     public void changeScene(Event event, String newScene) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(newScene));
         root = fxmlLoader.load();

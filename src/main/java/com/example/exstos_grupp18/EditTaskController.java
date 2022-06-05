@@ -110,7 +110,11 @@ public class EditTaskController implements Initializable {
             flagged = false;
         }
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * this method is used to set all fields that should be editable to editable.
+     * @param event Action event.
+     */
     @FXML
     void setTaskToEditable(ActionEvent event) {
         taskHeaderInputField.setEditable(true);
@@ -121,7 +125,11 @@ public class EditTaskController implements Initializable {
         taskCommentInputField.setEditable(true);
         helpBox.setDisable(false);
     }
-    //// TODO: 2022-06-03 javadoc 
+
+    /**
+     * this method is used to set a date in the datepicker.
+     * @param event
+     */
     @FXML
     void chooseDate(ActionEvent event) {
         deadline = taskDeadlineDate.getValue();
@@ -130,7 +138,7 @@ public class EditTaskController implements Initializable {
     /**
      * Method for initializing the task ChoiceBoxes with users to select as assignees and status as statuses.
      *
-     * @param url            url
+     * @param url url
      * @param resourceBundle resourceBundle
      */
     @Override
@@ -157,7 +165,11 @@ public class EditTaskController implements Initializable {
     public void setStatus(ActionEvent event) {
         selectedStatus = statusList.getValue();
     }
-    //// TODO: 2022-06-03 Javadoc
+
+    /**
+     * this method sets up a task view with a specific tasks contents.
+     * @param task task object.
+     */
     public void loadedTask(Task task) {
         this.currentTask = task;
         taskHeaderInputField.setText(task.getHeader());

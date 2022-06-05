@@ -121,7 +121,12 @@ public class KanbanViewController implements Initializable {
             case "VBox[id=doneList]" ->  controller.setLastSwimlanePosition(Swimlane.Done);
         }
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * this method is used to intialize the KanbanView with associated tasks and make them draggable.
+      * @param url url.
+     * @param resourceBundle resource bundle.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(controller.getLoggedInUser());
@@ -195,7 +200,12 @@ public class KanbanViewController implements Initializable {
     public void newTask(ActionEvent event) throws IOException {
         this.newTaskPopOver();
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * This method loads the edit project scene.
+      * @param event triggered by clicking on the edit project button.
+     * @throws IOException throws IOException.
+     */
     @FXML
     void editProject(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditProject.fxml"));
@@ -208,7 +218,10 @@ public class KanbanViewController implements Initializable {
     public void setUserLabel(String text) {
         usernameLabel.setText(text);
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * this method is used to create a popover containing the NewTask.fxml.
+     */
     @FXML
     void newTaskPopOver(){
         if(popOver == null || !popOver.isShowing()){
@@ -229,12 +242,21 @@ public class KanbanViewController implements Initializable {
             }
         }
     }
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * this method is used to hide a popover when needed.
+     */
     @FXML
     void hideNewTaskPopOver(){
         popOver.hide();
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * this method is used to log out by calling the controllers logOut method and then changing scenes to
+     * LoginView.fxml
+     * @param event a action event.
+     * @throws IOException throws IOException.
+     */
     @FXML
     public void logOut(ActionEvent event) throws IOException {
         controller.logOut();

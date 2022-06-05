@@ -1,12 +1,20 @@
 package com.example.exstos_grupp18;
 
 import javafx.scene.Node;
-//// TODO: 2022-06-03 Javadoc. 
+
+/**
+ * This class is used to make task objects draggable on the Kanban board.
+ * @author Christian Edvall & Max Tiderman
+ */
     public class DraggableTask {
         private double mouseAnchorX;
         private double mouseAnchorY;
-        //// TODO: 2022-06-03 Javadoc.
-        public void makeDraggable(Node node) {
+
+    /**
+     * this method is what makes a task draggable by setting it's position.
+     * @param node it takes a node as parameter.
+     */
+    public void makeDraggable(Node node) {
             node.setOnMousePressed(mouseEvent -> {
                 mouseAnchorX = mouseEvent.getSceneX() - node.getTranslateX();
                 System.out.println(node.getTranslateX());

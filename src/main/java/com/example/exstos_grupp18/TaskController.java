@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
- * //// TODO: 2022-06-03 beskrivning. 
+ * this class is used to create visible task objects in the Kanbanview.
  * @author Max Tiderman
  */
 public class TaskController extends Thread implements Initializable {

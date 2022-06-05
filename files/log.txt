@@ -1,3 +1,54 @@
-2022-06-03T15:28:15.172333: The userMap was read from the .dat-file
-2022-06-03T15:28:15.182610: Failure in Server.readMapFromFile while reading projectMap due to java.io.InvalidClassException: Model.Project; local class incompatible: stream classdesc serialVersionUID = 6965088671253159761, local class serialVersionUID = -7013119056087196813
-2022-06-03T15:28:15.186274: Server is running
+2022-06-04T12:20:01.732933: The userMap was read from the .dat-file
+2022-06-04T12:20:01.733813: The projectMap was read from the .dat-file
+2022-06-04T12:20:01.737541: Server is running
+2022-06-04T12:24:59.907127: A client just connected.
+2022-06-04T12:24:59.935466: User Viktor's registration was verified: username is unique
+2022-06-04T12:24:59.935985: Viktor was added to the userMap.
+2022-06-04T12:24:59.944591: The userMap was written to the .dat-file
+2022-06-04T12:25:23.196015: A client just connected.
+2022-06-04T12:25:23.199516: Login credentials for user Viktor was accepted
+2022-06-04T12:25:23.199626: User Viktor was added to the onlineUsers-list
+2022-06-04T12:25:23.199822: The client associated to user Viktor was added to the clientMap
+2022-06-04T12:26:25.281857: A projectID was fetched from the .dat-file
+2022-06-04T12:26:25.283285: A new projectID was created.
+2022-06-04T12:26:25.283445: Project #1 Mitt Projerkt was added to the projectMap
+2022-06-04T12:26:25.283675:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:26:25.302343: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:26:25.307674: The projectMap was written to the .dat-file
+2022-06-04T12:28:37.885054: A taskID was fetched from the .dat-file
+2022-06-04T12:28:37.886809: A new taskID was created.
+2022-06-04T12:28:37.887233:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:28:37.887526: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:28:37.888844: The projectMap was written to the .dat-file
+2022-06-04T12:29:07.943115: Updated task 1: Ny task in project 1: Mitt Projerkt
+2022-06-04T12:29:07.956259:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:29:07.956443: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:29:49.674986: A projectID was fetched from the .dat-file
+2022-06-04T12:29:49.677043: A new projectID was created.
+2022-06-04T12:29:49.677223: Project #2 ett till was added to the projectMap
+2022-06-04T12:29:49.677439: Sending project update for project ett till to user Viktor's ClientHandler
+2022-06-04T12:29:49.679982: The projectMap was written to the .dat-file
+2022-06-04T12:31:48.023619: A taskID was fetched from the .dat-file
+2022-06-04T12:31:48.024892: A new taskID was created.
+2022-06-04T12:31:48.025305: Sending project update for project ett till to user Viktor's ClientHandler
+2022-06-04T12:31:48.026435: The projectMap was written to the .dat-file
+2022-06-04T12:32:46.523806: A taskID was fetched from the .dat-file
+2022-06-04T12:32:46.525298: A new taskID was created.
+2022-06-04T12:32:46.525555:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:32:46.525698: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:32:46.529652: The projectMap was written to the .dat-file
+2022-06-04T12:33:15.762742: Updated task 3: hej in project 1: Mitt Projerkt
+2022-06-04T12:33:15.781472:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:33:15.781653: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:33:42.532875: Updated task 3: hej in project 1: Mitt Projerkt
+2022-06-04T12:33:42.546898:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:33:42.547062: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:35:09.164871: Project 1: Mitt Projerkt was updated.
+2022-06-04T12:35:09.169043:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:35:09.174195: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:35:09.176310: The projectMap was written to the .dat-file
+2022-06-04T12:35:42.617688: Project 1: Mitt Projerkt was updated.
+2022-06-04T12:35:42.618552:  Unable to send project update for project Mitt Projerkt to assignee : Not in the clientMap
+2022-06-04T12:35:42.618691: Sending project update for project Mitt Projerkt to user Viktor's ClientHandler
+2022-06-04T12:35:42.632343: The projectMap was written to the .dat-file
+2022-06-04T12:36:27.720021: User Viktor was removed from the onlineUsers-list

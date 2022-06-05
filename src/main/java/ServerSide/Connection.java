@@ -3,6 +3,7 @@ package ServerSide;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * @author Anna Håkansson
@@ -42,7 +43,8 @@ public class Connection extends Thread {
     @Override
     public void run() {
         String logtext;
-        try(ServerSocket serverSocket = new ServerSocket(port)) { //create new serversocket
+        try(ServerSocket serverSocket = new ServerSocket(port)) { //create new serversocket'
+            serverSocket.setReuseAddress(true);
             logtext = "Server is running";
             ClientHandler clientHandler;
             System.out.println(logtext);
@@ -50,6 +52,7 @@ public class Connection extends Thread {
             while (alive) { //while the flag is true
             try {
                     Socket socket = serverSocket.accept(); //assing the client to a socket
+                    socket.setReuseAddress(true);
                     clientHandler = new ClientHandler(socket, server);
                     logtext = "A client just connected.";
                     ServerFileManager.writeLog(logtext); //create a new ClientHandler

@@ -155,7 +155,11 @@ public class NewProjectController implements Initializable {
         Tooltip tooltip = new Tooltip("Write the username of the requested assignee and press 'Add'.\n You can then add another user the same way. Make sure to spell the username right!");
         Tooltip.install(questionMarkImage, tooltip);
     }
-    //// TODO: 2022-06-03 Javadoc. 
+
+    /**
+     * this method is used to add a user as an assignee.
+     * @param event event trigger by clicking add.
+     */
     @FXML
     public void addUserToAssignees(ActionEvent event) {
         String assignee = assigneeField.getText();

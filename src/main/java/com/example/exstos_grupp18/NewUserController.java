@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.*;
 
 /**
- * //// TODO: 2022-06-03 Beskrivning. 
+ * this class is used as a Controller for the NewUser.fxml.
  * @author Max Tiderman
  */
 public class NewUserController {
@@ -30,7 +30,12 @@ public class NewUserController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    //// TODO: 2022-06-03 javadoc. 
+
+    /**
+     * this methos is used to create a new user.
+     * @param event triggered by clicking on register.
+     * @throws IOException throw an IOException.
+     */
     @FXML
     public void newRegistration(ActionEvent event) throws IOException {
         String username = usernameField.getText();
