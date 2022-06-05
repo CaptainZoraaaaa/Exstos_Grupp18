@@ -63,10 +63,10 @@ public class LoginController {
                 popup.hide();
             }
             controller.setLoggedInUser(username);
-            System.out.println(">> Login successful <<");
+            //System.out.println(">> Login successful <<");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
             root = fxmlLoader.load();
-            System.out.println(username);
+            //System.out.println(username);
             //Används för att överföra data
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow(); //todo gör egen metod
             scene = new Scene(root);

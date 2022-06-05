@@ -45,11 +45,4 @@ public class UserManager {
         }
         return user; //return the new user
     }
-
-    /**
-     * Method for editing user. Needs refining.
-     */
-    public void editUser() {
-        //TODO osäker på vad som skall göras
-    }
 }

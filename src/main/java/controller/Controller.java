@@ -185,7 +185,11 @@ public class Controller {
     public int getTaskSize(){
         return activeProject.getTaskListSize();
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * This method will unpack a DataPackage from the server.
+     * @param message
+     */
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:
@@ -196,7 +200,12 @@ public class Controller {
                 break;
         }
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * Reads a project update sent from the server and saves it in the lokal programm while the programm is running.
+     * @param project
+     * @param tasks
+     */
     private void projectUpdate(Project project, Model.Task[] tasks) {
         System.out.println("project update in controller");
         boolean projectInList = false;
