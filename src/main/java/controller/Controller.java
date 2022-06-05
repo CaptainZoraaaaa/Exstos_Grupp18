@@ -239,6 +239,11 @@ public class Controller {
      * method for unpacking a new datapackage from server
      * @param message
      */
+
+    /**
+     * This method will unpack a DataPackage from the server.
+     * @param message
+     */
     public void unpack(DataPackage message) {
         switch (message.getPackageType()) {
             case DataPackage.PROJECT_UPDATE:

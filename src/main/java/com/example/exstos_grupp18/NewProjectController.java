@@ -43,10 +43,6 @@ public class NewProjectController implements Initializable {
 
     private LocalDate deadline;
     private Controller controller = Controller.getInstance();
-    private String currentUser;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     private HomePageController homePageController;
     private PopOver popOver;
     private Popup popup;

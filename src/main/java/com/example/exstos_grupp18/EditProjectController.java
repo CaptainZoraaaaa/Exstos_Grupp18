@@ -148,7 +148,11 @@ public class EditProjectController implements Initializable {
             editButton.setDisable(false);
         }
     }
-    //// TODO: 2022-06-03 javadoc.
+
+    /**
+     * Changes the fields to either editable or not editable
+     * @param event - button click
+     */
     @FXML
     void unlockFields(ActionEvent event) {
         projectHeaderInputField.setDisable(!projectHeaderInputField.isDisable());
@@ -156,13 +160,6 @@ public class EditProjectController implements Initializable {
         projectDeadlineDate.setDisable(!projectDeadlineDate.isDisabled());
         addButton.setDisable(!addButton.isDisable());
         assigneeField.setDisable(!assigneeField.isDisable());
-    }
-    /**
-     * Method for setting the values in the assigneeList.
-     * @param event event.
-     */
-    private void setUsers(ActionEvent event) {
-
     }
 
     /**
